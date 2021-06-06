@@ -1,6 +1,6 @@
 # EcologyGame
 
-## **[Aktualny stan dokumentu](https://github.com/GeoMarek/EcologyGame/tree/dokumentacja/project/dokumentacja/main_document.pdf)**
+## **[Aktualny stan dokumentu](https://github.com/GeoMarek/EcologyGame/blob/dokumentacja/project/main_document.pdf)**
 
 ### Materiały pomocnicze:
 - [Dokumentacja](https://github.com/GeoMarek/EcologyGame/tree/dokumentacja/docs/dokumentacja)
