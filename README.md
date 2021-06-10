@@ -9,8 +9,7 @@
 - [Gamifikacja](https://github.com/GeoMarek/EcologyGame/tree/dokumentacja/docs/gamifikacja)
 
 ### Aktualnie do zrobienia
-- podsumowanie podobnych systemów
-- grafika do gamifikacji
 - podrozdział o ochronie środowiska
-- grafika o ochronie środowiska
-- poprawić cytowanie w przypadku gamifikacji
+- wizja systemu
+- diagram przypadków użycia
+
