@@ -7,9 +7,3 @@
 - [Szablon dokumentacji](https://github.com/GeoMarek/EcologyGame/tree/dokumentacja/template)
 - [Ochrona przyrody](https://github.com/GeoMarek/EcologyGame/tree/dokumentacja/docs/ochrona_przyrody)
 - [Gamifikacja](https://github.com/GeoMarek/EcologyGame/tree/dokumentacja/docs/gamifikacja)
-
-### Aktualnie do zrobienia
-- podrozdział o ochronie środowiska
-- wizja systemu
-- diagram przypadków użycia
-
