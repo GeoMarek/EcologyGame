@@ -18,48 +18,642 @@
 | 15 [Zarządzanie aktywnościami](#Zarządzanie-aktywnościami) | 31 [Wizyta w sklepie](#Wizyta-w-sklepie) | 47 [Przeglądanie ekwipunku](#Przeglądanie-ekwipunku)
 | 16 [Wybranie aktywności](#Wybranie-aktywności) | 32 [Przeglądanie powiadomień](#Przeglądanie-powiadomień) | 48 [Wybranie przedmiotu](#Wybranie-przedmiotu)
 
-### Przeglądanie zarządzanych kursów
-### Wybranie kursu
-### Dodanie formy aktywności
-### Podanie atrybutów
-### Dodanie wydarzenia
-### Dodanie nawyku
-### Dodanie zadania
-### Dodanie pytania
-### Zarządzanie użytkownikami
-### Zaproszenie uczestnika
-### Pobranie zestawienia zbiorowego
-### Wybranie uczestnika
-### Wysłanie wiadomości
-### Wysłanie wiadomości zbiorowej
-### Zarządzanie aktywnościami
-### Wybranie aktywności
-### Przeglądanie odpowiedzi
-### Modyfikacja aktywności
-### Wybranie uczestnika
-### Sprawdzenie odpowiedzi
-### Zarządzanie ciekawostkami
-### Dodanie ciekawostki
-### Wybranie ciekawostki
-### Modyfikacja ciekawostki
-### Usuwanie ciekawostki
-### Dodanie nowego kursu
-### Dołączenie do nowego kursu
-### Przeglądanie swoich kursów
-### Wybranie kursu
-### Wizyta w sklepie
-### Przeglądanie powiadomień
-### Przeglądanie strony wydarzenia
-### Przeglądanie zakładki zadań
-### Przeglądanie strony bohatera
-### Przeglądanie strony nawyków
-### Wybranie przedmiotu
-### Wykonanie transakcji
-### Wybranie powiadomienia
-### Wysłanie odpowiedzi
-### Wybranie aktywności
-### Wysłanie odpowiedzi
-### Obejrzenie wyników
-### Modyfikacja atrybutów
-### Przeglądanie ekwipunku
-### Wybranie przedmiotu
+
+
+[](#####################################################################################)
+## Przeglądanie zarządzanych kursów 
+
+Aktor: Nauczyciel
+
+Warunki wstępne:
+- użytkownik jest zalogowany
+- użytkownik ma status nauczyciela
+
+Przebieg domyślny:
+- system wyświetla użytkownikowi zarządzane kursy w postaci listy odnośników
+
+Przebieg alternatywny:
+- brak
+
+[](#####################################################################################)
+## Wybranie kursu 
+
+Aktor: Nauczyciel
+
+Warunki wstępne:
+- użytkownik miał wyświetloną listę zarządzanych kursów
+
+Przebieg domyślny:
+- użytkownik klika w wybrany przez siebie odnośnik na liście
+- zostaje przekierowany do strony wybranego kursu
+- system wyświetla stronę kursu, czyli 4 zakładki opisujące dany kurs
+- system wyświetla przycisk powrotu do listy kursów
+
+Przebieg alternatywny:
+- brak
+
+[](#####################################################################################)
+## Dodanie formy aktywności
+
+Aktor: Nauczyciel
+
+Warunki wstępne:
+- użytkownik w wybranym kursie wybrał zakładkę Dodawanie aktywności
+
+Przebieg domyślny:
+- użytkownik na stronie kursu klika w zakładkę "Dodawanie aktywności"
+- system wyświetla okno dialogowe z pytaniem "czy chcesz dodać nową aktywność do kursu?"
+- użytkownik wybiera opcję "tak"
+- użytkownik zostaje przekierowany do strony z wypełnianiem atrybutów 
+
+Przebieg alternatywny:
+- użytkownik wybiera "nie" w oknie dialogu i zostaje przekierowany do strony kursu
+
+[](#####################################################################################)
+## Podanie atrybutów
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Dodanie wydarzenia
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Dodanie nawyku
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Dodanie zadania
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Dodanie pytania
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Zarządzanie użytkownikami
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Zaproszenie uczestnika
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Pobranie zestawienia zbiorowego
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie uczestnika
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wysłanie wiadomości
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wysłanie wiadomości zbiorowej
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Zarządzanie aktywnościami
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie aktywności
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Przeglądanie odpowiedzi
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Modyfikacja aktywności
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie uczestnika
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Sprawdzenie odpowiedzi
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Zarządzanie ciekawostkami
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Dodanie ciekawostki
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie ciekawostki
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Modyfikacja ciekawostki
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Usuwanie ciekawostki
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Dodanie nowego kursu
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Dołączenie do nowego kursu
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Przeglądanie swoich kursów
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie kursu
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wizyta w sklepie
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Przeglądanie powiadomień
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Przeglądanie strony wydarzenia
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Przeglądanie zakładki zadań
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Przeglądanie strony bohatera
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Przeglądanie strony nawyków
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie przedmiotu
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wykonanie transakcji
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie powiadomienia
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wysłanie odpowiedzi
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie aktywności
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wysłanie odpowiedzi
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Obejrzenie wyników
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Modyfikacja atrybutów
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Przeglądanie ekwipunku
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
+## Wybranie przedmiotu
+
+Aktor: 
+
+Warunki wstępne:
+- x
+
+Przebieg domyślny:
+- x
+
+Przebieg alternatywny:
+- x
+
+[](#####################################################################################)
