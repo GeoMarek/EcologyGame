@@ -58,10 +58,10 @@ Przebieg alternatywny:
 Aktor: Nauczyciel
 
 Warunki wstępne:
-- użytkownik w wybranym kursie wybrał zakładkę Dodawanie aktywności
+- użytkownik w wybranym kursie wybrał zakładkę "dodawanie aktywności"
 
 Przebieg domyślny:
-- użytkownik na stronie kursu klika w zakładkę "Dodawanie aktywności"
+- użytkownik na stronie kursu klika w zakładkę "dodawanie aktywności"
 - system wyświetla okno dialogowe z pytaniem "czy chcesz dodać nową aktywność do kursu?"
 - użytkownik wybiera opcję "tak"
 - użytkownik zostaje przekierowany do strony z wypełnianiem atrybutów 
@@ -75,69 +75,96 @@ Przebieg alternatywny:
 Aktor: 
 
 Warunki wstępne:
-- x
+- użytkownik w wybranym kursie wybrał zakładkę "dodawanie aktywności" i potwierdził
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz do wypełnienia przez użytkownika
+- użytkownik wypełnia wszystkie niezbędne pola, czyli m.in: nazwa i typ zadania, ilość punktów do zdobycia, okres przyjmowania odpowiedzi  
+- użytkownik zatwierdza formularz przyciskiem "dodaj aktywność"
+- użytkownik zostaje przekierowany na stronę dodawanie samej aktywności
 
 Przebieg alternatywny:
-- x
+- użytkownik wybiera opcję "anuluj" 
+- system wyświetla pytanie z potwierdzeniem
+- jeśli użytkownik wybierze "tak", zostaje przekierowany na stronę kursu
+- jeśli użytkownik wybierze "nie", wraca do wypełniania atrybutów aktywności
 
 [](#####################################################################################)
 ## Dodanie wydarzenia
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik wypełnił atrybuty nowej aktywności
+- nowa aktywność miała oznaczony "typ zadania" jako "wydarzenie"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz do wypełnienia oraz pustą listę pytań 
+- użytkownik wypełnia formularz i wpisuje do niego takie rzeczy jak opis wydarzenia, nagrodę do zdobycia i czas pomiędzy odpowiedziami
+- użytkownik wybiera opcję w liście pytań "dodaj pytanie testowe do wydarzenia"
+- po dodaniu pytań użytkownik wybiera przycisk "zatwierdź wydarzenie"
+- wydarzenie zostaje dodane do kursu, a użytkownik jest przekierowany na stronę kursu
 
 Przebieg alternatywny:
-- x
+- brak
 
 [](#####################################################################################)
 ## Dodanie nawyku
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik wypełnił atrybuty nowej aktywności
+- nowa aktywność miała oznaczony "typ zadania" jako "nawyk"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz do wypełnienia
+- użytkownik wprowadza podstawowe informacje o nawyku tj. opis nawyku, typ np. nawyk czy lista definicji 
+- po wprowadzeniu podstawowych informacji użytkownik wybiera opcję "zatwierdź nawyk"
+- nawyk zostaje dodany do kursu, a użytkownik jest przekierowany na stronę kursu
 
 Przebieg alternatywny:
-- x
+- brak
 
 [](#####################################################################################)
 ## Dodanie zadania
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik wypełnił atrybuty nowej aktywności
+- nowa aktywność miała oznaczony "typ zadania" jako "zadanie"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz do wypełnienia
+- użytkownik wprowadza podstawowe informacje o zadaniu tj. opis i typ np. pytanie otwarte, zamknięte, przesłanie pliku etc.
+- po wprowadzeniu podstawowych informacji użytkownik wybiera opcję "przejdź dalej"
+- system wyświetla odpowiedni formularz w zależności wybranego typu zadania, przykładowo
+  - dla zadania zamkniętego treść, 3 odpowiedzi niepoprawne i 1 odpowiedź poprawną
+  - dla zadania otwartego limit znaków, przykładowa poprawna odpowiedź, wskazówka 
+- użytkownik po wypełnieniu formularza zatwierdza przyciskiem "zatwierdź zadanie"
+- zadanie zostaje dodane do kursu, a użytkownik jest przekierowany na stronę kursu
 
 Przebieg alternatywny:
-- x
+- brak
 
 [](#####################################################################################)
 ## Dodanie pytania
 
-Aktor: 
+Aktor: Nauczyciel 
 
 Warunki wstępne:
-- x
+- użytkownik podczas tworzenia wydarzenia wybrał opcję "dodaj pytanie testowe do wydarzenia"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz do wypełnienia
+- użytkownik wypełnia formularz: treść pytania, 3 nieprawidłowe odpowiedzi i jedną prawidłową
+- użytkownik zatwierdza dodanie pytania
+- użytkownik zostaje przekierowany na stronę tworzenia wydarzenia
+- treść pytania pojawia się na liście pytań
 
 Przebieg alternatywny:
-- x
+- brak
 
 [](#####################################################################################)
 ## Zarządzanie użytkownikami
