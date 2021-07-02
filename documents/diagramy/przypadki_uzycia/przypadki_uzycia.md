@@ -177,66 +177,78 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Zarządzanie użytkownikami
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik w wybranym kursie wybrał zakładkę "zarządzanie użytkownikami"
 
 Przebieg domyślny:
-- x
+- system wyświetla stronę zarządzania użytkownikami:
+  - lista dodanych do kursu użytkowników
+  - przycisk do pobrania zestawienia 
+  - przycisk do wysłania grupowej wiadomości
+  - przycisk do generowania zaproszenia do kursu 
+  - przycisk powrotu do strony kursu
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Zaproszenie uczestnika
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik na stronie zarządzania użytkownikami przycisk "zaproś do kursu"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz do wypełnienia (imię, nazwisko, adres mailowy)
+- użytkownik wprowadza wszystkie informacje i zatwierdza przyciskiem
+- zapraszony uczeń zostaje dodany do listy ze statusem "niezapisany"
+- system wysyła email z kodem dostępu do kursu na podany adres mailowy
 
 Przebieg alternatywny:
-- x
+- w trakcie wypełniania formularza użytkownik anuluje operację i zostaje przekierowany do strony zarządzania użytkownikami
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Pobranie zestawienia zbiorowego
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik na stronie zarządzania uzytkownikami wybrał przycisk "pobierz zestawienie grupowe"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz, w którym użytkownik wybiera co ma być zawarte w raporcie np. ilość zdobytych punktów czy wykonanych zadań dodatkowych
+- użytkownik zatwierdza rozszerzenie i plik zostaje pobrany na urządzenie
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Wybranie uczestnika
-Aktor: 
+
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik na stronie zarządzania użytkownikami wybrał na liście jednego z uczestników
 
 Przebieg domyślny:
-- x
+- system przekierowuje na stronę danego użytkownika
+- na stronie użytkownika znajdują się wszystkie informacje o jego postępach podczas kursu oraz przycisk do wysłania wiadomości
+- po obejrzeniu statystyk użytkownik ma możliwość powrotu do listy użytkowników
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Wysłanie wiadomości
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
 - x
