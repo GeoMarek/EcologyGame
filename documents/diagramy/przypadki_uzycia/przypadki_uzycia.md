@@ -9,10 +9,10 @@
 | :heavy_check_mark: 06 [Dodanie nawyku](#Dodanie-nawyku) | 22 [Dodanie ciekawostki](#Dodanie-ciekawostki) | 38 [Wykonanie transakcji](#Wykonanie-transakcji)
 | :heavy_check_mark: 07 [Dodanie zadania](#Dodanie-zadania) | 23 [Wybranie ciekawostki](#Wybranie=ciekawostki) | 39 [Wybranie powiadomienia](#Wybranie-powiadomienia)
 | :heavy_check_mark: 08 [Dodanie pytania](#Dodanie-pytania) | 24 [Modyfikacja ciekawostki](#Modyfikacja-ciekawostki) | 40 Usunięto
-| 09 [Zarządzanie użytkownikami](#Zarządzanie-użytkownikami) | 25 [Usuwanie ciekawostki](#Usuwanie-ciekawostki) | 41 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
-| 10 [Zaproszenie uczestnika](#Zaproszenie-uczestnika) | 26 [Dodanie nowego kursu](#Dodanie-nowego-kursu) | 42 Usunięto
-| 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | 27 [Dołączenie do nowego kursu](#Dołączenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
-| 12 [Wybranie uczestnika](#Wybranie-uczestnika) | 28 Usunięto | 44 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
+| :heavy_check_mark: 09 [Zarządzanie użytkownikami](#Zarządzanie-użytkownikami) | 25 [Usuwanie ciekawostki](#Usuwanie-ciekawostki) | 41 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
+| :heavy_check_mark: 10 [Zaproszenie uczestnika](#Zaproszenie-uczestnika) | 26 [Dodanie nowego kursu](#Dodanie-nowego-kursu) | 42 Usunięto
+| :heavy_check_mark: 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | 27 [Dołączenie do nowego kursu](#Dołączenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
+| :heavy_check_mark: 12 [Wybranie uczestnika](#Wybranie-uczestnika) | 28 Usunięto | 44 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
 | 13 [Wysłanie wiadomości](#Wysłanie-wiadomości) | 29 [Przeglądanie swoich kursów](#Pzeglądanie-swoich-kursów) | 45 [Obejrzenie wyników](#Obejrzenie-wyników)
 | 14 [Wysłanie wiadomości zbiorowej](#Wysłanie-wiadomości-zbiorowej) | 30 [Wybranie kursu](#Wybranie-kursu) | 46 [Modyfikacja atrybutów](#Modyfikacja-atrybutów)
 | 15 [Zarządzanie aktywnościami](#Zarządzanie-aktywnościami) | 31 [Wizyta w sklepie](#Wizyta-w-sklepie) | 47 [Przeglądanie ekwipunku](#Przeglądanie-ekwipunku)
