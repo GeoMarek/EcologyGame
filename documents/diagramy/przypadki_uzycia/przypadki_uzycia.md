@@ -13,9 +13,9 @@
 | :heavy_check_mark: 10 [Zaproszenie uczestnika](#Zaproszenie-uczestnika) | 26 [Dodanie nowego kursu](#Dodanie-nowego-kursu) | 42 Usunięto
 | :heavy_check_mark: 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | 27 [Dołączenie do nowego kursu](#Dołączenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
 | :heavy_check_mark: 12 [Wybranie uczestnika](#Wybranie-uczestnika) | 28 Usunięto | 44 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
-| 13 [Wysłanie wiadomości](#Wysłanie-wiadomości) | 29 [Przeglądanie swoich kursów](#Pzeglądanie-swoich-kursów) | 45 [Obejrzenie wyników](#Obejrzenie-wyników)
-| 14 [Wysłanie wiadomości zbiorowej](#Wysłanie-wiadomości-zbiorowej) | 30 [Wybranie kursu](#Wybranie-kursu) | 46 [Modyfikacja atrybutów](#Modyfikacja-atrybutów)
-| 15 [Zarządzanie aktywnościami](#Zarządzanie-aktywnościami) | 31 [Wizyta w sklepie](#Wizyta-w-sklepie) | 47 [Przeglądanie ekwipunku](#Przeglądanie-ekwipunku)
+| :heavy_check_mark: 13 [Wysłanie wiadomości](#Wysłanie-wiadomości) | 29 [Przeglądanie swoich kursów](#Pzeglądanie-swoich-kursów) | 45 [Obejrzenie wyników](#Obejrzenie-wyników)
+| :heavy_check_mark: 14 [Wysłanie wiadomości zbiorowej](#Wysłanie-wiadomości-zbiorowej) | 30 [Wybranie kursu](#Wybranie-kursu) | 46 [Modyfikacja atrybutów](#Modyfikacja-atrybutów)
+| :heavy_check_mark: 15 [Zarządzanie aktywnościami](#Zarządzanie-aktywnościami) | 31 [Wizyta w sklepie](#Wizyta-w-sklepie) | 47 [Przeglądanie ekwipunku](#Przeglądanie-ekwipunku)
 | 16 [Wybranie aktywności](#Wybranie-aktywności) | 32 [Przeglądanie powiadomień](#Przeglądanie-powiadomień) | 48 [Wybranie przedmiotu](#Wybranie-przedmiotu)
 
 
@@ -248,46 +248,52 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Wysłanie wiadomości
 
-Aktor: Nauczyciel
+Aktor: Nauczyciel, Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik wybrał przycisk "wyślij wiadomość" lub "odpowiedz na tą wiadomość"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz, który użytkownik musi wypełnić
+- użytkownik uzupełnia treść wiadomości 
+- użytkownik wysyła wiadomość poprzez przycisk "wyślij"
 
 Przebieg alternatywny:
-- x
+- użytkownik może anulować wysyłanie wiadomości w trakcie jej pisania przyciskiem "anuluj"
+- użytkownik może załączyć do wiadomości wybrane przez siebie pliki
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Wysłanie wiadomości zbiorowej
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik wybrał przycisk "wyślij grupową wiadomość"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz, który użytkownik musi wypełnić
+- użytkownik uzupełnia treść wiadomości 
+- użytkownik wysyła wiadomość poprzez przycisk "wyślij"
 
 Przebieg alternatywny:
-- x
+- użytkownik może anulować wysyłanie wiadomości w trakcie jej pisania przyciskiem "anuluj"
+- użytkownik może załączyć do wiadomości wybrane przez siebie pliki
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Zarządzanie aktywnościami
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- na stronie kursu użytkownik wybrał zakładkę "zarządzanie aktywnościami"
 
 Przebieg domyślny:
-- x
+- system wyświetla wszystkie aktywności kursu w postaci listy odnośników wraz z typem i nazwą danej aktywności 
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
