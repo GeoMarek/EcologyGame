@@ -5,11 +5,11 @@
 | :heavy_check_mark: 02 [Wybranie kursu](#Wybranie-kursu) | 18 [Modyfikacja aktywności](#Modyfikacja-aktywności) | 34 [Przeglądanie zakładki zadań](#Przeglądanie-zakładki-zadań)
 | :heavy_check_mark: 03 [Dodanie formy aktywności](#Dodanie-formy-aktywności) | 19 [Wybranie uczestnika](#Wybranie-uczestnika) | 35 [Przeglądanie strony bohatera](#Przeglądanie-strony-bohatera)
 | :heavy_check_mark: 04 [Podanie atrybutów](#Podanie-atrybutów) | 20 [Sprawdzenie odpowiedzi](#Sprawdzenie-odpowiedzi) | 36 [Przeglądanie strony nawyków](#Przeglądanie-strony-nawyków)
-| :heavy_check_mark: 05 [Dodanie wydarzenia](#Dodanie-wydarzenia) | 21 [Zarządzanie ciekawostkami](#Zarządzanie-ciekawostkami) | 37 [Wybranie przedmiotu](#Wybranie-przedmiotu)
-| :heavy_check_mark: 06 [Dodanie nawyku](#Dodanie-nawyku) | 22 [Dodanie ciekawostki](#Dodanie-ciekawostki) | 38 [Wykonanie transakcji](#Wykonanie-transakcji)
-| :heavy_check_mark: 07 [Dodanie zadania](#Dodanie-zadania) | 23 [Wybranie ciekawostki](#Wybranie=ciekawostki) | 39 [Wybranie powiadomienia](#Wybranie-powiadomienia)
-| :heavy_check_mark: 08 [Dodanie pytania](#Dodanie-pytania) | 24 [Modyfikacja ciekawostki](#Modyfikacja-ciekawostki) | 40 Usunięto
-| :heavy_check_mark: 09 [Zarządzanie użytkownikami](#Zarządzanie-użytkownikami) | 25 [Usuwanie ciekawostki](#Usuwanie-ciekawostki) | 41 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
+| :heavy_check_mark: 05 [Dodanie wydarzenia](#Dodanie-wydarzenia) | :heavy_check_mark: 21 [Zarządzanie ciekawostkami](#Zarządzanie-ciekawostkami) | 37 [Wybranie przedmiotu](#Wybranie-przedmiotu)
+| :heavy_check_mark: 06 [Dodanie nawyku](#Dodanie-nawyku) | :heavy_check_mark: 22 [Dodanie ciekawostki](#Dodanie-ciekawostki) | 38 [Wykonanie transakcji](#Wykonanie-transakcji)
+| :heavy_check_mark: 07 [Dodanie zadania](#Dodanie-zadania) | :heavy_check_mark: 23 [Wybranie ciekawostki](#Wybranie=ciekawostki) | 39 [Wybranie powiadomienia](#Wybranie-powiadomienia)
+| :heavy_check_mark: 08 [Dodanie pytania](#Dodanie-pytania) | :heavy_check_mark: 24 [Modyfikacja ciekawostki](#Modyfikacja-ciekawostki) | 40 Usunięto
+| :heavy_check_mark: 09 [Zarządzanie użytkownikami](#Zarządzanie-użytkownikami) | :heavy_check_mark: 25 [Usuwanie ciekawostki](#Usuwanie-ciekawostki) | 41 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
 | :heavy_check_mark: 10 [Zaproszenie uczestnika](#Zaproszenie-uczestnika) | 26 [Dodanie nowego kursu](#Dodanie-nowego-kursu) | 42 Usunięto
 | :heavy_check_mark: 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | 27 [Dołączenie do nowego kursu](#Dołączenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
 | :heavy_check_mark: 12 [Wybranie uczestnika](#Wybranie-uczestnika) | 28 Usunięto | 44 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
@@ -368,46 +368,51 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Zarządzanie ciekawostkami
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik w wybranym kursie wybrał zakładkę "zarządzanie ciekawostkami"
 
 Przebieg domyślny:
-- x
+- system wyświetla dodane do kursu ciekawostki w postaci odnośników
+- system wyświetla również przycisk umożliwiający dodanie nowej ciekawostki 
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Dodanie ciekawostki
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik wybrał przycisk dodania nowej ciekawostki
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz 
+- użytkownik uzupełnia w nim takie pola jak nazwa czy treść
+- po wypełnieniu formularzu zatwierdza przyciskiem "dodaj ciekawostke"
+- użytkownik zostaje przekierowany do strony "zarządzanie ciekawostkami"
 
 Przebieg alternatywny:
-- x
+- użytkownik może anulować dodawanie ciekawostki za pomocą przycisku "anuluj"
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Wybranie ciekawostki
 
-Aktor: 
+Aktor: Nauczyciel 
 
 Warunki wstępne:
-- x
+- użytkownik kliknął w jeden z odnośników na liście ciekawostek
 
 Przebieg domyślny:
-- x
+- system wyświetla stronę ciekawostki (opis, atrybuty etc)
+- system oprócz podstawowych informacji wyświetla przycisk "cofnij", "usuń ciekawostkę" oaz "modyfikuj ciekawostkę" 
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
@@ -416,28 +421,33 @@ Przebieg alternatywny:
 Aktor: 
 
 Warunki wstępne:
-- x
+- użytkownik na stronie wybranej wcześniej ciekawostki kliknął w przycisk "modyfikuj ciekawostkę"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz, który jest wypełniony na podstawie atrybutów ciekawostki
+- użytkownik zmienia zawartośc danych pól
+- po wypełnieniu formularzu zatwierdza przyciskiem "zapisz zmiany"
+- użytkownik zostaje przekierowany do strony "zarządzanie ciekawostkami"
 
 Przebieg alternatywny:
-- x
+- użytkownik może wybrać "anuluj zmiany" i wówczas ciekawostka nie zostanie zmodyfikowana
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Usuwanie ciekawostki
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik na stronie wybranej wcześniej ciekawostki kliknął w przycisk "usuń ciekawostkę"
+
 
 Przebieg domyślny:
-- x
+- system wyświetla okno dialogowe z pytaniem o potwierdzenie usunięcia
+- użytkownik wybiera opcję "tak", ciekawostka zostaje usunięta, a użytkownik zostaje przekierowany na stronę "zarządzanie ciekawostkami"
 
 Przebieg alternatywny:
-- x
+- użytkownik wybiera opcję "tak" i zostaje przekierowany na stronę "zarządzanie ciekawostkami"
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
@@ -593,7 +603,7 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Wybranie przedmiotu
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
 - x
