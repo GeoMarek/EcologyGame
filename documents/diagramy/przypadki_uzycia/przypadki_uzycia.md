@@ -1,22 +1,22 @@
 # Przypadki użycia
 |   |   |   | 
 |---|---|---|
-| :heavy_check_mark: 01  [Przeglądanie zarządzanych kursów](#Przeglądanie-zarządzanych-kursów) | 17 [Przeglądanie odpowiedzi](#Przeglądanie-odpowiedzi) | 33 [Przeglądanie strony wydarzenia](#Przeglądanie-strony-wydarzenia)
-| :heavy_check_mark: 02 [Wybranie kursu](#Wybranie-kursu) | 18 [Modyfikacja aktywności](#Modyfikacja-aktywności) | 34 [Przeglądanie zakładki zadań](#Przeglądanie-zakładki-zadań)
-| :heavy_check_mark: 03 [Dodanie formy aktywności](#Dodanie-formy-aktywności) | 19 [Wybranie uczestnika](#Wybranie-uczestnika) | 35 [Przeglądanie strony bohatera](#Przeglądanie-strony-bohatera)
-| :heavy_check_mark: 04 [Podanie atrybutów](#Podanie-atrybutów) | 20 [Sprawdzenie odpowiedzi](#Sprawdzenie-odpowiedzi) | 36 [Przeglądanie strony nawyków](#Przeglądanie-strony-nawyków)
+| :heavy_check_mark: 01  [Przeglądanie zarządzanych kursów](#Przeglądanie-zarządzanych-kursów) | :heavy_check_mark: 17 [Przeglądanie odpowiedzi](#Przeglądanie-odpowiedzi) | 33 [Przeglądanie strony wydarzenia](#Przeglądanie-strony-wydarzenia)
+| :heavy_check_mark: 02 [Wybranie kursu](#Wybranie-kursu) | :heavy_check_mark: 18 [Modyfikacja aktywności](#Modyfikacja-aktywności) | 34 [Przeglądanie zakładki zadań](#Przeglądanie-zakładki-zadań)
+| :heavy_check_mark: 03 [Dodanie formy aktywności](#Dodanie-formy-aktywności) | :heavy_check_mark: 19 [Wybranie uczestnika](#Wybranie-uczestnika) | 35 [Przeglądanie strony bohatera](#Przeglądanie-strony-bohatera)
+| :heavy_check_mark: 04 [Podanie atrybutów](#Podanie-atrybutów) | :heavy_check_mark: 20 [Sprawdzenie odpowiedzi](#Sprawdzenie-odpowiedzi) | 36 [Przeglądanie strony nawyków](#Przeglądanie-strony-nawyków)
 | :heavy_check_mark: 05 [Dodanie wydarzenia](#Dodanie-wydarzenia) | :heavy_check_mark: 21 [Zarządzanie ciekawostkami](#Zarządzanie-ciekawostkami) | 37 [Wybranie przedmiotu](#Wybranie-przedmiotu)
 | :heavy_check_mark: 06 [Dodanie nawyku](#Dodanie-nawyku) | :heavy_check_mark: 22 [Dodanie ciekawostki](#Dodanie-ciekawostki) | 38 [Wykonanie transakcji](#Wykonanie-transakcji)
 | :heavy_check_mark: 07 [Dodanie zadania](#Dodanie-zadania) | :heavy_check_mark: 23 [Wybranie ciekawostki](#Wybranie=ciekawostki) | 39 [Wybranie powiadomienia](#Wybranie-powiadomienia)
 | :heavy_check_mark: 08 [Dodanie pytania](#Dodanie-pytania) | :heavy_check_mark: 24 [Modyfikacja ciekawostki](#Modyfikacja-ciekawostki) | 40 Usunięto
 | :heavy_check_mark: 09 [Zarządzanie użytkownikami](#Zarządzanie-użytkownikami) | :heavy_check_mark: 25 [Usuwanie ciekawostki](#Usuwanie-ciekawostki) | 41 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
-| :heavy_check_mark: 10 [Zaproszenie uczestnika](#Zaproszenie-uczestnika) | 26 [Dodanie nowego kursu](#Dodanie-nowego-kursu) | 42 Usunięto
-| :heavy_check_mark: 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | 27 [Dołączenie do nowego kursu](#Dołączenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
+| :heavy_check_mark: 10 [Zaproszenie uczestnika](#Zaproszenie-uczestnika) | :heavy_check_mark: 26 [Dodanie nowego kursu](#Dodanie-nowego-kursu) | 42 Usunięto
+| :heavy_check_mark: 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | :heavy_check_mark: 27 [Dołączenie do nowego kursu](#Dołączenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
 | :heavy_check_mark: 12 [Wybranie uczestnika](#Wybranie-uczestnika) | 28 Usunięto | 44 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
-| :heavy_check_mark: 13 [Wysłanie wiadomości](#Wysłanie-wiadomości) | 29 [Przeglądanie swoich kursów](#Pzeglądanie-swoich-kursów) | 45 [Obejrzenie wyników](#Obejrzenie-wyników)
+| :heavy_check_mark: 13 [Wysłanie wiadomości](#Wysłanie-wiadomości) | :heavy_check_mark: 29 [Przeglądanie swoich kursów](#Pzeglądanie-swoich-kursów) | 45 [Obejrzenie wyników](#Obejrzenie-wyników)
 | :heavy_check_mark: 14 [Wysłanie wiadomości zbiorowej](#Wysłanie-wiadomości-zbiorowej) | 30 [Wybranie kursu](#Wybranie-kursu) | 46 [Modyfikacja atrybutów](#Modyfikacja-atrybutów)
 | :heavy_check_mark: 15 [Zarządzanie aktywnościami](#Zarządzanie-aktywnościami) | 31 [Wizyta w sklepie](#Wizyta-w-sklepie) | 47 [Przeglądanie ekwipunku](#Przeglądanie-ekwipunku)
-| 16 [Wybranie aktywności](#Wybranie-aktywności) | 32 [Przeglądanie powiadomień](#Przeglądanie-powiadomień) | 48 [Wybranie przedmiotu](#Wybranie-przedmiotu)
+| :heavy_check_mark: 16 [Wybranie aktywności](#Wybranie-aktywności) | 32 [Przeglądanie powiadomień](#Przeglądanie-powiadomień) | 48 [Wybranie przedmiotu](#Wybranie-przedmiotu)
 
 
 
@@ -299,76 +299,82 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Wybranie aktywności
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik kliknął w odnośnik do danej aktywności 
 
 Przebieg domyślny:
-- x
+- system wyświetla informacje o danej aktywności - przykładowo treść, termin zgłaszania odpowiedzi, czy ilość wysłanych i sprawdzonych prac
+- oprócz tego system wyświetla również przycisk modyfikowania aktywności oraz przeglądania odpowiedzi
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Przeglądanie odpowiedzi
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik podczas przeglądania strony danej aktywności wybrał opcję "przeglądaj odpowiedzi"
 
 Przebieg domyślny:
-- x
+- system wyświetla wszystkie odpowiedzi do danej aktywności w postaci listy odnośników oznaczonych za pomocą ich autorów 
+- system wyświetla również oznaczono listę osób, która odpowiedzi nie nadesłała
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Modyfikacja aktywności
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik wybrał opcję "modyfikuj aktywność"
 
 Przebieg domyślny:
-- x
+- system wyświetla uzupełniony formularz aktywności
+- użytkownik wprowadza ewentualne zmiany i uwagi i zatwierdza przyciskiem "zatwierdź zmiany"
 
 Przebieg alternatywny:
-- x
+- użytkownik może nie zatwierdzić zmian, lecz je anulować - zostanie wówczas przekierowany do strony danej aktywności
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Wybranie uczestnika
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik podczas przeglądania odpowiedzi wybrał jednego z uczestników
 
 Przebieg domyślny:
-- x
+- system wyświetla informacje na temat odpowiedzi przesłanej przez wybranego uczestnika oraz przycisk umożliwiający sprawdzenie odpowiedzi
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Sprawdzenie odpowiedzi
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik wybrał 
 
 Przebieg domyślny:
-- x
+- system wyświetla odpowiedź udzieloną przez uczestnika kursu
+- użytkownik sprawdza i weryfikuje poprawność odpowiedzi oraz przydziela punkty
+- użytkownik zatwierdza prace przyciskiem "zatwierdź ocenę"
+- użytkownik zostaje przekierowany na stronę z listą odpowiedzi udzielonych na wybrane zadanie
 
 Przebieg alternatywny:
-- x
+- użytkownik może wybrać opcję "anuluj ocenę" i użytkownik zostaje przekierowany do strony z daną odpowiedzią
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
@@ -459,46 +465,55 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Dodanie nowego kursu
 
-Aktor: 
+Aktor: Nauczyciel
 
 Warunki wstępne:
-- x
+- użytkownik jest zalogowany i ma status nauczyciela
+- użytkownik wybrał przycisk "dodaj nowy kurs"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz do wypełnienia
+- użytkownik wypełnia formularz wedle własnych potrzeb
+- użytkownik zatwierdza wprowadzone dane przyciskiem "dodaj nowy kurs"
+- użytkownik zostaje przekierowany na stronę nowo utworzonego kursu
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Dołączenie do nowego kursu
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik wybrał przycisk "dołącz do nowego kursu"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz do wypełnienia przez użytkownika
+- użytkownik wprowadza nazwę kursu i nazwisko autora oraz klika "wyszukaj"
+- system wyświetla kursy spełniające dane kryteria 
+- użytkownik wybiera kurs i wprowadza otrzymany kod
+- użytkownik zostaje przekierowany do strony nowego kursu 
 
 Przebieg alternatywny:
-- x
+- jeśli kod był niepoprawny to wyszukiwanie i formularz zostają wyczyszczone
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Przeglądanie swoich kursów
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik jest zalogowany
+- użytkownik ma status ucznia
 
 Przebieg domyślny:
-- x
+- system wyświetla użytkownikowi zarządzane kursy w postaci listy odnośników
 
 Przebieg alternatywny:
-- x
+- braK
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
