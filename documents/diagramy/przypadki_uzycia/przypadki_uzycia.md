@@ -1,22 +1,22 @@
 # Przypadki użycia
 |   |   |   | 
 |---|---|---|
-| :heavy_check_mark: 01  [Przeglądanie zarządzanych kursów](#Przeglądanie-zarządzanych-kursów) | :heavy_check_mark: 17 [Przeglądanie odpowiedzi](#Przeglądanie-odpowiedzi) | 33 [Przeglądanie strony wydarzenia](#Przeglądanie-strony-wydarzenia)
+| :heavy_check_mark: 01  [Przeglądanie zarządzanych kursów](#Przeglądanie-zarządzanych-kursów) | :heavy_check_mark: 17 [Przeglądanie odpowiedzi](#Przeglądanie-odpowiedzi) |  :heavy_check_mark: 33 [Przeglądanie strony wydarzenia](#Przeglądanie-strony-wydarzenia)
 | :heavy_check_mark: 02 [Wybranie kursu](#Wybranie-kursu-nauczyciel) | :heavy_check_mark: 18 [Modyfikacja aktywności](#Modyfikacja-aktywności) | 34 [Przeglądanie zakładki zadań](#Przeglądanie-zakładki-zadań)
 | :heavy_check_mark: 03 [Dodanie formy aktywności](#Dodanie-formy-aktywności) | :heavy_check_mark: 19 [Wybranie uczestnika](#Wybranie-uczestnika) | 35 [Przeglądanie strony bohatera](#Przeglądanie-strony-bohatera)
 | :heavy_check_mark: 04 [Podanie atrybutów](#Podanie-atrybutów) | :heavy_check_mark: 20 [Sprawdzenie odpowiedzi](#Sprawdzenie-odpowiedzi) | 36 [Przeglądanie strony nawyków](#Przeglądanie-strony-nawyków)
 | :heavy_check_mark: 05 [Dodanie wydarzenia](#Dodanie-wydarzenia) | :heavy_check_mark: 21 [Zarządzanie ciekawostkami](#Zarządzanie-ciekawostkami) | :heavy_check_mark: 37 [Wybranie przedmiotu](#Wybranie-przedmiotu)
 | :heavy_check_mark: 06 [Dodanie nawyku](#Dodanie-nawyku) | :heavy_check_mark: 22 [Dodanie ciekawostki](#Dodanie-ciekawostki) | :heavy_check_mark: 38 [Wykonanie transakcji](#Wykonanie-transakcji)
-| :heavy_check_mark: 07 [Dodanie zadania](#Dodanie-zadania) | :heavy_check_mark: 23 [Wybranie ciekawostki](#Wybranie=ciekawostki) | 39 [Wybranie powiadomienia](#Wybranie-powiadomienia)
+| :heavy_check_mark: 07 [Dodanie zadania](#Dodanie-zadania) | :heavy_check_mark: 23 [Wybranie ciekawostki](#Wybranie-ciekawostki) |  :heavy_check_mark: 39 [Wybranie powiadomienia](#Wybranie-powiadomienia)
 | :heavy_check_mark: 08 [Dodanie pytania](#Dodanie-pytania) | :heavy_check_mark: 24 [Modyfikacja ciekawostki](#Modyfikacja-ciekawostki) | 40 Usunięto
-| :heavy_check_mark: 09 [Zarządzanie użytkownikami](#Zarządzanie-użytkownikami) | :heavy_check_mark: 25 [Usuwanie ciekawostki](#Usuwanie-ciekawostki) | 41 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
+| :heavy_check_mark: 09 [Zarządzanie użytkownikami](#Zarządzanie-użytkownikami) | :heavy_check_mark: 25 [Usuwanie ciekawostki](#Usuwanie-ciekawostki) |  :heavy_check_mark: 41 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi-w-wydarzeniu)
 | :heavy_check_mark: 10 [Zaproszenie uczestnika](#Zaproszenie-uczestnika) | :heavy_check_mark: 26 [Dodanie nowego kursu](#Dodanie-nowego-kursu) | 42 Usunięto
-| :heavy_check_mark: 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | :heavy_check_mark: 27 [Dołączenie do nowego kursu](#Dołączenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
+| :heavy_check_mark: 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | :heavy_check_mark: 27 [Dołączenie do nowego kursu](#Dolaczenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
 | :heavy_check_mark: 12 [Wybranie uczestnika](#Wybranie-uczestnika) | 28 Usunięto | 44 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
 | :heavy_check_mark: 13 [Wysłanie wiadomości](#Wysłanie-wiadomości) | :heavy_check_mark: 29 [Przeglądanie swoich kursów](#Pzeglądanie-swoich-kursów) | 45 [Obejrzenie wyników](#Obejrzenie-wyników)
 | :heavy_check_mark: 14 [Wysłanie wiadomości zbiorowej](#Wysłanie-wiadomości-zbiorowej) | :heavy_check_mark: 30 [Wybranie kursu](#Wybranie-kursu) | 46 [Modyfikacja atrybutów](#Modyfikacja-atrybutów)
 | :heavy_check_mark: 15 [Zarządzanie aktywnościami](#Zarządzanie-aktywnościami) | :heavy_check_mark: 31 [Wizyta w sklepie](#Wizyta-w-sklepie) | 47 [Przeglądanie ekwipunku](#Przeglądanie-ekwipunku)
-| :heavy_check_mark: 16 [Wybranie aktywności](#Wybranie-aktywności) | 32 [Przeglądanie powiadomień](#Przeglądanie-powiadomień) | 48 [Wybranie przedmiotu](#Wybranie-przedmiotu)
+| :heavy_check_mark: 16 [Wybranie aktywności](#Wybranie-aktywności) |  :heavy_check_mark: 32 [Przeglądanie powiadomień](#Przeglądanie-powiadomień) | 48 [Wybranie przedmiotu](#Wybranie-przedmiotu)
 
 
 
@@ -555,31 +555,34 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Przeglądanie powiadomień
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik kliknął w przycisk "powiadomienia"
 
 Przebieg domyślny:
-- x
+- użytkownik zostaje przekierowany na stronę powiadomień
+- system wyświetla powiadomienia w postaci listy odnośników
+- każde z powiadomień ma wyświetloną datę wysłania i informację, czy już zostało odczytane
 
 Przebieg alternatywny:
-- x
-
+- brak
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Przeglądanie strony wydarzenia
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik wybrał zakładkę "wydarzenia" podczas przeglądania kursu
 
 Przebieg domyślny:
-- x
+- użytkownik jest przekierowany na stronę wydarzenia
+- system wyświetla opis wydarzenia, aktualny stan zdrowia przeciwnika oraz licznik odpowiedzi
+- jeśli licznik odpowiedzi wskazuje na czas 00:00 to wyświetlony jest również przycisk "zaatakuj przeciwnika"
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
@@ -663,31 +666,34 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Wybranie powiadomienia
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik kliknął w odnośnik do danego powiadomienia
 
 Przebieg domyślny:
-- x
+- system wyświetla stronę danego powiadomienia (tytuł, treść, datę wysłania)
 
 Przebieg alternatywny:
-- x
+- jeśli powiadomienie to wiadomość od nauczyciela, to użytkownik ma możliwość kliknięcia "odpowiedz" i wówczas może wysłać do niego wiadomość
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
-## Wysłanie odpowiedzi
+## Wysłanie odpowiedzi w wydarzeniu
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik kliknął w przycisk "zaatakuj przeciwnika"
 
 Przebieg domyślny:
-- x
+- system wyświetla formularz z pytaniem, na które użytkownik ma odpowiedzieć
+- jeśli odpowie poprawnie to zostaje wyświetlony komunikat o skutecznym ataku
+- jeśli odpowie niepopranie to zostaje wyświetlony komunikat o uniku wroga
+- w obu przypadkach czas wraca do wartości ustalonej przez autora kursu
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
