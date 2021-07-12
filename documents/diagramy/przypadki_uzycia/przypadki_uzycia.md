@@ -2,11 +2,11 @@
 |   |   |   | 
 |---|---|---|
 | :heavy_check_mark: 01  [Przeglądanie zarządzanych kursów](#Przeglądanie-zarządzanych-kursów) | :heavy_check_mark: 17 [Przeglądanie odpowiedzi](#Przeglądanie-odpowiedzi) | 33 [Przeglądanie strony wydarzenia](#Przeglądanie-strony-wydarzenia)
-| :heavy_check_mark: 02 [Wybranie kursu](#Wybranie-kursu) | :heavy_check_mark: 18 [Modyfikacja aktywności](#Modyfikacja-aktywności) | 34 [Przeglądanie zakładki zadań](#Przeglądanie-zakładki-zadań)
+| :heavy_check_mark: 02 [Wybranie kursu](#Wybranie-kursu-nauczyciel) | :heavy_check_mark: 18 [Modyfikacja aktywności](#Modyfikacja-aktywności) | 34 [Przeglądanie zakładki zadań](#Przeglądanie-zakładki-zadań)
 | :heavy_check_mark: 03 [Dodanie formy aktywności](#Dodanie-formy-aktywności) | :heavy_check_mark: 19 [Wybranie uczestnika](#Wybranie-uczestnika) | 35 [Przeglądanie strony bohatera](#Przeglądanie-strony-bohatera)
 | :heavy_check_mark: 04 [Podanie atrybutów](#Podanie-atrybutów) | :heavy_check_mark: 20 [Sprawdzenie odpowiedzi](#Sprawdzenie-odpowiedzi) | 36 [Przeglądanie strony nawyków](#Przeglądanie-strony-nawyków)
-| :heavy_check_mark: 05 [Dodanie wydarzenia](#Dodanie-wydarzenia) | :heavy_check_mark: 21 [Zarządzanie ciekawostkami](#Zarządzanie-ciekawostkami) | 37 [Wybranie przedmiotu](#Wybranie-przedmiotu)
-| :heavy_check_mark: 06 [Dodanie nawyku](#Dodanie-nawyku) | :heavy_check_mark: 22 [Dodanie ciekawostki](#Dodanie-ciekawostki) | 38 [Wykonanie transakcji](#Wykonanie-transakcji)
+| :heavy_check_mark: 05 [Dodanie wydarzenia](#Dodanie-wydarzenia) | :heavy_check_mark: 21 [Zarządzanie ciekawostkami](#Zarządzanie-ciekawostkami) | :heavy_check_mark: 37 [Wybranie przedmiotu](#Wybranie-przedmiotu)
+| :heavy_check_mark: 06 [Dodanie nawyku](#Dodanie-nawyku) | :heavy_check_mark: 22 [Dodanie ciekawostki](#Dodanie-ciekawostki) | :heavy_check_mark: 38 [Wykonanie transakcji](#Wykonanie-transakcji)
 | :heavy_check_mark: 07 [Dodanie zadania](#Dodanie-zadania) | :heavy_check_mark: 23 [Wybranie ciekawostki](#Wybranie=ciekawostki) | 39 [Wybranie powiadomienia](#Wybranie-powiadomienia)
 | :heavy_check_mark: 08 [Dodanie pytania](#Dodanie-pytania) | :heavy_check_mark: 24 [Modyfikacja ciekawostki](#Modyfikacja-ciekawostki) | 40 Usunięto
 | :heavy_check_mark: 09 [Zarządzanie użytkownikami](#Zarządzanie-użytkownikami) | :heavy_check_mark: 25 [Usuwanie ciekawostki](#Usuwanie-ciekawostki) | 41 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
@@ -14,8 +14,8 @@
 | :heavy_check_mark: 11 [Pobranie zestawienia zbiorowego](#Pobranie-zestawienia-zbiorowego) | :heavy_check_mark: 27 [Dołączenie do nowego kursu](#Dołączenie-do-nowego-kursu) | 43 [Wybranie aktywności](#Wybranie-aktywności)
 | :heavy_check_mark: 12 [Wybranie uczestnika](#Wybranie-uczestnika) | 28 Usunięto | 44 [Wysłanie odpowiedzi](#Wysłanie-odpowiedzi)
 | :heavy_check_mark: 13 [Wysłanie wiadomości](#Wysłanie-wiadomości) | :heavy_check_mark: 29 [Przeglądanie swoich kursów](#Pzeglądanie-swoich-kursów) | 45 [Obejrzenie wyników](#Obejrzenie-wyników)
-| :heavy_check_mark: 14 [Wysłanie wiadomości zbiorowej](#Wysłanie-wiadomości-zbiorowej) | 30 [Wybranie kursu](#Wybranie-kursu) | 46 [Modyfikacja atrybutów](#Modyfikacja-atrybutów)
-| :heavy_check_mark: 15 [Zarządzanie aktywnościami](#Zarządzanie-aktywnościami) | 31 [Wizyta w sklepie](#Wizyta-w-sklepie) | 47 [Przeglądanie ekwipunku](#Przeglądanie-ekwipunku)
+| :heavy_check_mark: 14 [Wysłanie wiadomości zbiorowej](#Wysłanie-wiadomości-zbiorowej) | :heavy_check_mark: 30 [Wybranie kursu](#Wybranie-kursu) | 46 [Modyfikacja atrybutów](#Modyfikacja-atrybutów)
+| :heavy_check_mark: 15 [Zarządzanie aktywnościami](#Zarządzanie-aktywnościami) | :heavy_check_mark: 31 [Wizyta w sklepie](#Wizyta-w-sklepie) | 47 [Przeglądanie ekwipunku](#Przeglądanie-ekwipunku)
 | :heavy_check_mark: 16 [Wybranie aktywności](#Wybranie-aktywności) | 32 [Przeglądanie powiadomień](#Przeglądanie-powiadomień) | 48 [Wybranie przedmiotu](#Wybranie-przedmiotu)
 
 
@@ -37,7 +37,7 @@ Przebieg alternatywny:
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
-## Wybranie kursu 
+## Wybranie kursu nauczyciel
 
 Aktor: Nauczyciel
 
@@ -519,31 +519,37 @@ Przebieg alternatywny:
 [](#####################################################################################)
 ## Wybranie kursu
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik miał wyświetloną listę zarządzanych kursów
 
 Przebieg domyślny:
-- x
+- użytkownik klika w wybrany przez siebie odnośnik na liście
+- zostaje przekierowany do strony wybranego kursu
+- system wyświetla stronę kursu, czyli
+    - zakładka zadań, nawyków, wydarzeń oraz panel bohatera
+    - przyciski "powrót do listy kursów", "powiadomienia", "sklep"
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Wizyta w sklepie
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik kliknął w przycisk "sklep"
 
 Przebieg domyślny:
-- x
+- użytkownik zostaje przekierowany na stronę sklepu
+- system wyświetla dwa panele "do kupienia", "do sprzedania" oraz aktualny stan konta użytkownika
+- w każdym panelu są umieszczone miniaturki przedmiotów wraz z ich wartością
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
@@ -627,28 +633,31 @@ Przebieg alternatywny:
 Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik kliknął w miniaturkę przedmiotu w jednym z paneli
 
 Przebieg domyślny:
-- x
+- system wyświetla okno z informacjami o przedmiocie: wygląd, statystyki, specjalne właściwości i cena
+- jeśli przedmiot był w panelu "do kupienia" to dostępny jest przycisk "kup", jeśli w panelu "do sprzedania" to jest dostępny przycisk "sprzedaj"
 
 Przebieg alternatywny:
-- x
+- brak
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
 ## Wykonanie transakcji
 
-Aktor: 
+Aktor: Uczeń
 
 Warunki wstępne:
-- x
+- użytkownik podczas przeglądania informacji o przedmiocie wybrał przycisk "kup" lub "sprzedaj"
 
 Przebieg domyślny:
-- x
+- system wyświetla okno dialogowe z pytaniem o potwierdzenie transakcji
+- użytkownik potwierdza wykonanie transakcji
+- użytkownik zostaje przekierowany na stronę sklepu
 
 Przebieg alternatywny:
-- x
+- gdy użytkownik nie posiada wystarczającej ilości złota, to wyświetlone zostaje mu komunikat o tym ile złota mu brakuje i zostaje przekierowany na stronę sklepu
 
 [Skocz do góry](#Przypadki-użycia)
 [](#####################################################################################)
