@@ -79,7 +79,3 @@ Poszczególne rozdziały i podrozdziały podzielone są kod źródłowy i obrazy
 
 Aktualny stan dokumentu można zobaczyć [tutaj](https://github.com/GeoMarek/EcologyGame/blob/dev/docs/project/main_document.pdf)
 Różne przydatne pliki można znaleźć [tutaj](https://github.com/GeoMarek/EcologyGame/blob/dev/docs/documents)
-
-
-
-*by Marek & Kamil*
