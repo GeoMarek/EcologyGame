@@ -1,0 +1,83 @@
+\documentclass[nostrict]{szablonPG}
+
+%-------------------- Dodatkowe pakiety ---------------------
+% komendy usepackage
+%------------------------------------------------------------
+
+%------------------------------------------------------------
+%			      Poczatek pracy dyplomowej  
+%------------------------------------------------------------
+
+\begin{document}
+
+%------------------------------------------------------------
+%  Dodanie strony tytulowej wygenerowanej z MojaPG oraz 
+%  						oswiadczenia
+
+%\includepdf{meta/strona_tytulowa.pdf}
+%\includepdf{meta/oswiadczenie.pdf}
+
+%------------------------------------------------------------
+%  Dodanie streszczenia i abstract
+%  						
+
+\input{include/streszczenie.tex}
+\input{include/abstract.tex}
+
+%------------------------------------------------------------
+%	Utworzenie spisu tresci pracy dyplomowej
+\tableofcontents
+
+%------------------------------------------------------------
+%	Dodanie wykazu wazniejszych skrotow i oznaczen 
+\input{include/oznaczenia.tex}
+
+%------------------------------------------------------------
+%	Dodanie rozdzialoww pracy dyplomowej - glowne cialo dokumentu 
+
+\input{chapters/chapter01_00_WstepCelPracy.tex}
+\input{chapters/chapter02_00_OpisDziedzinyProblemowej.tex}
+\input{chapters/chapter03_00_PrzegladPodobnychSystemow.tex}
+\input{chapters/chapter04_00_Analiza.tex}
+\input{chapters/chapter04_01_WizjaSystemu.tex}
+\input{chapters/chapter04_02_WymaganiaWzgledemSystemu.tex}
+\input{chapters/chapter04_03_DiagramPrzypadkowUzycia.tex}
+\input{chapters/chapter04_04_DiagramKlas.tex}
+\input{chapters/chapter05_00_ProjektSystemu.tex}
+\input{chapters/chapter05_01_ArchitekturaSystemu.tex}
+\input{chapters/chapter05_02_ProjektBazyDanych.tex}
+\input{chapters/chapter05_03_InterfejsUzytkownika.tex}
+\input{chapters/chapter05_04_LogikaBiznesowa.tex}
+\input{chapters/chapter06_00_ZagadnieniaImplementacyjne.tex}
+\input{chapters/chapter06_01_WybraneRozwiazania.tex}
+\input{chapters/chapter06_02_InstalacjaSystemu.tex}
+\input{chapters/chapter07_00_StudiumPrzypadku.tex}
+\input{chapters/chapter08_00_Zakonczenie.tex}
+
+
+% ---------------------- Bibliografia -----------------------
+\input{include/bibliografia.tex} % dodanie pliku bibliografii
+% -----------------------------------------------------------
+
+%------------------------------------------------------------
+%	Dodanie wykazu rysunkow oraz tabeli
+
+\renewcommand{\baselinestretch}{1.0}\normalsize	% interlinia w sekcji wykazow
+\addcontentsline{toc}{chapter}{\listfigurename}	% dodanie wykazu rysunkow do spisu tresci
+\listoffigures									% generacja wykazu rysunkow
+
+\addcontentsline{toc}{chapter}{\listtablename}	% dodanie wykazu tabel do spisu tresci
+\listoftables									% generacja wykazu tabel
+\renewcommand{\baselinestretch}{1.3}\normalsize	% powrot do interlinii 1.5
+
+
+% ---------------------- DODATKI -----------------------
+% \chapter*{Dodatek A}
+% \addcontentsline{toc}{chapter}{Dodatek A}
+% \includepdf{dodatki/dodatek1.pdf}
+
+% -----------------------------------------------------------
+\end{document}
+%------------------------------------------------------------
+			 	%	Koniec pracy dyplomowej  %
+%------------------------------------------------------------
