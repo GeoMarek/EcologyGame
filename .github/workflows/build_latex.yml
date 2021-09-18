@@ -11,11 +11,11 @@ jobs:
       - name: Compile Latex document
         uses: xu-cheng/latex-action@v2
         with:
-            root_file: docs/main.tex
+            root_file: docs/project/main.tex
         env:
-            TEXINPUTS: ".:./docs//:"
+            TEXINPUTS: ".:./docs/project//:"
       - name: Add short_sha env property
-        run: run: echo "short_sha=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_ENV
+        run: echo "short_sha=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_ENV
       - name: Upload Artifact 
         uses: actions/upload-artifact@v2
         with:
