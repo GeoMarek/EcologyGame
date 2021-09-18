@@ -6,9 +6,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    first_name: '',
-    last_name: '',
-    gender: ''
+    profile: []
 };
 
 export default function(state = initialState, action) {
@@ -19,16 +17,12 @@ export default function(state = initialState, action) {
         case UPDATE_PROFILE_SUCCESS:
             return {
                 ...state,
-                first_name: payload.profile.first_name,
-                last_name: payload.profile.last_name,
-                gender: payload.profile.gender,
+                profile: payload.profile,
             }
         case LOAD_PROFILE_FAIL:
             return {
                 ...state,
-                first_name: '',
-                last_name: '',
-                gender: '',
+                profile: []
             }
         case UPDATE_PROFILE_FAIL:
             return {
