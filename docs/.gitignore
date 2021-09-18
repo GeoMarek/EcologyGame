@@ -25,3 +25,6 @@
 # Sublime Text Project Files (usually contain absolute paths)
 *.sublime-project
 *.sublime-workspace
+
+# Exclude pdf result file
+/project/main.pdf
