@@ -1,14 +1,21 @@
-# Add 'label1' to any changes within 'example' folder or any subfolders
 backend:
 - source/backend/*
 - source/backend/**/*
 
-# Add 'label2' to any file changes within 'example2' folder
 frontend: 
 - source/frontend/*
 - source/frontend/**/*
 
 docs:
-- docs/*
-- docs/**/*
+- docs/documents/*
+- docs/documents/**/*
 - README.md
+
+document:
+- docs/project/*
+- docs/project/**/*
+
+workflow:
+- .github/*
+- .github/**/*
+
