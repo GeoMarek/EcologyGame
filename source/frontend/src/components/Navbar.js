@@ -23,15 +23,20 @@ const Navbar = ({ logout, isAuthenticated }) => {
     );
 
     const authLinks = () => (
-        <li className='nav-item'>
-            <a className='nav-link' href='#!' onClick={logout_user}>Logout</a>
-        </li>
+        <Fragment>
+            <li className='nav-item'>
+                <a className='nav-link' href='#!' onClick={logout_user}>Logout</a>
+            </li>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/profile' >Profil</Link>
+            </li>
+        </Fragment>
     );
 
     return (
         <Fragment>
             <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                <Link className='navbar-brand' to='/'>Auth System</Link>
+                <Link className='navbar-brand' to='/'>EcologyGame</Link>
                 <button 
                     className='navbar-toggler' 
                     type='button' 
