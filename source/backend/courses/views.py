@@ -1,14 +1,16 @@
-from rest_framework.views import APIView
+from rest_framework import generics, permissions
 from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .models import Course
 from .serializers import CourseSerializer
-from rest_framework import permissions
-from rest_framework import generics
+
 
 class CourseView(generics.ListCreateAPIView):
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.AllowAny,)
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+
 
 # class GetUserProfileView(APIView):
 #     def get(self, request, format=None):
