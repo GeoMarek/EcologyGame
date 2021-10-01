@@ -13,6 +13,20 @@ npm install
 npm start
 ```
 
+## Dodawanie zmian
+
+Zmiany w kodzie i nowe funkcjonalności tworzymy na osobnym branchu. 
+Po ukończeniu pracy tworzymy nowy pull request i czekamy na potwierdzenie 
+od co najmniej jednej osoby. 
+
+W przypadku zmian w kodzie backendu należy również wywołać komendę do 
+automatycznego formatowania kodu (`black` + `isort`): 
+```
+python source/backend/autoformat.py
+```
+
+
+
 ## Tworzenie Backendu
 
 ### Tworzenie nowej aplikacji
