@@ -13,7 +13,7 @@ npm install
 npm start
 ```
 
-## Dodawanie zmian w aplikacji
+## Dodawanie zmian
 
 Zmiany w kodzie i nowe funkcjonalności tworzymy na osobnym branchu. 
 Po ukończeniu pracy tworzymy nowy pull request i czekamy na potwierdzenie 
@@ -24,21 +24,16 @@ Przed utworzeniem pull requesta należy uruchomić autoformatowanie kodu:
 # python (isort + black)
 python autoformat.py
 # javascript (prettier)
-npx prettier --write --config .prettierrc.yaml --write src
+npx prettier --write --config .prettierrc.yaml src
 ```
 
-## Tworzenie dokumentacji
-
 Aby dodawać zmiany w dokumentacji trzeba zainstalować:
-- [Kompilator LateX](https://anorien.csc.warwick.ac.uk/mirrors/CTAN/systems/win32/miktex/setup/windows-x64/basic-miktex-21.6-x64.exe)
-- [Tex Maker](https://www.xm1math.net/texmaker/assets/files/Texmaker_5.0.4_Win_x64.msi)
+- [Kompilator LaTeX](https://anorien.csc.warwick.ac.uk/mirrors/CTAN/systems/win32/miktex/setup/windows-x64/basic-miktex-21.6-x64.exe)
+- [TeX Maker](https://www.xm1math.net/texmaker/assets/files/Texmaker_5.0.4_Win_x64.msi)
 
 Poszczególne rozdziały i podrozdziały podzielone są kod źródłowy i obrazy:
 - `project/chapters/chapter_rozdzial_podrozdzial_nazwa` - kod źródłowy
 - `project/img/` - folder z utworzony podkatalogami dla każdego z rozdziałów
-
-Aktualny stan dokumentu można zobaczyć [tutaj](https://github.com/GeoMarek/EcologyGame/blob/dev/docs/project/main_document.pdf)
-Różne przydatne pliki można znaleźć [tutaj](https://github.com/GeoMarek/EcologyGame/blob/dev/docs/documents)
 
 ## Hinty do pisania kodu
 

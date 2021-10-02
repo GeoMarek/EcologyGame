@@ -7,13 +7,9 @@ frontend:
 - source/frontend/**/*
 
 docs:
-- docs/documents/*
-- docs/documents/**/*
+- docs/*
+- docs/**/*
 - README.md
-
-document:
-- docs/project/*
-- docs/project/**/*
 
 workflow:
 - .github/*
