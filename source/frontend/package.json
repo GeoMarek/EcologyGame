@@ -7,8 +7,6 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
@@ -42,31 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint-config-adjunct": "^4.11.1",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-auto": "^0.7.1",
-    "eslint-plugin-array-func": "^3.1.7",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-fsa": "^1.0.12",
-    "eslint-plugin-html": "^6.2.0",
-    "eslint-plugin-jest-async": "^1.0.3",
-    "eslint-plugin-jest-dom": "^3.9.2",
-    "eslint-plugin-json": "^3.1.0",
-    "eslint-plugin-markdown": "^2.2.1",
-    "eslint-plugin-no-constructor-bind": "^2.0.4",
-    "eslint-plugin-no-secrets": "^0.8.9",
-    "eslint-plugin-no-unsanitized": "^3.1.5",
-    "eslint-plugin-no-use-extend-native": "^0.5.0",
-    "eslint-plugin-optimize-regex": "^1.2.1",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react-redux": "^3.3.2",
-    "eslint-plugin-scanjs-rules": "^0.2.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-sonarjs": "^0.10.0",
-    "eslint-plugin-switch-case": "^1.1.2",
-    "eslint-plugin-unicorn": "^36.0.0"
   }
 }
