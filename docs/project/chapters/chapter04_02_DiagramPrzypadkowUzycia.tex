@@ -152,7 +152,77 @@ A05 & Usuwanie kursu & \vspace{-\baselineskip}
 \end{itemize} \\\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B01 & Wys³anie zaproszenia & \vspace{-\baselineskip}
+\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
+\item Aktor: Autor kursu
+\item Inicjacja: Wybranie przycisku "wyœlij zaproszenie"
+\item Przebieg:
+	\begin{enumerate}
+		\item system wyœwietla okno z formularzem do wype³nienia (email, wiadomoœæ, okreœ wa¿noœci)
+		\item u¿ytkownik wype³nia formularz i potwierdza wys³anie zaproszenia
+		\item system wysy³a email z zaproszeniem na podany adres email
+		\item system aktualizuje listê uczestników (zaproszony bêdzie mia³ status niezapisany)
+	\end{enumerate}
+\end{itemize} \\\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B02 & Wybranie uczestnika & \vspace{-\baselineskip}
+\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
+\item Aktor: Autor kursu
+\item Inicjacja: Klikniêcie w danego uczestnika kursu
+\item Przebieg:
+	\begin{enumerate}
+		\item system wyœwietla kilka informacji na temat uczestnika (login, email, punkty ¿ycia, data ostatniej aktywnoœci) oraz 2 przyciski (usuwanie uczestnika i odnowienie punktów ¿ycia)
+	\end{enumerate}
+\end{itemize} \\\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B03 & Zmiana ustawieñ kursu & \vspace{-\baselineskip}
+\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
+\item Aktor: Autor kursu
+\item Inicjacja: Wybranie przycisku "Ustawienia"
+\item Przebieg:
+	\begin{enumerate}
+		\item system wyœwietla taki sam formularz jak przy tworzeniu kursu, formularz jest wype³niony wartoœciami jakie kurs aktualnie posiada
+		\item u¿ytkownik wprowadza po¿¹dane przez siebie zmiany i je zatwierdza
+		\item system przekierowuje u¿ytkownika na stronê kursu
+	\end{enumerate}
+\end{itemize} \\\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B04 & Generowanie raportu & \vspace{-\baselineskip}
+\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
+\item Aktor: Autor kursu
+\item Inicjacja: Wybranie przycisku "wyœlij zaproszenie"
+\item Przebieg:
+	\begin{enumerate}
+		\item system wyœwietla formularz, który zawiera wszystkie atrybuty raportu
+		\item u¿ytkownik wype³nia wszystkie pola wedle uznania
+		\item u¿ytkownik wybiera przycisk "generuj raport"
+		\item system wyœwietla okno z pytaniem o rozszerzenie pliku
+		\item u¿ytkownik wybiera format i zatwierdza
+		\item system wysy³a plik do u¿ytkownika
+	\end{enumerate}
+\end{itemize} \\\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B06 &  Usuniêcie uczestnika & \vspace{-\baselineskip}
+\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
+\item Aktor: Autor kursu
+\item Inicjacja: Wybranie przycisku "usuwanie uczestnika"
+\item Przebieg:
+	\begin{enumerate}
+		\item system wyœwietla okno z pytaniem o potwierdzenie usuniêcie uczestnika
+		\item u¿ytkownik potwierdza usuniêcie
+		\item system aktualizuje listê uczestników (znika usuniêty)
+	\end{enumerate}
+\end{itemize} \\\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{longtable}
 
