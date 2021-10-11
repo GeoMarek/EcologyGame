@@ -13,65 +13,65 @@ import {
     SIGNUP_FAIL,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
-    LOGOUT
-} from '../actions/types';
+    LOGOUT,
+} from '../actions/types'
 
 const initialState = {
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
-    user: null
-};
+    user: null,
+}
 
-export default function(state = initialState, action) {
-    const { type, payload } = action;
+export default function (state = initialState, action) {
+    const { type, payload } = action
 
-    switch(type) {
+    switch (type) {
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: true
+                isAuthenticated: true,
             }
         case LOGIN_SUCCESS:
-            localStorage.setItem('access', payload.access);
-            localStorage.setItem('refresh', payload.refresh);
+            localStorage.setItem('access', payload.access)
+            localStorage.setItem('refresh', payload.refresh)
             return {
                 ...state,
                 isAuthenticated: true,
                 access: payload.access,
-                refresh: payload.refresh
+                refresh: payload.refresh,
             }
         case SIGNUP_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: false
+                isAuthenticated: false,
             }
         case USER_LOADED_SUCCESS:
             return {
                 ...state,
-                user: payload
+                user: payload,
             }
         case AUTHENTICATED_FAIL:
             return {
                 ...state,
-                isAuthenticated: false
+                isAuthenticated: false,
             }
         case USER_LOADED_FAIL:
             return {
                 ...state,
-                user: null
+                user: null,
             }
         case LOGIN_FAIL:
         case SIGNUP_FAIL:
         case LOGOUT:
-            localStorage.removeItem('access');
-            localStorage.removeItem('refresh');
+            localStorage.removeItem('access')
+            localStorage.removeItem('refresh')
             return {
                 ...state,
                 access: null,
                 refresh: null,
                 isAuthenticated: false,
-                user: null
+                user: null,
             }
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:
@@ -80,9 +80,9 @@ export default function(state = initialState, action) {
         case ACTIVATION_SUCCESS:
         case ACTIVATION_FAIL:
             return {
-                ...state
+                ...state,
             }
         default:
             return state
     }
-};
+}

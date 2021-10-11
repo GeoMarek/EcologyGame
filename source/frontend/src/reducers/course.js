@@ -1,23 +1,20 @@
-
-
 const initialState = {
-    kursy: []
-};
+    kursy: [],
+}
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
+    const { type, payload } = action
 
-    const { type, payload } = action;
-
-    switch(type) {
-        case 'ok zaladowanie kursow':            
+    switch (type) {
+        case 'ok zaladowanie kursow':
             return {
                 ...state,
                 kursy: payload,
             }
-        default:            
+        default:
             return {
                 ...state,
-                kursy: []
+                kursy: [],
             }
     }
 }
