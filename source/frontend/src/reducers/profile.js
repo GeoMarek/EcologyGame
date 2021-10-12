@@ -2,17 +2,17 @@ import {
     LOAD_PROFILE_SUCCESS,
     LOAD_PROFILE_FAIL,
     UPDATE_PROFILE_SUCCESS,
-    UPDATE_PROFILE_FAIL
-} from '../actions/types';
+    UPDATE_PROFILE_FAIL,
+} from '../actions/types'
 
 const initialState = {
-    profile: []
-};
+    profile: [],
+}
 
-export default function(state = initialState, action) {
-    const { type, payload } = action;
+export default function (state = initialState, action) {
+    const { type, payload } = action
 
-    switch(type) {
+    switch (type) {
         case LOAD_PROFILE_SUCCESS:
         case UPDATE_PROFILE_SUCCESS:
             return {
@@ -22,13 +22,13 @@ export default function(state = initialState, action) {
         case LOAD_PROFILE_FAIL:
             return {
                 ...state,
-                profile: []
+                profile: [],
             }
         case UPDATE_PROFILE_FAIL:
             return {
-                ...state
+                ...state,
             }
         default:
             return state
-    };
-};
+    }
+}
