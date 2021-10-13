@@ -6,7 +6,7 @@ from rest_framework import permissions
 from rest_framework import generics
 
 class CourseView(generics.ListCreateAPIView):
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 

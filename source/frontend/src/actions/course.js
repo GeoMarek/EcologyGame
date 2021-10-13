@@ -29,3 +29,7 @@ export const get_all_courses = () => async dispatch => {
     //     });
     // }
 };
+
+export const create_course = () => async dispatch => {
+    console.log(421);
+}

@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { get_all_courses } from '../actions/course';
 import Course from '../components/Courses/Course';
+import CourseSideBar from '../components/Courses/CourseSideBar';
 
 const Courses = ({ get_all_courses, courses_global}) => {
     const [coursesData, setCoursesData] = useState({
@@ -28,6 +29,7 @@ const Courses = ({ get_all_courses, courses_global}) => {
 
     return (
         <div className='container'>
+            <CourseSideBar/>
             <div class='jumbotron mt-5'>
                 <h1 class='display-4'>Courses</h1>
 

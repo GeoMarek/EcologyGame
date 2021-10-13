@@ -1,0 +1,23 @@
+
+.course_side_bar {
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 160px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+  }
+  
+  .course_side_bar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+  }
+  
+  .course_side_bar a:hover {
+    color: #064579;
+  }
