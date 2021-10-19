@@ -17,15 +17,6 @@ const Courses = ({ get_all_courses, courses_global}) => {
         });
     }, []);
 
-    const onClick = e => {
-        console.log('cos');
-        get_all_courses();
-        setCoursesData({
-            courses: courses_global
-        });
-        console.log(coursesData.courses);
-        console.log(coursesData.courses.length > 0 ? coursesData.courses[0] : " nope");
-    };
 
     return (
         <div className='container'>
@@ -37,11 +28,6 @@ const Courses = ({ get_all_courses, courses_global}) => {
                     <Course key={index} course={course} />
                 ))}
 
-                <button onClick={onClick}>klik me</button>
-                <hr class='my-4' />
-                <p>Tytul kursu: {coursesData.courses.length > 0 ?  " " + coursesData.courses[1].title : " brak"}</p>
-                <p>Tytul kursu: {courses_global.length > 0 ?  " " + courses_global[1].title : " brak"}</p>
-                <br/>
                 <Link class='btn btn-primary btn-lg' to='/' role='button'>Home</Link>
             </div>
         </div>

@@ -1,23 +1,29 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { create_course } from '../actions/course';
 
 const CreateCourse = ({ 
     create_course,
     isAuthenticated,
-    profile_global
+    user_global
 }) => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
-        is_public: true
+        is_public: false
     });
+
+    const [redirectData, setRedirectData] = useState({
+        redirect: 0
+    });
+    const renderRedirect = () => (
+        <Redirect to={'/course/'+redirectData.redirect} />
+    )
 
     const { title, description, is_public } = formData;
 
     useEffect(() => {
-        console.log(123);
     }, []);
 
 
@@ -25,15 +31,20 @@ const CreateCourse = ({
         return <Redirect to='/' />
     }
 
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const onChange = e => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        console.log(formData);
+    };
 
     const onSubmit = e => {
         e.preventDefault();
-        create_course(title, description, is_public);
+        create_course(title, description, is_public, user_global.id)
+        .then((value) => setRedirectData({... redirectData, redirect: value.id}));
     };
 
     return(
         <div className='container'>
+            {redirectData.redirect !== 0 ? renderRedirect():<div/>}
             <div class='jumbotron mt-5'>
                 <Fragment>
                 <form onSubmit={e => onSubmit(e)}>
@@ -66,8 +77,8 @@ const CreateCourse = ({
                             type='checkbox'
                             name='is_public'
                             placeholder={`${is_public}`}
-                            onChange={e => onChange(e)}
-                            value={is_public}
+                            onChange={e => setFormData({... formData, is_public: !formData.is_public})}
+                            value={formData.is_public}
                         
                         />
                     </div>
@@ -81,7 +92,7 @@ const CreateCourse = ({
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    profile_global: state.profile.profile,
+    user_global: state.auth.user,
 });
 
 export default connect(mapStateToProps, { create_course } )(CreateCourse);

@@ -9,6 +9,7 @@ import Activate from './containers/Activate';
 import ResetPassword from './containers/ResetPassword';
 import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
 import Courses from './containers/Courses';
+import Course from './containers/Course';
 import CreateCourse from './containers/CreateCourse';
 
 import { Provider } from 'react-redux';
@@ -30,6 +31,7 @@ const App = () => (
                     <Route exact path='/activate/:uid/:token' component={Activate} />
                     <Route exact path='/courses' component={Courses} />
                     <Route exact path='/create_course' component={CreateCourse} />
+                    <Route exact path='/course/:id' component={Course} />
                 </Switch>
             </Layout>
         </Router>

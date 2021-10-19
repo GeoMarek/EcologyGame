@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Home = () => (
-    <div className='container'>
-        <div class='jumbotron mt-5'>
-            <h1 class='display-4'>Home Page</h1>
-            <hr class='my-4' />
-            <p>Jakiś tam paragraf</p>
+const Home = ({ 
+    isAuthenticated
+}) => {
+
+    
+    const logedIn = () => (
+        <Fragment>
+            <Link class='btn btn-primary btn-lg' to='/profile' role='button'>Profil</Link>
+            <br/>
+        </Fragment>
+    );
+    const notLogedIn = () => (
+        <Fragment>
             <Link class='btn btn-primary btn-lg' to='/login' role='button'>Login</Link>
             <br/>
             <Link class='btn btn-primary btn-lg' to='/signup' role='button'>Register</Link>
             <br/>
-            <Link class='btn btn-primary btn-lg' to='/courses' role='button'>Kursy</Link>
-            <br/>
-            <Link class='btn btn-primary btn-lg' to='/profile' role='button'>Profil</Link>
-        </div>
-    </div>
-);
+        </Fragment>
+    );
 
-export default Home;
+    return(
+        <div className='container'>
+            <div class='jumbotron mt-5'>
+                <h1 class='display-4'>Home Page</h1>
+                <hr class='my-4' />
+                {isAuthenticated?logedIn():notLogedIn()}
+                <Link class='btn btn-primary btn-lg' to='/courses' role='button'>Kursy</Link>
+            </div>
+        </div>
+    );
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, {} )(Home);
