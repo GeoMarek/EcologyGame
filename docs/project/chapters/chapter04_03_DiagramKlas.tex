@@ -1,2 +1,112 @@
 \section{Diagram klas}
 
+Po opisaniu przypadków u¿ycia kolejnym krokiem prac projektowych by³o wykonanie diagramu klas. Jest to statyczny diagram, którego celem jest przedstawiæ strukturê systemu za pomoc¹ paradygmatu programowania obiektowego. W diagramie takim znajduj¹ siê poszczególne klasy wraz ze swoimi atrybutami i metodami oraz zaznaczone zwi¹zki i relacje pomiêdzy nimi\cite{klasyuml}. Zaprojektowany dla tworzonego systemu diagram klas mo¿na zobaczyæ na rysunku nr. \ref{chapter4_class}. Opis poszczególnych klas jest dostêpny w tabeli nr. \ref{chapter4_classtable}. 
+
+\begin{table}
+
+% metadane tabeli
+\caption{Opis klas przedstawionych na diagramie klas}
+\label{chapter4_classtable}
+
+\begin{tabular}{|p{3cm}|p{11cm}|}
+
+\hline 
+% naglowek
+\textbf{Nazwa} & \textbf{Dokumentacja}\\\hline
+% poczatek 1 wiersza
+\vspace{0.1 mm} U¿ytkownik & \vspace{0.1 mm}
+Obiekty tej klasy to u¿ytkownicy systemu. Powinni mieæ mo¿liwoœæ logowania, wylogowania oraz zmiany ustawieñ konta. 
+\\
+\vspace{0.1 mm} & \vspace{0.1 mm}
+\\\hline
+% koniec 1 wiersza
+
+% poczatek 2 wiersza
+\vspace{0.5px} Uczestnik & \vspace{0.5px}
+Obiektem tej klasy jest  
+\\
+\vspace{0.2px} & \vspace{0.2px}
+\\\hline
+% koniec 2 wiersza
+
+% poczatek 3 wiersza
+\vspace{0.5px} Postaæ & \vspace{0.5px}
+Dla ka¿dej instancji klasy Uczestnik zostaje przypisany jeden obiekt tej klasy. Reprezentuje on awatar uczestnika, który bêdzie rozwijany w miarê wykonywania przez niego zadañ.  
+\\
+\vspace{0.2px} & \vspace{0.2px}
+\\\hline
+% koniec 3 wiersza
+
+% poczatek 4 wiersza
+\vspace{0.5px} Przedmiot & \vspace{0.5px}
+Obiekty tej klasy mog¹ byæ zbierane przez gracza w formie kolekcji. S³u¿¹ do podnoszenia statystyk postaci. 
+\\
+\vspace{0.2px} & \vspace{0.2px}
+\\\hline
+% koniec 4 wiersza
+
+% poczatek 5 wiersza
+\vspace{0.5px} Kurs & \vspace{0.5px}
+Klasa reprezentuj¹ca kursy tworzone przez u¿ytkowników. Powi¹zana agregacj¹ z klasami U¿ytkownik, Ciekawostka, AZadanie i Uczestnik 
+\\
+\vspace{0.2px} & \vspace{0.2px}
+\\\hline
+% koniec 5 wiersza
+
+% poczatek 6 wiersza
+\vspace{0.5px} Ciekawostka & \vspace{0.5px}
+Obiekty tej klasy stanowi¹ kontenery z wiadomoœciami dla uczestników, które bêd¹ im wyœwietlane w formie reklam.  
+\\
+\vspace{0.2px} & \vspace{0.2px}
+\\\hline
+% koniec 6 wiersza
+
+% poczatek 7 wiersza
+\vspace{0.5px} AZadanie & \vspace{0.5px}
+Abstrakcyjna klasa, która stanowi punkt wyjœcia dla takich klas jak Wydarzenie, Zadanie, czy Pytanie. Po³¹czona agregacj¹ z klas¹ Kurs.  
+\\
+\vspace{0.2px} & \vspace{0.2px}
+\\\hline
+% koniec 7 wiersza
+
+% poczatek 8 wiersza
+\vspace{0.5px} Pytanie & \vspace{0.5px}
+Jedna z implementacji klasy AZadanie. Obiekt tej klasy ma reprezentowaæ pytania zamkniête zadawane podczas wydarzenia. 
+\\
+\vspace{0.2px} & \vspace{0.2px}
+\\\hline
+% koniec 8 wiersza
+
+% poczatek 9 wiersza
+\vspace{0.5px} Zadanie & \vspace{0.5px}
+Kolejna implementacja klasy AZadanie. Klasa ta reprezentuje zadania wykonywane przez uczestników w trakcie kursu.  
+\\
+\vspace{0.1px} & \vspace{0.1px}
+\\\hline
+% koniec 9 wiersza
+
+% poczatek 10 wiersza
+\vspace{0.5px} Wydarzenie & \vspace{0.5px} 
+Implementacja abstrakcyjnej klasy AZadanie. Reprezentuje wydarzenia organizowane w trakcie kursu. Zawiera w sobie listê pytañ.  
+\\
+\vspace{12px} & \vspace{12px}
+\\\hline
+% koniec 10 wiersza
+
+% poczatek 11 wiersza
+\vspace{0.5px} Odpowiedz & \vspace{0.5px}
+Klasa reprezentuj¹ca odpowiedŸ na zadanie. Musi mieæ przypisanego zarówno autora (Uczestnik) jak i zadanie (AZadanie). 
+\\
+\vspace{0.2px} & \vspace{0.2px}
+\\\hline
+% koniec 11 wiersza
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1.3\textwidth, angle =90 ]{img/chapter4/class_diagram.png}
+	\caption{Diagram klas}
+	\label{chapter4_class}
+\end{figure}
