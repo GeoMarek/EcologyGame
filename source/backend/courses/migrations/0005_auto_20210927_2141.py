@@ -8,32 +8,36 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('courses', '0004_alter_course_users'),
+        ("courses", "0004_alter_course_users"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='course',
-            name='users',
+            model_name="course",
+            name="users",
         ),
         migrations.AddField(
-            model_name='course',
-            name='admins',
-            field=models.ManyToManyField(related_name='admins', to=settings.AUTH_USER_MODEL),
+            model_name="course",
+            name="admins",
+            field=models.ManyToManyField(
+                related_name="admins", to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AddField(
-            model_name='course',
-            name='is_public',
+            model_name="course",
+            name="is_public",
             field=models.BooleanField(default=True),
         ),
         migrations.AddField(
-            model_name='course',
-            name='join_code',
-            field=models.CharField(default='123abc', max_length=6),
+            model_name="course",
+            name="join_code",
+            field=models.CharField(default="123abc", max_length=6),
         ),
         migrations.AddField(
-            model_name='course',
-            name='participants',
-            field=models.ManyToManyField(related_name='participants', to=settings.AUTH_USER_MODEL),
+            model_name="course",
+            name="participants",
+            field=models.ManyToManyField(
+                related_name="participants", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]
