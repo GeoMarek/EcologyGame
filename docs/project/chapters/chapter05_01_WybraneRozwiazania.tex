@@ -16,10 +16,70 @@ Oprócz przegl¹du kodu przy wystawaniu proœby o przy³¹czenie w³¹snej ga³êzi porta
 \begin{itemize}
 \item nadanie etykiety dla zg³oszonej proœby przy³¹czenia ga³êzi
 \item wykrycie w jakich miejscach kodu Ÿród³owego wyst¹pi³y zmiany w zg³oszonej proœbie przy³¹czenia ga³êzi, na podstawie tego polecenia dzia³aj¹ nastêpne
-\item kompilacja kodu Ÿród³owego dokumentacji w celu wygenerowania gotowej dokumentacji w postaci dostêpnej do pobrania jako artefakt
-\item uruchomienie sprawdzenia zgodnoœci formatowania kodu Ÿród³owego backendu w ogólnodostêpnymi standardami oraz poprawnoœci kodu
+\item kompilacja kodu Ÿród³owego dokumentacji w celu wygenerowania gotowej dokumentacji w postaci dostêpnej do pobrania jako artefakt, kod Ÿród³owy akcji mo¿na zobaczyæ na listingu nr \ref{latexworkflow}
+\item uruchomienie sprawdzenia zgodnoœci formatowania kodu Ÿród³owego backendu w ogólnodostêpnymi standardami oraz poprawnoœci kodu, kod Ÿród³owy akcji mo¿na zobaczyæ na listingu nr \ref{backendworkflow}
 \item uruchomienie sprawdzenia zgodnoœci formatowania kodu Ÿród³owego frontendu w ogólnodostêpnymi standardami oraz poprawnoœci kodu
 \end{itemize}
 \noindent
-Poni¿ej przedstawiono przyk³adowe fragmenty zaprojektowanych poleceñ w raz z komentarzami:
+Poni¿ej przedstawiono przyk³adowe fragmenty zaprojektowanych poleceñ wraz z komentarzami:
  
+\lstset{style=python}
+\begin{lstlisting}[caption={Akcja kompilowania dokumentacji}, label=latexworkflow]
+build_latex:
+    # Kontener na którym bêdzie wykonywana akcja
+    runs-on: ubuntu-latest
+    # Informacja jakich akcji potrzebuje ta akcja ¿eby dzia³a³a mog³a siê uruchomiæ
+    needs: changes
+    # Uruchom tylko, jeœli proœba o przy³¹czenie ma etykietê `docs`
+    if: ${{ needs.changes.outputs.docs == 'true' }}
+    steps:
+    	# Krok: Pobranie repozytorium na maszynê
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+    	# Krok: Kompilacja dokumentu LaTeX
+      - name: Compile Latex document
+        uses: xu-cheng/latex-action@v2
+        # wskazanie g³ównego dokumentu
+        with:
+            root_file: docs/project/main.tex
+        # wskazanie plików pomocniczych        
+        env:
+            TEXINPUTS: ".:./docs/project//:"
+    	# Krok: Utworzenie zmiennej œrodowiskowej zawieraj¹cej hash danej zmiany
+      - name: Add short hash to distinguish commits
+        run: echo "sha=`echo ${{github.event.pull_request.head.sha}}`" >> $GITHUB_ENV
+    	# Krok: Udostêpnienie pliku pdf do pobrania jako artefakt
+      - name: Upload Artifact 
+        uses: actions/upload-artifact@v2
+        with:
+            name: docs-${{github.actor}}-${{github.event.number}}-${{env.sha}}
+            path: main.pdf
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Akcja sprawdzenia jakoœci kodu w jêzyku Python}, label=backendworkflow]
+python_check:
+    # Kontener na którym bêdzie wykonywana akcja
+    runs-on: ubuntu-latest
+    # Informacja jakich akcji potrzebuje ta akcja ¿eby dzia³a³a mog³a siê uruchomiæ
+    needs: changes
+    # Uruchom tylko, jeœli proœba o przy³¹czenie ma etykietê `backend`
+    if: ${{ needs.changes.outputs.backend == 'true' }}
+    steps:
+    	# Krok: Pobranie repozytorium na maszynê
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+    	# Krok: Pobranie Python na maszynê
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+    	# Krok: Pobranie pakietu do sprawdzenia jakoœci kodu
+      - name: Install black
+        run: |
+          python -m pip install --upgrade pip
+          pip install isort black
+    	# Krok: Uruchomienie sprawdzenia jakoœci kodu
+      - name: Run black
+        run: |
+          black --check .
+\end{lstlisting}
