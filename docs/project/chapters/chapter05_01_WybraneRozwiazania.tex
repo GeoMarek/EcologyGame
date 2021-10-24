@@ -1,1 +1,25 @@
 \section{Wybrane Rozwi¹zania}
+
+W tym podrozdziale omówiono organizacjê pracy podczas implementacji systemu oraz wykorzystywane rozwi¹zania. W g³ównej mierze wszystkie za³o¿enia opieraj¹ siê na kulturze DevOps. Jest to metodyka pracy lub inaczej zestaw praktyk, których celem jest automatyzacja i integracja pracy wykonywanej przez programistów w danym zespole. DevOps jest na tyle uniwersalnym rozwi¹zaniem, ¿e ³¹czy w sobie cechy podejœcia zarówno kaskadowego (\textit{Waterfall}), jak i zwinnego (\textit{Agile}).
+
+Podczas prac implementacyjnych g³ówny nacisk postawiono jedn¹ z podstawych zasad DevOps, jak¹ jest ci¹g³a integracja (\textit{Continous Intergration}). W zwi¹zku z tym utworzono repozytorium systemu kontroli wersji GIT na platformie Github. Pozwala ona w ³atwy sposób na wersjonowanie kodu Ÿród³owego aplikacji oraz zaprojektowanie akcji, które uruchamiane s¹ w zale¿noœci od rodzaju wprowadzonych zmian do kodu. 
+
+\subsection{Praca z repozytorium}
+
+Na g³ównej ga³êzi repozytorium znajdowa³ siê najnowszy kod Ÿród³owy aplikacji, który zosta³ zatwierdzony przez pozosta³ych cz³onków zespo³u. Przy wprowadzaniu nowych funkcjonalnoœci osoba odpowiedzialna za jej implementacjê tworzy³a osobn¹ ga³¹Ÿ, z której wystawia³a na portalu Github proœbê o po³¹czenie jej g³ówn¹ ga³êzi¹ (\textit{Pull Request}). 
+
+Po wystawieniu takiej proœby w ramach kultury DevOps pozostali cz³onkowie zespo³u  przeprowadzali przegl¹d kodu w celu zapoznania siê z now¹ funkcjonalnoœci¹ i wskazaniu autorowi ewentualnych zmian w kodzie w celu zwiêkszenie jego czytelnoœci. 
+
+\subsection{Ci¹g³a integracja}
+
+Oprócz przegl¹du kodu przy wystawaniu proœby o przy³¹czenie w³¹snej ga³êzi portal Github uruchamia³ zaprojektowane przez zespól akcje, których celem jest analiza kodu pod wzglêdem czytelnoœci oraz poprawnoœci. Akcje te zosta³y zaprojektowane przy wykorzystaniu technologii Docker Compose, która umo¿liwia uruchamianie ró¿nych poleceñ na wirtualnych maszynach dostarczanych przez portal Github. W przypadku tworzonej aplikacje zaprojektowany ci¹g akcji sk³ada³ siê z 5 podstawowych poleceñ:
+\begin{itemize}
+\item nadanie etykiety dla zg³oszonej proœby przy³¹czenia ga³êzi
+\item wykrycie w jakich miejscach kodu Ÿród³owego wyst¹pi³y zmiany w zg³oszonej proœbie przy³¹czenia ga³êzi, na podstawie tego polecenia dzia³aj¹ nastêpne
+\item kompilacja kodu Ÿród³owego dokumentacji w celu wygenerowania gotowej dokumentacji w postaci dostêpnej do pobrania jako artefakt
+\item uruchomienie sprawdzenia zgodnoœci formatowania kodu Ÿród³owego backendu w ogólnodostêpnymi standardami oraz poprawnoœci kodu
+\item uruchomienie sprawdzenia zgodnoœci formatowania kodu Ÿród³owego frontendu w ogólnodostêpnymi standardami oraz poprawnoœci kodu
+\end{itemize}
+\noindent
+Poni¿ej przedstawiono przyk³adowe fragmenty zaprojektowanych poleceñ w raz z komentarzami:
+ 
