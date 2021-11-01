@@ -1,8 +1,11 @@
 /* links on home page */
 
-.home-link {
-    font-size: 20px;
+.home-container {
+    background-color: #0b4558;
+    margin: 30px;
+    border-radius: 25px;
 }
+
 .home-link:after {
     content: '\A';
     white-space: pre;

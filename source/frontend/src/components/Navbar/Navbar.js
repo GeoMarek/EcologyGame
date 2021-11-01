@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/auth'
 import './Navbar.css'
+import NavbarLink from './NavbarLink'
 
 const Navbar = ({ logout, isAuthenticated }) => {
     const [redirect, setRedirect] = useState(false)
@@ -14,33 +15,23 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
     const guestLinks = () => (
         <Fragment>
-            <Link className="navbar-link" to="/login">
-                Logowanie
-            </Link>
-
-            <Link className="navbar-link" to="/signup">
-                Rejestracja
-            </Link>
+            <NavbarLink destination="/" text="Strona główna" />
+            <NavbarLink destination="/login" text="Logowanie" />
+            <NavbarLink destination="/signup" text="Rejestracja" />
         </Fragment>
     )
 
     const authLinks = () => (
         <Fragment>
-            <a className="navbar-link" href="#!" onClick={logout_user}>
-                Wyloguj
-            </a>
-            <Link className="navbar-link" to="/profile">
-                Profil
-            </Link>
+            <NavbarLink destination="/" text="Strona główna" />
+            <NavbarLink destination="/profile" text="Profil" />
+            <NavbarLink destination="#!" text="Wyloguj" onclick={logout_user} />
         </Fragment>
     )
 
     return (
         <Fragment>
             <nav className="navbar-body">
-                <Link className="navbar-brand" to="/">
-                    Strona główna
-                </Link>
                 {isAuthenticated ? authLinks() : guestLinks()}
             </nav>
             {redirect ? <Redirect to="/" /> : <Fragment></Fragment>}

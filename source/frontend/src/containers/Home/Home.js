@@ -23,14 +23,12 @@ const Home = ({ isAuthenticated }) => {
     )
 
     return (
-        <div className="container">
-            <div class="jumbotron mt-5">
-                <h1 class="display-4">Home Page</h1>
-                {isAuthenticated ? logedIn() : notLogedIn()}
-                <Link class="home-link" to="/courses" role="button">
-                    Przykładowe kursy
-                </Link>
-            </div>
+        <div className="home-container">
+            <h1 class="home-welcome">Witaj na stronie głównej</h1>
+            {isAuthenticated ? logedIn() : notLogedIn()}
+            <Link class="home-link" to="/courses" role="button">
+                Przykładowe kursy
+            </Link>
         </div>
     )
 }
