@@ -7,9 +7,12 @@ User = settings.AUTH_USER_MODEL
 
 
 class Course(models.Model):
-    users = models.ManyToManyField(User, blank=True)
+    admins = models.ManyToManyField(User, related_name="admins")
+    participants = models.ManyToManyField(User, related_name="participants", blank=True)
     title = models.CharField(max_length=120)
-    description = models.TextField()
+    description = models.TextField(blank=True)
+    is_public = models.BooleanField(default=False)
+    join_code = models.CharField(max_length=6, blank=True)
 
     def _str_(self):
         return self.title

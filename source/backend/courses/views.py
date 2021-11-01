@@ -7,41 +7,45 @@ from .serializers import CourseSerializer
 
 
 class CourseView(generics.ListCreateAPIView):
-    permission_classes = (permissions.AllowAny,)
+    # permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
 
-# class GetUserProfileView(APIView):
-#     def get(self, request, format=None):
-#         try:
-#             user = self.request.user
-#             username = user.username
+class GetCourseView(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            course_id = request.query_params["id"]
+            if course_id != None:
+                course = Course.objects.get(id=course_id)
+                serializer = CourseSerializer(course)
+                return Response({"course": serializer.data})
+        except:
+            return Response({"error": "Something went wrong when geting course by id"})
 
-#             user_profile = UserProfile.objects.get(user=user)
-#             user_profile = UserProfileSerializer(user_profile)
+    def delete(self, request, *args, **kwargs):
+        try:
+            course_id = request.query_params["id"]
+            if course_id != None:
+                course = Course.objects.get(id=course_id)
+                course.delete()
+                return Response({"info": "usunieto poprawnie"})
+        except:
+            return Response({"error": "cos poszlo nie tak podczas usuwania kursu"})
 
-#             return Response({ 'profile': user_profile.data, 'username': str(username) })
-#         except:
-#             return Response({ 'error': 'Something went wrong when retrieving profile' })
 
-# class UpdateUserProfileView(APIView):
-#     def put(self, request, format=None):
-#         try:
-#             user = self.request.user
-#             username = user.username
+class JoinCourseView(APIView):
+    def put(self, request, format=None):
+        try:
+            user = self.request.user
 
-#             data = self.request.data
-#             first_name = data['first_name']
-#             last_name = data['last_name']
-#             phone = data['phone']
-#             city = data['city']
+            data = self.request.data
+            course_id = data["course_id"]
 
-#             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name, phone=phone, city=city)
+            course = Course.objects.get(id=course_id)
 
-#             user_profile = UserProfile.objects.get(user=user)
-#             user_profile = UserProfileSerializer(user_profile)
+            course.participants.add(user)
 
-#             return Response({ 'profile': user_profile.data, 'username': str(username) })
-#         except:
-#             return Response({ 'error': 'Something went wrong when updating profile' })
+            return Response({"info": "wszystko okej przy dodaniu uczestnika"})
+        except:
+            return Response({"error": "Something went wrong when adding participant"})
