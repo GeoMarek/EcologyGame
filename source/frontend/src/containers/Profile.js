@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { load_profile, update_profile } from '../actions/profile'
 
@@ -30,6 +30,7 @@ const Profile = ({
             last_name: profile_global.last_name,
             gender: profile_global.gender,
         })
+        // eslint-disable-next-line
     }, [])
 
     if (!isAuthenticated) {

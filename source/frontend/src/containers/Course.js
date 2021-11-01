@@ -10,6 +10,7 @@ const Course = ({
     course_global,
     match,
 }) => {
+    // eslint-disable-next-line
     const [courseData, setCourseData] = useState({
         course: [],
     })
@@ -21,6 +22,7 @@ const Course = ({
     const renderRedirect = () => <Redirect to={redirectData.redirect} />
     useEffect(() => {
         get_course_by_id(match.params.id)
+        // eslint-disable-next-line
     }, [])
 
     if (!isAuthenticated) {
@@ -42,7 +44,7 @@ const Course = ({
             </h3>
             <h4>kod dołączenia: {course_global.join_code}</h4>
             <h5>Admins:</h5>
-            {course_global.admins.length == 0 ? (
+            {course_global.admins.length === 0 ? (
                 <p>brak czlownkow w kursie</p>
             ) : (
                 <></>
@@ -53,7 +55,7 @@ const Course = ({
                 </p>
             ))}
             <h5>Członkowie:</h5>
-            {course_global.participants.length == 0 ? (
+            {course_global.participants.length === 0 ? (
                 <p>brak czlownkow w kursie</p>
             ) : (
                 <></>
@@ -71,7 +73,7 @@ const Course = ({
 
     return (
         <div className="container">
-            {redirectData.redirect != 0 ? renderRedirect() : <div />}
+            {redirectData.redirect !== 0 ? renderRedirect() : <div />}
             <div class="jumbotron mt-5">
                 {course_global ? curse_container() : <div />}
             </div>

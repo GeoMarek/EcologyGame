@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_all_courses } from '../actions/course'
 import Course from '../components/Courses/Course'
 import CourseSideBar from '../components/Courses/CourseSideBar'
 
 const Courses = ({ get_all_courses, courses_global }) => {
+    // eslint-disable-next-line
     const [coursesData, setCoursesData] = useState({
         courses: [],
     })
@@ -15,6 +16,7 @@ const Courses = ({ get_all_courses, courses_global }) => {
         setCoursesData({
             courses: courses_global,
         })
+        // eslint-disable-next-line
     }, [])
 
     return (
