@@ -1,0 +1,28 @@
+.navbar-body {
+    display: flex;
+    height: 8%;
+    background-color: #0b4558;
+}
+
+.navbar-brand {
+    margin: 10px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    color: aquamarine;
+}
+
+.navbar-link {
+    margin: 10px;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    color: aquamarine;
+    align-self: center;
+}
+
+.navbar-link:hover,
+.navbar-brand:hover {
+    color: white;
+    text-decoration: none;
+}
