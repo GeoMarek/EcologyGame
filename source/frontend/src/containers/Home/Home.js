@@ -1,34 +1,32 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './Home.css'
+import HomeLink from '../../components/Home/HomeLink'
+import HomeWelcome from '../../components/Home/HomeWelcome'
+import HomeTitle from '../../components/Home/HomeTitle'
 
 const Home = ({ isAuthenticated }) => {
     const logedIn = () => (
         <Fragment>
-            <Link class="home-link" to="/profile" role="button">
-                Profil
-            </Link>
+            <HomeLink destination="/profile" text="Mój profil" />
+            <HomeLink destination="/courses" text="Przykładowe kursy" />
         </Fragment>
     )
     const notLogedIn = () => (
         <Fragment>
-            <Link class="home-link" to="/login" role="button">
-                Logowanie
-            </Link>
-            <Link class="home-link" to="/signup" role="button">
-                Rejestracja
-            </Link>
+            <HomeLink destination="/login" text="Logowanie" />
+            <HomeLink destination="/signup" text="Załóż konto" />
+            <HomeLink destination="/courses" text="Przykładowe kursy" />
         </Fragment>
     )
 
     return (
         <div className="home-container">
-            <h1 class="home-welcome">Witaj na stronie głównej</h1>
-            {isAuthenticated ? logedIn() : notLogedIn()}
-            <Link class="home-link" to="/courses" role="button">
-                Przykładowe kursy
-            </Link>
+            <HomeTitle text="Witamy na stronie głównej Eco App" />
+            <HomeWelcome />
+            <div class="home-column">
+                {isAuthenticated ? logedIn() : notLogedIn()}
+            </div>
         </div>
     )
 }
