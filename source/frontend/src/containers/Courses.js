@@ -26,7 +26,6 @@ const Courses = ({ get_all_courses, courses_global }) => {
                 {courses_global.map((course, index) => (
                     <Course key={index} course={course} />
                 ))}
-
                 <Link class="btn btn-primary btn-lg" to="/" role="button">
                     Home
                 </Link>
