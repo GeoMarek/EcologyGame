@@ -11,6 +11,7 @@ class CourseView(generics.ListCreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+
 class GetCourseView(APIView):
     def get(self, request, *args, **kwargs):
         try:
