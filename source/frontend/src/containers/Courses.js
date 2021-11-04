@@ -30,15 +30,15 @@ const Courses = ({ get_all_courses, courses_global }) => {
 
     return (
         <div className="container">
-            <div class="jumbotron mt-5">
-                <h1 class="display-4">Courses</h1>
+            <div className="jumbotron mt-5">
+                <h1 className="display-4">Courses</h1>
 
                 {courses_global.map((course, index) => (
                     <Course key={index} course={course} />
                 ))}
 
                 <button onClick={onClick}>klik me</button>
-                <hr class="my-4" />
+                <hr className="my-4" />
                 <p>
                     Tytul kursu:{' '}
                     {coursesData.courses.length > 0
@@ -52,7 +52,7 @@ const Courses = ({ get_all_courses, courses_global }) => {
                         : ' brak'}
                 </p>
                 <br />
-                <Link class="btn btn-primary btn-lg" to="/" role="button">
+                <Link className="btn btn-primary btn-lg" to="/" role="button">
                     Home
                 </Link>
             </div>

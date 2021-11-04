@@ -134,7 +134,7 @@ const Profile = ({
 
     return (
         <div className="container">
-            <div class="jumbotron mt-5">
+            <div className="jumbotron mt-5">
                 {editData.edit ? editProfileMode() : presentProfileMode()}
             </div>
         </div>
