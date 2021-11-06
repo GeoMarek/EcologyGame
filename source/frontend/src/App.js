@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Home from './containers/Home/Home'
-import Login from './containers/Login'
+import Login from './containers/Login/Login'
 import Profile from './containers/Profile'
 import Signup from './containers/Signup'
 import Activate from './containers/Activate'
