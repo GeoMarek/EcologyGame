@@ -6,6 +6,9 @@ python -m pip install -r requirements.txt
 python .\manage.py makemigrations
 python .\manage.py migrate
 python .\manage.py runserver
+docker build --tag api .
+docker run --name api -d -p 8000:8000 api
+docker logs -f api
 ```
 **Frontend**
 ```
