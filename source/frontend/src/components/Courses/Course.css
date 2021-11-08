@@ -1,4 +1,29 @@
-.div_course {
-    border-style: solid;
-    border-color: coral;
+.course-container {
+    margin: 10px;
+    border-radius: 10px;
+    background-color: darkcyan;
+}
+
+.course-title {
+    margin: 10px;
+    font-size: larger;
+    color: rgb(26, 224, 181);
+}
+
+.course-description {
+    margin: 10px;
+    color: rgb(223, 197, 180);
+}
+
+.course-join-button {
+    margin: 10px;
+    border-radius: 16px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+.course-join-button:hover {
+    background-color: sandybrown;
 }
