@@ -1,18 +1,14 @@
 import './CourseSideBar.css'
-import { Link } from 'react-router-dom'
+import React from 'react'
 
-const Course = ({ course }) => {
+const CourseSideBar = ({ course }) => {
     return (
         <div className="course_side_bar">
-            <Link
-                class="btn btn-primary btn-lg"
-                to="/create_course"
-                role="button"
-            >
-                Utwórz Kurs
-            </Link>
+            <a href="/create_course" className="home-link">
+                Utwórz nowy kurs
+            </a>
         </div>
     )
 }
 
-export default Course
+export default CourseSideBar
