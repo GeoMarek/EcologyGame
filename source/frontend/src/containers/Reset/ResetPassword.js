@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { reset_password } from '../actions/auth'
-
+import { reset_password } from '../../actions/auth'
+import HomeTitle from '../../components/Home/HomeTitle'
+import RegisterInput from '../../components/Register/RegisterInput'
+import '../../components/Home/Home.css'
 const ResetPassword = ({ reset_password }) => {
     const [requestSent, setRequestSent] = useState(false)
     const [formData, setFormData] = useState({
@@ -26,22 +28,18 @@ const ResetPassword = ({ reset_password }) => {
     }
 
     return (
-        <div className="container mt-5">
-            <h1>Request Password Reset:</h1>
+        <div className="home-container">
+            <HomeTitle text="Przywracanie hasła" />
             <form onSubmit={(e) => onSubmit(e)}>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="email"
-                        placeholder="Email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => onChange(e)}
-                        required
-                    />
-                </div>
-                <button className="btn btn-primary" type="submit">
-                    Reset Password
+                <RegisterInput
+                    typeOfInput="email"
+                    placeholder="Podaj swój adres email"
+                    nameOfInput="email"
+                    formObject={email}
+                    formFunction={(e) => onChange(e)}
+                />
+                <button className="resetpwd-button" type="submit">
+                    Resetuj hasło
                 </button>
             </form>
         </div>

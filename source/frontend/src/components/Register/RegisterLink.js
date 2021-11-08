@@ -4,7 +4,7 @@ import './register.css'
 const RegisterLink = ({ destination, text, onclick }) => {
     return (
         <div>
-            <a href={destination} class="register-link" onclick={onclick}>
+            <a href={destination} className="register-link" onClick={onclick}>
                 {text}
             </a>
         </div>

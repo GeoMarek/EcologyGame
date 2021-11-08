@@ -4,7 +4,7 @@ import './Home.css'
 const HomeLink = ({ destination, text, onclick }) => {
     return (
         <div>
-            <a href={destination} class="home-link" onclick={onclick}>
+            <a href={destination} className="home-link" onClick={onclick}>
                 {text}
             </a>
         </div>

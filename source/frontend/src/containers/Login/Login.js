@@ -31,7 +31,7 @@ const Login = ({ login, isAuthenticated }) => {
     return (
         <div className="home-container">
             <HomeTitle text="Logowanie do Eco App" />
-            <div class="column">
+            <div className="column">
                 <form onSubmit={(e) => onSubmit(e)}>
                     <LoginInputForm
                         typeOf="email"
@@ -51,7 +51,7 @@ const Login = ({ login, isAuthenticated }) => {
                     </button>
                 </form>
             </div>
-            <div class="column">
+            <div className="column">
                 <OptionalLoginLink />
             </div>
         </div>
