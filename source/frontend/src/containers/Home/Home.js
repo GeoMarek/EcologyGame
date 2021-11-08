@@ -24,7 +24,7 @@ const Home = ({ isAuthenticated }) => {
         <div className="home-container">
             <HomeTitle text="Witamy na stronie głównej Eco App" />
             <HomeWelcome />
-            <div class="home-column">
+            <div class="column">
                 {isAuthenticated ? logedIn() : notLogedIn()}
             </div>
         </div>

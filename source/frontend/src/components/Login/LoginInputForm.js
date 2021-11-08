@@ -1,11 +1,10 @@
 import React from 'react'
-import './Auth.css'
 
 const LoginInputForm = ({ typeOf, placeholder, email, fun_obj }) => {
     return (
         <div>
             <input
-                className=""
+                className="login-input"
                 type={typeOf}
                 placeholder={placeholder}
                 name={typeOf}

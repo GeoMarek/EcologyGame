@@ -1,0 +1,19 @@
+.login-button {
+    margin: 10px;
+    border-radius: 16px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+.login-button:hover,
+.login-input:hover {
+    background-color: cornsilk;
+}
+
+.login-input {
+    margin: 10px;
+    font-family: inherit;
+    font-size: 100%;
+}

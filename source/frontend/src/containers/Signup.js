@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signup } from '../actions/auth'
+import HomeTitle from '../components/Home/HomeTitle'
+import RegisterLink from '../components/Register/RegisterLink'
+import RegisterInput from '../components/Register/RegisterInput'
+import '../components/Register/register.css'
 
 const Signup = ({ signup, isAuthenticated }) => {
     const [accountCreated, setAccountCreated] = useState(false)
@@ -35,74 +39,54 @@ const Signup = ({ signup, isAuthenticated }) => {
     }
 
     return (
-        <div className="container mt-5">
-            <h1>Sign Up</h1>
-            <p>Create your Account</p>
+        <div className="home-container">
+            <HomeTitle text="Zakładanie konta na Eco App" />
             <form onSubmit={(e) => onSubmit(e)}>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="text"
-                        placeholder="First Name*"
-                        name="first_name"
-                        value={first_name}
-                        onChange={(e) => onChange(e)}
-                        required
+                <div className="column">
+                    <RegisterInput
+                        typeOfInput="text"
+                        placeholder="Wpisz swoje imię"
+                        nameOfInput="first_name"
+                        formObject={first_name}
+                        formFunction={(e) => onChange(e)}
                     />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="text"
-                        placeholder="Last Name*"
-                        name="last_name"
-                        value={last_name}
-                        onChange={(e) => onChange(e)}
-                        required
+                    <RegisterInput
+                        typeOfInput="text"
+                        placeholder="Wpisz swoje nazwisko"
+                        nameOfInput="last_name"
+                        formObject={last_name}
+                        formFunction={(e) => onChange(e)}
                     />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="email"
-                        placeholder="Email*"
-                        name="email"
-                        value={email}
-                        onChange={(e) => onChange(e)}
-                        required
+                    <RegisterInput
+                        typeOfInput="email"
+                        placeholder="Podaj swój adres email"
+                        nameOfInput="email"
+                        formObject={email}
+                        formFunction={(e) => onChange(e)}
                     />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="password"
-                        placeholder="Password*"
-                        name="password"
-                        value={password}
-                        onChange={(e) => onChange(e)}
-                        minLength="6"
-                        required
+                    <RegisterInput
+                        typeOfInput="password"
+                        placeholder="Wpisz swoje hasło"
+                        nameOfInput="password"
+                        formObject={password}
+                        formFunction={(e) => onChange(e)}
                     />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="password"
-                        placeholder="Confirm Password*"
-                        name="re_password"
-                        value={re_password}
-                        onChange={(e) => onChange(e)}
-                        minLength="6"
-                        required
+                    <RegisterInput
+                        typeOfInput="password"
+                        placeholder="Powtórz hasło"
+                        nameOfInput="re_password"
+                        formObject={re_password}
+                        formFunction={(e) => onChange(e)}
                     />
+                    <br />
+                    <br />
                 </div>
-                <button className="btn btn-primary" type="submit">
-                    Register
+
+                <button className="register-button" type="submit">
+                    Zarejestruj!
                 </button>
             </form>
-            <p className="mt-3">
-                Already have an account? <Link to="/login">Sign In</Link>
-            </p>
+            <RegisterLink destination="/login" text="Masz już konto?" />
         </div>
     )
 }

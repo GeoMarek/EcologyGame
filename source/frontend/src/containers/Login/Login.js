@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from '../../actions/auth'
-import HomeWelcome from '../../components/Home/HomeWelcome'
 import HomeTitle from '../../components/Home/HomeTitle'
-import LoginOptionalLinks from '../../components/Auth/LoginOptionalLinks'
-import LoginInputForm from '../../components/Auth/LoginInputForm'
+import OptionalLoginLink from '../../components/Login/OptionalLoginLink'
+import LoginInputForm from '../../components/Login/LoginInputForm'
+import '../../components/Login/login.css'
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
@@ -30,9 +30,8 @@ const Login = ({ login, isAuthenticated }) => {
 
     return (
         <div className="home-container">
-            <HomeTitle text="Logowanie do witryny Eco App" />
-            <HomeWelcome />
-            <div class="home-column">
+            <HomeTitle text="Logowanie do Eco App" />
+            <div class="column">
                 <form onSubmit={(e) => onSubmit(e)}>
                     <LoginInputForm
                         typeOf="email"
@@ -47,9 +46,13 @@ const Login = ({ login, isAuthenticated }) => {
                         value={email}
                         onChange={(e) => onChange(e)}
                     />
-                    <button type="submit">Zaloguj</button>
+                    <button className="login-button" type="submit">
+                        Zaloguj
+                    </button>
                 </form>
-                <LoginOptionalLinks />
+            </div>
+            <div class="column">
+                <OptionalLoginLink />
             </div>
         </div>
     )
