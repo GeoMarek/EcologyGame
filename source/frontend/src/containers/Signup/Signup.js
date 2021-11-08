@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { signup } from '../actions/auth'
-import HomeTitle from '../components/Home/HomeTitle'
-import RegisterLink from '../components/Register/RegisterLink'
-import RegisterInput from '../components/Register/RegisterInput'
-import '../components/Register/register.css'
+import { signup } from '../../actions/auth'
+import HomeTitle from '../../components/Home/HomeTitle'
+import RegisterLink from '../../components/Register/RegisterLink'
+import RegisterInput from '../../components/Register/RegisterInput'
+import '../../components/Register/register.css'
 
 const Signup = ({ signup, isAuthenticated }) => {
     const [accountCreated, setAccountCreated] = useState(false)
