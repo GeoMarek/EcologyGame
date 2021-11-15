@@ -23,7 +23,7 @@ Obiekty tej klasy to u¿ytkownicy systemu. Powinni mieæ mo¿liwoœæ logowania, wylo
 
 % poczatek 2 wiersza
 \vspace{0.5px} Uczestnik & \vspace{0.5px}
-Obiektem tej klasy jest  
+Obiektem tej klasy jest u¿ytkownik, który do³¹czy³ do jednego z kursów. Dziedziczy w³aœnie od klasy U¿ytkownik. 
 \\
 \vspace{0.2px} & \vspace{0.2px}
 \\\hline
@@ -47,23 +47,23 @@ Obiekty tej klasy mog¹ byæ zbierane przez gracza w formie kolekcji. S³u¿¹ do pod
 
 % poczatek 5 wiersza
 \vspace{0.5px} Kurs & \vspace{0.5px}
-Klasa reprezentuj¹ca kursy tworzone przez u¿ytkowników. Powi¹zana agregacj¹ z klasami U¿ytkownik, Ciekawostka, AZadanie i Uczestnik 
+Klasa reprezentuj¹ca kursy tworzone przez u¿ytkowników. Posiada jednego autora oraz wielu uczestników. 
 \\
 \vspace{0.2px} & \vspace{0.2px}
 \\\hline
 % koniec 5 wiersza
 
 % poczatek 6 wiersza
-\vspace{0.5px} Ciekawostka & \vspace{0.5px}
-Obiekty tej klasy stanowi¹ kontenery z wiadomoœciami dla uczestników, które bêd¹ im wyœwietlane w formie reklam.  
+\vspace{0.5px} Akywnosc & \vspace{0.5px}
+Abstrakcyjna klasa, która stanowi punkt wyjœcia dla takich klas jak Wydarzenie, Zadanie, czy Pytanie. Po³¹czona agregacj¹ z klas¹ Kurs.  
 \\
 \vspace{0.2px} & \vspace{0.2px}
 \\\hline
 % koniec 6 wiersza
 
 % poczatek 7 wiersza
-\vspace{0.5px} AZadanie & \vspace{0.5px}
-Abstrakcyjna klasa, która stanowi punkt wyjœcia dla takich klas jak Wydarzenie, Zadanie, czy Pytanie. Po³¹czona agregacj¹ z klas¹ Kurs.  
+\vspace{0.5px} Nawyk & \vspace{0.5px}
+Klasa ta dziedziczy od Aktywnoœci. Reprezentuje zadania, które maj¹ wyrobiæ w uczestnikach danego kursu pozytywne nawyki.
 \\
 \vspace{0.2px} & \vspace{0.2px}
 \\\hline
@@ -71,7 +71,7 @@ Abstrakcyjna klasa, która stanowi punkt wyjœcia dla takich klas jak Wydarzenie, 
 
 % poczatek 8 wiersza
 \vspace{0.5px} Pytanie & \vspace{0.5px}
-Jedna z implementacji klasy AZadanie. Obiekt tej klasy ma reprezentowaæ pytania zamkniête zadawane podczas wydarzenia. 
+Klasa ta dziedziczy od Aktywnoœci. Obiekt tej klasy ma reprezentowaæ pytania zamkniête zadawane podczas wydarzenia. 
 \\
 \vspace{0.2px} & \vspace{0.2px}
 \\\hline
@@ -79,7 +79,7 @@ Jedna z implementacji klasy AZadanie. Obiekt tej klasy ma reprezentowaæ pytania 
 
 % poczatek 9 wiersza
 \vspace{0.5px} Zadanie & \vspace{0.5px}
-Kolejna implementacja klasy AZadanie. Klasa ta reprezentuje zadania wykonywane przez uczestników w trakcie kursu.  
+Klasa ta dziedziczy od Aktywnoœci. Klasa ta reprezentuje zadania wykonywane przez uczestników w trakcie kursu.  
 \\
 \vspace{0.1px} & \vspace{0.1px}
 \\\hline
@@ -87,7 +87,7 @@ Kolejna implementacja klasy AZadanie. Klasa ta reprezentuje zadania wykonywane p
 
 % poczatek 10 wiersza
 \vspace{0.5px} Wydarzenie & \vspace{0.5px} 
-Implementacja abstrakcyjnej klasy AZadanie. Reprezentuje wydarzenia organizowane w trakcie kursu. Zawiera w sobie listê pytañ.  
+Klasa ta dziedziczy od Aktywnoœci. Reprezentuje wydarzenia organizowane w trakcie kursu. Zawiera w sobie kolekcjê obiektów klasy Pytanie. 
 \\
 \vspace{12px} & \vspace{12px}
 \\\hline
@@ -95,7 +95,7 @@ Implementacja abstrakcyjnej klasy AZadanie. Reprezentuje wydarzenia organizowane
 
 % poczatek 11 wiersza
 \vspace{0.5px} Odpowiedz & \vspace{0.5px}
-Klasa reprezentuj¹ca odpowiedŸ na zadanie. Musi mieæ przypisanego zarówno autora (Uczestnik) jak i zadanie (AZadanie). 
+Klasa reprezentuj¹ca odpowiedŸ w wybranej aktywnoœci. Musi mieæ przypisanego zarówno autora (Uczestnik) jak i zadanie (Aktywnoœæ). 
 \\
 \vspace{0.2px} & \vspace{0.2px}
 \\\hline
