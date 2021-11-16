@@ -2,34 +2,41 @@ from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Course, Character
-from .serializers import CourseSerializer, CharacterSerializer
+from .models import Character, Course
+from .serializers import CharacterSerializer, CourseSerializer
+
 
 class CourseView(generics.ListCreateAPIView):
     # permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
-    
+
 class CharactersView(generics.ListCreateAPIView):
-    permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
     queryset = Character.objects.all()
     serializer_class = CharacterSerializer
+
     def get(self, request, course_id):
         try:
             if course_id != None:
                 course = Course.objects.get(id=course_id)
                 character = Character.objects.filter(course=course)
-                data = [
-                    CharacterSerializer(model).data
-                    for model in character
-                ]
+                data = [CharacterSerializer(model).data for model in character]
                 return Response({"characters": data})
         except:
-            return Response({"error": "Something went wrong when geting character for course"})
-                
+            return Response(
+                {"error": "Something went wrong when geting character for course"}
+            )
+
+
 class CharacterView(APIView):
-    permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+
     def get(self, request, course_id):
         try:
             user = self.request.user
@@ -37,13 +44,13 @@ class CharacterView(APIView):
                 course = Course.objects.get(id=course_id)
                 character = Character.objects.filter(course=course)
                 character = character.filter(user=user)
-                data = [
-                    CharacterSerializer(model).data
-                    for model in character
-                ]
+                data = [CharacterSerializer(model).data for model in character]
                 return Response({"characters": data})
         except:
-            return Response({"error": "Something went wrong when geting character for course"})
+            return Response(
+                {"error": "Something went wrong when geting character for course"}
+            )
+
 
 class GetCourseView(APIView):
     def get(self, request, *args, **kwargs):
@@ -78,7 +85,7 @@ class JoinCourseView(APIView):
             course = Course.objects.get(id=course_id)
 
             course.participants.add(user)
-            if (not Character.objects.filter(course=course).filter(user=user)):
+            if not Character.objects.filter(course=course).filter(user=user):
                 character = Character(name=user.first_name, user=user, course=course)
                 character.save()
 

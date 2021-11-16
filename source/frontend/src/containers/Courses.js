@@ -20,7 +20,7 @@ const Courses = ({ get_all_courses, courses_global, isAuthenticated }) => {
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
-    
+
     return (
         <div className="container">
             <CourseSideBar />

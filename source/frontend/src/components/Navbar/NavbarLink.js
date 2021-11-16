@@ -5,7 +5,7 @@ const NavbarLink = ({ destination, text }) => {
     return (
         <Link class="navbar-link" to={destination} role="button">
             {text}
-        </Link> 
+        </Link>
     )
 }
 

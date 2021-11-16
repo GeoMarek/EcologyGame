@@ -17,9 +17,10 @@ class Course(models.Model):
     def _str_(self):
         return self.title
 
+
 class Character(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE,blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     name = models.CharField(max_length=24)
     max_hp = models.IntegerField(default=10)
     curent_hp = models.IntegerField(default=10)
@@ -28,7 +29,7 @@ class Character(models.Model):
     gold = models.IntegerField(default=0)
     level = models.IntegerField(default=1)
     isAlive = models.BooleanField(default=True)
-    #jeszcze bron, zbroja i ekiwpiunek
-    
+    # jeszcze bron, zbroja i ekiwpiunek
+
     def _str_(self):
         return self.name

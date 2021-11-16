@@ -31,7 +31,6 @@ const Profile = ({
         setEditData({
             edit: false,
         })
-        
     }, [])
 
     if (!isAuthenticated) {

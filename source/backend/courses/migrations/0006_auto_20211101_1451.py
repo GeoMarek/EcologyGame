@@ -8,28 +8,30 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('courses', '0005_auto_20210927_2141'),
+        ("courses", "0005_auto_20210927_2141"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='course',
-            name='description',
+            model_name="course",
+            name="description",
             field=models.TextField(blank=True),
         ),
         migrations.AlterField(
-            model_name='course',
-            name='is_public',
+            model_name="course",
+            name="is_public",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='course',
-            name='join_code',
+            model_name="course",
+            name="join_code",
             field=models.CharField(blank=True, max_length=6),
         ),
         migrations.AlterField(
-            model_name='course',
-            name='participants',
-            field=models.ManyToManyField(blank=True, related_name='participants', to=settings.AUTH_USER_MODEL),
+            model_name="course",
+            name="participants",
+            field=models.ManyToManyField(
+                blank=True, related_name="participants", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

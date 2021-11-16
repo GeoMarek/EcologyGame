@@ -30,7 +30,6 @@ const Character = ({
         setEditData({
             edit: false,
         })
-        
     }, [])
 
     if (!isAuthenticated) {
@@ -58,14 +57,14 @@ const Character = ({
     }
 
     const editProfileMode = () => (
-        <Fragment>            
-                <button
-                    style={{ marginLeft: 5 + 'px' }}
-                    className="btn btn-primary mt-3"
-                    onClick={turnOffEditProfileMode}
-                >
-                    Anuluj edycję
-                </button>
+        <Fragment>
+            <button
+                style={{ marginLeft: 5 + 'px' }}
+                className="btn btn-primary mt-3"
+                onClick={turnOffEditProfileMode}
+            >
+                Anuluj edycję
+            </button>
         </Fragment>
     )
 
@@ -80,15 +79,19 @@ const Character = ({
             <h3>Nazwa</h3>
             <p>{character_global.name}</p>
             <h3>Życie</h3>
-            <p>{character_global.curent_hp}/{character_global.max_hp}</p>
+            <p>
+                {character_global.curent_hp}/{character_global.max_hp}
+            </p>
             <h3>Poziom</h3>
             <p>{character_global.level}</p>
             <h3>Doświadczenie</h3>
-            <p>{character_global.current_exp}/{character_global.max_exp}</p>
+            <p>
+                {character_global.current_exp}/{character_global.max_exp}
+            </p>
             <h3>Złoto</h3>
             <p>{character_global.gold}</p>
             <h3>Czy postać żyje?</h3>
-            <p>{character_global.isAlive?'tak':'nie'}</p>
+            <p>{character_global.isAlive ? 'tak' : 'nie'}</p>
         </Fragment>
     )
 
@@ -106,6 +109,4 @@ const mapStateToProps = (state) => ({
     character_global: state.character.character[0],
 })
 
-export default connect(mapStateToProps, { load_character })(
-    Character
-)
+export default connect(mapStateToProps, { load_character })(Character)

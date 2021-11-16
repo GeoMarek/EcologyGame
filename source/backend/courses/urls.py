@@ -1,6 +1,12 @@
 from django.urls import path
 
-from .views import CourseView, GetCourseView, JoinCourseView, CharactersView, CharacterView
+from .views import (
+    CharactersView,
+    CharacterView,
+    CourseView,
+    GetCourseView,
+    JoinCourseView,
+)
 
 urlpatterns = [
     path("course/", CourseView.as_view()),

@@ -40,30 +40,25 @@ const Course = ({
 
     const checkIfAdmin = () => {
         //if (user_global.id instanceof course_global.admins){
-        if (course_global.admins.indexOf(user_global.id) != -1){
-            if(isAdminData.isAdmin == 1) return
+        if (course_global.admins.indexOf(user_global.id) != -1) {
+            if (isAdminData.isAdmin == 1) return
             setIsAdminData({
-                isAdmin: 1
+                isAdmin: 1,
             })
-        }
-        else{
-            if(isAdminData.isAdmin == 0) return
+        } else {
+            if (isAdminData.isAdmin == 0) return
             setIsAdminData({
-                isAdmin: 0
+                isAdmin: 0,
             })
         }
     }
 
     const edit_course = () => {
         checkIfAdmin()
-        if(isAdminData.isAdmin == 0){
-            return(
-                student_container()
-            )
+        if (isAdminData.isAdmin == 0) {
+            return student_container()
         }
-        return (
-            teacher_container()
-        )
+        return teacher_container()
     }
 
     const teacher_container = () => (
@@ -93,14 +88,18 @@ const Course = ({
             ))}
             <button className="btn btn-primary mt-3" onClick={deleteCourse}>
                 Usuń kurs
-            </button>            
+            </button>
         </div>
     )
     const student_container = () => (
         <div>
-        <Link class="btn btn-primary btn-lg" to={"/course/"+match.params.id+"/character"} role="button">
+            <Link
+                class="btn btn-primary btn-lg"
+                to={'/course/' + match.params.id + '/character'}
+                role="button"
+            >
                 Postać
-        </Link>            
+            </Link>
         </div>
     )
 
@@ -119,7 +118,15 @@ const Course = ({
         <div className="container">
             {redirectData.redirect != 0 ? renderRedirect() : <div />}
             <div class="jumbotron mt-5">
-                {user_global?(course_global ? curse_container() : <div />):<></>}
+                {user_global ? (
+                    course_global ? (
+                        curse_container()
+                    ) : (
+                        <div />
+                    )
+                ) : (
+                    <></>
+                )}
             </div>
         </div>
     )

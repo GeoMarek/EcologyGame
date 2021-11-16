@@ -7,7 +7,7 @@ const OptionalHomeLink = ({ destination, text }) => {
         <div>
             <Link class="optional-link" to={destination} role="button">
                 {text}
-            </Link> 
+            </Link>
         </div>
     )
 }
