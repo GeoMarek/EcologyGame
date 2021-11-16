@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const NavbarLink = ({ destination, text, onclick }) => {
+const NavbarLink = ({ destination, text }) => {
     return (
-        <a href={destination} className="navbar-link" onclick={onclick}>
+        <Link class="navbar-link" to={destination} role="button">
             {text}
-        </a>
+        </Link> 
     )
 }
 
