@@ -22,30 +22,10 @@ const Course = ({
     const [isAdminData, setIsAdminData] = useState({
         isAdmin: 0,
     })
-    function sleep (time) {
-        return new Promise((resolve) => setTimeout(resolve, time));
-      }
-    const checkIfAdmin = (value) => {
-        sleep(2000).then(() => {
-            console.log(69)
-        });
-        console.log(value.course.admins)
-        console.log(typeof value.course.admins)
-        if (user_global.id instanceof value.course.admins){
-            console.log(12)
-            setIsAdminData({
-                isAdmin: 1
-            })
-        }
-    }
 
     const renderRedirect = () => <Redirect to={redirectData.redirect} />
     useEffect(() => {
-        get_course_by_id(match.params.id).then((value) =>
-            {
-                checkIfAdmin(value)
-            }
-        )
+        get_course_by_id(match.params.id)
     }, [])
 
     if (!isAuthenticated) {
@@ -58,9 +38,37 @@ const Course = ({
         )
     }
 
+    const checkIfAdmin = () => {
+        //if (user_global.id instanceof course_global.admins){
+        if (course_global.admins.indexOf(user_global.id) != -1){
+            if(isAdminData.isAdmin == 1) return
+            setIsAdminData({
+                isAdmin: 1
+            })
+        }
+        else{
+            if(isAdminData.isAdmin == 0) return
+            setIsAdminData({
+                isAdmin: 0
+            })
+        }
+    }
+
+    const edit_course = () => {
+        checkIfAdmin()
+        if(isAdminData.isAdmin == 0){
+            return(<></>)
+        }
+        return (
+            <div>
+                <h1>jest admin</h1>
+            </div>
+        )
+    }
+
     const curse_container = () => (
         <div>
-            <h1>{isAdminData.isAdmin}</h1>
+            {edit_course()}
             <h1>kurs: {course_global.title}</h1>
             <h2>opis: {course_global.description}</h2>
             <h3>
