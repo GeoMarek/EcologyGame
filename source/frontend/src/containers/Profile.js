@@ -47,6 +47,11 @@ const Profile = ({
     }
 
     const turnOnEditProfileMode = (e) => {
+        setFormData({
+            first_name: profile_global.first_name,
+            last_name: profile_global.last_name,
+            email: profile_global.email,
+        })
         setEditData({
             edit: true,
         })
