@@ -1,0 +1,11 @@
+body {
+    background-image: url('../src/images/wp9396715-tropical-leaves-4k-wallpapers.jpg');
+    background-size: cover;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
