@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signup } from '../actions/auth'
+import './styles/Home.css'
+import OptionalRegisterLinks from '../components/OptionalLinks/OptionalRegisterLinks'
 
 const Signup = ({ signup, isAuthenticated }) => {
     const [accountCreated, setAccountCreated] = useState(false)
@@ -35,9 +37,9 @@ const Signup = ({ signup, isAuthenticated }) => {
     }
 
     return (
-        <div className="container mt-5">
-            <h1>Sign Up</h1>
-            <p>Create your Account</p>
+        <div className="home-container">
+            <h1 className="home-title">Rejestracja na Eco App</h1>
+            <div className="home-column">
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className="form-group">
                     <input
@@ -100,9 +102,10 @@ const Signup = ({ signup, isAuthenticated }) => {
                     Register
                 </button>
             </form>
-            <p className="mt-3">
-                Already have an account? <Link to="/login">Sign In</Link>
-            </p>
+            </div>
+            <div className="home-column">
+                <OptionalRegisterLinks />
+            </div>
         </div>
     )
 }
