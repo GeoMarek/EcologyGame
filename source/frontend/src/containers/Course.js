@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_course_by_id, delete_course_by_id } from '../actions/course'
 
@@ -100,6 +100,11 @@ const Course = ({
             <button className="btn btn-primary mt-3" onClick={deleteCourse}>
                 Usuń kurs
             </button>
+            <br/>
+            <br/>
+            <Link class="btn btn-primary btn-lg" to={"/course/"+match.params.id+"/character"} role="button">
+                    Postać
+            </Link>
         </div>
     )
 
