@@ -17,6 +17,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 
 import Layout from './hocs/Layout'
+import './App.css'
 
 const App = () => (
     <Provider store={store}>
