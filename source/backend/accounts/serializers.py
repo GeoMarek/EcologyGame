@@ -17,4 +17,4 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         # fields = '__all__'
-        fields = ("first_name", "last_name", "gender")
+        fields = ("first_name", "last_name", "email")

@@ -25,7 +25,9 @@ const Navbar = ({ logout, isAuthenticated }) => {
         <Fragment>
             <NavbarLink destination="/" text="Strona główna" />
             <NavbarLink destination="/profile" text="Profil" />
-            <NavbarLink destination="#!" text="Wyloguj" onClick={logout_user} />
+            <a className="navbar-link" href="#!" onClick={logout_user}>
+                Wyloguj
+            </a>
         </Fragment>
     )
 

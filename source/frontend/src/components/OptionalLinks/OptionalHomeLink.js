@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './OptionalLink.css'
 
-const OptionalHomeLink = ({ destination, text, onclick }) => {
+const OptionalHomeLink = ({ destination, text }) => {
     return (
         <div>
-            <a href={destination} className="optional-link" onClick={onclick}>
+            <Link class="optional-link" to={destination} role="button">
                 {text}
-            </a>
+            </Link>
         </div>
     )
 }

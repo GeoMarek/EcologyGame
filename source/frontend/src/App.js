@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './containers/Home'
 import Login from './containers/Login'
 import Profile from './containers/Profile'
+import Character from './containers/Character'
 import Signup from './containers/Signup'
 import Activate from './containers/Activate'
 import ResetPassword from './containers/ResetPassword'
@@ -26,6 +27,11 @@ const App = () => (
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/profile" component={Profile} />
+                    <Route
+                        exact
+                        path="/course/:course_id/character"
+                        component={Character}
+                    />
                     <Route exact path="/signup" component={Signup} />
                     <Route
                         exact

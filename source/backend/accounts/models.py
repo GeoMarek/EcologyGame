@@ -38,11 +38,14 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     ordering = ("created",)
 
-    def get_full_name(self):
-        return f"{self.first_name} {self.last_name}"
+    def get_last_name(self):
+        return self.last_name
 
-    def get_short_name(self):
+    def get_first_name(self):
         return self.first_name
+
+    def get_email(self):
+        return self.email
 
     def __str__(self):
         return self.email
@@ -57,15 +60,19 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=120, blank=False, default="el_imie")
     last_name = models.CharField(max_length=120, blank=False, default="el_nazwisko")
-    gender = models.CharField(max_length=1, choices=GENDER)
+    email = models.EmailField(max_length=255, blank=True)
 
     def __unicode__(self):
-        return f"Profile of {self.first_name} gender => {self.gender}"
+        return f"Profile of {self.first_name}"
 
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        prof = Profile.objects.create(user=instance)
+        prof.first_name = instance.first_name
+        prof.last_name = instance.last_name
+        prof.email = instance.email
+        prof.save()
 
 
 post_save.connect(create_profile, sender=UserAccount)

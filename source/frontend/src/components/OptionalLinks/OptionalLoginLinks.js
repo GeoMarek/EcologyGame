@@ -1,18 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './OptionalLink.css'
 
 const OptionalLoginLinks = () => {
     return (
         <>
             <div>
-                <a href="/signup" className="optional-link">
+                <Link class="optional-link" to="/signup" role="button">
                     Nie masz konta?
-                </a>
+                </Link>
             </div>
             <div>
-                <a href="/reset-password" className="optional-link">
+                <Link class="optional-link" to="/reset-password" role="button">
                     Nie pamiętasz hasła?
-                </a>
+                </Link>
             </div>
         </>
     )
