@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './styles/Home.css'
 import OptionalHomeLink from '../components/OptionalLinks/OptionalHomeLink.js'

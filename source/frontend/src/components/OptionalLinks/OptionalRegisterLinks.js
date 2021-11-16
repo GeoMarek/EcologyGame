@@ -1,7 +1,7 @@
 import React from 'react'
 import './OptionalLink.css'
 
-const OptionalRegisterLink = () => {
+const OptionalRegisterLinks = () => {
     return (
         <div>
             <a href="/login" className="optional-link">
@@ -10,4 +10,4 @@ const OptionalRegisterLink = () => {
         </div>
     )
     }   
-    export default OptionalRegisterLink;
+    export default OptionalRegisterLinks;

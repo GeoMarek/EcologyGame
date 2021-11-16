@@ -1,7 +1,7 @@
 import React from 'react'
 import './OptionalLink.css'
 
-const OptionalLoginLink = () => {
+const OptionalLoginLinks = () => {
     return (
         <>
         <div>
@@ -18,4 +18,4 @@ const OptionalLoginLink = () => {
     )
 }
 
-export default OptionalLoginLink
+export default OptionalLoginLinks
