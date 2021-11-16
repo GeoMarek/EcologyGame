@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { reset_password } from '../actions/auth'
+import './styles/Home.css'
 
 const ResetPassword = ({ reset_password }) => {
     const [requestSent, setRequestSent] = useState(false)
@@ -26,24 +27,29 @@ const ResetPassword = ({ reset_password }) => {
     }
 
     return (
-        <div className="container mt-5">
-            <h1>Request Password Reset:</h1>
-            <form onSubmit={(e) => onSubmit(e)}>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="email"
-                        placeholder="Email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => onChange(e)}
-                        required
-                    />
-                </div>
-                <button className="btn btn-primary" type="submit">
-                    Reset Password
-                </button>
-            </form>
+        <div className="home-container">
+            <h1 className="home-title">Przypomnienie hasła</h1>
+            <div className="home-column">
+                <form onSubmit={(e) => onSubmit(e)}>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => onChange(e)}
+                            required
+                        />
+                    </div>
+                    <button className="btn btn-primary" type="submit">
+                        Wyślij przypomnienie
+                    </button>
+                </form>
+            </div>
+            <div className="home-column">
+                <br />
+            </div>
         </div>
     )
 }
