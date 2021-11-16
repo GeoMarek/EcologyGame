@@ -30,40 +30,38 @@ const Login = ({ login, isAuthenticated }) => {
         <div className="home-container">
             <h1 className="home-title">Logowanie do Eco App</h1>
             <div className="home-column">
-            <form onSubmit={(e) => onSubmit(e)}>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="email"
-                        placeholder="Email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => onChange(e)}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => onChange(e)}
-                        minLength="6"
-                        required
-                    />
-                </div>
-                <button className="btn btn-primary" type="submit">
-                    Login
-                </button>
-            </form>
+                <form onSubmit={(e) => onSubmit(e)}>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => onChange(e)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => onChange(e)}
+                            minLength="6"
+                            required
+                        />
+                    </div>
+                    <button className="btn btn-primary" type="submit">
+                        Login
+                    </button>
+                </form>
             </div>
             <div className="home-column">
                 <OptionalLoginLinks />
             </div>
-
-            
         </div>
     )
 }

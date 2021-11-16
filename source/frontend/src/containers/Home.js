@@ -20,18 +20,17 @@ const Home = ({ isAuthenticated }) => {
 
     return (
         <div className="home-container">
-                <h1 className="home-title">Witamy na stronie głównej Eco App</h1>
-                <div className="home-column">
-                    <p className="home-text">
-                        Witaj na stronie 'Eco App'. Jest to platforma przeznaczona
-                        do realizowania kursów o różnej tematyce z wykorzystaniem
-                        mechanizmów gamifikacji.
-                    </p>
-                </div>
-                <div className="home-column">
-                    {isAuthenticated ? logedIn() : notLogedIn()}
-                </div>
-                
+            <h1 className="home-title">Witamy na stronie głównej Eco App</h1>
+            <div className="home-column">
+                <p className="home-text">
+                    Witaj na stronie 'Eco App'. Jest to platforma przeznaczona
+                    do realizowania kursów o różnej tematyce z wykorzystaniem
+                    mechanizmów gamifikacji.
+                </p>
+            </div>
+            <div className="home-column">
+                {isAuthenticated ? logedIn() : notLogedIn()}
+            </div>
         </div>
     )
 }

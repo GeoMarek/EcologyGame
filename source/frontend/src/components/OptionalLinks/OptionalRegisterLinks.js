@@ -9,5 +9,5 @@ const OptionalRegisterLinks = () => {
             </a>
         </div>
     )
-    }   
-    export default OptionalRegisterLinks;
+}
+export default OptionalRegisterLinks
