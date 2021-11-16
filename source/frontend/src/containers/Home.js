@@ -1,43 +1,38 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import './styles/Home.css'
+import OptionalHomeLink from '../components/OptionalLinks/OptionalHomeLink.js'
 
 const Home = ({ isAuthenticated }) => {
     const logedIn = () => (
         <Fragment>
-            <Link class="btn btn-primary btn-lg" to="/profile" role="button">
-                Profil
-            </Link>
-            <br />
+            <OptionalHomeLink destination="/profile" text="Mój profil" />
+            <OptionalHomeLink destination="/courses" text="Przykładowe kursy" />
         </Fragment>
     )
     const notLogedIn = () => (
         <Fragment>
-            <Link class="btn btn-primary btn-lg" to="/login" role="button">
-                Login
-            </Link>
-            <br />
-            <Link class="btn btn-primary btn-lg" to="/signup" role="button">
-                Register
-            </Link>
-            <br />
+            <OptionalHomeLink destination="/login" text="Logowanie" />
+            <OptionalHomeLink destination="/signup" text="Załóż konto" />
+            <OptionalHomeLink destination="/courses" text="Przykładowe kursy" />
         </Fragment>
     )
 
     return (
-        <div className="container">
-            <div class="jumbotron mt-5">
-                <h1 class="display-4">Home Page</h1>
-                <hr class="my-4" />
-                {isAuthenticated ? logedIn() : notLogedIn()}
-                <Link
-                    class="btn btn-primary btn-lg"
-                    to="/courses"
-                    role="button"
-                >
-                    Kursy
-                </Link>
-            </div>
+        <div className="home-container">
+                <h1 className="home-title">Witamy na stronie głównej Eco App</h1>
+                <div className="home-column">
+                    <p className="home-text">
+                        Witaj na stronie 'Eco App'. Jest to platforma przeznaczona
+                        do realizowania kursów o różnej tematyce z wykorzystaniem
+                        mechanizmów gamifikacji.
+                    </p>
+                </div>
+                <div className="home-column">
+                    {isAuthenticated ? logedIn() : notLogedIn()}
+                </div>
+                
         </div>
     )
 }
