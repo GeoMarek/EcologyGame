@@ -12,24 +12,26 @@ const Profile = ({
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: '',
-        gender: '',
+        email: '',
     })
     const [editData, setEditData] = useState({
         edit: false,
     })
 
-    const { first_name, last_name, gender } = formData
+    const { first_name, last_name, email } = formData
 
     useEffect(() => {
-        load_profile()
+        load_profile().then((value) =>
+            setFormData({
+                first_name: profile_global.first_name,
+                last_name: profile_global.last_name,
+                email: profile_global.email,
+            })
+        )
         setEditData({
             edit: false,
         })
-        setFormData({
-            first_name: profile_global.first_name,
-            last_name: profile_global.last_name,
-            gender: profile_global.gender,
-        })
+        
     }, [])
 
     if (!isAuthenticated) {
@@ -41,7 +43,7 @@ const Profile = ({
 
     const onSubmit = (e) => {
         e.preventDefault()
-        update_profile(first_name, last_name, gender)
+        update_profile(first_name, last_name)
         turnOffEditProfileMode()
     }
 
@@ -86,21 +88,6 @@ const Profile = ({
                         value={last_name}
                     />
                 </div>
-                <div className="form-group">
-                    <label className="form-label mt-3" htmlFor="gender">
-                        Gender
-                    </label>
-                    <select
-                        className="form-control"
-                        name="gender"
-                        placeholder={`${gender}`}
-                        onChange={(e) => onChange(e)}
-                        value={gender}
-                    >
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
                 <button className="btn btn-primary mt-3" type="submit">
                     Update Profile
                 </button>
@@ -127,8 +114,8 @@ const Profile = ({
             <p>{profile_global.first_name}</p>
             <h3>Nazwisko</h3>
             <p>{profile_global.last_name}</p>
-            <h3>Płeć</h3>
-            <p>{profile_global.gender}</p>
+            <h3>E-mail</h3>
+            <p>{profile_global.email}</p>
         </Fragment>
     )
 

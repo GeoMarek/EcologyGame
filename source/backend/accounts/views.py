@@ -28,10 +28,9 @@ class ProfileView(APIView):
             data = self.request.data
             first_name = data["first_name"]
             last_name = data["last_name"]
-            gender = data["gender"]
 
             Profile.objects.filter(user=user).update(
-                first_name=first_name, last_name=last_name, gender=gender
+                first_name=first_name, last_name=last_name
             )
 
             user_profile = Profile.objects.get(user=user)

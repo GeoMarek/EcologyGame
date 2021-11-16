@@ -39,7 +39,7 @@ export const load_profile = () => async (dispatch) => {
 }
 
 export const update_profile =
-    (first_name, last_name, gender) => async (dispatch) => {
+    (first_name, last_name) => async (dispatch) => {
         if (localStorage.getItem('access')) {
             const config = {
                 headers: {
@@ -51,8 +51,7 @@ export const update_profile =
 
             const body = JSON.stringify({
                 first_name,
-                last_name,
-                gender,
+                last_name
             })
 
             try {

@@ -9,6 +9,7 @@ const Course = ({
     isAuthenticated,
     course_global,
     match,
+    user_global,
 }) => {
     const [courseData, setCourseData] = useState({
         course: [],
@@ -18,9 +19,33 @@ const Course = ({
         redirect: 0,
     })
 
+    const [isAdminData, setIsAdminData] = useState({
+        isAdmin: 0,
+    })
+    function sleep (time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+    const checkIfAdmin = (value) => {
+        sleep(2000).then(() => {
+            console.log(69)
+        });
+        console.log(value.course.admins)
+        console.log(typeof value.course.admins)
+        if (user_global.id instanceof value.course.admins){
+            console.log(12)
+            setIsAdminData({
+                isAdmin: 1
+            })
+        }
+    }
+
     const renderRedirect = () => <Redirect to={redirectData.redirect} />
     useEffect(() => {
-        get_course_by_id(match.params.id)
+        get_course_by_id(match.params.id).then((value) =>
+            {
+                checkIfAdmin(value)
+            }
+        )
     }, [])
 
     if (!isAuthenticated) {
@@ -35,6 +60,7 @@ const Course = ({
 
     const curse_container = () => (
         <div>
+            <h1>{isAdminData.isAdmin}</h1>
             <h1>kurs: {course_global.title}</h1>
             <h2>opis: {course_global.description}</h2>
             <h3>
@@ -82,6 +108,7 @@ const Course = ({
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
     course_global: state.course.course.course,
+    user_global: state.auth.user,
 })
 
 export default connect(mapStateToProps, {
