@@ -5,7 +5,7 @@ import { get_all_courses } from '../actions/course'
 import Course from '../components/Courses/Course'
 import CourseSideBar from '../components/Courses/CourseSideBar'
 
-const Courses = ({ get_all_courses, courses_global }) => {
+const Courses = ({ get_all_courses, courses_global, isAuthenticated }) => {
     const [coursesData, setCoursesData] = useState({
         courses: [],
     })
@@ -17,6 +17,10 @@ const Courses = ({ get_all_courses, courses_global }) => {
         })
     }, [])
 
+    if (!isAuthenticated) {
+        return <Redirect to="/" />
+    }
+    
     return (
         <div className="container">
             <CourseSideBar />
@@ -35,6 +39,7 @@ const Courses = ({ get_all_courses, courses_global }) => {
 }
 
 const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
     courses_global: state.course.kursy,
 })
 

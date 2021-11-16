@@ -57,23 +57,17 @@ const Course = ({
     const edit_course = () => {
         checkIfAdmin()
         if(isAdminData.isAdmin == 0){
-            return(<></>)
+            return(
+                student_container()
+            )
         }
         return (
-            <div>
-                <h1>jest admin</h1>
-            </div>
+            teacher_container()
         )
     }
 
-    const curse_container = () => (
+    const teacher_container = () => (
         <div>
-            {edit_course()}
-            <h1>kurs: {course_global.title}</h1>
-            <h2>opis: {course_global.description}</h2>
-            <h3>
-                {course_global.is_public ? 'jest publiczny' : 'jest prywatny'}
-            </h3>
             <h4>kod dołączenia: {course_global.join_code}</h4>
             <h5>Admins:</h5>
             {course_global.admins.length == 0 ? (
@@ -99,12 +93,25 @@ const Course = ({
             ))}
             <button className="btn btn-primary mt-3" onClick={deleteCourse}>
                 Usuń kurs
-            </button>
-            <br/>
-            <br/>
-            <Link class="btn btn-primary btn-lg" to={"/course/"+match.params.id+"/character"} role="button">
-                    Postać
-            </Link>
+            </button>            
+        </div>
+    )
+    const student_container = () => (
+        <div>
+        <Link class="btn btn-primary btn-lg" to={"/course/"+match.params.id+"/character"} role="button">
+                Postać
+        </Link>            
+        </div>
+    )
+
+    const curse_container = () => (
+        <div>
+            <h1>kurs: {course_global.title}</h1>
+            <h2>opis: {course_global.description}</h2>
+            <h3>
+                {course_global.is_public ? 'jest publiczny' : 'jest prywatny'}
+            </h3>
+            {edit_course()}
         </div>
     )
 
@@ -112,7 +119,7 @@ const Course = ({
         <div className="container">
             {redirectData.redirect != 0 ? renderRedirect() : <div />}
             <div class="jumbotron mt-5">
-                {course_global ? curse_container() : <div />}
+                {user_global?(course_global ? curse_container() : <div />):<></>}
             </div>
         </div>
     )
