@@ -1,3 +1,4 @@
+from django.db.models.fields import Field
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -149,3 +150,72 @@ class JoinCourseView(APIView):
             return Response({"info": "wszystko okej przy dodaniu uczestnika"})
         except:
             return Response({"error": "Something went wrong when adding participant"})
+
+
+#get item
+class GetItemView(APIView):
+    def get(self, request):
+        try:
+            item_id = request.query_params["id"]
+            if item_id != None:
+                item = Course.objects.get(id=item_id)
+                serializer = CourseSerializer(item)
+                return Response({"item": serializer.data})
+        except:
+            return Response({"error": "Something went wrong when geting item by id"})
+            
+
+#zarzadzanie eq postaci
+class CharcterEqView(APIView):
+    def put(self, request, course_id, format=None):
+        try:
+            user = self.request.user
+            data = self.request.data
+            course_id = course_id
+            course = Course.objects.get(id=course_id)
+            character = Character.objects.filter(course=course).get(user=user)
+            s_character = CharacterSerializer(character)
+            fun_type = data["fun_type"]
+            item_id = data["item_id"]
+            item = Item.objects.get(id=item_id)
+            s_item = ItemSerializer(item)
+            if fun_type == 'buy_eq':
+                if s_character.data['weapon'] == item_id or s_character.data['armor'] == item_id or item_id in s_character.data['equipment'] :
+                    return Response({"error": "Już posiadasz ten przedmiot!"})
+                if s_character.data['gold'] < s_item.data['buy_price'] :
+                    return Response({"error": "Nie masz wystarczająco złota!"})
+                character.gold = s_character.data['gold'] - s_item.data['buy_price']
+                character.equipment.add(item)
+                character.save()
+            elif fun_type == 'sell_eq':
+                if item_id not in s_character.data['equipment'] :
+                    return Response({"error": "Nie posiadasz przedmiotu który chcesz sprzedać!"})
+                character.gold = s_character.data['gold'] + s_item.data['sell_price']
+                character.equipment.remove(item)
+                character.save()
+            elif fun_type == 'put_on':
+                if item_id not in s_character.data['equipment'] :
+                    return Response({"error": "Nie posiadasz przedmiotu który chcesz ubrać!"})
+                character.equipment.remove(item)
+                if s_item.data['eq_type'] == 'w': 
+                    if s_character.data['weapon'] :
+                        character.equipment.add(character.weapon)
+                    character.weapon = item
+                elif s_item.data['eq_type'] == 'a' :
+                    if s_character.data['armor'] :
+                        character.equipment.add(character.armor)
+                    character.armor = item
+                    print(item)
+                character.save()
+            elif fun_type == 'put_off':
+                if s_item.data['eq_type'] == 'w' :
+                    character.weapon = None
+                elif s_item.data['eq_type'] == 'a' :
+                    character.armor = None
+                character.equipment.add(item)
+                character.save()
+            else:
+                return Response({"error": f"Czynność: {fun_type} jest nieobsługiwana!"})
+            return Response({"info": f"{fun_type} wykonnane poprawnie"})
+        except:
+            return Response({"error": f"Something went wrong with {fun_type}"})
