@@ -2,22 +2,29 @@ from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Character, Course
-from .serializers import CharacterSerializer, CourseSerializer
+from .models import Character, Course, Item
+from .serializers import CharacterSerializer, CourseSerializer, ItemSerializer
 
 
+#lista wszystkich kursów oraz możliwość tworzenia nowych
 class CourseView(generics.ListCreateAPIView):
-    # permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+    
+#lista wszystkich przedmiotów oraz możliwość tworzenia nowych
+class ItemsView(generics.ListCreateAPIView):
+    permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
 
-class CharactersView(generics.ListCreateAPIView):
+
+#lista postaci z danego kursu
+class CharactersView(APIView):
     permission_classes = (
         permissions.AllowAny,
     )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
-    queryset = Character.objects.all()
-    serializer_class = CharacterSerializer
 
     def get(self, request, course_id):
         try:
@@ -32,6 +39,7 @@ class CharactersView(generics.ListCreateAPIView):
             )
 
 
+#get nasza postać
 class CharacterView(APIView):
     permission_classes = (
         permissions.AllowAny,
@@ -52,6 +60,54 @@ class CharacterView(APIView):
             )
 
 
+#Klasa odpowiedzialna za sklep
+class CourseItems(APIView):
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+
+    #get all course itmes
+    def get(self, request, course_id):
+        try:
+            if course_id != None:
+                course = Course.objects.get(id=course_id)
+                course = CourseSerializer(course)
+                data = course.data['store_items']
+                return Response({"items": data})
+        except:
+            return Response(
+                {"error": "Something went wrong when geting course's items"}
+            )
+
+    #delete item from shop
+    def delete(self, request, course_id):
+        try:            
+            item_id = request.query_params["id"]
+            if item_id != None and course_id != None:
+                course = Course.objects.get(id=course_id)
+                item = Item.objects.get(id=item_id)
+                course.store_items.remove(item)
+                return Response({"info": "usunieto poprawnie przedmiot ze sklepu"})
+        except:
+            return Response({"error": "cos poszlo nie tak podczas usuwania przedmiotu ze sklepu"})
+
+    #dodaj item do sklepu
+    def put(self, request, course_id, format=None):
+        try:
+            if course_id != None:
+                course = Course.objects.get(id=course_id)
+                data = self.request.data
+                item_id = data["item_id"]
+
+                item = Item.objects.get(id=item_id)
+                course.store_items.add(item)
+
+                return Response({"info": "wszystko okej przy dodaniu przedmiotu do sklepu"})
+        except:
+            return Response({"error": "Something went wrong when adding item to shop"})
+
+
+#get konkretny kurs oraz usuń go
 class GetCourseView(APIView):
     def get(self, request, *args, **kwargs):
         try:
@@ -74,6 +130,7 @@ class GetCourseView(APIView):
             return Response({"error": "cos poszlo nie tak podczas usuwania kursu"})
 
 
+#dołączanie do kursu
 class JoinCourseView(APIView):
     def put(self, request, format=None):
         try:
