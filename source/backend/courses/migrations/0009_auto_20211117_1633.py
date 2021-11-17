@@ -6,33 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('courses', '0008_auto_20211117_1631'),
+        ("courses", "0008_auto_20211117_1631"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='item',
-            name='buy_price',
+            model_name="item",
+            name="buy_price",
             field=models.IntegerField(default=30),
         ),
         migrations.AlterField(
-            model_name='item',
-            name='eq_type',
-            field=models.CharField(default='w', max_length=1),
+            model_name="item",
+            name="eq_type",
+            field=models.CharField(default="w", max_length=1),
         ),
         migrations.AlterField(
-            model_name='item',
-            name='name',
-            field=models.CharField(default='magiczny miecz', max_length=64),
+            model_name="item",
+            name="name",
+            field=models.CharField(default="magiczny miecz", max_length=64),
         ),
         migrations.AlterField(
-            model_name='item',
-            name='sell_price',
+            model_name="item",
+            name="sell_price",
             field=models.IntegerField(default=15),
         ),
         migrations.AlterField(
-            model_name='item',
-            name='stat',
+            model_name="item",
+            name="stat",
             field=models.IntegerField(default=2),
         ),
     ]

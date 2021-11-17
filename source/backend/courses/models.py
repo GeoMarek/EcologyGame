@@ -9,17 +9,20 @@ User = settings.AUTH_USER_MODEL
 
 class Item(models.Model):
     class ItemType(models.TextChoices):
-        ARMOR = 'a', _('Armor')
-        WEAPON = 'w', _('Weapon')
+        ARMOR = "a", _("Armor")
+        WEAPON = "w", _("Weapon")
 
-    name = models.CharField(max_length=64, default='magiczny miecz')
+    name = models.CharField(max_length=64, default="magiczny miecz")
     sell_price = models.IntegerField(default=15)
     buy_price = models.IntegerField(default=30)
-    eq_type = models.CharField(max_length=1, choices=ItemType.choices, default=ItemType.WEAPON)
+    eq_type = models.CharField(
+        max_length=1, choices=ItemType.choices, default=ItemType.WEAPON
+    )
     stat = models.IntegerField(default=2)
 
     def _str_(self):
         return self.name
+
 
 class Course(models.Model):
     admins = models.ManyToManyField(User, related_name="admins")
@@ -33,6 +36,7 @@ class Course(models.Model):
     def _str_(self):
         return self.title
 
+
 class Character(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
@@ -44,10 +48,13 @@ class Character(models.Model):
     gold = models.IntegerField(default=0)
     level = models.IntegerField(default=1)
     isAlive = models.BooleanField(default=True)
-    weapon = models.ForeignKey(Item, blank=True, on_delete=models.SET_NULL, related_name="weapon", null=True)
-    armor = models.ForeignKey(Item, blank=True, on_delete=models.SET_NULL, related_name="armor", null=True)
+    weapon = models.ForeignKey(
+        Item, blank=True, on_delete=models.SET_NULL, related_name="weapon", null=True
+    )
+    armor = models.ForeignKey(
+        Item, blank=True, on_delete=models.SET_NULL, related_name="armor", null=True
+    )
     equipment = models.ManyToManyField(Item, blank=True, related_name="equipment")
 
     def _str_(self):
         return self.name
-

@@ -13,7 +13,8 @@ class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
         fields = "__all__"
-        
+
+
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item

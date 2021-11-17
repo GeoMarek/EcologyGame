@@ -7,21 +7,25 @@ from .models import Character, Course, Item
 from .serializers import CharacterSerializer, CourseSerializer, ItemSerializer
 
 
-#lista wszystkich kursów oraz możliwość tworzenia nowych
+# lista wszystkich kursów oraz możliwość tworzenia nowych
 class CourseView(generics.ListCreateAPIView):
-    permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
-    
-#lista wszystkich przedmiotów oraz możliwość tworzenia nowych
+
+# lista wszystkich przedmiotów oraz możliwość tworzenia nowych
 class ItemsView(generics.ListCreateAPIView):
-    permission_classes = (permissions.AllowAny, )#dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 
 
-#lista postaci z danego kursu
+# lista postaci z danego kursu
 class CharactersView(APIView):
     permission_classes = (
         permissions.AllowAny,
@@ -40,7 +44,7 @@ class CharactersView(APIView):
             )
 
 
-#get nasza postać
+# get nasza postać
 class CharacterView(APIView):
     permission_classes = (
         permissions.AllowAny,
@@ -61,28 +65,28 @@ class CharacterView(APIView):
             )
 
 
-#Klasa odpowiedzialna za sklep
+# Klasa odpowiedzialna za sklep
 class CourseItems(APIView):
     permission_classes = (
         permissions.AllowAny,
     )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
 
-    #get all course itmes
+    # get all course itmes
     def get(self, request, course_id):
         try:
             if course_id != None:
                 course = Course.objects.get(id=course_id)
                 course = CourseSerializer(course)
-                data = course.data['store_items']
+                data = course.data["store_items"]
                 return Response({"items": data})
         except:
             return Response(
                 {"error": "Something went wrong when geting course's items"}
             )
 
-    #delete item from shop
+    # delete item from shop
     def delete(self, request, course_id):
-        try:            
+        try:
             item_id = request.query_params["id"]
             if item_id != None and course_id != None:
                 course = Course.objects.get(id=course_id)
@@ -90,9 +94,11 @@ class CourseItems(APIView):
                 course.store_items.remove(item)
                 return Response({"info": "usunieto poprawnie przedmiot ze sklepu"})
         except:
-            return Response({"error": "cos poszlo nie tak podczas usuwania przedmiotu ze sklepu"})
+            return Response(
+                {"error": "cos poszlo nie tak podczas usuwania przedmiotu ze sklepu"}
+            )
 
-    #dodaj item do sklepu
+    # dodaj item do sklepu
     def put(self, request, course_id, format=None):
         try:
             if course_id != None:
@@ -103,12 +109,14 @@ class CourseItems(APIView):
                 item = Item.objects.get(id=item_id)
                 course.store_items.add(item)
 
-                return Response({"info": "wszystko okej przy dodaniu przedmiotu do sklepu"})
+                return Response(
+                    {"info": "wszystko okej przy dodaniu przedmiotu do sklepu"}
+                )
         except:
             return Response({"error": "Something went wrong when adding item to shop"})
 
 
-#get konkretny kurs oraz usuń go
+# get konkretny kurs oraz usuń go
 class GetCourseView(APIView):
     def get(self, request, *args, **kwargs):
         try:
@@ -131,7 +139,7 @@ class GetCourseView(APIView):
             return Response({"error": "cos poszlo nie tak podczas usuwania kursu"})
 
 
-#dołączanie do kursu
+# dołączanie do kursu
 class JoinCourseView(APIView):
     def put(self, request, format=None):
         try:
@@ -152,7 +160,7 @@ class JoinCourseView(APIView):
             return Response({"error": "Something went wrong when adding participant"})
 
 
-#get item
+# get item
 class GetItemView(APIView):
     def get(self, request):
         try:
@@ -163,9 +171,9 @@ class GetItemView(APIView):
                 return Response({"item": serializer.data})
         except:
             return Response({"error": "Something went wrong when geting item by id"})
-            
 
-#zarzadzanie eq postaci
+
+# zarzadzanie eq postaci
 class CharcterEqView(APIView):
     def put(self, request, course_id, format=None):
         try:
@@ -179,38 +187,46 @@ class CharcterEqView(APIView):
             item_id = data["item_id"]
             item = Item.objects.get(id=item_id)
             s_item = ItemSerializer(item)
-            if fun_type == 'buy_eq':
-                if s_character.data['weapon'] == item_id or s_character.data['armor'] == item_id or item_id in s_character.data['equipment'] :
+            if fun_type == "buy_eq":
+                if (
+                    s_character.data["weapon"] == item_id
+                    or s_character.data["armor"] == item_id
+                    or item_id in s_character.data["equipment"]
+                ):
                     return Response({"error": "Już posiadasz ten przedmiot!"})
-                if s_character.data['gold'] < s_item.data['buy_price'] :
+                if s_character.data["gold"] < s_item.data["buy_price"]:
                     return Response({"error": "Nie masz wystarczająco złota!"})
-                character.gold = s_character.data['gold'] - s_item.data['buy_price']
+                character.gold = s_character.data["gold"] - s_item.data["buy_price"]
                 character.equipment.add(item)
                 character.save()
-            elif fun_type == 'sell_eq':
-                if item_id not in s_character.data['equipment'] :
-                    return Response({"error": "Nie posiadasz przedmiotu który chcesz sprzedać!"})
-                character.gold = s_character.data['gold'] + s_item.data['sell_price']
+            elif fun_type == "sell_eq":
+                if item_id not in s_character.data["equipment"]:
+                    return Response(
+                        {"error": "Nie posiadasz przedmiotu który chcesz sprzedać!"}
+                    )
+                character.gold = s_character.data["gold"] + s_item.data["sell_price"]
                 character.equipment.remove(item)
                 character.save()
-            elif fun_type == 'put_on':
-                if item_id not in s_character.data['equipment'] :
-                    return Response({"error": "Nie posiadasz przedmiotu który chcesz ubrać!"})
+            elif fun_type == "put_on":
+                if item_id not in s_character.data["equipment"]:
+                    return Response(
+                        {"error": "Nie posiadasz przedmiotu który chcesz ubrać!"}
+                    )
                 character.equipment.remove(item)
-                if s_item.data['eq_type'] == 'w': 
-                    if s_character.data['weapon'] :
+                if s_item.data["eq_type"] == "w":
+                    if s_character.data["weapon"]:
                         character.equipment.add(character.weapon)
                     character.weapon = item
-                elif s_item.data['eq_type'] == 'a' :
-                    if s_character.data['armor'] :
+                elif s_item.data["eq_type"] == "a":
+                    if s_character.data["armor"]:
                         character.equipment.add(character.armor)
                     character.armor = item
                     print(item)
                 character.save()
-            elif fun_type == 'put_off':
-                if s_item.data['eq_type'] == 'w' :
+            elif fun_type == "put_off":
+                if s_item.data["eq_type"] == "w":
                     character.weapon = None
-                elif s_item.data['eq_type'] == 'a' :
+                elif s_item.data["eq_type"] == "a":
                     character.armor = None
                 character.equipment.add(item)
                 character.save()

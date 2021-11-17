@@ -3,13 +3,13 @@ from django.urls import path
 from .views import (
     CharactersView,
     CharacterView,
+    CharcterEqView,
+    CourseItems,
     CourseView,
     GetCourseView,
-    JoinCourseView,
-    ItemsView,
-    CourseItems,
-    CharcterEqView,
     GetItemView,
+    ItemsView,
+    JoinCourseView,
 )
 
 urlpatterns = [
