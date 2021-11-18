@@ -16,6 +16,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
     const guestLinks = () => (
         <Fragment>
             <NavbarLink destination="/" text="Strona główna" />
+            <NavbarLink destination="/courses" text="Kursy" />
             <NavbarLink destination="/login" text="Logowanie" />
             <NavbarLink destination="/signup" text="Rejestracja" />
         </Fragment>
@@ -24,6 +25,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
     const authLinks = () => (
         <Fragment>
             <NavbarLink destination="/" text="Strona główna" />
+            <NavbarLink destination="/courses" text="Kursy" />
             <NavbarLink destination="/profile" text="Profil" />
             <a className="navbar-link" href="#!" onClick={logout_user}>
                 Wyloguj

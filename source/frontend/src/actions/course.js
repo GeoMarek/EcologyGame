@@ -16,6 +16,32 @@ export const get_all_courses = () => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
+            //Authorization: `JWT ${localStorage.getItem('access')}`,
+            //Accept: 'application/json',
+        },
+    }
+
+    try {
+        const res = await axios.get(
+            `${process.env.REACT_APP_API_URL}/course/course/`,
+            config
+        )
+
+        dispatch({
+            type: GET_ALL_COURSES_SUCCESS,
+            payload: res.data,
+        })
+    } catch (err) {
+        dispatch({
+            type: GET_ALL_COURSES_FAIL,
+        })
+    }
+}
+
+export const get_the_courses = (a1) => async (dispatch) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
             Authorization: `JWT ${localStorage.getItem('access')}`,
             Accept: 'application/json',
         },
@@ -23,7 +49,7 @@ export const get_all_courses = () => async (dispatch) => {
 
     try {
         const res = await axios.get(
-            `${process.env.REACT_APP_API_URL}/course/course/`,
+            `${process.env.REACT_APP_API_URL}/course/courses/?a1=${a1}`,
             config
         )
 

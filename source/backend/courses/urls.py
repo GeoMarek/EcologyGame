@@ -14,10 +14,12 @@ from .views import (
     JoinCourseView,
     QuestionView,
     QuizView,
+    GetTheCoursesView,
 )
 
 urlpatterns = [
     path("course/", CourseView.as_view()),
+    path("courses/", GetTheCoursesView.as_view()),
     path("course_by_id/", GetCourseView.as_view()),
     path("join_course/", JoinCourseView.as_view()),
     path("<int:course_id>/characters/", CharactersView.as_view()),

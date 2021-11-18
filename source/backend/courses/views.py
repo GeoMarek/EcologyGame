@@ -160,6 +160,26 @@ class CourseItems(APIView):
             return Response({"error": "Something went wrong when adding item to shop"})
 
 
+# get kursy usera lub admina
+class GetTheCoursesView(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            user = self.request.user
+            a1 = request.query_params["a1"]
+            if a1 == 'user':
+                course = Course.objects.filter(participants__id = user.id)
+                data = [CourseSerializer(model).data for model in course]
+                return Response(data)
+            elif a1 == 'admin':
+                course = Course.objects.filter(admins__id = user.id)
+                data = [CourseSerializer(model).data for model in course]
+                return Response(data)
+            else:
+                return Response({"error": "Wrong a1 for geting courses"})
+        except:
+            return Response({"error": "Something went wrong when geting courses by a1"})
+
+
 # get konkretny kurs oraz usuń go
 class GetCourseView(APIView):
     def get(self, request, *args, **kwargs):
