@@ -58,3 +58,61 @@ class Character(models.Model):
 
     def _str_(self):
         return self.name
+
+
+class Quiz(models.Model):
+    class SelectType(models.TextChoices):
+        BEST = "b", _("Best")
+        LAST = "l", _("Last")
+
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
+    name = models.CharField(max_length=64, default='nazwa quizu')
+    description = models.TextField(default='opis quizu')
+    creation_time = models.DateField(auto_now_add=True)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    duration_time = models.DateTimeField()
+    number_of_questions = models.IntegerField(default=0)
+    max_points = models.IntegerField(default=0)
+    reward_exp = models.IntegerField(default=4)
+    reward_gold = models.IntegerField(default=3)
+    number_of_approaches = models.IntegerField(default=1)
+    selecting_result = models.CharField(
+        max_length=1, choices=SelectType.choices, default=SelectType.BEST
+    )
+
+
+#Event
+
+
+class Question(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True)
+    #event
+    name = models.CharField(max_length=64, default='nazwa pytania')
+    content = models.TextField(default='treść zadania')
+    a1 = models.TextField(default='odp 1')
+    a2 = models.TextField(default='odp 2')
+    a3 = models.TextField(default='odp 3')
+    a4 = models.TextField(default='odp 4')
+    a5 = models.TextField(default='odp 5')
+    a6 = models.TextField(default='odp 6')
+    correct_answer = models.CharField(max_length=1)
+    points = models.IntegerField()
+    dmg = models.IntegerField(default=1)
+    
+    
+class Approach(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True)
+    #event
+    start_time = models.DateField(auto_now_add=True)
+    end_time = models.DateTimeField()
+    duration_time = models.DateTimeField()
+    obtained_points = models.IntegerField(default=0)
+    result_in_percent = models.DecimalField(max_digits=4, decimal_places=2)
+
+
+class Answer(models.Model):
+    approach = models.ForeignKey(Approach, on_delete=models.CASCADE, blank=True)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, blank=True)
+    user_answer = models.CharField(max_length=1)
