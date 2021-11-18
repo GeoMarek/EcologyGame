@@ -11,7 +11,6 @@ const Course = ({
     match,
     user_global,
 }) => {
-
     useEffect(() => {
         get_course_by_id(match.params.id)
     }, [])
@@ -19,10 +18,12 @@ const Course = ({
     if (!account.isAuthenticated) {
         return <Redirect to="/" />
     }
-    const thisCourse = courses_global.filter(x => x.id == parseInt(match.params.id))[0];
-    const ifAdmin = thisCourse.admins.indexOf(user_global.id) != -1;
-    if (!(ifAdmin || thisCourse.participants.indexOf(user_global.id) != -1)){
-            return <Redirect to="/courses" />
+    const thisCourse = courses_global.filter(
+        (x) => x.id == parseInt(match.params.id)
+    )[0]
+    const ifAdmin = thisCourse.admins.indexOf(user_global.id) != -1
+    if (!(ifAdmin || thisCourse.participants.indexOf(user_global.id) != -1)) {
+        return <Redirect to="/courses" />
     }
 
     const student_container = () => (
@@ -51,13 +52,17 @@ const Course = ({
     return (
         <div className="container">
             <div class="jumbotron mt-5">
-            {ifAdmin?<Link
-                class="btn btn-primary btn-lg"
-                to={'/course/' + match.params.id + '/admin'}
-                role="button"
-            >
-                Zarządzaj Kursem
-            </Link>:<></>}
+                {ifAdmin ? (
+                    <Link
+                        class="btn btn-primary btn-lg"
+                        to={'/course/' + match.params.id + '/admin'}
+                        role="button"
+                    >
+                        Zarządzaj Kursem
+                    </Link>
+                ) : (
+                    <></>
+                )}
                 {user_global ? (
                     course_global ? (
                         curse_container()

@@ -13,7 +13,6 @@ const CourseAdmin = ({
     match,
     user_global,
 }) => {
-
     const [redirectData, setRedirectData] = useState({
         redirect: 0,
     })
@@ -26,9 +25,11 @@ const CourseAdmin = ({
     if (!account.isAuthenticated) {
         return <Redirect to="/" />
     }
-    const thisCourse = courses_global.filter(x => x.id == parseInt(match.params.id))[0];
-    if (!(thisCourse.admins.indexOf(user_global.id) != -1)){
-            return <Redirect to="/courses" />
+    const thisCourse = courses_global.filter(
+        (x) => x.id == parseInt(match.params.id)
+    )[0]
+    if (!(thisCourse.admins.indexOf(user_global.id) != -1)) {
+        return <Redirect to="/courses" />
     }
     const deleteCourse = (e) => {
         delete_course_by_id(course_global.id).then((value) =>
@@ -82,7 +83,7 @@ const CourseAdmin = ({
         <div className="container">
             {redirectData.redirect != 0 ? renderRedirect() : <div />}
             <div class="jumbotron mt-5">
-            <AdminNavbar id={match.params.id}/>
+                <AdminNavbar id={match.params.id} />
                 {user_global ? (
                     course_global ? (
                         curse_container()

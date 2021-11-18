@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import './Navbar.css'
 import NavbarLink from './NavbarLink'
 
-const AdminNavbar = ({id}) => {
-
+const AdminNavbar = ({ id }) => {
     const Links = () => (
         <Fragment>
-            <NavbarLink destination={"/course/"+ id} text="Strona kursu" />
-            <NavbarLink destination={"/course/"+ id + "/admin"} text="Dashboard" />
+            <NavbarLink destination={'/course/' + id} text="Strona kursu" />
+            <NavbarLink
+                destination={'/course/' + id + '/admin'}
+                text="Dashboard"
+            />
             <NavbarLink destination="/" text="Ranking" />
             <NavbarLink destination="/" text="Dodaj Questa" />
             <NavbarLink destination="/" text="Sprawdź Questa" />
@@ -21,14 +23,11 @@ const AdminNavbar = ({id}) => {
 
     return (
         <Fragment>
-            <nav className="temp-navbar-body">
-                {Links()}
-            </nav>
+            <nav className="temp-navbar-body">{Links()}</nav>
         </Fragment>
     )
 }
 
-const mapStateToProps = (state) => ({
-})
+const mapStateToProps = (state) => ({})
 
-export default connect(mapStateToProps, { })(AdminNavbar)
+export default connect(mapStateToProps, {})(AdminNavbar)

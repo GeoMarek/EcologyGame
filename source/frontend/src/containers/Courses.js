@@ -4,7 +4,12 @@ import { connect } from 'react-redux'
 import { get_all_courses, get_the_courses } from '../actions/course'
 import Course from '../components/Courses/Course'
 
-const Courses = ({ get_all_courses, get_the_courses, courses_global, account }) => {
+const Courses = ({
+    get_all_courses,
+    get_the_courses,
+    courses_global,
+    account,
+}) => {
     const [coursesData, setCoursesData] = useState({
         courses: [],
     })
@@ -56,22 +61,28 @@ const Courses = ({ get_all_courses, get_the_courses, courses_global, account }) 
                 >
                     Utwórz Kurs
                 </Link>
-                <br/><br/>
+                <br />
+                <br />
                 <button class="btn btn-primary btn-lg" onClick={f_all}>
                     All
                 </button>
-                {account.isAuthenticated ?
-                <Fragment>
-                <button class="btn btn-primary btn-lg" onClick={f_user}>
-                    Należę
-                </button>
-                <button class="btn btn-primary btn-lg" onClick={f_admin}>
-                    Jestem Adminem
-                </button>
-                </Fragment>
-                :<></> }
-                <br/>
-                <br/>
+                {account.isAuthenticated ? (
+                    <Fragment>
+                        <button class="btn btn-primary btn-lg" onClick={f_user}>
+                            Należę
+                        </button>
+                        <button
+                            class="btn btn-primary btn-lg"
+                            onClick={f_admin}
+                        >
+                            Jestem Adminem
+                        </button>
+                    </Fragment>
+                ) : (
+                    <></>
+                )}
+                <br />
+                <br />
                 {courses_global.map((course, index) => (
                     <Course key={index} course={course} />
                 ))}
@@ -88,4 +99,6 @@ const mapStateToProps = (state) => ({
     courses_global: state.course.kursy,
 })
 
-export default connect(mapStateToProps, { get_all_courses, get_the_courses })(Courses)
+export default connect(mapStateToProps, { get_all_courses, get_the_courses })(
+    Courses
+)

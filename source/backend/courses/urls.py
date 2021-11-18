@@ -10,11 +10,11 @@ from .views import (
     CourseView,
     GetCourseView,
     GetItemView,
+    GetTheCoursesView,
     ItemsView,
     JoinCourseView,
     QuestionView,
     QuizView,
-    GetTheCoursesView,
 )
 
 urlpatterns = [

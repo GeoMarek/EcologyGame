@@ -1,4 +1,5 @@
-.temp-navbar-body {/*tu trzeba zrobić styl do adminowego navbaru*/
+.temp-navbar-body {
+    /*tu trzeba zrobić styl do adminowego navbaru*/
     display: flex;
     height: auto;
     width: 100%;
@@ -21,7 +22,7 @@
 }
 
 .navbar-link {
-    font-size: 13px;/*zmienione z 20 bo tak mi sie lepiej pracuje w adminie*/
+    font-size: 13px; /*zmienione z 20 bo tak mi sie lepiej pracuje w adminie*/
     color: white;
     box-shadow: inset 0 -1px 0 hsla(0, 0%, 100%, 0.4);
     margin: 10px;

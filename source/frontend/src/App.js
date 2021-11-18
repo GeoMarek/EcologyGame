@@ -56,7 +56,11 @@ const App = () => (
                         component={CreateCourse}
                     />
                     <Route exact path="/course/:id" component={Course} />
-                    <Route exact path="/course/:id/admin" component={CourseAdmin} />
+                    <Route
+                        exact
+                        path="/course/:id/admin"
+                        component={CourseAdmin}
+                    />
                 </Switch>
             </Layout>
         </Router>

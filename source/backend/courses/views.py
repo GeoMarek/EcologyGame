@@ -166,12 +166,12 @@ class GetTheCoursesView(APIView):
         try:
             user = self.request.user
             a1 = request.query_params["a1"]
-            if a1 == 'user':
-                course = Course.objects.filter(participants__id = user.id)
+            if a1 == "user":
+                course = Course.objects.filter(participants__id=user.id)
                 data = [CourseSerializer(model).data for model in course]
                 return Response(data)
-            elif a1 == 'admin':
-                course = Course.objects.filter(admins__id = user.id)
+            elif a1 == "admin":
+                course = Course.objects.filter(admins__id=user.id)
                 data = [CourseSerializer(model).data for model in course]
                 return Response(data)
             else:
