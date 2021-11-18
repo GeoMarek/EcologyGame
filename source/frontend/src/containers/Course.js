@@ -1,96 +1,31 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { get_course_by_id, delete_course_by_id } from '../actions/course'
+import { get_course_by_id } from '../actions/course'
 
 const Course = ({
     get_course_by_id,
-    delete_course_by_id,
-    isAuthenticated,
+    account,
     course_global,
+    courses_global,
     match,
     user_global,
 }) => {
-    const [courseData, setCourseData] = useState({
-        course: [],
-    })
-
-    const [redirectData, setRedirectData] = useState({
-        redirect: 0,
-    })
-
-    const [isAdminData, setIsAdminData] = useState({
-        isAdmin: 0,
-    })
-
-    const renderRedirect = () => <Redirect to={redirectData.redirect} />
     useEffect(() => {
         get_course_by_id(match.params.id)
     }, [])
 
-    if (!isAuthenticated) {
+    if (!account.isAuthenticated) {
         return <Redirect to="/" />
     }
-
-    const deleteCourse = (e) => {
-        delete_course_by_id(course_global.id).then((value) =>
-            setRedirectData({ ...redirectData, redirect: '/' })
-        )
+    const thisCourse = courses_global.filter(
+        (x) => x.id == parseInt(match.params.id)
+    )[0]
+    const ifAdmin = thisCourse.admins.indexOf(user_global.id) != -1
+    if (!(ifAdmin || thisCourse.participants.indexOf(user_global.id) != -1)) {
+        return <Redirect to="/courses" />
     }
 
-    const checkIfAdmin = () => {
-        //if (user_global.id instanceof course_global.admins){
-        if (course_global.admins.indexOf(user_global.id) != -1) {
-            if (isAdminData.isAdmin == 1) return
-            setIsAdminData({
-                isAdmin: 1,
-            })
-        } else {
-            if (isAdminData.isAdmin == 0) return
-            setIsAdminData({
-                isAdmin: 0,
-            })
-        }
-    }
-
-    const edit_course = () => {
-        checkIfAdmin()
-        if (isAdminData.isAdmin == 0) {
-            return student_container()
-        }
-        return teacher_container()
-    }
-
-    const teacher_container = () => (
-        <div>
-            <h4>kod dołączenia: {course_global.join_code}</h4>
-            <h5>Admins:</h5>
-            {course_global.admins.length == 0 ? (
-                <p>brak czlownkow w kursie</p>
-            ) : (
-                <></>
-            )}
-            {course_global.admins.map((admin, index) => (
-                <p key={index}>
-                    index: {index}, admin: {admin}
-                </p>
-            ))}
-            <h5>Członkowie:</h5>
-            {course_global.participants.length == 0 ? (
-                <p>brak czlownkow w kursie</p>
-            ) : (
-                <></>
-            )}
-            {course_global.participants.map((user, index) => (
-                <p key={index}>
-                    index: {index}, user: {user}
-                </p>
-            ))}
-            <button className="btn btn-primary mt-3" onClick={deleteCourse}>
-                Usuń kurs
-            </button>
-        </div>
-    )
     const student_container = () => (
         <div>
             <Link
@@ -110,14 +45,24 @@ const Course = ({
             <h3>
                 {course_global.is_public ? 'jest publiczny' : 'jest prywatny'}
             </h3>
-            {edit_course()}
+            {ifAdmin ? <></> : student_container()}
         </div>
     )
 
     return (
         <div className="container">
-            {redirectData.redirect != 0 ? renderRedirect() : <div />}
             <div class="jumbotron mt-5">
+                {ifAdmin ? (
+                    <Link
+                        class="btn btn-primary btn-lg"
+                        to={'/course/' + match.params.id + '/admin'}
+                        role="button"
+                    >
+                        Zarządzaj Kursem
+                    </Link>
+                ) : (
+                    <></>
+                )}
                 {user_global ? (
                     course_global ? (
                         curse_container()
@@ -133,12 +78,12 @@ const Course = ({
 }
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
+    account: state.auth,
     course_global: state.course.course.course,
+    courses_global: state.course.kursy,
     user_global: state.auth.user,
 })
 
 export default connect(mapStateToProps, {
     get_course_by_id,
-    delete_course_by_id,
 })(Course)

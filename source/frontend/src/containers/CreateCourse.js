@@ -1,9 +1,14 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { create_course } from '../actions/course'
+import { create_course, get_all_courses } from '../actions/course'
 
-const CreateCourse = ({ create_course, isAuthenticated, user_global }) => {
+const CreateCourse = ({
+    create_course,
+    get_all_courses,
+    isAuthenticated,
+    user_global,
+}) => {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -33,7 +38,10 @@ const CreateCourse = ({ create_course, isAuthenticated, user_global }) => {
     const onSubmit = (e) => {
         e.preventDefault()
         create_course(title, description, is_public, user_global.id).then(
-            (value) => setRedirectData({ ...redirectData, redirect: value.id })
+            (value) =>
+                get_all_courses().then(() =>
+                    setRedirectData({ ...redirectData, redirect: value.id })
+                )
         )
     }
 
@@ -108,4 +116,6 @@ const mapStateToProps = (state) => ({
     user_global: state.auth.user,
 })
 
-export default connect(mapStateToProps, { create_course })(CreateCourse)
+export default connect(mapStateToProps, { create_course, get_all_courses })(
+    CreateCourse
+)

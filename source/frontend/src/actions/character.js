@@ -18,7 +18,7 @@ export const load_character = (course_id) => async (dispatch) => {
 
         try {
             const res = await axios.get(
-                `${process.env.REACT_APP_API_URL}/course/course/${course_id}/character/`,
+                `${process.env.REACT_APP_API_URL}/course/${course_id}/character/`,
                 config
             )
 

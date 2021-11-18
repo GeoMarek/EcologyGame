@@ -106,7 +106,7 @@ const Character = ({
 
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
-    character_global: state.character.character[0],
+    character_global: state.character.characters[0],
 })
 
 export default connect(mapStateToProps, { load_character })(Character)

@@ -11,6 +11,7 @@ import ResetPassword from './containers/ResetPassword'
 import ResetPasswordConfirm from './containers/ResetPasswordConfirm'
 import Courses from './containers/Courses'
 import Course from './containers/Course'
+import CourseAdmin from './containers/CourseAdmin'
 import CreateCourse from './containers/CreateCourse'
 
 import { Provider } from 'react-redux'
@@ -55,6 +56,11 @@ const App = () => (
                         component={CreateCourse}
                     />
                     <Route exact path="/course/:id" component={Course} />
+                    <Route
+                        exact
+                        path="/course/:id/admin"
+                        component={CourseAdmin}
+                    />
                 </Switch>
             </Layout>
         </Router>

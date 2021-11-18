@@ -6,7 +6,7 @@ import {
 } from '../actions/types'
 
 const initialState = {
-    character: [],
+    characters: [[]],
 }
 
 export default function (state = initialState, action) {
@@ -17,12 +17,12 @@ export default function (state = initialState, action) {
         case UPDATE_CHARACTER_SUCCESS:
             return {
                 ...state,
-                character: payload.characters,
+                characters: payload.characters,
             }
         case LOAD_CHARACTER_FAIL:
             return {
                 ...state,
-                character: [],
+                characters: [[]],
             }
         case UPDATE_CHARACTER_FAIL:
             return {
