@@ -3,8 +3,16 @@ from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Character, Course, Item
-from .serializers import CharacterSerializer, CourseSerializer, ItemSerializer
+from .models import Answer, Approach, Character, Course, Item, Question, Quiz
+from .serializers import (
+    AnswerSerializer,
+    ApproachSerializer,
+    CharacterSerializer,
+    CourseSerializer,
+    ItemSerializer,
+    QuestionSerializer,
+    QuizSerializer,
+)
 
 
 # lista wszystkich kursów oraz możliwość tworzenia nowych
@@ -23,6 +31,42 @@ class ItemsView(generics.ListCreateAPIView):
     )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+
+
+# lista wszystkich Quiz oraz możliwość tworzenia nowych
+class QuizView(generics.ListCreateAPIView):
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    queryset = Quiz.objects.all()
+    serializer_class = QuizSerializer
+
+
+# lista wszystkich Question oraz możliwość tworzenia nowych
+class QuestionView(generics.ListCreateAPIView):
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+
+# lista wszystkich Approach oraz możliwość tworzenia nowych
+class ApproachView(generics.ListCreateAPIView):
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    queryset = Approach.objects.all()
+    serializer_class = ApproachSerializer
+
+
+# lista wszystkich Answer oraz możliwość tworzenia nowych
+class AnswerView(generics.ListCreateAPIView):
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    queryset = Answer.objects.all()
+    serializer_class = AnswerSerializer
 
 
 # lista postaci z danego kursu

@@ -66,8 +66,8 @@ class Quiz(models.Model):
         LAST = "l", _("Last")
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
-    name = models.CharField(max_length=64, default='nazwa quizu')
-    description = models.TextField(default='opis quizu')
+    name = models.CharField(max_length=64, default="nazwa quizu")
+    description = models.TextField(default="opis quizu")
     creation_time = models.DateField(auto_now_add=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
@@ -82,29 +82,29 @@ class Quiz(models.Model):
     )
 
 
-#Event
+# Event
 
 
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True)
-    #event
-    name = models.CharField(max_length=64, default='nazwa pytania')
-    content = models.TextField(default='treść zadania')
-    a1 = models.TextField(default='odp 1')
-    a2 = models.TextField(default='odp 2')
-    a3 = models.TextField(default='odp 3')
-    a4 = models.TextField(default='odp 4')
-    a5 = models.TextField(default='odp 5')
-    a6 = models.TextField(default='odp 6')
+    # event
+    name = models.CharField(max_length=64, default="nazwa pytania")
+    content = models.TextField(default="treść zadania")
+    a1 = models.TextField(default="odp 1")
+    a2 = models.TextField(default="odp 2")
+    a3 = models.TextField(default="odp 3")
+    a4 = models.TextField(default="odp 4")
+    a5 = models.TextField(default="odp 5")
+    a6 = models.TextField(default="odp 6")
     correct_answer = models.CharField(max_length=1)
     points = models.IntegerField()
     dmg = models.IntegerField(default=1)
-    
-    
+
+
 class Approach(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True)
-    #event
+    # event
     start_time = models.DateField(auto_now_add=True)
     end_time = models.DateTimeField()
     duration_time = models.DateTimeField()
