@@ -1,7 +1,6 @@
 import './Course.css'
 import { join_course } from '../../actions/course'
 import { connect } from 'react-redux'
-import CommonLink from '../Common/CommonLink'
 import CommonButton from '../Common/CommonButton'
 import CourseLink from './CourseLink'
 

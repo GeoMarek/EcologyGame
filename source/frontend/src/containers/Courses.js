@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_all_courses, get_the_courses } from '../actions/course'
 import Course from '../components/Courses/Course'
@@ -11,7 +11,7 @@ const Courses = ({
     get_the_courses,
     courses_global,
     account,
-}) => {
+}) => { // eslint-disable-next-line
     const [coursesData, setCoursesData] = useState({
         courses: [],
     })
@@ -22,7 +22,8 @@ const Courses = ({
                 courses: courses_global,
             })
         )
-    }, [])
+    }, // eslint-disable-next-line
+    [])
 
     if (0 && !account.isAuthenticated) {
         return <Redirect to="/" />

@@ -21,6 +21,7 @@ const Profile = ({
         edit: false,
     })
 
+    // eslint-disable-next-line
     const { first_name, last_name, email } = formData
 
     useEffect(() => {
@@ -34,7 +35,8 @@ const Profile = ({
         setEditData({
             edit: false,
         })
-    }, [])
+    }, // eslint-disable-next-line
+    [])
 
     if (!isAuthenticated) {
         return <Redirect to="/" />

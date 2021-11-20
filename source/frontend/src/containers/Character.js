@@ -27,6 +27,7 @@ const Character = ({
         edit: false,
     })
 
+    // eslint-disable-next-line
     const { first_name, last_name, email } = formData
 
     useEffect(() => {
@@ -34,15 +35,18 @@ const Character = ({
         setEditData({
             edit: false,
         })
-    }, [])
+    }, // eslint-disable-next-line 
+    [])
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
 
+    // eslint-disable-next-line
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value })
 
+    // eslint-disable-next-line
     const onSubmit = (e) => {
         e.preventDefault()
         turnOffEditProfileMode()

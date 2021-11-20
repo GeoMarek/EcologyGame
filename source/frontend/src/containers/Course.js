@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_course_by_id } from '../actions/course'
 import CommonLink from '../components/Common/CommonLink'
@@ -14,16 +14,17 @@ const Course = ({
 }) => {
     useEffect(() => {
         get_course_by_id(match.params.id)
-    }, [])
+    }, // eslint-disable-next-line
+    [])
 
     if (!account.isAuthenticated) {
         return <Redirect to="/" />
     }
     const thisCourse = courses_global.filter(
-        (x) => x.id == parseInt(match.params.id)
+        (x) => x.id === parseInt(match.params.id)
     )[0]
-    const ifAdmin = thisCourse.admins.indexOf(user_global.id) != -1
-    if (!(ifAdmin || thisCourse.participants.indexOf(user_global.id) != -1)) {
+    const ifAdmin = thisCourse.admins.indexOf(user_global.id) !== -1
+    if (!(ifAdmin || thisCourse.participants.indexOf(user_global.id) !== -1)) {
         return <Redirect to="/courses" />
     }
 

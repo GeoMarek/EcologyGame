@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_course_by_id, delete_course_by_id } from '../actions/course'
 import AdminNavbar from '../components/Navbar/AdminNavbar'
@@ -20,15 +20,16 @@ const CourseAdmin = ({
     const renderRedirect = () => <Redirect to={redirectData.redirect} />
     useEffect(() => {
         get_course_by_id(match.params.id)
-    }, [])
+    }, // eslint-disable-next-line
+    [])
 
     if (!account.isAuthenticated) {
         return <Redirect to="/" />
     }
     const thisCourse = courses_global.filter(
-        (x) => x.id == parseInt(match.params.id)
+        (x) => x.id === parseInt(match.params.id)
     )[0]
-    if (!(thisCourse.admins.indexOf(user_global.id) != -1)) {
+    if (!(thisCourse.admins.indexOf(user_global.id) !== -1)) {
         return <Redirect to="/courses" />
     }
     const deleteCourse = (e) => {
@@ -41,7 +42,7 @@ const CourseAdmin = ({
         <div>
             <h4>kod dołączenia: {course_global.join_code}</h4>
             <h5>Admins:</h5>
-            {course_global.admins.length == 0 ? (
+            {course_global.admins.length === 0 ? (
                 <p>brak czlownkow w kursie</p>
             ) : (
                 <></>
@@ -52,7 +53,7 @@ const CourseAdmin = ({
                 </p>
             ))}
             <h5>Członkowie:</h5>
-            {course_global.participants.length == 0 ? (
+            {course_global.participants.length === 0 ? (
                 <p>brak czlownkow w kursie</p>
             ) : (
                 <></>
@@ -81,7 +82,7 @@ const CourseAdmin = ({
 
     return (
         <div className="container">
-            {redirectData.redirect != 0 ? renderRedirect() : <div />}
+            {redirectData.redirect !== 0 ? renderRedirect() : <div />}
             <div class="jumbotron mt-5">
                 <AdminNavbar id={match.params.id} />
                 {user_global ? (
