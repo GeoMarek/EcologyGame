@@ -30,7 +30,8 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
     }
 
     return (
-        <div className="container mt-5">
+        <div className="home-container">
+            <div className="home-column">
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className="form-group">
                     <input
@@ -57,9 +58,11 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
                     />
                 </div>
                 <button className="common-button" type="submit">
-                    Reset Password
+                    Zatwierdź nowe hasło
                 </button>
             </form>
+            </div>
+            
         </div>
     )
 }
