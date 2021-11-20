@@ -1,0 +1,12 @@
+.character-name {
+    color: burlywood;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.character-image {
+    width: 40%;
+    height: 40%;
+    border-radius: 30%;
+    margin: 10px;
+}
