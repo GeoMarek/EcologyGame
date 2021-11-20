@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_course_by_id } from '../actions/course'
+import CommonLink from '../components/Common/CommonLink'
 
 const Course = ({
     get_course_by_id,
@@ -27,52 +28,33 @@ const Course = ({
     }
 
     const student_container = () => (
-        <div>
-            <Link
-                class="btn btn-primary btn-lg"
-                to={'/course/' + match.params.id + '/character'}
-                role="button"
-            >
-                Postać
-            </Link>
-        </div>
+        <CommonLink
+            destination={'/course/' + match.params.id + '/character'}
+            text="Zobacz swojego awatara"
+        />
+    )
+
+    const admin_container = () => (
+        <CommonLink
+            destination={'/course/' + match.params.id + '/admin'}
+            text="Przejdź do strony zarządzania kursem"
+        />
     )
 
     const curse_container = () => (
         <div>
-            <h1>kurs: {course_global.title}</h1>
-            <h2>opis: {course_global.description}</h2>
-            <h3>
-                {course_global.is_public ? 'jest publiczny' : 'jest prywatny'}
-            </h3>
-            {ifAdmin ? <></> : student_container()}
+            <h3 className="home-title">Witaj na stronie kursu: {course_global.title}</h3>
+            <p>{course_global.description} </p>
+            <p>
+                Pamiętaj, ten kurs jest {course_global.is_public ? 'publiczny' : 'prywatny'}
+            </p>
+            {ifAdmin ? admin_container() : student_container()}
         </div>
     )
 
     return (
-        <div className="container">
-            <div class="jumbotron mt-5">
-                {ifAdmin ? (
-                    <Link
-                        class="btn btn-primary btn-lg"
-                        to={'/course/' + match.params.id + '/admin'}
-                        role="button"
-                    >
-                        Zarządzaj Kursem
-                    </Link>
-                ) : (
-                    <></>
-                )}
-                {user_global ? (
-                    course_global ? (
-                        curse_container()
-                    ) : (
-                        <div />
-                    )
-                ) : (
-                    <></>
-                )}
-            </div>
+        <div className="home-container">
+            {(user_global && course_global) ? curse_container() : <div />}
         </div>
     )
 }
