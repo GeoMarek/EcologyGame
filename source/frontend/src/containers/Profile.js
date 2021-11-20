@@ -2,6 +2,9 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { load_profile, update_profile } from '../actions/profile'
+import './styles/Home.css'
+import ProfileInfo from '../components/Profile/ProfileInfo'
+import CommonButton from '../components/Common/CommonButton'
 
 const Profile = ({
     update_profile,
@@ -108,26 +111,14 @@ const Profile = ({
 
     const presentProfileMode = () => (
         <Fragment>
-            <button
-                className="btn btn-primary mt-3"
-                onClick={turnOnEditProfileMode}
-            >
-                Edit Profile
-            </button>
-            <h3>Imię</h3>
-            <p>{profile_global.first_name}</p>
-            <h3>Nazwisko</h3>
-            <p>{profile_global.last_name}</p>
-            <h3>E-mail</h3>
-            <p>{profile_global.email}</p>
+            <CommonButton text="Edycja profilu" on_click={turnOnEditProfileMode} />
+            <ProfileInfo profile_info={profile_global} />
         </Fragment>
     )
 
     return (
-        <div className="container">
-            <div class="jumbotron mt-5">
-                {editData.edit ? editProfileMode() : presentProfileMode()}
-            </div>
+        <div className="home-container">
+            {editData.edit ? editProfileMode() : presentProfileMode()}
         </div>
     )
 }
