@@ -22,3 +22,14 @@
     text-decoration: none;
     transform: rotate(0.5deg);
 }
+
+input[type='checkbox'] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+    transform: scale(1.4);
+}
+.course-checkbox {
+    color: aquamarine;
+    padding: 10px;
+}

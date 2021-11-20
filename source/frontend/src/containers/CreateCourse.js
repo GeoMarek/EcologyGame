@@ -46,49 +46,34 @@ const CreateCourse = ({
     }
 
     return (
-        <div className="container">
+        <div className="home-container">
             {redirectData.redirect !== 0 ? renderRedirect() : <div />}
-            <div class="jumbotron mt-5">
-                <Fragment>
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <div className="form-group">
-                            <label className="form-label" htmlFor="title">
-                                Tytuł kursu
-                            </label>
+            <div class="home-column">
+                <form onSubmit={(e) => onSubmit(e)}>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="title"
+                            placeholder="Wpisz nazwę kursu"
+                            onChange={(e) => onChange(e)}
+                            value={title}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="description"
+                            placeholder="Opisz tematykę kursu"
+                            onChange={(e) => onChange(e)}
+                            value={description}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label> 
+                        <span className="course-checkbox">Zaznacz, jeśli chcesz, by tworzony kurs był publiczny</span>                       
                             <input
-                                className="form-control"
-                                type="text"
-                                name="title"
-                                placeholder={`${title}`}
-                                onChange={(e) => onChange(e)}
-                                value={title}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label
-                                className="form-label mt-3"
-                                htmlFor="description"
-                            >
-                                Opis kursu
-                            </label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                name="description"
-                                placeholder={`${description}`}
-                                onChange={(e) => onChange(e)}
-                                value={description}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label
-                                className="form-label mt-3"
-                                htmlFor="is_public"
-                            >
-                                Kurs publiczny
-                            </label>
-                            <input
-                                className="form-control"
                                 type="checkbox"
                                 name="is_public"
                                 placeholder={`${is_public}`}
@@ -99,13 +84,13 @@ const CreateCourse = ({
                                     })
                                 }
                                 value={formData.is_public}
-                            />
-                        </div>
-                        <button className="btn btn-primary mt-3" type="submit">
-                            Utwórz kurs
-                        </button>
-                    </form>
-                </Fragment>
+                            /> 
+                        </label>
+                    </div>
+                    <button className="common-button" type="submit">
+                        Utwórz kurs
+                    </button>
+                </form>
             </div>
         </div>
     )
