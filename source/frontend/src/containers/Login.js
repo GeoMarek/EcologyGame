@@ -8,7 +8,7 @@ import OptionalLoginLinks from '../components/OptionalLinks/OptionalLoginLinks'
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         email: '',
-        password: 'slonko10',
+        password: 'marekmarek', // default password value
     })
 
     const { email, password } = formData
@@ -54,8 +54,8 @@ const Login = ({ login, isAuthenticated }) => {
                             required
                         />
                     </div>
-                    <button className="btn btn-primary" type="submit">
-                        Login
+                    <button className="common-button" type="submit">
+                        Zaloguj się
                     </button>
                 </form>
             </div>

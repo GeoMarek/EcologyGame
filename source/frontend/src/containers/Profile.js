@@ -68,11 +68,11 @@ const Profile = ({
 
     const editProfileMode = () => (
         <Fragment>
+            
+            
             <form onSubmit={(e) => onSubmit(e)}>
+            <div className="home-column"> 
                 <div className="form-group">
-                    <label className="form-label" htmlFor="first_name">
-                        First Name
-                    </label>
                     <input
                         className="form-control"
                         type="text"
@@ -83,9 +83,6 @@ const Profile = ({
                     />
                 </div>
                 <div className="form-group">
-                    <label className="form-label mt-3" htmlFor="last_name">
-                        Last Name
-                    </label>
                     <input
                         className="form-control"
                         type="text"
@@ -95,16 +92,15 @@ const Profile = ({
                         value={last_name}
                     />
                 </div>
-                <button className="btn btn-primary mt-3" type="submit">
-                    Update Profile
+                </div>
+                <div className="home-column"> 
+
+                <button className="common-button" type="submit">
+                    Aktualizuj profil
                 </button>
-                <button
-                    style={{ marginLeft: 5 + 'px' }}
-                    className="btn btn-primary mt-3"
-                    onClick={turnOffEditProfileMode}
-                >
-                    Anuluj edycję
-                </button>
+                <br />
+                <CommonButton text="Anuluj edycję" on_click={turnOffEditProfileMode} />
+                </div>
             </form>
         </Fragment>
     )

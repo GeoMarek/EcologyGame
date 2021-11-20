@@ -1,20 +1,20 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import './styles/Home.css'
-import OptionalHomeLink from '../components/OptionalLinks/OptionalHomeLink.js'
+import CommonLink from '../components/Common/CommonLink'
 
 const Home = ({ isAuthenticated }) => {
     const logedIn = () => (
         <Fragment>
-            <OptionalHomeLink destination="/profile" text="Mój profil" />
-            <OptionalHomeLink destination="/courses" text="Przykładowe kursy" />
+            <CommonLink destination="/profile" text="Mój profil" />
+            <CommonLink destination="/courses" text="Przykładowe kursy" />
         </Fragment>
     )
     const notLogedIn = () => (
         <Fragment>
-            <OptionalHomeLink destination="/login" text="Logowanie" />
-            <OptionalHomeLink destination="/signup" text="Załóż konto" />
-            <OptionalHomeLink destination="/courses" text="Przykładowe kursy" />
+            <CommonLink destination="/login" text="Logowanie" />
+            <CommonLink destination="/signup" text="Załóż konto" />
+            <CommonLink destination="/courses" text="Przykładowe kursy" />
         </Fragment>
     )
 

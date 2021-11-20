@@ -42,7 +42,7 @@ const ResetPassword = ({ reset_password }) => {
                             required
                         />
                     </div>
-                    <button className="btn btn-primary" type="submit">
+                    <button className="common-button" type="submit">
                         Wyślij przypomnienie
                     </button>
                 </form>

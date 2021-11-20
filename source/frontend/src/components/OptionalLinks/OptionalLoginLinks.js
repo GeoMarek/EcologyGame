@@ -1,19 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import './OptionalLink.css'
+import CommonLink from '../Common/CommonLink'
 
 const OptionalLoginLinks = () => {
     return (
         <>
             <div>
-                <Link class="optional-link" to="/signup" role="button">
-                    Nie masz konta?
-                </Link>
+                <CommonLink destination="/signup" text="Nie masz konta?" />
             </div>
             <div>
-                <Link class="optional-link" to="/reset-password" role="button">
-                    Nie pamiętasz hasła?
-                </Link>
+                <CommonLink destination="/reset-password" text="Nie pamiętasz hasła?" />
             </div>
         </>
     )
