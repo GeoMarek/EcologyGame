@@ -4,6 +4,8 @@
     width: 60%;
     margin: auto;
     margin-top: 50px;
+    overflow: hidden;
+    position: relative;
 }
 .home-container:after {
     content: '';

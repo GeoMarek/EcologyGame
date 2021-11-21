@@ -15,16 +15,3 @@ body {
     font-size: 28px;
     padding: 0px 10px;
 }
-
-.sidebar {
-    margin-top: 100px;
-    margin-left: 20%;
-    width: 160px;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-}

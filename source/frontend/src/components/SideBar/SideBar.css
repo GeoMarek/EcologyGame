@@ -1,0 +1,27 @@
+.sidebar {
+    width: 160px;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    border-radius: 10px;
+}
+
+#sidebar-header {
+    text-decoration: greenyellow;
+}
+
+.sidebar-link {
+    margin-left: -25px;
+}
+
+.sidebar-link:hover {
+    text-decoration: none;
+}
+.sidebar-list {
+    list-style-type: none;
+    padding: auto;
+}

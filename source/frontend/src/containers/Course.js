@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { get_course_by_id } from '../actions/course'
 import CommonLink from '../components/Common/CommonLink'
 import StudentSideBar from '../components/SideBar/StudentSideBar'
+import AdminSideBar from '../components/SideBar/AdminSideBar'
 
 const Course = ({
     get_course_by_id,
@@ -40,10 +41,10 @@ const Course = ({
 
     const admin_container = () => (
         <>
-        <CommonLink
-            destination={'/course/' + match.params.id + '/admin'}
-            text="Przejdź do strony zarządzania kursem"
-        />
+            <CommonLink
+                destination={'/course/' + match.params.id + '/admin'}
+                text="Przejdź do strony zarządzania kursem"
+            />
         </>
     )
 
@@ -59,7 +60,6 @@ const Course = ({
             </p>
             {ifAdmin ? admin_container() : student_container()}
         </div>
-
     )
 
     return (
@@ -67,7 +67,7 @@ const Course = ({
             <div className="course-content">
                 {user_global && course_global ? curse_container() : <div />}
             </div>
-            <StudentSideBar />
+            {ifAdmin ? <AdminSideBar /> : <StudentSideBar />}
         </div>
     )
 }
