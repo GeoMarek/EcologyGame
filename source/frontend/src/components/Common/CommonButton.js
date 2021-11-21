@@ -3,12 +3,9 @@ import './common.css'
 
 const CommonButton = ({ text, on_click }) => {
     return (
-        <button
-            className="common-button"
-            onClick={on_click}
-        >
-        {text}
-        </button> 
+        <button className="common-button" onClick={on_click}>
+            {text}
+        </button>
     )
 }
 

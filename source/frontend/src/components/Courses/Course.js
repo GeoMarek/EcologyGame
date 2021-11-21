@@ -10,7 +10,10 @@ const Course = ({ course, join_course }) => {
     }
     return (
         <div className="div-course" key={course.id}>
-            <CourseLink text={'Przeglądaj ' + course.title} destination={'/course/' + course.id} />
+            <CourseLink
+                text={'Przeglądaj ' + course.title}
+                destination={'/course/' + course.id}
+            />
             <p>{course.description}</p>
             <CommonButton text="Dołącz do kursu" on_click={joinCourse} />
         </div>

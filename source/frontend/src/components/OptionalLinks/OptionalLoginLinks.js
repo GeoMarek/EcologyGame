@@ -8,7 +8,10 @@ const OptionalLoginLinks = () => {
                 <CommonLink destination="/signup" text="Nie masz konta?" />
             </div>
             <div>
-                <CommonLink destination="/reset-password" text="Nie pamiętasz hasła?" />
+                <CommonLink
+                    destination="/reset-password"
+                    text="Nie pamiętasz hasła?"
+                />
             </div>
         </>
     )

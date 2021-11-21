@@ -18,10 +18,12 @@ const CourseAdmin = ({
     })
 
     const renderRedirect = () => <Redirect to={redirectData.redirect} />
-    useEffect(() => {
-        get_course_by_id(match.params.id)
-    }, // eslint-disable-next-line
-    [])
+    useEffect(
+        () => {
+            get_course_by_id(match.params.id)
+        }, // eslint-disable-next-line
+        []
+    )
 
     if (!account.isAuthenticated) {
         return <Redirect to="/" />

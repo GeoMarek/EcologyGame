@@ -24,19 +24,21 @@ const Profile = ({
     // eslint-disable-next-line
     const { first_name, last_name, email } = formData
 
-    useEffect(() => {
-        load_profile().then((value) =>
-            setFormData({
-                first_name: profile_global.first_name,
-                last_name: profile_global.last_name,
-                email: profile_global.email,
+    useEffect(
+        () => {
+            load_profile().then((value) =>
+                setFormData({
+                    first_name: profile_global.first_name,
+                    last_name: profile_global.last_name,
+                    email: profile_global.email,
+                })
+            )
+            setEditData({
+                edit: false,
             })
-        )
-        setEditData({
-            edit: false,
-        })
-    }, // eslint-disable-next-line
-    [])
+        }, // eslint-disable-next-line
+        []
+    )
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
@@ -70,38 +72,38 @@ const Profile = ({
 
     const editProfileMode = () => (
         <Fragment>
-            
-            
             <form onSubmit={(e) => onSubmit(e)}>
-            <div className="home-column"> 
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="first_name"
-                        placeholder={`${first_name}`}
-                        onChange={(e) => onChange(e)}
-                        value={first_name}
+                <div className="home-column">
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="first_name"
+                            placeholder={`${first_name}`}
+                            onChange={(e) => onChange(e)}
+                            value={first_name}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="last_name"
+                            placeholder={`${last_name}`}
+                            onChange={(e) => onChange(e)}
+                            value={last_name}
+                        />
+                    </div>
+                </div>
+                <div className="home-column">
+                    <button className="common-button" type="submit">
+                        Aktualizuj profil
+                    </button>
+                    <br />
+                    <CommonButton
+                        text="Anuluj edycję"
+                        on_click={turnOffEditProfileMode}
                     />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="last_name"
-                        placeholder={`${last_name}`}
-                        onChange={(e) => onChange(e)}
-                        value={last_name}
-                    />
-                </div>
-                </div>
-                <div className="home-column"> 
-
-                <button className="common-button" type="submit">
-                    Aktualizuj profil
-                </button>
-                <br />
-                <CommonButton text="Anuluj edycję" on_click={turnOffEditProfileMode} />
                 </div>
             </form>
         </Fragment>
@@ -109,7 +111,10 @@ const Profile = ({
 
     const presentProfileMode = () => (
         <Fragment>
-            <CommonButton text="Edycja profilu" on_click={turnOnEditProfileMode} />
+            <CommonButton
+                text="Edycja profilu"
+                on_click={turnOnEditProfileMode}
+            />
             <ProfileInfo profile_info={profile_global} />
         </Fragment>
     )

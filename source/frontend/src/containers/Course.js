@@ -12,10 +12,12 @@ const Course = ({
     match,
     user_global,
 }) => {
-    useEffect(() => {
-        get_course_by_id(match.params.id)
-    }, // eslint-disable-next-line
-    [])
+    useEffect(
+        () => {
+            get_course_by_id(match.params.id)
+        }, // eslint-disable-next-line
+        []
+    )
 
     if (!account.isAuthenticated) {
         return <Redirect to="/" />
@@ -44,10 +46,13 @@ const Course = ({
 
     const curse_container = () => (
         <div>
-            <h3 className="home-title">Witaj na stronie kursu: {course_global.title}</h3>
+            <h3 className="home-title">
+                Witaj na stronie kursu: {course_global.title}
+            </h3>
             <p>{course_global.description} </p>
             <p>
-                Pamiętaj, ten kurs jest {course_global.is_public ? 'publiczny' : 'prywatny'}
+                Pamiętaj, ten kurs jest{' '}
+                {course_global.is_public ? 'publiczny' : 'prywatny'}
             </p>
             {ifAdmin ? admin_container() : student_container()}
         </div>
@@ -55,7 +60,7 @@ const Course = ({
 
     return (
         <div className="home-container">
-            {(user_global && course_global) ? curse_container() : <div />}
+            {user_global && course_global ? curse_container() : <div />}
         </div>
     )
 }

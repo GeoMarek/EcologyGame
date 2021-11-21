@@ -11,19 +11,22 @@ const Courses = ({
     get_the_courses,
     courses_global,
     account,
-}) => { // eslint-disable-next-line
+}) => {
+    // eslint-disable-next-line
     const [coursesData, setCoursesData] = useState({
         courses: [],
     })
 
-    useEffect(() => {
-        get_all_courses().then((value) =>
-            setCoursesData({
-                courses: courses_global,
-            })
-        )
-    }, // eslint-disable-next-line
-    [])
+    useEffect(
+        () => {
+            get_all_courses().then((value) =>
+                setCoursesData({
+                    courses: courses_global,
+                })
+            )
+        }, // eslint-disable-next-line
+        []
+    )
 
     if (0 && !account.isAuthenticated) {
         return <Redirect to="/" />
@@ -57,11 +60,14 @@ const Courses = ({
         <div className="home-container">
             <h1 className="home-title">Przeglądaj dostępne kursy</h1>
             <CommonLink text="Utwórz nowy kurs" destination="/create_course" />
-            <CommonButton text="Wszystkie kursy" on_click={f_all}/>
+            <CommonButton text="Wszystkie kursy" on_click={f_all} />
             {account.isAuthenticated ? (
                 <Fragment>
-                    <CommonButton text="Zarządzane kursy" on_click={f_admin}/>
-                    <CommonButton text="Partycypowane kursy" on_click={f_user}/>
+                    <CommonButton text="Zarządzane kursy" on_click={f_admin} />
+                    <CommonButton
+                        text="Partycypowane kursy"
+                        on_click={f_user}
+                    />
                 </Fragment>
             ) : (
                 <></>

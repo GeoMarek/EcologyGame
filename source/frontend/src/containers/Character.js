@@ -6,7 +6,6 @@ import CommonButton from '../components/Common/CommonButton'
 import CharacterImage from '../components/Character/CharacterImage'
 import CharacterProgressBar from '../components/Character/CharacterProgressBar'
 
-
 const Character = ({
     match,
     isAuthenticated,
@@ -30,13 +29,15 @@ const Character = ({
     // eslint-disable-next-line
     const { first_name, last_name, email } = formData
 
-    useEffect(() => {
-        load_character(match.params.course_id)
-        setEditData({
-            edit: false,
-        })
-    }, // eslint-disable-next-line 
-    [])
+    useEffect(
+        () => {
+            load_character(match.params.course_id)
+            setEditData({
+                edit: false,
+            })
+        }, // eslint-disable-next-line
+        []
+    )
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
@@ -70,14 +71,19 @@ const Character = ({
 
     const presentProfileMode = () => (
         <>
-            <p className="character-name">Stoi przed Tobą wojownik {character_global.level} poziomu. <br/> Potężny i niepokonany {character_global.name}!</p>
-            <div className="home-column"> 
-                
-                <CharacterImage is_alive={character_global.isAlive}/>
+            <p className="character-name">
+                Stoi przed Tobą wojownik {character_global.level} poziomu.{' '}
+                <br /> Potężny i niepokonany {character_global.name}!
+            </p>
+            <div className="home-column">
+                <CharacterImage is_alive={character_global.isAlive} />
                 <br />
-                <CommonButton text="Edytuj postać" on_click={turnOnEditProfileMode} />
+                <CommonButton
+                    text="Edytuj postać"
+                    on_click={turnOnEditProfileMode}
+                />
             </div>
-            <div className="home-column"> 
+            <div className="home-column">
                 <CharacterProgressBar character={character_global} />
             </div>
         </>

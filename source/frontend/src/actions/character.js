@@ -1,8 +1,5 @@
 import axios from 'axios'
-import {
-    LOAD_CHARACTER_SUCCESS,
-    LOAD_CHARACTER_FAIL
-} from './types'
+import { LOAD_CHARACTER_SUCCESS, LOAD_CHARACTER_FAIL } from './types'
 
 export const load_character = (course_id) => async (dispatch) => {
     if (localStorage.getItem('access')) {

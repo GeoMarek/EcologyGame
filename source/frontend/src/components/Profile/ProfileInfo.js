@@ -1,7 +1,7 @@
 import React from 'react'
 import './Profile.css'
 
-const ProfileInfo = ({profile_info}) => {
+const ProfileInfo = ({ profile_info }) => {
     return (
         <div>
             <p>Imię: {profile_info.first_name}</p>

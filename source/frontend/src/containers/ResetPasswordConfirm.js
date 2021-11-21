@@ -32,37 +32,36 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
     return (
         <div className="home-container">
             <div className="home-column">
-            <form onSubmit={(e) => onSubmit(e)}>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="password"
-                        placeholder="New Password"
-                        name="new_password"
-                        value={new_password}
-                        onChange={(e) => onChange(e)}
-                        minLength="6"
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        className="form-control"
-                        type="password"
-                        placeholder="Confirm New Password"
-                        name="re_new_password"
-                        value={re_new_password}
-                        onChange={(e) => onChange(e)}
-                        minLength="6"
-                        required
-                    />
-                </div>
-                <button className="common-button" type="submit">
-                    Zatwierdź nowe hasło
-                </button>
-            </form>
+                <form onSubmit={(e) => onSubmit(e)}>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="password"
+                            placeholder="New Password"
+                            name="new_password"
+                            value={new_password}
+                            onChange={(e) => onChange(e)}
+                            minLength="6"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="password"
+                            placeholder="Confirm New Password"
+                            name="re_new_password"
+                            value={re_new_password}
+                            onChange={(e) => onChange(e)}
+                            minLength="6"
+                            required
+                        />
+                    </div>
+                    <button className="common-button" type="submit">
+                        Zatwierdź nowe hasło
+                    </button>
+                </form>
             </div>
-            
         </div>
     )
 }
