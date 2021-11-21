@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { load_character } from '../actions/character'
 import CommonButton from '../components/Common/CommonButton'
 import CharacterImage from '../components/Character/CharacterImage'
-import CharacterProgressBar from '../components/Character/CharacterProgressBar'
+import CharacterInfo from '../components/Character/CharacterInfo'
 
 const Character = ({
     match,
@@ -84,7 +84,7 @@ const Character = ({
                 />
             </div>
             <div className="home-column">
-                <CharacterProgressBar character={character_global} />
+                <CharacterInfo character={character_global} />
             </div>
         </>
     )

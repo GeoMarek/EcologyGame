@@ -2,32 +2,18 @@ import React from 'react'
 
 import './Character.css'
 
-const CharacterProgressBar = ({ character }) => {
+const CharacterProgressBar = ({ act_value, max_value, icon, idx }) => {
     return (
-        <div className="progress-bar">
-            <p>
-                Liczba posiadanych punktów życia <br />
-                <span className="hp-info">
-                    {character.curent_hp}/{character.max_exp} &hearts;
-                </span>
-                <progress
-                    className="hp-bar"
-                    value={4}
-                    max={character.max_hp}
-                ></progress>
-            </p>
-            <p>
-                Zdobyte punkty doświadczenia <br />
-                <span className="exp-info">
-                    {character.current_exp}/{character.max_exp} &#9733;
-                </span>
-                <progress
-                    className="exp-bar"
-                    value={character.current_exp}
-                    max={character.max_exp}
-                ></progress>
-            </p>
-            <p>Ilość posiadanego złota: {character.gold}</p>
+        <div>
+            <label for={idx} id={idx}>
+                {act_value}/{max_value} {icon}
+            </label>
+            <progress
+                className={idx}
+                id={idx}
+                value={act_value}
+                max={max_value}
+            ></progress>
         </div>
     )
 }
