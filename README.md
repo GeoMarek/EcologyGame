@@ -27,7 +27,7 @@ Zmiany w kodzie i nowe funkcjonalności tworzymy na osobnym branchu.
 Po ukończeniu pracy tworzymy nowy pull request i czekamy na potwierdzenie 
 od co najmniej jednej osoby. 
 
-Zalecam dodawać przedrostek do nazwy brancha, tak żeby obejmował zakres funkcjonalności. Przykładowo:
+Zalecam dodawać przedrostek do nazwy brancha, tak żeby obejmował zakres funkcjonalności. Dzięki temu nazwy będą jasno mówić, czego dany branch dotyczy. Przykładowo:
 ```bash
 pretty\courses # zmiany poprawiające wygląd kursów
 pretty\profile # zmiany poprawiające wygląd profilu
