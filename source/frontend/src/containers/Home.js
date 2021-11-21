@@ -7,14 +7,14 @@ const Home = ({ isAuthenticated }) => {
     const logedIn = () => (
         <Fragment>
             <CommonLink destination="/profile" text="Mój profil" />
-            <CommonLink destination="/courses" text="Przykładowe kursy" />
+            <CommonLink destination="/courses" text="Przeglądaj kursy" />
         </Fragment>
     )
     const notLogedIn = () => (
         <Fragment>
             <CommonLink destination="/login" text="Logowanie" />
             <CommonLink destination="/signup" text="Załóż konto" />
-            <CommonLink destination="/courses" text="Przykładowe kursy" />
+            <CommonLink destination="/courses" text="Przeglądaj kursy" />
         </Fragment>
     )
 

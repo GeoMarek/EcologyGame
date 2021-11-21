@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { create_course, get_all_courses } from '../actions/course'
+import CreateCourseHint from '../components/Courses/CreateCourseHint'
 
 const CreateCourse = ({
     create_course,
@@ -94,6 +95,9 @@ const CreateCourse = ({
                         Utwórz kurs
                     </button>
                 </form>
+            </div>
+            <div class="home-column">
+                <CreateCourseHint />
             </div>
         </div>
     )
