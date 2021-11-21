@@ -121,7 +121,7 @@ const Profile = ({
                 text="Edycja profilu"
                 on_click={turnOnEditProfileMode}
             />
-            <CommonLink destination="/" text="Strona domowa"/>
+            <CommonLink destination="/" text="Strona domowa" />
         </Fragment>
     )
 
