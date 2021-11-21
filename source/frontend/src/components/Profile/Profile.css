@@ -2,3 +2,22 @@ p {
     margin: 15px;
     color: aquamarine;
 }
+
+.profile-header {
+    font-size: 18px;
+    color: greenyellow;
+    font-weight: bold;
+}
+
+.profile-info-div {
+    padding: 20px;
+}
+
+.profile-key {
+    color: greenyellow;
+    font-size: 16px;
+}
+
+.profile-value {
+    font-size: 15px;
+}

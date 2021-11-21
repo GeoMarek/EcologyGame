@@ -5,6 +5,7 @@ import { load_profile, update_profile } from '../actions/profile'
 import './styles/Home.css'
 import ProfileInfo from '../components/Profile/ProfileInfo'
 import CommonButton from '../components/Common/CommonButton'
+import CommonLink from '../components/Common/CommonLink'
 
 const Profile = ({
     update_profile,
@@ -70,6 +71,10 @@ const Profile = ({
         })
     }
 
+    const home_button = () => {
+        return <Redirect to="/" />
+    }
+
     const editProfileMode = () => (
         <Fragment>
             <form onSubmit={(e) => onSubmit(e)}>
@@ -111,11 +116,12 @@ const Profile = ({
 
     const presentProfileMode = () => (
         <Fragment>
+            <ProfileInfo profile_info={profile_global} />
             <CommonButton
                 text="Edycja profilu"
                 on_click={turnOnEditProfileMode}
             />
-            <ProfileInfo profile_info={profile_global} />
+            <CommonLink destination="/" text="Strona domowa"/>
         </Fragment>
     )
 
