@@ -1,5 +1,6 @@
 import React from 'react'
 import CharacterProgressBar from './CharacterProgressBar'
+import CharacterAttribute from './CharacterAttribute'
 
 import './Character.css'
 
@@ -20,6 +21,7 @@ const CharacterInfo = ({ character }) => {
                 icon={star}
                 idx="exp-bar"
             />
+            <CharacterAttribute gold={character.gold} level={character.level} />
         </>
     )
 }

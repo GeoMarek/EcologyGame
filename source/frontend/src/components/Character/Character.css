@@ -54,3 +54,11 @@ progress::-webkit-progress-bar {
 #exp-bar {
     color: goldenrod;
 }
+.character-attribute {
+    margin: 0px;
+}
+
+#char-gold {
+    margin-left: 25px;
+    margin-right: 20px;
+}
