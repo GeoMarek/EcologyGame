@@ -83,20 +83,10 @@ const CourseAdmin = ({
     )
 
     return (
-        <div className="container">
+        <div className="home-container">
             {redirectData.redirect !== 0 ? renderRedirect() : <div />}
-            <div class="jumbotron mt-5">
-                <AdminNavbar id={match.params.id} />
-                {user_global ? (
-                    course_global ? (
-                        curse_container()
-                    ) : (
-                        <div />
-                    )
-                ) : (
-                    <></>
-                )}
-            </div>
+            <AdminNavbar id={match.params.id} />
+            {user_global && course_global ? curse_container() : <div />}
         </div>
     )
 }

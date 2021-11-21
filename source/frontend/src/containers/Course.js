@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_course_by_id } from '../actions/course'
 import CommonLink from '../components/Common/CommonLink'
+import StudentSideBar from '../components/SideBar/StudentSideBar'
 
 const Course = ({
     get_course_by_id,
@@ -38,10 +39,12 @@ const Course = ({
     )
 
     const admin_container = () => (
+        <>
         <CommonLink
             destination={'/course/' + match.params.id + '/admin'}
             text="Przejdź do strony zarządzania kursem"
         />
+        </>
     )
 
     const curse_container = () => (
@@ -49,18 +52,22 @@ const Course = ({
             <h3 className="home-title">
                 Witaj na stronie kursu: {course_global.title}
             </h3>
-            <p>{course_global.description} </p>
-            <p>
+            <p className="home-text">{course_global.description} </p>
+            <p className="home-text">
                 Pamiętaj, ten kurs jest{' '}
                 {course_global.is_public ? 'publiczny' : 'prywatny'}
             </p>
             {ifAdmin ? admin_container() : student_container()}
         </div>
+
     )
 
     return (
         <div className="home-container">
-            {user_global && course_global ? curse_container() : <div />}
+            <div className="course-content">
+                {user_global && course_global ? curse_container() : <div />}
+            </div>
+            <StudentSideBar />
         </div>
     )
 }
