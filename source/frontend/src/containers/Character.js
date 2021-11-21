@@ -70,7 +70,7 @@ const Character = ({
 
     const presentProfileMode = () => (
         <>
-            <p className="character-name">Stoi przed Tobą wojownik {character_global.level} stopnia wtajemniczenia. Potężny i niepokonany {character_global.name}!</p>
+            <p className="character-name">Stoi przed Tobą wojownik {character_global.level} poziomu. <br/> Potężny i niepokonany {character_global.name}!</p>
             <div className="home-column"> 
                 
                 <CharacterImage is_alive={character_global.isAlive}/>
@@ -78,9 +78,7 @@ const Character = ({
                 <CommonButton text="Edytuj postać" on_click={turnOnEditProfileMode} />
             </div>
             <div className="home-column"> 
-                <CharacterProgressBar name="Punkty życia" value={character_global.curent_hp} max={character_global.max_hp} color="red"/>
-                <CharacterProgressBar name="Doświadczenie" value={character_global.current_exp} max={character_global.max_exp} color="yellow"/>
-                <p>Ilość złota: {character_global.gold}</p>
+                <CharacterProgressBar character={character_global} />
             </div>
         </>
     )
