@@ -4,11 +4,9 @@ import './common.css'
 
 const CommonLink = ({ destination, text }) => {
     return (
-        <div>
-            <Link className="common-button" to={destination} role="button">
-                {text}
-            </Link>
-        </div>
+        <Link className="common-button" to={destination} role="button">
+            {text}
+        </Link>
     )
 }
 
