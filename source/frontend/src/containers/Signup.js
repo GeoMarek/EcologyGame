@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signup } from '../actions/auth'
-import './styles/Home.css'
 import OptionalRegisterLinks from '../components/OptionalLinks/OptionalRegisterLinks'
 
 const Signup = ({ signup, isAuthenticated }) => {

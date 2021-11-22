@@ -2,7 +2,6 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { load_profile, update_profile } from '../actions/profile'
-import './styles/Home.css'
 import ProfileInfo from '../components/Profile/ProfileInfo'
 import CommonButton from '../components/Common/CommonButton'
 import CommonLink from '../components/Common/CommonLink'
@@ -69,10 +68,6 @@ const Profile = ({
         setEditData({
             edit: false,
         })
-    }
-
-    const home_button = () => {
-        return <Redirect to="/" />
     }
 
     const editProfileMode = () => (

@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import './styles/Home.css'
 import CommonLink from '../components/Common/CommonLink'
 
 const Home = ({ isAuthenticated }) => {

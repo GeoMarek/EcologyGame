@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from '../actions/auth'
-import './styles/Home.css'
 import OptionalLoginLinks from '../components/OptionalLinks/OptionalLoginLinks'
 
 const Login = ({ login, isAuthenticated }) => {
