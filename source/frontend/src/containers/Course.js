@@ -50,6 +50,7 @@ const Course = ({
 
     const curse_container = () => (
         <div>
+            {ifAdmin ? <AdminSideBar /> : <StudentSideBar />}
             <h3 className="home-title">
                 Witaj na stronie kursu: {course_global.title}
             </h3>
@@ -67,7 +68,6 @@ const Course = ({
             <div className="course-content">
                 {user_global && course_global ? curse_container() : <div />}
             </div>
-            {ifAdmin ? <AdminSideBar /> : <StudentSideBar />}
         </div>
     )
 }

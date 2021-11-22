@@ -6,7 +6,7 @@ const StudentSideBar = () => {
     return (
         <div className="sidebar">
             <p id="sidebar-header">Menu kursu</p>
-            <ul className="sidebar-list">
+            <ul>
                 <SideBarLink destination="/" text="Strona kursu" />
                 <SideBarLink destination="/" text="Bohater" />
                 <SideBarLink destination="/" text="Potwory" />

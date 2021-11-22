@@ -2,9 +2,11 @@
     background-color: #002a38;
     border-radius: 10px;
     width: 60%;
+    height: 100%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 2%;
     overflow: hidden;
+    height: 100%;
     position: relative;
 }
 .home-container:after {
@@ -30,4 +32,10 @@
     margin: 10px;
     color: aquamarine;
     font-size: 14px;
+}
+
+.course-content {
+    text-align: center;
+    height: auto;
+    font-size: 28px;
 }
