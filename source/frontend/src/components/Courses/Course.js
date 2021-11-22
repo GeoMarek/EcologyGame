@@ -1,21 +1,21 @@
 import './Course.css'
-import { Link } from 'react-router-dom'
 import { join_course } from '../../actions/course'
 import { connect } from 'react-redux'
+import CommonButton from '../Common/CommonButton'
+import CourseLink from './CourseLink'
 
 const Course = ({ course, join_course }) => {
     const joinCourse = (e) => {
         join_course(course.id)
     }
     return (
-        <div className="div_course" key={course.id}>
-            <Link to={'/course/' + course.id}>
-                <h3>{course.title} </h3>
-            </Link>
+        <div className="div-course" key={course.id}>
+            <CourseLink
+                text={'Przeglądaj ' + course.title}
+                destination={'/course/' + course.id}
+            />
             <p>{course.description}</p>
-            <button className="btn btn-primary mt-3" onClick={joinCourse}>
-                Dołącz do kursu
-            </button>
+            <CommonButton text="Dołącz do kursu" on_click={joinCourse} />
         </div>
     )
 }

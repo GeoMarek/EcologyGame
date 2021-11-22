@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signup } from '../actions/auth'
-import './styles/Home.css'
 import OptionalRegisterLinks from '../components/OptionalLinks/OptionalRegisterLinks'
 
 const Signup = ({ signup, isAuthenticated }) => {
@@ -45,7 +44,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         <input
                             className="form-control"
                             type="text"
-                            placeholder="First Name*"
+                            placeholder="Wpisz imię*"
                             name="first_name"
                             value={first_name}
                             onChange={(e) => onChange(e)}
@@ -56,7 +55,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         <input
                             className="form-control"
                             type="text"
-                            placeholder="Last Name*"
+                            placeholder="Wpisz nazwisko*"
                             name="last_name"
                             value={last_name}
                             onChange={(e) => onChange(e)}
@@ -67,7 +66,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         <input
                             className="form-control"
                             type="email"
-                            placeholder="Email*"
+                            placeholder="Wpisz adres email*"
                             name="email"
                             value={email}
                             onChange={(e) => onChange(e)}
@@ -78,7 +77,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         <input
                             className="form-control"
                             type="password"
-                            placeholder="Password*"
+                            placeholder="Wpisz hasło*"
                             name="password"
                             value={password}
                             onChange={(e) => onChange(e)}
@@ -90,7 +89,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         <input
                             className="form-control"
                             type="password"
-                            placeholder="Confirm Password*"
+                            placeholder="Potwierdź hasło*"
                             name="re_password"
                             value={re_password}
                             onChange={(e) => onChange(e)}
@@ -98,8 +97,8 @@ const Signup = ({ signup, isAuthenticated }) => {
                             required
                         />
                     </div>
-                    <button className="btn btn-primary" type="submit">
-                        Register
+                    <button className="common-button" type="submit">
+                        Zarejestruj się
                     </button>
                 </form>
             </div>

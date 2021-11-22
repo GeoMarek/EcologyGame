@@ -1,8 +1,10 @@
 ## Uruchamianie aplikacji
 
-**Uruchomienie całego środowiska**
+**Przydatne komendy**
 ```
-.\autostart.bat
+.\code_format_fix.bat   # wykonuje automatyczne formatowanie kodu
+.\code_format_check.bat # sprawdza formatowanie kodu
+.\run_application.bat   #  uruchamia całą aplikację
 ```
 
 **Serwer odpowiedzialny za backend**
@@ -21,26 +23,7 @@ npm install
 npm start
 ```
 
-## Dodawanie zmian
-
-Zmiany w kodzie i nowe funkcjonalności tworzymy na osobnym branchu. 
-Po ukończeniu pracy tworzymy nowy pull request i czekamy na potwierdzenie 
-od co najmniej jednej osoby. 
-
-Zalecam dodawać przedrostek do nazwy brancha, tak żeby obejmował zakres funkcjonalności. Dzięki temu nazwy będą jasno mówić, czego dany branch dotyczy. Przykładowo:
-```bash
-pretty\courses # zmiany poprawiające wygląd kursów
-pretty\profile # zmiany poprawiające wygląd profilu
-docs\class_diagram_fix # poprawki w diagramie klas
-```
-
-Przed utworzeniem pull requesta należy uruchomić autoformatowanie kodu: 
-```bash
-# python (isort + black)
-python autoformat.py
-# javascript (prettier)
-npx prettier --write --config .prettierrc.yaml src
-```
+## Dodawanie zmian w dokumentacji
 
 Aby dodawać zmiany w dokumentacji trzeba zainstalować:
 - [Kompilator LaTeX](https://anorien.csc.warwick.ac.uk/mirrors/CTAN/systems/win32/miktex/setup/windows-x64/basic-miktex-21.6-x64.exe)

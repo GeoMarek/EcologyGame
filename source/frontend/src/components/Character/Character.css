@@ -1,0 +1,64 @@
+.character-name {
+    color: burlywood;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+}
+
+.character-image {
+    width: 40%;
+    height: 40%;
+    border-radius: 30%;
+    margin: 10px;
+}
+
+.hp-info {
+    color: red;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.exp-info {
+    color: goldenrod;
+    font-size: 20px;
+    margin: 10px;
+}
+
+progress {
+    width: 40%;
+    height: 20px;
+    background: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    float: right;
+    margin-right: 20%;
+    margin-left: -20%;
+}
+
+progress::-webkit-progress-bar {
+    background-color: rgb(231, 223, 203);
+}
+
+.exp-bar::-webkit-progress-value {
+    background-color: goldenrod;
+}
+
+.hp-bar::-webkit-progress-value {
+    background-color: red;
+}
+
+#hp-bar {
+    color: red;
+}
+
+#exp-bar {
+    color: goldenrod;
+}
+.character-attribute {
+    margin: 0px;
+}
+
+#char-gold {
+    margin-left: 25px;
+    margin-right: 20px;
+}

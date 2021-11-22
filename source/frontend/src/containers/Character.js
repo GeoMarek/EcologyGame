@@ -1,7 +1,10 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { load_character } from '../actions/character'
+import CommonButton from '../components/Common/CommonButton'
+import CharacterImage from '../components/Character/CharacterImage'
+import CharacterInfo from '../components/Character/CharacterInfo'
 
 const Character = ({
     match,
@@ -23,22 +26,28 @@ const Character = ({
         edit: false,
     })
 
+    // eslint-disable-next-line
     const { first_name, last_name, email } = formData
 
-    useEffect(() => {
-        load_character(match.params.course_id)
-        setEditData({
-            edit: false,
-        })
-    }, [])
+    useEffect(
+        () => {
+            load_character(match.params.course_id)
+            setEditData({
+                edit: false,
+            })
+        }, // eslint-disable-next-line
+        []
+    )
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
 
+    // eslint-disable-next-line
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value })
 
+    // eslint-disable-next-line
     const onSubmit = (e) => {
         e.preventDefault()
         turnOffEditProfileMode()
@@ -57,49 +66,32 @@ const Character = ({
     }
 
     const editProfileMode = () => (
-        <Fragment>
-            <button
-                style={{ marginLeft: 5 + 'px' }}
-                className="btn btn-primary mt-3"
-                onClick={turnOffEditProfileMode}
-            >
-                Anuluj edycję
-            </button>
-        </Fragment>
+        <CommonButton text="Anuluj zmiany" on_click={turnOffEditProfileMode} />
     )
 
     const presentProfileMode = () => (
-        <Fragment>
-            <button
-                className="btn btn-primary mt-3"
-                onClick={turnOnEditProfileMode}
-            >
-                Edytuj Postać
-            </button>
-            <h3>Nazwa</h3>
-            <p>{character_global.name}</p>
-            <h3>Życie</h3>
-            <p>
-                {character_global.curent_hp}/{character_global.max_hp}
+        <>
+            <p className="character-name">
+                Stoi przed Tobą wojownik {character_global.level} poziomu.{' '}
+                <br /> Potężny i niepokonany {character_global.name}!
             </p>
-            <h3>Poziom</h3>
-            <p>{character_global.level}</p>
-            <h3>Doświadczenie</h3>
-            <p>
-                {character_global.current_exp}/{character_global.max_exp}
-            </p>
-            <h3>Złoto</h3>
-            <p>{character_global.gold}</p>
-            <h3>Czy postać żyje?</h3>
-            <p>{character_global.isAlive ? 'tak' : 'nie'}</p>
-        </Fragment>
+            <div className="home-column">
+                <CharacterImage is_alive={character_global.isAlive} />
+                <br />
+                <CommonButton
+                    text="Edytuj postać"
+                    on_click={turnOnEditProfileMode}
+                />
+            </div>
+            <div className="home-column">
+                <CharacterInfo character={character_global} />
+            </div>
+        </>
     )
 
     return (
-        <div className="container">
-            <div class="jumbotron mt-5">
-                {editData.edit ? editProfileMode() : presentProfileMode()}
-            </div>
+        <div className="home-container">
+            {editData.edit ? editProfileMode() : presentProfileMode()}
         </div>
     )
 }

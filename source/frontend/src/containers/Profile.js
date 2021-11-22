@@ -2,6 +2,9 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { load_profile, update_profile } from '../actions/profile'
+import ProfileInfo from '../components/Profile/ProfileInfo'
+import CommonButton from '../components/Common/CommonButton'
+import CommonLink from '../components/Common/CommonLink'
 
 const Profile = ({
     update_profile,
@@ -18,20 +21,24 @@ const Profile = ({
         edit: false,
     })
 
+    // eslint-disable-next-line
     const { first_name, last_name, email } = formData
 
-    useEffect(() => {
-        load_profile().then((value) =>
-            setFormData({
-                first_name: profile_global.first_name,
-                last_name: profile_global.last_name,
-                email: profile_global.email,
+    useEffect(
+        () => {
+            load_profile().then((value) =>
+                setFormData({
+                    first_name: profile_global.first_name,
+                    last_name: profile_global.last_name,
+                    email: profile_global.email,
+                })
+            )
+            setEditData({
+                edit: false,
             })
-        )
-        setEditData({
-            edit: false,
-        })
-    }, [])
+        }, // eslint-disable-next-line
+        []
+    )
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
@@ -66,68 +73,56 @@ const Profile = ({
     const editProfileMode = () => (
         <Fragment>
             <form onSubmit={(e) => onSubmit(e)}>
-                <div className="form-group">
-                    <label className="form-label" htmlFor="first_name">
-                        First Name
-                    </label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="first_name"
-                        placeholder={`${first_name}`}
-                        onChange={(e) => onChange(e)}
-                        value={first_name}
+                <div className="home-column">
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="first_name"
+                            placeholder={`${first_name}`}
+                            onChange={(e) => onChange(e)}
+                            value={first_name}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="last_name"
+                            placeholder={`${last_name}`}
+                            onChange={(e) => onChange(e)}
+                            value={last_name}
+                        />
+                    </div>
+                </div>
+                <div className="home-column">
+                    <button className="common-button" type="submit">
+                        Aktualizuj profil
+                    </button>
+                    <br />
+                    <CommonButton
+                        text="Anuluj edycję"
+                        on_click={turnOffEditProfileMode}
                     />
                 </div>
-                <div className="form-group">
-                    <label className="form-label mt-3" htmlFor="last_name">
-                        Last Name
-                    </label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="last_name"
-                        placeholder={`${last_name}`}
-                        onChange={(e) => onChange(e)}
-                        value={last_name}
-                    />
-                </div>
-                <button className="btn btn-primary mt-3" type="submit">
-                    Update Profile
-                </button>
-                <button
-                    style={{ marginLeft: 5 + 'px' }}
-                    className="btn btn-primary mt-3"
-                    onClick={turnOffEditProfileMode}
-                >
-                    Anuluj edycję
-                </button>
             </form>
         </Fragment>
     )
 
     const presentProfileMode = () => (
         <Fragment>
-            <button
-                className="btn btn-primary mt-3"
-                onClick={turnOnEditProfileMode}
-            >
-                Edit Profile
-            </button>
-            <h3>Imię</h3>
-            <p>{profile_global.first_name}</p>
-            <h3>Nazwisko</h3>
-            <p>{profile_global.last_name}</p>
-            <h3>E-mail</h3>
-            <p>{profile_global.email}</p>
+            <ProfileInfo profile_info={profile_global} />
+            <CommonButton
+                text="Edycja profilu"
+                on_click={turnOnEditProfileMode}
+            />
+            <CommonLink destination="/" text="Strona domowa" />
         </Fragment>
     )
 
     return (
-        <div className="container">
-            <div class="jumbotron mt-5">
-                {editData.edit ? editProfileMode() : presentProfileMode()}
-            </div>
+        <div className="home-container">
+            {editData.edit ? editProfileMode() : presentProfileMode()}
         </div>
     )
 }

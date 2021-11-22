@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { reset_password } from '../actions/auth'
-import './styles/Home.css'
 
 const ResetPassword = ({ reset_password }) => {
     const [requestSent, setRequestSent] = useState(false)
@@ -42,7 +41,7 @@ const ResetPassword = ({ reset_password }) => {
                             required
                         />
                     </div>
-                    <button className="btn btn-primary" type="submit">
+                    <button className="common-button" type="submit">
                         Wyślij przypomnienie
                     </button>
                 </form>
