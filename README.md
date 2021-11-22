@@ -1,15 +1,22 @@
 ## Uruchamianie aplikacji
 
-**Backend**
+**Uruchomienie całego środowiska**
 ```
+.\autostart.bat
+```
+
+**Serwer odpowiedzialny za backend**
+```
+cd .\source\backend
 python -m pip install -r requirements.txt
 python .\manage.py makemigrations
 python .\manage.py migrate
 python .\manage.py runserver
 python .\manage.py flush
 ```
-**Frontend**
+**Serwer odpowiedzialny za frontend**
 ```
+cd .\source\frontend
 npm install
 npm start
 ```
@@ -19,6 +26,13 @@ npm start
 Zmiany w kodzie i nowe funkcjonalności tworzymy na osobnym branchu. 
 Po ukończeniu pracy tworzymy nowy pull request i czekamy na potwierdzenie 
 od co najmniej jednej osoby. 
+
+Zalecam dodawać przedrostek do nazwy brancha, tak żeby obejmował zakres funkcjonalności. Dzięki temu nazwy będą jasno mówić, czego dany branch dotyczy. Przykładowo:
+```bash
+pretty\courses # zmiany poprawiające wygląd kursów
+pretty\profile # zmiany poprawiające wygląd profilu
+docs\class_diagram_fix # poprawki w diagramie klas
+```
 
 Przed utworzeniem pull requesta należy uruchomić autoformatowanie kodu: 
 ```bash
@@ -35,51 +49,3 @@ Aby dodawać zmiany w dokumentacji trzeba zainstalować:
 Poszczególne rozdziały i podrozdziały podzielone są kod źródłowy i obrazy:
 - `project/chapters/chapter_rozdzial_podrozdzial_nazwa` - kod źródłowy
 - `project/img/` - folder z utworzony podkatalogami dla każdego z rozdziałów
-
-## Hinty do pisania kodu
-
-**Tworzenie nowej aplikacji w backendzie**
-
-Generujemy folder dla nowej aplikacji
-
-```bat
-python .\manage.py startapp new_app_name
-```
-Dodanie aplikacji do projektu w pliku `backend\ecosite\settings.py`
-```python
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    ...
-    'new_app_name'
-]
-```
-Dodanie adresu aplikacji w pliku `backend\ecosite\urls.py`
-```python
-urlpatterns = [
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
-    ...
-    path('new_app/', include('new_app_name.urls')),
-]
-```
-Przechodzimy do folderu `backend\new_app_name`
-- `models.py` - tutaj definujemy klasy mapowane na bazę danych
-- `serilizers.py` - to muszę jeszce ogarnąć różnicę pomiędzy courses a profile
-- `urls.py` - tutaj definiujemy ścieżki do zapytań
-- `views.py` - tutaj definiujemy zapytania do bazy danych
-
-**Tworzenie Frontendu**
-
-Wygląd strony
-- `App.js` - odpowiada za tworzenie podstron
-- `/containers` - zawiera strony (tutaj robimy np plik. Tasks.js)
-- `/components` - składniki na stronie (grupujemy je w folderach)
-
-Logika strony
-- Actions
-    - `tasks.js` - zapytania do bazy danych, rezultat przypisany do payload
-    - `types.js` - stałe zawierające informacje o rezultacie
-- Reducers
-    - `index.js` - tak żeby wiedział o istnieniu tego co robimy
-    - `tasks.js` - "globalne state" z nich będziemy korzystać
