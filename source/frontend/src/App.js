@@ -19,6 +19,9 @@ import store from './store'
 
 import Layout from './hocs/Layout'
 import './App.css'
+import CourseMonsters from './containers/CourseStudent/CourseMonsters'
+import CourseHabits from './containers/CourseStudent/CourseHabits'
+import CourseShop from './containers/CourseStudent/CourseShop'
 
 const App = () => (
     <Provider store={store}>
@@ -32,6 +35,21 @@ const App = () => (
                         exact
                         path="/course/:course_id/character"
                         component={Character}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/monsters"
+                        component={CourseMonsters}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/habits"
+                        component={CourseHabits}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/shop"
+                        component={CourseShop}
                     />
                     <Route exact path="/signup" component={Signup} />
                     <Route
