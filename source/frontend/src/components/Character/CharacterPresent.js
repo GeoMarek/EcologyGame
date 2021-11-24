@@ -6,20 +6,20 @@ import './Character.css'
 
 const CharacterPresent = ({ character, edit_mode }) => {
     return (
-        <>
+        <div>
             <p className="character-name">
                 Stoi przed Tobą wojownik {character.level} poziomu. <br />{' '}
                 Potężny i niepokonany {character.name}!
             </p>
-            <div className="home-column">
+            <div className="profile-image">
                 <CharacterImage is_alive={character.isAlive} />
                 <br />
                 <CommonButton text="Edytuj postać" on_click={edit_mode} />
             </div>
-            <div className="home-column">
+            <div className="profile-info">
                 <CharacterInfo character={character} />
             </div>
-        </>
+        </div>
     )
 }
 
