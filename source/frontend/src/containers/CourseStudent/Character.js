@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { load_character } from '../actions/character'
-import CommonButton from '../components/Common/CommonButton'
-import CharacterImage from '../components/Character/CharacterImage'
-import CharacterInfo from '../components/Character/CharacterInfo'
+import { load_character } from '../../actions/character'
+import CommonButton from '../../components/Common/CommonButton'
+import CharacterImage from '../../components/Character/CharacterImage'
+import CharacterInfo from '../../components/Character/CharacterInfo'
+import { get_course_by_id } from '../../actions/course'
+import StudentSideBar from '../../components/SideBar/StudentSideBar'
+import CharacterPresent from '../../components/Character/CharacterPresent'
 
 const Character = ({
     match,
     isAuthenticated,
     character_global,
     load_character,
+    course_global,
 }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -32,10 +36,16 @@ const Character = ({
     useEffect(
         () => {
             load_character(match.params.course_id)
+            get_course_by_id(match.params.id)
             setEditData({
                 edit: false,
             })
         }, // eslint-disable-next-line
+        []
+    )
+
+    useEffect(
+        () => {}, // eslint-disable-next-line
         []
     )
 
@@ -69,29 +79,19 @@ const Character = ({
         <CommonButton text="Anuluj zmiany" on_click={turnOffEditProfileMode} />
     )
 
-    const presentProfileMode = () => (
-        <>
-            <p className="character-name">
-                Stoi przed Tobą wojownik {character_global.level} poziomu.{' '}
-                <br /> Potężny i niepokonany {character_global.name}!
-            </p>
-            <div className="home-column">
-                <CharacterImage is_alive={character_global.isAlive} />
-                <br />
-                <CommonButton
-                    text="Edytuj postać"
-                    on_click={turnOnEditProfileMode}
-                />
-            </div>
-            <div className="home-column">
-                <CharacterInfo character={character_global} />
-            </div>
-        </>
-    )
-
     return (
         <div className="home-container">
-            {editData.edit ? editProfileMode() : presentProfileMode()}
+            <div className="course-content">
+                <StudentSideBar course_id={course_global.id} />
+                {editData.edit ? (
+                    editProfileMode()
+                ) : (
+                    <CharacterPresent
+                        character={character_global}
+                        edit_mode={turnOnEditProfileMode}
+                    />
+                )}
+            </div>
         </div>
     )
 }
@@ -99,6 +99,7 @@ const Character = ({
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
     character_global: state.character.characters[0],
+    course_global: state.course.course.course,
 })
 
 export default connect(mapStateToProps, { load_character })(Character)

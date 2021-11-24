@@ -2,9 +2,8 @@ import React from 'react'
 import SideBarLink from './SideBarLink'
 import './SideBar.css'
 
-const StudentSideBar = ({ course }) => {
-    const course_link_path = '/course/' + course.id + '/'
-
+const StudentSideBar = ({ course_id }) => {
+    const course_link_path = '/course/' + course_id
     return (
         <div className="sidebar">
             <p id="sidebar-header">Menu kursu</p>
@@ -14,19 +13,19 @@ const StudentSideBar = ({ course }) => {
                     text="Strona kursu"
                 />
                 <SideBarLink
-                    destination={course_link_path + 'monsters'}
+                    destination={course_link_path + '/monsters'}
                     text="Lista potworów"
                 />
                 <SideBarLink
-                    destination={course_link_path + 'habits'}
+                    destination={course_link_path + '/habits'}
                     text="Lista nawyków"
                 />
                 <SideBarLink
-                    destination={course_link_path + 'character'}
+                    destination={course_link_path + '/character'}
                     text="Mój bohater"
                 />
                 <SideBarLink
-                    destination={course_link_path + 'shop'}
+                    destination={course_link_path + '/shop'}
                     text="Sklep"
                 />
             </ul>

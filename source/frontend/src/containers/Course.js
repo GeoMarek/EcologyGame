@@ -42,9 +42,9 @@ const Course = ({
     const curse_container = () => (
         <div>
             {ifAdmin ? (
-                <AdminSideBar course={course_global} />
+                <AdminSideBar course_id={course_global.id} />
             ) : (
-                <StudentSideBar course={course_global} />
+                <StudentSideBar course_id={course_global.id} />
             )}
             <h3 className="home-title">
                 Witaj na stronie kursu: {course_global.title}
