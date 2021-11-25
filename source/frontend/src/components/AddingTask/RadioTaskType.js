@@ -10,7 +10,7 @@ const RadioTaskType = ({ onChange }) => {
                     id="closed_question"
                     className="checkmark"
                     name="task_type"
-                    value="closed_question"
+                    value="closed-question"
                     checked
                     onChange={(e) => onChange(e)}
                 />
@@ -23,7 +23,7 @@ const RadioTaskType = ({ onChange }) => {
                     id="open_question"
                     className="checkmark"
                     name="task_type"
-                    value="open_question"
+                    value="open-question"
                     onChange={(e) => onChange(e)}
                 />
                 <label htmlFor="open_question">Zadanie otwarte</label>
@@ -35,7 +35,7 @@ const RadioTaskType = ({ onChange }) => {
                     id="habit_question"
                     className="checkmark"
                     name="task_type"
-                    value="habit_question"
+                    value="habit-question"
                     onChange={(e) => onChange(e)}
                 />
                 <label htmlFor="habit_question">Przydatny nawyk</label>
@@ -46,7 +46,7 @@ const RadioTaskType = ({ onChange }) => {
                     id="multi_question"
                     className="checkmark"
                     name="task_type"
-                    value="group_quiz"
+                    value="group-quiz"
                     onChange={(e) => onChange(e)}
                 />
                 <label htmlFor="multi_question">Quiz grupowy</label>

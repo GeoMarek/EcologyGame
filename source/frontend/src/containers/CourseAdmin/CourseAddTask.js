@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
 import RadioTaskType from '../../components/AddingTask/RadioTaskType'
 
-const CourseAddTask = ({ course_global, match }) => {
+const CourseAddTask = ({ course_global, match, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        task_type: 'closed_question', // closed, open or habit
+        task_type: 'closed-question', // closed, open or habit
     })
     const { task_type } = formData
+
+    const [redirectData, setRedirectData] = useState({
+        redirect: 0,
+    })
+    const renderRedirect = () => (
+        <Redirect to={'/course/' + course_global.id + '/add-' + task_type} />
+    )
+
     useEffect(
         () => {
             get_course_by_id(match.params.id)
@@ -16,9 +25,14 @@ const CourseAddTask = ({ course_global, match }) => {
         []
     )
 
+    if (!isAuthenticated) {
+        return <Redirect to="/" />
+    }
+
     const onSubmit = (e) => {
         e.preventDefault()
         console.log(task_type)
+        setRedirectData({ ...redirectData, redirect: task_type })
     }
 
     const onChange = (e) => {
@@ -36,6 +50,7 @@ const CourseAddTask = ({ course_global, match }) => {
 
     return (
         <div className="home-container">
+            {redirectData.redirect !== 0 ? renderRedirect() : <div />}
             <div className="course-content">
                 <AdminSideBar course_id={course_global.id} />
                 <h3 className="home-title">Wybierz rodzaj zadania</h3>

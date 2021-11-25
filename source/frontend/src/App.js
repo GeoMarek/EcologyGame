@@ -26,6 +26,7 @@ import CourseAddTask from './containers/CourseAdmin/CourseAddTask'
 import CourseAdminShop from './containers/CourseAdmin/CourseAdminShop'
 import CourseStats from './containers/CourseAdmin/CourseStats'
 import CourseTaskList from './containers/CourseAdmin/CourseTaskList'
+import ClosedQuestion from './containers/AddTask/ClosedQuestion'
 
 const App = () => (
     <Provider store={store}>
@@ -35,6 +36,11 @@ const App = () => (
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/profile" component={Profile} />
+                    <Route
+                        exact
+                        path="/course/:course_id/add-closed-question"
+                        component={ClosedQuestion}
+                    />
                     <Route
                         exact
                         path="/course/:course_id/tasklist"
