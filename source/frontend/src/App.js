@@ -22,6 +22,10 @@ import './App.css'
 import CourseMonsters from './containers/CourseStudent/CourseMonsters'
 import CourseHabits from './containers/CourseStudent/CourseHabits'
 import CourseShop from './containers/CourseStudent/CourseShop'
+import CourseAddTask from './containers/CourseAdmin/CourseAddTask'
+import CourseAdminShop from './containers/CourseAdmin/CourseAdminShop'
+import CourseStats from './containers/CourseAdmin/CourseStats'
+import CourseTaskList from './containers/CourseAdmin/CourseTaskList'
 
 const App = () => (
     <Provider store={store}>
@@ -31,6 +35,26 @@ const App = () => (
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/profile" component={Profile} />
+                    <Route
+                        exact
+                        path="/course/:course_id/tasklist"
+                        component={CourseTaskList}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/addtask"
+                        component={CourseAddTask}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/statistics"
+                        component={CourseStats}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/adminshop"
+                        component={CourseAdminShop}
+                    />
                     <Route
                         exact
                         path="/course/:course_id/character"

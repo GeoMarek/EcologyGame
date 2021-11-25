@@ -7,7 +7,8 @@ import './Character.css'
 const CharacterPresent = ({ character, edit_mode }) => {
     return (
         <div>
-            <p className="character-name">
+            <h3 className="home-title">Witaj na stronie bohatera</h3>
+            <p>
                 Stoi przed Tobą wojownik {character.level} poziomu. <br />{' '}
                 Potężny i niepokonany {character.name}!
             </p>

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
-import StudentSideBar from '../../components/SideBar/StudentSideBar'
+import AdminSideBar from '../../components/SideBar/AdminSideBar'
 
-const CourseShop = ({ course_global, match }) => {
+const CourseAddTask = ({ course_global, match }) => {
     useEffect(
         () => {
             get_course_by_id(match.params.id)
@@ -14,12 +14,10 @@ const CourseShop = ({ course_global, match }) => {
     return (
         <div className="home-container">
             <div className="course-content">
-                <div>
-                    <StudentSideBar course_id={course_global.id} />
-                    <h3 className="home-title">
-                        Witaj na stronie sklepu dla uczestnika
-                    </h3>
-                </div>
+                <AdminSideBar course_id={course_global.id} />
+                <h3 className="home-title">
+                    Witaj na stronie dodawania nowego zadania
+                </h3>
             </div>
         </div>
     )
@@ -30,4 +28,4 @@ const mapStateToProps = (state) => ({
     course_global: state.course.course.course,
 })
 
-export default connect(mapStateToProps, { get_course_by_id })(CourseShop)
+export default connect(mapStateToProps, { get_course_by_id })(CourseAddTask)

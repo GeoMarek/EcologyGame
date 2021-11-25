@@ -15,7 +15,9 @@ const CourseHabits = ({ course_global, match }) => {
         <div className="home-container">
             <div className="course-content">
                 <StudentSideBar course_id={course_global.id} />
-                <p>Witaj na stronie z listą nawyków do wyrobienia</p>
+                <h3 className="home-title">
+                    Witaj na stronie z listą nawyków do wyrobienia
+                </h3>
             </div>
         </div>
     )
