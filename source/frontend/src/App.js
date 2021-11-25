@@ -27,6 +27,9 @@ import CourseAdminShop from './containers/CourseAdmin/CourseAdminShop'
 import CourseStats from './containers/CourseAdmin/CourseStats'
 import CourseTaskList from './containers/CourseAdmin/CourseTaskList'
 import ClosedQuestion from './containers/AddTask/ClosedQuestion'
+import GroupQuiz from './containers/AddTask/GroupQuiz'
+import HabitQuestion from './containers/AddTask/HabitQuestion'
+import OpenQuestion from './containers/AddTask/OpenQuestion'
 
 const App = () => (
     <Provider store={store}>
@@ -40,6 +43,21 @@ const App = () => (
                         exact
                         path="/course/:course_id/add-closed-question"
                         component={ClosedQuestion}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/add-group-quiz"
+                        component={GroupQuiz}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/add-habit-question"
+                        component={HabitQuestion}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/add-open-question"
+                        component={OpenQuestion}
                     />
                     <Route
                         exact
