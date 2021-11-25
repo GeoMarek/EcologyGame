@@ -49,7 +49,7 @@ const CreateCourse = ({
     return (
         <div className="home-container">
             {redirectData.redirect !== 0 ? renderRedirect() : <div />}
-            <div class="home-column">
+            <div className="home-column">
                 <form onSubmit={(e) => onSubmit(e)}>
                     <div className="form-group">
                         <input
@@ -96,7 +96,7 @@ const CreateCourse = ({
                     </button>
                 </form>
             </div>
-            <div class="home-column">
+            <div className="home-column">
                 <CreateCourseHint />
             </div>
         </div>

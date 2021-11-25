@@ -1,0 +1,11 @@
+label {
+    font-size: 15px;
+    color: aquamarine;
+    padding: 10px;
+}
+
+.checkmark {
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+}
