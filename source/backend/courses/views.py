@@ -188,7 +188,10 @@ class GetCourseView(APIView):
             if course_id != None:
                 course = Course.objects.get(id=course_id)
                 serializer = CourseSerializer(course)
-                return Response({"course": serializer.data})
+                characters = Character.objects.filter(course=course)
+                ch_data = [CharacterSerializer(model).data for model in characters]
+                return Response({"course": serializer.data,
+                                   "participants": ch_data })
         except:
             return Response({"error": "Something went wrong when geting course by id"})
 
