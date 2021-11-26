@@ -16,6 +16,16 @@ const CourseStats = ({ course_global, match }) => {
             <div className="course-content">
                 <AdminSideBar course_id={course_global.id} />
                 <h3 className="home-title">Witaj na stronie statystyk kursu</h3>
+                {course_global.participants.length === 0 ? (
+                    <p>Brak uczestników</p>
+                ) : (
+                    <p>Uczestnicy kursu</p>
+                )}
+                {course_global.participants.map((user, index) => (
+                    <p key={index}>
+                        index: {index}, user: {user}
+                    </p>
+                ))}
             </div>
         </div>
     )

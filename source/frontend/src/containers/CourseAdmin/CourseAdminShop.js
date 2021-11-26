@@ -2,6 +2,26 @@ import React, { useEffect } from 'react'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
+import '../../components/Shop/Shop.css'
+import Item from '../../components/Shop/Item'
+
+const examle_old_weapon = {
+    item_name: 'Drewniany miecz',
+    sell_price: '10',
+    buy_price: '20',
+    eq_type: 'weapon',
+    item_img: '',
+    stat: 5,
+}
+
+const examle_old_armor = {
+    item_name: 'Skórzany pancerz',
+    sell_price: '10',
+    buy_price: '20',
+    eq_type: 'armor',
+    item_img: '',
+    stat: 5,
+}
 
 const CourseAdminShop = ({ course_global, match }) => {
     useEffect(
@@ -15,7 +35,21 @@ const CourseAdminShop = ({ course_global, match }) => {
         <div className="home-container">
             <div className="course-content">
                 <AdminSideBar course_id={course_global.id} />
-                <h3 className="home-title">Witaj na stronie sklepu admina</h3>
+                <div className="admin-shop-container">
+                    <h3 className="home-title">
+                        Zarządaj przedmiotami na kursie
+                    </h3>
+                    <div>
+                        <div className="home-column items-container">
+                            <Item item={examle_old_armor} />
+                            <Item item={examle_old_weapon} />
+                        </div>
+                        <div className="home-column items-container">
+                            <Item item={examle_old_armor} />
+                            <Item item={examle_old_weapon} />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
