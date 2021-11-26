@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
-import RadioTaskType from '../../components/AddingTask/RadioTaskType'
+import RadioTaskType from '../../components/Task/RadioTaskType'
 
 const CourseAddTask = ({ course_global, match, isAuthenticated }) => {
     const [formData, setFormData] = useState({

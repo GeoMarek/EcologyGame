@@ -40,7 +40,7 @@ const Course = ({
     )
 
     const curse_container = () => (
-        <div>
+        <>
             {ifAdmin ? (
                 <AdminSideBar course_id={course_global.id} />
             ) : (
@@ -55,7 +55,7 @@ const Course = ({
                 {course_global.is_public ? 'publiczny' : 'prywatny'}
             </p>
             {ifAdmin ? admin_container() : <div />}
-        </div>
+        </>
     )
 
     return (

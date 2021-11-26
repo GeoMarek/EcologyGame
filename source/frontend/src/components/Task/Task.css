@@ -26,5 +26,31 @@ label {
 }
 
 .label-in-question-form {
-    width: 20%;
+    width: 25%;
+}
+
+.open-question {
+    margin-top: 8%;
+}
+
+.div-task {
+    border-style: solid;
+    border-color: rgb(6, 24, 24);
+    border-radius: 10px;
+    background-color: #0b4558;
+    width: 74%;
+    margin: 1%;
+    margin-left: 25%;
+}
+
+.div-task:hover {
+    background-color: #1a596e;
+}
+
+.task-title {
+    margin-top: 10px;
+}
+
+.habit-type {
+    width: 30%;
 }

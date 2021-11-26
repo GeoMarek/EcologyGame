@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const HabitQuestion = () => {
     const [formData, setFormData] = useState({
         habit_name: '',
-        habit_type: '',
+        habit_type: 'positiv',
         content: '',
         points: 0,
         damage: 0,
@@ -48,7 +48,11 @@ const HabitQuestion = () => {
 
     const habit_type_form = (
         <div className="form-group">
-            <label className="form-select" htmlFor="habit_type">
+            <label
+                className="form-select habit-type"
+                htmlFor="habit_type"
+                defaultValue={habit_type}
+            >
                 Rodzaj nawyku:
             </label>
             <select name="habit_type" onChange={(e) => onChange(e)}>
