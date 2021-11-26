@@ -1,6 +1,10 @@
+html,
 body {
-    background-image: url('../src/images/wp9396715-tropical-leaves-4k-wallpapers.jpg');
-    background-size: cover;
+    height: 100%;
+    background-size: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
+        url('../src/images/wp9396715-tropical-leaves-4k-wallpapers.jpg');
+    background-attachment: fixed;
 }
 
 .home-container {
