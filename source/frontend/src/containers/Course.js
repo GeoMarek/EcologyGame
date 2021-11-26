@@ -32,25 +32,20 @@ const Course = ({
         return <Redirect to="/courses" />
     }
 
-    const student_container = () => (
+    const admin_container = () => (
         <CommonLink
-            destination={'/course/' + match.params.id + '/character'}
-            text="Zobacz swojego awatara"
+            destination={'/course/' + match.params.id + '/admin'}
+            text="Przejdź do strony zarządzania kursem"
         />
     )
 
-    const admin_container = () => (
-        <>
-            <CommonLink
-                destination={'/course/' + match.params.id + '/admin'}
-                text="Przejdź do strony zarządzania kursem"
-            />
-        </>
-    )
-
     const curse_container = () => (
-        <div>
-            {ifAdmin ? <AdminSideBar /> : <StudentSideBar />}
+        <>
+            {ifAdmin ? (
+                <AdminSideBar course_id={course_global.id} />
+            ) : (
+                <StudentSideBar course_id={course_global.id} />
+            )}
             <h3 className="home-title">
                 Witaj na stronie kursu: {course_global.title}
             </h3>
@@ -59,8 +54,8 @@ const Course = ({
                 Pamiętaj, ten kurs jest{' '}
                 {course_global.is_public ? 'publiczny' : 'prywatny'}
             </p>
-            {ifAdmin ? admin_container() : student_container()}
-        </div>
+            {ifAdmin ? admin_container() : <div />}
+        </>
     )
 
     return (

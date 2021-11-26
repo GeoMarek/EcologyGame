@@ -1,8 +1,8 @@
 .sidebar {
     float: left;
     width: 23%;
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
     background-color: #0b4558;
     overflow-x: hidden;
     border-radius: 10px;
@@ -22,20 +22,15 @@
     margin-right: 15%;
     margin-left: -15%;
     font-size: 16px;
-    color: white;
+    color: #002a38;
+    font-weight: bold;
 }
 
 .sidebar-link:hover {
     text-decoration: none;
-    box-shadow: hsla(0, 0%, 100%, 0.4) 0 -5px 18px -14px inset,
-        hsla(0, 0%, 100%, 0.4) 0 1px 2px, hsla(0, 0%, 100%, 0.4) 0 2px 4px,
-        hsla(0, 0%, 100%, 0.4) 0 4px 8px, hsla(0, 0%, 100%, 0.4) 0 8px 16px,
-        hsla(0, 0%, 100%, 0.4) 0 16px 32px;
     color: #002a38;
     font-weight: bold;
-    background-color: hsla(0, 0%, 100%, 0.7);
-    padding: 3px;
-    border-radius: 50px;
+    color: white;
 }
 
 .sidebar-li {
@@ -44,6 +39,5 @@
 }
 
 ul {
-    height: 100%;
     overflow: hidden;
 }

@@ -1,0 +1,64 @@
+label {
+    font-size: 15px;
+    color: aquamarine;
+    width: 25%;
+}
+
+.checkmark {
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+}
+
+.question-title {
+    color: bisque;
+    padding: 15px;
+    text-align: center;
+}
+
+.closed-question-form {
+    text-align: center;
+}
+
+.labeled-number-input {
+    width: 40%;
+    display: inline;
+}
+
+.label-in-question-form {
+    width: 25%;
+}
+
+.open-question {
+    margin-top: 8%;
+}
+
+.div-task {
+    border-style: solid;
+    border-color: rgb(6, 24, 24);
+    border-radius: 10px;
+    background-color: #0b4558;
+    width: 74%;
+    margin: 1%;
+    margin-left: 25%;
+}
+
+.div-task:hover {
+    background-color: #1a596e;
+}
+
+.task-title {
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.task-content {
+    font-size: 16px;
+    margin: 5px;
+    text-align: left;
+}
+
+.habit-type {
+    width: 30%;
+}

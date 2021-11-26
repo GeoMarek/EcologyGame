@@ -5,7 +5,7 @@ import './Character.css'
 const CharacterProgressBar = ({ act_value, max_value, icon, idx }) => {
     return (
         <div>
-            <label for={idx} id={idx}>
+            <label htmlFor={idx} id={idx}>
                 {act_value}/{max_value} {icon}
             </label>
             <progress
