@@ -1,6 +1,6 @@
-import './Shop.css'
+import ItemIcon from './ItemIcon'
 
-const Item = ({ item }) => {
+const Item = ({ item, onChange, in_course }) => {
     var item_symbol = ''
     switch (item.eq_type) {
         case 'weapon':
@@ -14,13 +14,28 @@ const Item = ({ item }) => {
     }
 
     return (
-        <div>
-            <p>
-                <span>{item_symbol}</span>
-                <span>{item.item_name}</span>
-            </p>
-            <div>key</div>
-            <div>value</div>
+        <div className="arrays-container">
+            <div className="item-info-column">
+                <p className="item-info">
+                    {item_symbol}
+                    {item.item_name}
+                    <br />
+                    Premia: {item.stat}
+                    <br />
+                    Kupno: {item.buy_price}
+                    <br />
+                    Sprzedaż: {item.sell_price}
+                </p>
+            </div>
+            <div className="item-img-column">
+                <ItemIcon item_image={item.item_image} />
+                <input
+                    type="checkbox"
+                    name="in_course"
+                    onChange={(e) => onChange(e)}
+                    value={in_course}
+                />
+            </div>
         </div>
     )
 }
