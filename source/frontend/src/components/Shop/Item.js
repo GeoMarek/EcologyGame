@@ -1,6 +1,6 @@
 import ItemIcon from './ItemIcon'
 
-const Item = ({ item }) => {
+const Item = ({ item, onChange, in_course }) => {
     var item_symbol = ''
     switch (item.eq_type) {
         case 'weapon':
@@ -29,6 +29,12 @@ const Item = ({ item }) => {
             </div>
             <div className="item-img-column">
                 <ItemIcon item_image={item.item_image} />
+                <input
+                    type="checkbox"
+                    name="in_course"
+                    onChange={(e) => onChange(e)}
+                    value={in_course}
+                />
             </div>
         </div>
     )

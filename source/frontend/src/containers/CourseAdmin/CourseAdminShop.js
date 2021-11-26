@@ -30,6 +30,19 @@ const CourseAdminShop = ({ course_global, match }) => {
         []
     )
 
+    const onChangeOld = (e) => {
+        console.log('Remove old equipment')
+    }
+
+    const onChangeNew = (e) => {
+        console.log('Add new equipment')
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        console.log(e)
+    }
+
     return (
         <div className="home-container">
             <div className="course-content">
@@ -39,20 +52,45 @@ const CourseAdminShop = ({ course_global, match }) => {
                         Zarządzaj przedmiotami na kursie
                     </h3>
                     <div className="core-course-content-container">
-                        <div className="admin-shop-column">
-                            <h3 className="course-content-title">
-                                Dodane do kursu
-                            </h3>
-                            <Item item={examle_old_armor} />
-                            <Item item={examle_old_weapon} />
-                        </div>
-                        <div className="admin-shop-column">
-                            <h3 className="course-content-title">
-                                Poza kursem
-                            </h3>
-                            <Item item={examle_old_armor} />
-                            <Item item={examle_old_weapon} />
-                        </div>
+                        <form onSubmit={(e) => onSubmit(e)}>
+                            <div className="admin-shop-column">
+                                <h3 className="course-content-title">
+                                    Dodane do kursu
+                                </h3>
+                                <Item
+                                    item={examle_old_armor}
+                                    onChange={onChangeOld}
+                                />
+                                <Item
+                                    item={examle_old_armor}
+                                    onChange={onChangeOld}
+                                />
+                                <Item
+                                    item={examle_old_armor}
+                                    onChange={onChangeOld}
+                                />
+                            </div>
+                            <div className="admin-shop-column">
+                                <h3 className="course-content-title">
+                                    Poza kursem
+                                </h3>
+                                <Item
+                                    item={examle_old_weapon}
+                                    onChange={onChangeNew}
+                                />
+                                <Item
+                                    item={examle_old_weapon}
+                                    onChange={onChangeNew}
+                                />
+                                <Item
+                                    item={examle_old_weapon}
+                                    onChange={onChangeNew}
+                                />
+                            </div>
+                            <button className="common-button" type="submit">
+                                Zaktualizuj przedmioty w kursie
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
