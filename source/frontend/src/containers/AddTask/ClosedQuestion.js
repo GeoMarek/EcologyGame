@@ -135,6 +135,8 @@ const ClosedQuestion = () => {
                     defaultValue={bad_answer3}
                 />
             </div>
+            <br />
+            <br />
         </>
     )
 

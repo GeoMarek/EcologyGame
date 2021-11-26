@@ -1,7 +1,7 @@
 label {
     font-size: 15px;
     color: aquamarine;
-    width: 15%;
+    width: 25%;
 }
 
 .checkmark {
@@ -26,5 +26,5 @@ label {
 }
 
 .label-in-question-form {
-    width: 25%;
+    width: 20%;
 }
