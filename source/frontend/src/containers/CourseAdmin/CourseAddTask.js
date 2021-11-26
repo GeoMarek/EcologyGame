@@ -7,7 +7,7 @@ import RadioTaskType from '../../components/AddingTask/RadioTaskType'
 
 const CourseAddTask = ({ course_global, match, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        task_type: 'closed-question', // closed, open or habit
+        task_type: 'closed-question',
     })
     const { task_type } = formData
 

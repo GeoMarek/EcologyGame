@@ -1,11 +1,30 @@
 label {
     font-size: 15px;
     color: aquamarine;
-    padding: 10px;
+    width: 15%;
 }
 
 .checkmark {
     height: 15px;
     width: 15px;
     background-color: #eee;
+}
+
+.question-title {
+    color: bisque;
+    padding: 15px;
+    text-align: center;
+}
+
+.closed-question-form {
+    text-align: center;
+}
+
+.labeled-number-input {
+    width: 40%;
+    display: inline;
+}
+
+.label-in-question-form {
+    width: 25%;
 }
