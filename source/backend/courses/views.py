@@ -306,6 +306,27 @@ class CharcterEqView(APIView):
 
 # zarzadzanie quizem
 class QuizView(APIView):
+    # get all course quizzes
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    def get(self, request, course_id):
+        try:
+            if course_id != None:
+                course = Course.objects.get(id=course_id)
+                quizzes = Quiz.objects.filter(course=course)
+                print("kams!!!!!!!!!!!!!!!!")
+                q_type = 'all'#request.query_params["id"]
+                print(q_type)
+                if q_type != None and q_type != 'all':
+                    quizzes.filter(quiz_type=q_type)
+                data = [QuizSerializer(model).data for model in quizzes]
+                return Response({"quizzes": data})
+        except:
+            return Response(
+                {"error": "Something went wrong when geting course's quizzes"}
+            )
+
     def post(self, request, course_id, format=None):
         try:
             data = self.request.data
