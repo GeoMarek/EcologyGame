@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_course_by_id, delete_course_by_id } from '../actions/course'
 import CommonButton from '../components/Common/CommonButton'
-import CommonLink from '../components/Common/CommonLink'
 import StudentSideBar from '../components/SideBar/StudentSideBar'
 import AdminSideBar from '../components/SideBar/AdminSideBar'
 
@@ -46,13 +45,7 @@ const Course = ({
     }
 
     const admin_container = () => (
-        <div>
-            <CommonButton text="Usuń ten kurs" on_click={deleteCourse} />
-            <CommonLink
-                destination={'/course/' + match.params.id + '/admin'}
-                text="Przejdź do strony zarządzania kursem"
-            />
-        </div>
+        <CommonButton text="Usuń ten kurs" on_click={deleteCourse} />
     )
 
     const curse_container = () => (
