@@ -1,4 +1,4 @@
-import './Course.css'
+import '../../styles/Course.css'
 import { join_course } from '../../actions/course'
 import { connect } from 'react-redux'
 import CommonButton from '../Common/CommonButton'

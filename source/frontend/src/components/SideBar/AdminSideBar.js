@@ -1,6 +1,6 @@
 import React from 'react'
 import SideBarLink from './SideBarLink'
-import './SideBar.css'
+import '../../styles/SideBar.css'
 
 const AdminSideBar = ({ course_id }) => {
     const course_link_path = '/course/' + course_id

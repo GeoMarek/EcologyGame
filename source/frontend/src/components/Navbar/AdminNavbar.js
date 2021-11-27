@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import './Navbar.css'
+import '../../styles/Task.css'
 import NavbarLink from './NavbarLink'
 
 const AdminNavbar = ({ id }) => {

@@ -1,5 +1,5 @@
-import './Task.css'
-import '../Courses/Course.css'
+import '../../styles/Task.css'
+import '../../styles/Course.css'
 
 const QuestionItem = ({ question }) => {
     var task_type = ''
