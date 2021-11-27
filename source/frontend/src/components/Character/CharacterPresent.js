@@ -9,7 +9,10 @@ const CharacterPresent = ({ character, edit_mode }) => {
         <div>
             <h3 className="home-title">Oto twój bohater, {character.name}</h3>
             <div className="profile-image">
-                <CharacterImage is_alive={character.isAlive} />
+                <CharacterImage
+                    is_alive={character.isAlive}
+                    level={character.level}
+                />
             </div>
             <div className="profile-info">
                 <CharacterInfo character={character} />

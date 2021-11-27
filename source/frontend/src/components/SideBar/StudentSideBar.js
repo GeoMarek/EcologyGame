@@ -25,6 +25,10 @@ const StudentSideBar = ({ course_id }) => {
                     text="Mój bohater"
                 />
                 <SideBarLink
+                    destination={course_link_path + '/statistics'}
+                    text="Statystyki"
+                />
+                <SideBarLink
                     destination={course_link_path + '/shop'}
                     text="Sklep"
                 />

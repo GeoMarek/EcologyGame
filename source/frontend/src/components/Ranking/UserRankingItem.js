@@ -1,11 +1,11 @@
 import React from 'react'
 
-const UserRankingItem = ({ user, key }) => {
+const UserRankingItem = ({ user, index }) => {
     var heart = Array('\u2665')
     var star = Array('\u272A')
 
     return (
-        <tr key={key}>
+        <tr key={index}>
             <td>{user.name}</td>
             <td>{user.level} ⚜</td>
             <td>

@@ -17,9 +17,11 @@ const UserRanking = ({ users }) => {
     return (
         <table>
             {header}
-            {users.map((user, index) => (
-                <UserRankingItem user={user} key={index} />
-            ))}
+            <tbody>
+                {users.map((user, index) => (
+                    <UserRankingItem user={user} index={index} />
+                ))}
+            </tbody>
         </table>
     )
 }

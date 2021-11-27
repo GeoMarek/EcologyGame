@@ -28,7 +28,6 @@ const AdminSideBar = ({ course_id }) => {
                     destination={course_link_path + '/adminshop'}
                     text="Sklep"
                 />
-                <SideBarLink destination="/" text="Usuń kurs" />
             </ul>
         </div>
     )
