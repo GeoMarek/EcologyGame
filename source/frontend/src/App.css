@@ -121,3 +121,36 @@ p {
     float: left;
     margin: 0.5%;
 }
+
+table {
+    text-align: center;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    width: 75%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: #5793a7;
+}
+
+thead,
+th {
+    color: bisque;
+    background: #324960;
+    font-weight: 500;
+    border: 2px #76aabb;
+}
+
+td {
+    font-size: 16px;
+    color: #0b4558;
+    font-weight: 600;
+}
+
+.header-td {
+    color: bisque;
+}
+
+tr:nth-child(even) {
+    background: #76aabb;
+}

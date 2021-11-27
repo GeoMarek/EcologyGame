@@ -61,24 +61,33 @@ class Character(models.Model):
 
 
 class Quiz(models.Model):
-    class SelectType(models.TextChoices):
+    class SelectMarkType(models.TextChoices):
         BEST = "b", _("Best")
         LAST = "l", _("Last")
+
+    class SelectTypeType(models.TextChoices):
+        OPEN = "o", _("Open")
+        TEST = "t", _("Test")
+        EVENT = "e", _("Event")
+        HABIT = "h", _("Habit")
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
     name = models.CharField(max_length=64, default="nazwa quizu")
     description = models.TextField(default="opis quizu")
     creation_time = models.DateField(auto_now_add=True)
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
-    duration_time = models.DateTimeField()
+    start_time = models.DateTimeField(auto_now_add=True)
+    end_time = models.DateTimeField(auto_now_add=True)
+    duration_time = models.DateTimeField(auto_now_add=True)
     number_of_questions = models.IntegerField(default=0)
     max_points = models.IntegerField(default=0)
     reward_exp = models.IntegerField(default=4)
     reward_gold = models.IntegerField(default=3)
     number_of_approaches = models.IntegerField(default=1)
     selecting_result = models.CharField(
-        max_length=1, choices=SelectType.choices, default=SelectType.BEST
+        max_length=1, choices=SelectMarkType.choices, default=SelectMarkType.BEST
+    )
+    quiz_type = models.CharField(
+        max_length=1, choices=SelectTypeType.choices, default=SelectTypeType.TEST
     )
 
 
@@ -94,10 +103,10 @@ class Question(models.Model):
     a2 = models.TextField(default="odp 2")
     a3 = models.TextField(default="odp 3")
     a4 = models.TextField(default="odp 4")
-    a5 = models.TextField(default="odp 5")
-    a6 = models.TextField(default="odp 6")
-    correct_answer = models.CharField(max_length=1)
-    points = models.IntegerField()
+    # a5 = models.TextField(default="odp 5")
+    # a6 = models.TextField(default="odp 6")
+    correct_answer = models.CharField(max_length=1, default="1")
+    points = models.IntegerField(default=1)
     dmg = models.IntegerField(default=1)
 
 
@@ -106,8 +115,8 @@ class Approach(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=True)
     # event
     start_time = models.DateField(auto_now_add=True)
-    end_time = models.DateTimeField()
-    duration_time = models.DateTimeField()
+    end_time = models.DateTimeField(auto_now_add=True)
+    duration_time = models.DateTimeField(auto_now_add=True)
     obtained_points = models.IntegerField(default=0)
     result_in_percent = models.DecimalField(max_digits=4, decimal_places=2)
 

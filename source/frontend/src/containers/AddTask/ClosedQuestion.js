@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
-const ClosedQuestion = () => {
+const ClosedQuestion = ({ match }) => {
     const [formData, setFormData] = useState({
         question_name: '',
         content: '',
@@ -23,13 +24,66 @@ const ClosedQuestion = () => {
         bad_answer3,
     } = formData
 
+    const create_test = (
+        type,
+        name,
+        description,
+        good_answer,
+        bad_answer1,
+        bad_answer2,
+        bad_answer3,
+        dmg,
+        reward
+    ) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('access')}`,
+                Accept: 'application/json',
+            },
+        }
+
+        const body = JSON.stringify({
+            type,
+            name,
+            description,
+            good_answer,
+            bad_answer1,
+            bad_answer2,
+            bad_answer3,
+            dmg,
+            reward,
+        })
+
+        try {
+            axios.post(
+                `${process.env.REACT_APP_API_URL}/course/${match.params.course_id}/quiz/`,
+                body,
+                config
+            )
+            console.log('nie error :D')
+        } catch (err) {
+            console.log('error ech')
+        }
+    }
+
     const onChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
+        create_test(
+            't',
+            question_name,
+            content,
+            correct_answer,
+            bad_answer1,
+            bad_answer2,
+            bad_answer3,
+            damage,
+            points
+        )
     }
 
     const question_name_form = (
@@ -41,6 +95,7 @@ const ClosedQuestion = () => {
                 placeholder="Wpisz nazwę zadania"
                 onChange={(e) => onChange(e)}
                 defaultValue={question_name}
+                required
             />
         </div>
     )
@@ -54,6 +109,7 @@ const ClosedQuestion = () => {
                 placeholder="Wpisz treść zadania"
                 onChange={(e) => onChange(e)}
                 defaultValue={content}
+                required
             />
         </div>
     )
@@ -67,6 +123,7 @@ const ClosedQuestion = () => {
                 placeholder="Wpisz poprawną odpowiedź"
                 onChange={(e) => onChange(e)}
                 defaultValue={correct_answer}
+                required
             />
         </div>
     )
@@ -83,6 +140,7 @@ const ClosedQuestion = () => {
                 placeholder="Nagroda za dobrą odpowiedź"
                 onChange={(e) => onChange(e)}
                 defaultValue={points}
+                required
             />
         </div>
     )
@@ -99,6 +157,7 @@ const ClosedQuestion = () => {
                 placeholder="Kara za złą odpowiedź"
                 onChange={(e) => onChange(e)}
                 defaultValue={damage}
+                required
             />
         </div>
     )
@@ -113,6 +172,7 @@ const ClosedQuestion = () => {
                     placeholder="Wpisz złą odpowiedź nr 1"
                     onChange={(e) => onChange(e)}
                     defaultValue={bad_answer1}
+                    required
                 />
             </div>
             <div className="form-group">
@@ -123,6 +183,7 @@ const ClosedQuestion = () => {
                     placeholder="Wpisz złą odpowiedź nr 2"
                     onChange={(e) => onChange(e)}
                     defaultValue={bad_answer2}
+                    required
                 />
             </div>
             <div className="form-group">
@@ -133,6 +194,7 @@ const ClosedQuestion = () => {
                     placeholder="Wpisz złą odpowiedź nr 3"
                     onChange={(e) => onChange(e)}
                     defaultValue={bad_answer3}
+                    required
                 />
             </div>
             <br />

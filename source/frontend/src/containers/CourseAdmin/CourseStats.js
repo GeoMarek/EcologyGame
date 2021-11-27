@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
+import UserRanking from '../../components/Ranking/UserRanking'
 
-const CourseStats = ({ course_global, match }) => {
+const CourseStats = ({ course_global, match, course_participants }) => {
     useEffect(
         () => {
             get_course_by_id(match.params.id)
@@ -16,16 +17,11 @@ const CourseStats = ({ course_global, match }) => {
             <div className="course-content">
                 <AdminSideBar course_id={course_global.id} />
                 <h3 className="home-title">Witaj na stronie statystyk kursu</h3>
-                {course_global.participants.length === 0 ? (
+                {course_participants.length === 0 ? (
                     <p>Brak uczestników</p>
                 ) : (
-                    <p>Uczestnicy kursu</p>
+                    <UserRanking users={course_participants} />
                 )}
-                {course_global.participants.map((user, index) => (
-                    <p key={index}>
-                        index: {index}, user: {user}
-                    </p>
-                ))}
             </div>
         </div>
     )
@@ -34,6 +30,7 @@ const CourseStats = ({ course_global, match }) => {
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
     course_global: state.course.course.course,
+    course_participants: state.course.course.participants,
 })
 
 export default connect(mapStateToProps, { get_course_by_id })(CourseStats)
