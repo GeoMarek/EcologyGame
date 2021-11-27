@@ -1,19 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { get_course_by_id } from '../actions/course'
+import { get_course_by_id, delete_course_by_id } from '../actions/course'
+import CommonButton from '../components/Common/CommonButton'
 import CommonLink from '../components/Common/CommonLink'
 import StudentSideBar from '../components/SideBar/StudentSideBar'
 import AdminSideBar from '../components/SideBar/AdminSideBar'
 
 const Course = ({
     get_course_by_id,
+    delete_course_by_id,
     account,
     course_global,
     courses_global,
     match,
     user_global,
 }) => {
+    const [redirectData, setRedirectData] = useState({
+        redirect: 0,
+    })
+
+    const renderRedirect = () => <Redirect to={redirectData.redirect} />
     useEffect(
         () => {
             get_course_by_id(match.params.id)
@@ -32,11 +39,20 @@ const Course = ({
         return <Redirect to="/courses" />
     }
 
+    const deleteCourse = (e) => {
+        delete_course_by_id(course_global.id).then((value) =>
+            setRedirectData({ ...redirectData, redirect: '/' })
+        )
+    }
+
     const admin_container = () => (
-        <CommonLink
-            destination={'/course/' + match.params.id + '/admin'}
-            text="Przejdź do strony zarządzania kursem"
-        />
+        <div>
+            <CommonButton text="Usuń ten kurs" on_click={deleteCourse} />
+            <CommonLink
+                destination={'/course/' + match.params.id + '/admin'}
+                text="Przejdź do strony zarządzania kursem"
+            />
+        </div>
     )
 
     const curse_container = () => (
@@ -60,6 +76,7 @@ const Course = ({
 
     return (
         <div className="home-container">
+            {redirectData.redirect !== 0 ? renderRedirect() : <div />}
             <div className="course-content">
                 {user_global && course_global ? curse_container() : <div />}
             </div>
@@ -76,4 +93,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     get_course_by_id,
+    delete_course_by_id,
 })(Course)
