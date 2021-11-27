@@ -1,3 +1,4 @@
+from os import name
 from django.db.models.fields import Field
 from rest_framework import generics, permissions
 from rest_framework.response import Response
@@ -34,7 +35,7 @@ class ItemsView(generics.ListCreateAPIView):
 
 
 # lista wszystkich Quiz oraz możliwość tworzenia nowych
-class QuizView(generics.ListCreateAPIView):
+class QuizzesView(generics.ListCreateAPIView):
     permission_classes = (
         permissions.AllowAny,
     )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
@@ -188,7 +189,10 @@ class GetCourseView(APIView):
             if course_id != None:
                 course = Course.objects.get(id=course_id)
                 serializer = CourseSerializer(course)
-                return Response({"course": serializer.data})
+                characters = Character.objects.filter(course=course)
+                ch_data = [CharacterSerializer(model).data for model in characters]
+                return Response({"course": serializer.data,
+                                   "participants": ch_data })
         except:
             return Response({"error": "Something went wrong when geting course by id"})
 
@@ -299,3 +303,59 @@ class CharcterEqView(APIView):
             return Response({"info": f"{fun_type} wykonnane poprawnie"})
         except:
             return Response({"error": f"Something went wrong with {fun_type}"})
+
+# zarzadzanie quizem
+class QuizView(APIView):
+    def post(self, request, course_id, format=None):
+        try:
+            data = self.request.data
+            course_id = course_id
+            course = Course.objects.get(id=course_id)
+            quiz_type = data["type"]
+            name = data["name"]
+            description = data["description"]
+            q_g_anw = data["good_answer"]
+            q_b_anw1 = data["bad_answer1"]
+            q_b_anw2 = data["bad_answer2"]
+            q_b_anw3 = data["bad_answer3"]
+            dmg = data["dmg"]
+            reward = data["reward"]
+            reward_exp = reward
+            reward_gold = reward
+            if quiz_type == Quiz.SelectTypeType.TEST:
+                number_of_questions = 1
+                max_points = 1
+                number_of_approaches = 1
+                selecting_result = Quiz.SelectMarkType.BEST
+            elif quiz_type == Quiz.SelectTypeType.OPEN:
+                number_of_questions = 1
+                max_points = 1
+                number_of_approaches = 1
+                selecting_result = Quiz.SelectMarkType.BEST
+            elif quiz_type == Quiz.SelectTypeType.OPEN:
+                number_of_questions = 1
+                max_points = 1
+                number_of_approaches = 1
+                selecting_result = Quiz.SelectMarkType.BEST
+            elif quiz_type == Quiz.SelectTypeType.OPEN:
+                number_of_questions = 1
+                max_points = 1
+                number_of_approaches = 1
+                selecting_result = Quiz.SelectMarkType.BEST
+            else :
+                return Response({"error": f"Wrong quiz_type: {quiz_type}"})
+            quiz = Quiz(course=course, name = name, description = description,
+                        number_of_questions = number_of_questions, max_points = max_points,
+                        reward_exp = reward_exp, reward_gold = reward_gold,
+                        number_of_approaches = number_of_approaches, selecting_result = selecting_result,
+                        quiz_type = quiz_type)
+            quiz.save()
+            question = Question(quiz = quiz, name = name, content = description,
+                                a1 = q_g_anw, a2 = q_b_anw1, a3 = q_b_anw2,
+                                a4 = q_b_anw3, correct_answer = q_g_anw, points = reward,
+                                dmg = dmg)
+            question.save()
+            return Response({"info": f"Quiz utworzono poprawnie"})
+        except:
+            return Response({"error": f"Something went wrong when creating quiz"})
+
