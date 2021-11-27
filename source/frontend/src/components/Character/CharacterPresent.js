@@ -2,7 +2,7 @@ import React from 'react'
 import CharacterImage from './CharacterImage'
 import CharacterInfo from './CharacterInfo'
 import CommonButton from '../Common/CommonButton'
-import './Character.css'
+import '../../styles/Character.css'
 
 const CharacterPresent = ({ character, edit_mode }) => {
     return (

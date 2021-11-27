@@ -1,7 +1,7 @@
 import React from 'react'
 import dead from '../../images/dead_avatar.PNG'
 import alive from '../../images/alive_avatar.PNG'
-import './Character.css'
+import '../../styles/Character.css'
 
 function CharacterImage({ is_alive }) {
     return (
