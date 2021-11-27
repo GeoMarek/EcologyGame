@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
 import UserRanking from '../../components/Ranking/UserRanking'
 
-
 const CourseStats = ({ course_global, match, course_participants }) => {
     useEffect(
         () => {

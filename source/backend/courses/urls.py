@@ -14,8 +14,8 @@ from .views import (
     ItemsView,
     JoinCourseView,
     QuestionView,
-    QuizzesView,
     QuizView,
+    QuizzesView,
 )
 
 urlpatterns = [
