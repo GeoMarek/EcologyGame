@@ -5,6 +5,7 @@ function ItemIcon({ item_image }) {
         <img
             className="item-icon"
             src={`${process.env.PUBLIC_URL}/ItemIcons/` + item_image}
+            alt={item_image}
         />
     )
 }
