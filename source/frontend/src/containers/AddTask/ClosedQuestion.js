@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-const ClosedQuestion = ({match}) => {
+const ClosedQuestion = ({ match }) => {
     const [formData, setFormData] = useState({
         question_name: '',
         content: '',
@@ -24,9 +24,17 @@ const ClosedQuestion = ({match}) => {
         bad_answer3,
     } = formData
 
-
-    const create_test = (type, name, description, good_answer, 
-        bad_answer1, bad_answer2, bad_answer3, dmg, reward) => {
+    const create_test = (
+        type,
+        name,
+        description,
+        good_answer,
+        bad_answer1,
+        bad_answer2,
+        bad_answer3,
+        dmg,
+        reward
+    ) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +54,7 @@ const ClosedQuestion = ({match}) => {
             dmg,
             reward,
         })
-        
+
         try {
             axios.post(
                 `${process.env.REACT_APP_API_URL}/course/${match.params.course_id}/quiz/`,
@@ -65,8 +73,17 @@ const ClosedQuestion = ({match}) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        create_test('t',question_name,content,correct_answer,bad_answer1,
-        bad_answer2, bad_answer3,damage, points )   
+        create_test(
+            'o',
+            question_name,
+            content,
+            correct_answer,
+            bad_answer1,
+            bad_answer2,
+            bad_answer3,
+            damage,
+            points
+        )
     }
 
     const question_name_form = (

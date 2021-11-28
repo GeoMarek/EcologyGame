@@ -64,6 +64,7 @@ class Quiz(models.Model):
     class SelectMarkType(models.TextChoices):
         BEST = "b", _("Best")
         LAST = "l", _("Last")
+
     class SelectTypeType(models.TextChoices):
         OPEN = "o", _("Open")
         TEST = "t", _("Test")
@@ -102,8 +103,8 @@ class Question(models.Model):
     a2 = models.TextField(default="odp 2")
     a3 = models.TextField(default="odp 3")
     a4 = models.TextField(default="odp 4")
-    #a5 = models.TextField(default="odp 5")
-    #a6 = models.TextField(default="odp 6")
+    # a5 = models.TextField(default="odp 5")
+    # a6 = models.TextField(default="odp 6")
     correct_answer = models.CharField(max_length=1, default="1")
     points = models.IntegerField(default=1)
     dmg = models.IntegerField(default=1)
