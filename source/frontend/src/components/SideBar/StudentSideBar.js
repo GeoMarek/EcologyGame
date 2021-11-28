@@ -1,6 +1,6 @@
 import React from 'react'
 import SideBarLink from './SideBarLink'
-import './SideBar.css'
+import '../../styles/SideBar.css'
 
 const StudentSideBar = ({ course_id }) => {
     const course_link_path = '/course/' + course_id
@@ -23,6 +23,10 @@ const StudentSideBar = ({ course_id }) => {
                 <SideBarLink
                     destination={course_link_path + '/character'}
                     text="Mój bohater"
+                />
+                <SideBarLink
+                    destination={course_link_path + '/statistics'}
+                    text="Statystyki"
                 />
                 <SideBarLink
                     destination={course_link_path + '/shop'}

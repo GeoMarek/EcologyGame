@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/auth'
-import './Navbar.css'
+import '../../styles/Navbar.css'
 import NavbarLink from './NavbarLink'
 
 const Navbar = ({ logout, isAuthenticated }) => {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
-import CommonButton from '../../components/Common/CommonButton'
+import UserRanking from '../../components/Ranking/UserRanking'
 
 const CourseStats = ({ course_global, match, course_participants }) => {
     useEffect(
@@ -20,13 +20,8 @@ const CourseStats = ({ course_global, match, course_participants }) => {
                 {course_participants.length === 0 ? (
                     <p>Brak uczestników</p>
                 ) : (
-                    <p>Uczestnicy kursu</p>
+                    <UserRanking users={course_participants} />
                 )}
-                {course_participants.map((user, index) => (
-                    <p key={index}>
-                        index: {index}, user: {user.name}
-                    </p>
-                ))}
             </div>
         </div>
     )

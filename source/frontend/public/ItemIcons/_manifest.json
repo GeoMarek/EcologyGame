@@ -1,0 +1,66 @@
+{
+    "wooden_sword" : {
+        "name": "Miecz treningowy",
+        "sell_price": 10,
+        "buy_price": 20,
+        "eq_type": "weapon",
+        "stat": 5,
+        "image": "wooden_sword.png"
+    },
+    "iron_sword" : {
+        "name": "Żelazny miecz",
+        "sell_price": 20,
+        "buy_price": 40,
+        "eq_type": "weapon",
+        "stat": 10,
+        "image": "iron_sword.png"
+    },
+    "gold_sword" : {
+        "name": "Pozłacany rapier",
+        "sell_price": 30,
+        "buy_price": 60,
+        "eq_type": "weapon",
+        "stat": 20,
+        "image": "gold_sword.png"
+    },
+    "diamond_sword" : {
+        "name": "Diamentowe ostrze",
+        "sell_price": 40,
+        "buy_price": 80,
+        "eq_type": "weapon",
+        "stat": 35,
+        "image": "diamond_sword.png"
+    },
+    "wooden_armor" : {
+        "name": "Skórzany płaszcz",
+        "sell_price": 10,
+        "buy_price": 20,
+        "eq_type": "armor",
+        "stat": 5,
+        "image": "wooden_armor.png"
+    },
+    "iron_armor" : {
+        "name": "Żelazna zbroja",
+        "sell_price": 20,
+        "buy_price": 40,
+        "eq_type": "armor",
+        "stat": 10,
+        "image": "iron_armor.png"
+    },
+    "gold_armor" : {
+        "name": "Pozłacana kolczuga",
+        "sell_price": 30,
+        "buy_price": 60,
+        "eq_type": "armor",
+        "stat": 20,
+        "image": "gold_armor.png"
+    },
+    "diamond_armor" : {
+        "name": "Kryształowy pancerz",
+        "sell_price": 40,
+        "buy_price": 80,
+        "eq_type": "armor",
+        "stat": 35,
+        "image": "diamond_armor.png"
+    }
+}

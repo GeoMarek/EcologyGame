@@ -74,7 +74,7 @@ const ClosedQuestion = ({ match }) => {
     const onSubmit = (e) => {
         e.preventDefault()
         create_test(
-            'o',
+            't',
             question_name,
             content,
             correct_answer,

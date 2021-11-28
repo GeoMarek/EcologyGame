@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Course.css'
+import '../../styles/Course.css'
 
 const CreateCourseHint = () => {
     return (

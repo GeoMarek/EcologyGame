@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Character.css'
+import '../../styles/Character.css'
 
 const CharacterAttribute = ({ gold, level }) => {
     return (

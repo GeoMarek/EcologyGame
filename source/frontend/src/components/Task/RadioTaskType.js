@@ -1,5 +1,5 @@
 import React from 'react'
-import './Task.css'
+import '../../styles/Task.css'
 
 const RadioTaskType = ({ onChange }) => {
     return (

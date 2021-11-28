@@ -2,7 +2,7 @@ import React from 'react'
 import CharacterProgressBar from './CharacterProgressBar'
 import CharacterAttribute from './CharacterAttribute'
 
-import './Character.css'
+import '../../styles/Character.css'
 
 const CharacterInfo = ({ character }) => {
     var heart = Array('\u2665')

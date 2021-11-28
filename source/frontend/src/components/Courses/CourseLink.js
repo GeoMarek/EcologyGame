@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Course.css'
+import '../../styles/Course.css'
 
 const CourseLink = ({ destination, text }) => {
     return (
