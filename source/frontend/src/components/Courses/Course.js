@@ -4,10 +4,17 @@ import { connect } from 'react-redux'
 import CommonButton from '../Common/CommonButton'
 import CourseLink from './CourseLink'
 
-const Course = ({ course, join_course }) => {
+const Course = ({ course, join_course, user }) => {
     const joinCourse = (e) => {
         join_course(course.id)
     }
+
+    var show_button = false
+    if (user !== null)
+        show_button = !course.participants
+            .concat(course.admins)
+            .includes(user.id)
+
     return (
         <div className="div-course" key={course.id}>
             <CourseLink
@@ -15,7 +22,11 @@ const Course = ({ course, join_course }) => {
                 destination={'/course/' + course.id}
             />
             <p>{course.description}</p>
-            <CommonButton text="Dołącz do kursu" on_click={joinCourse} />
+            {show_button ? (
+                <CommonButton text="Dołącz do kursu" on_click={joinCourse} />
+            ) : (
+                <> </>
+            )}
         </div>
     )
 }

@@ -11,6 +11,7 @@ const Courses = ({
     get_the_courses,
     courses_global,
     account,
+    user_global,
 }) => {
     // eslint-disable-next-line
     const [coursesData, setCoursesData] = useState({
@@ -75,7 +76,7 @@ const Courses = ({
             <br />
             <br />
             {courses_global.map((course, index) => (
-                <Course key={index} course={course} />
+                <Course key={index} course={course} user={user_global} />
             ))}
         </div>
     )
@@ -84,6 +85,7 @@ const Courses = ({
 const mapStateToProps = (state) => ({
     account: state.auth,
     courses_global: state.course.kursy,
+    user_global: state.auth.user,
 })
 
 export default connect(mapStateToProps, { get_all_courses, get_the_courses })(
