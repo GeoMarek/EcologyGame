@@ -73,8 +73,7 @@ const CreateCourse = ({
                     <div className="form-group">
                         <label>
                             <span className="course-checkbox">
-                                Zaznacz, jeśli chcesz, by tworzony kurs był
-                                publiczny
+                                Czy kurs ma być publiczny?
                             </span>
                             <input
                                 type="checkbox"

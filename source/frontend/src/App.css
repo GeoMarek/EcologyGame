@@ -179,3 +179,23 @@ tr:nth-child(even) {
     text-decoration: none;
     color: green;
 }
+
+input[type='checkbox'] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+    transform: scale(1.4);
+}
+.course-checkbox {
+    color: aquamarine;
+    padding: 10px;
+    width: 100%;
+    position: absolute;
+    margin-left: -62%;
+    margin-top: -1%;
+}
+
+.long-description {
+    word-break: break-word;
+    height: 200px;
+}

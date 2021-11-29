@@ -13,7 +13,7 @@ const CourseStats = ({
     user_global,
     course_participants,
 }) => {
-    const [redirectData, setRedirectData] = useState({
+    const [redirectData] = useState({
         redirect: 0,
     })
 
