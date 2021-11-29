@@ -194,8 +194,3 @@ input[type='checkbox'] {
     margin-left: -62%;
     margin-top: -1%;
 }
-
-.long-description {
-    word-break: break-word;
-    height: 200px;
-}
