@@ -14,6 +14,7 @@ import {
 const initialState = {
     kursy: [],
     course: [],
+    items: [],
 }
 
 // eslint-disable-next-line

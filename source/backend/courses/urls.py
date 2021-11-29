@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    AddItemsToCourse,
     AnswerView,
     ApproachView,
     CharactersView,
@@ -11,6 +12,7 @@ from .views import (
     GetCourseView,
     GetItemView,
     GetTheCoursesView,
+    InitEqView,
     ItemsView,
     JoinCourseView,
     QuestionView,
@@ -28,10 +30,12 @@ urlpatterns = [
     path("items/", ItemsView.as_view()),
     path("item_by_id/", GetItemView.as_view()),
     path("<int:course_id>/shop/", CourseItems.as_view()),
+    path("<int:course_id>/addItems/", AddItemsToCourse.as_view()),
     path("<int:course_id>/character/eq/", CharcterEqView.as_view()),
     path("quizzes/", QuizzesView.as_view()),
     path("questions/", QuestionView.as_view()),
     path("approaches/", ApproachView.as_view()),
     path("answers/", AnswerView.as_view()),
     path("<int:course_id>/quiz/", QuizView.as_view()),
+    path("admin/admin/eq/", InitEqView.as_view()),
 ]

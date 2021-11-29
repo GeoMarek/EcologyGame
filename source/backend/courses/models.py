@@ -19,6 +19,7 @@ class Item(models.Model):
         max_length=1, choices=ItemType.choices, default=ItemType.WEAPON
     )
     stat = models.IntegerField(default=2)
+    image = models.CharField(max_length=128, default="miecz.png")
 
     def _str_(self):
         return self.name
@@ -45,7 +46,7 @@ class Character(models.Model):
     curent_hp = models.IntegerField(default=10)
     max_exp = models.IntegerField(default=10)
     current_exp = models.IntegerField(default=0)
-    gold = models.IntegerField(default=0)
+    gold = models.IntegerField(default=100)
     level = models.IntegerField(default=1)
     isAlive = models.BooleanField(default=True)
     weapon = models.ForeignKey(
