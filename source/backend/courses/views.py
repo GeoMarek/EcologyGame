@@ -1,3 +1,5 @@
+import json
+import os
 from os import name
 
 from django.db.models.fields import Field
@@ -102,9 +104,29 @@ class CharacterView(APIView):
             if course_id != None:
                 course = Course.objects.get(id=course_id)
                 character = Character.objects.filter(course=course)
+                char = character.get(user=user)
+                armor = char.armor
+                weapon = char.weapon
+                if armor != None:
+                    armor = ItemSerializer(armor).data
+                else:
+                    aromr = {}
+                if weapon != None:
+                    weapon = ItemSerializer(weapon).data
+                else:
+                    weapon = {}
+                equipment = char.equipment.all()
+                equipment = [ItemSerializer(model).data for model in equipment]
                 character = character.filter(user=user)
                 data = [CharacterSerializer(model).data for model in character]
-                return Response({"characters": data})
+                return Response(
+                    {
+                        "characters": data,
+                        "weapon": weapon,
+                        "armor": armor,
+                        "equipment": equipment,
+                    }
+                )
         except:
             return Response(
                 {"error": "Something went wrong when geting character for course"}
@@ -122,9 +144,9 @@ class CourseItems(APIView):
         try:
             if course_id != None:
                 course = Course.objects.get(id=course_id)
-                course = CourseSerializer(course)
-                data = course.data["store_items"]
-                return Response({"items": data})
+                items = course.store_items.all()
+                items = [ItemSerializer(model).data for model in items]
+                return Response({"items": items})
         except:
             return Response(
                 {"error": "Something went wrong when geting course's items"}
@@ -154,6 +176,27 @@ class CourseItems(APIView):
 
                 item = Item.objects.get(id=item_id)
                 course.store_items.add(item)
+
+                return Response(
+                    {"info": "wszystko okej przy dodaniu przedmiotu do sklepu"}
+                )
+        except:
+            return Response({"error": "Something went wrong when adding item to shop"})
+
+
+# Klasa odpowiedzialna za sklep
+class AddItemsToCourse(APIView):
+    # dodaj item do sklepu
+    def put(self, request, course_id, format=None):
+        try:
+            if course_id != None:
+                course = Course.objects.get(id=course_id)
+                data = self.request.data
+                item_id = data["items_id"]
+                items = Item.objects.all()
+                for id in item_id:
+                    item = items.get(id=id)
+                    course.store_items.add(item)
 
                 return Response(
                     {"info": "wszystko okej przy dodaniu przedmiotu do sklepu"}
@@ -262,9 +305,9 @@ class CharcterEqView(APIView):
                     or item_id in s_character.data["equipment"]
                 ):
                     return Response({"error": "Już posiadasz ten przedmiot!"})
-                if s_character.data["gold"] < s_item.data["buy_price"]:
-                    return Response({"error": "Nie masz wystarczająco złota!"})
-                character.gold = s_character.data["gold"] - s_item.data["buy_price"]
+                # if s_character.data["gold"] < s_item.data["buy_price"]:
+                #    return Response({"error": "Nie masz wystarczająco złota!"})
+                # character.gold = s_character.data["gold"] - s_item.data["buy_price"]
                 character.equipment.add(item)
                 character.save()
             elif fun_type == "sell_eq":
@@ -300,7 +343,30 @@ class CharcterEqView(APIView):
                 character.save()
             else:
                 return Response({"error": f"Czynność: {fun_type} jest nieobsługiwana!"})
-            return Response({"info": f"{fun_type} wykonnane poprawnie"})
+            character = Character.objects.filter(course=course)
+            char = character.get(user=user)
+            armor = char.armor
+            weapon = char.weapon
+            if armor != None:
+                armor = ItemSerializer(armor).data
+            else:
+                aromr = {}
+            if weapon != None:
+                weapon = ItemSerializer(weapon).data
+            else:
+                weapon = {}
+            equipment = char.equipment.all()
+            equipment = [ItemSerializer(model).data for model in equipment]
+            character = character.filter(user=user)
+            data = [CharacterSerializer(model).data for model in character]
+            return Response(
+                {
+                    "characters": data,
+                    "weapon": weapon,
+                    "armor": armor,
+                    "equipment": equipment,
+                }
+            )
         except:
             return Response({"error": f"Something went wrong with {fun_type}"})
 
@@ -394,3 +460,30 @@ class QuizView(APIView):
             return Response({"info": f"Quiz utworzono poprawnie"})
         except:
             return Response({"error": f"Something went wrong when creating quiz"})
+
+
+class InitEqView(APIView):
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+
+    def get(self, request):
+        module_dir = os.path.dirname(__file__)
+        file_path = os.path.join(module_dir, "_manifest.json")
+        items = Item.objects.all()
+        with open(file_path, encoding="utf-8") as f:
+            json_object = json.load(f).items()
+            for item in json_object:
+                name, data = item
+                print(20 * "-")
+                print(f"obj_name: {name}")
+                if len(items.filter(name=data["name"])) != 0:
+                    print("item already in DB")
+                    continue
+                for key, value in data.items():
+                    print(f"{key}: {value}")
+                eq = Item()
+                for k, v in data.items():
+                    setattr(eq, k, v)
+                eq.save()
+        return Response({"response": "chyba okej dodanie eq"})

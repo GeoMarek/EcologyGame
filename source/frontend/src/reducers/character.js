@@ -7,6 +7,9 @@ import {
 
 const initialState = {
     characters: [[]],
+    weapon: null,
+    armor: null,
+    equipment: [],
 }
 
 // eslint-disable-next-line
@@ -19,11 +22,17 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 characters: payload.characters,
+                weapon: payload.weapon,
+                armor: payload.armor,
+                equipment: payload.equipment,
             }
         case LOAD_CHARACTER_FAIL:
             return {
                 ...state,
                 characters: [[]],
+                weapon: null,
+                armor: null,
+                equipment: [],
             }
         case UPDATE_CHARACTER_FAIL:
             return {

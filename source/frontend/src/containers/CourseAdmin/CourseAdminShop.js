@@ -3,6 +3,7 @@ import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
 import Item from '../../components/Shop/Item'
+import axios from 'axios'
 
 const wood_weapon = {
     item_name: 'Miecz treningowy',
@@ -84,6 +85,31 @@ const CourseAdminShop = ({ course_global, match }) => {
         []
     )
 
+    const add_items = (items_id) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('access')}`,
+                Accept: 'application/json',
+            },
+        }
+
+        const body = JSON.stringify({
+            items_id,
+        })
+
+        try {
+            axios.put(
+                `${process.env.REACT_APP_API_URL}/course/${match.params.course_id}/addItems/`,
+                body,
+                config
+            )
+            console.log('nie error :D')
+        } catch (err) {
+            console.log('error ech')
+        }
+    }
+
     const onChangeOld = (e) => {
         console.log('Remove old equipment')
     }
@@ -94,6 +120,7 @@ const CourseAdminShop = ({ course_global, match }) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        add_items([1, 2])
         console.log(e)
     }
 
