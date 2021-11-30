@@ -60,10 +60,14 @@ const Courses = ({
     return (
         <div className="home-container">
             <h1 className="home-title">Przeglądaj dostępne kursy</h1>
-            <CommonLink text="Utwórz nowy kurs" destination="/create_course" />
-            <CommonButton text="Wszystkie kursy" on_click={f_all} />
             {account.isAuthenticated ? (
                 <Fragment>
+                    <CommonLink
+                        text="Utwórz nowy kurs"
+                        destination="/create_course"
+                    />{' '}
+                    : <></>
+                    <CommonButton text="Wszystkie kursy" on_click={f_all} />
                     <CommonButton text="Zarządzane kursy" on_click={f_admin} />
                     <CommonButton
                         text="Partycypowane kursy"
