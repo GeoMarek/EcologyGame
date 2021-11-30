@@ -11,6 +11,27 @@ const CourseMonsters = ({ course_global, match }) => {
         []
     )
 
+    // const example_open_question = {
+    //     task_type: 'open_question',
+    //     question_name: 'Dodawanie w zakresie 4',
+    //     content: "Treść pytania brzmi 'Ile to 2+2'?",
+    //     correct_answer: 'Odpowiedź to 4',
+    //     points: 2,
+    //     damage: 1,
+    // }
+
+    // const example_closed_question = {
+    //     task_type: 'closed_question',
+    //     question_name: 'Dodawanie w zakresie 10',
+    //     content: "Treść pytania brzmi 'Ile to 2+5'?",
+    //     correct_answer: '7',
+    //     points: 2,
+    //     damage: 1,
+    //     bad_answer1: '1',
+    //     bad_answer2: '2',
+    //     bad_answer3: '3',
+    // }
+
     return (
         <div className="home-container">
             <div className="course-content">
