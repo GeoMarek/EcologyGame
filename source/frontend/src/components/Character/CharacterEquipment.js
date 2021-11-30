@@ -44,7 +44,7 @@ const CharacterEquipment = ({ weapon, armor, equipment }) => {
     const armor_select = (
         <div className="half-column">
             <select name="armor-list" form="change-eq" className="select-eq">
-                {armors.map((armor, id) => (
+                {armors.map((armor) => (
                     <option value={armor} key={armor.id + 'a'}>
                         {armor.item_name}
                     </option>
@@ -56,7 +56,7 @@ const CharacterEquipment = ({ weapon, armor, equipment }) => {
     const weapon_select = (
         <div className="half-column">
             <select name="weapon-list" form="change-eq" className="select-eq">
-                {weapons.map((weapon, id) => (
+                {weapons.map((weapon) => (
                     <option value={weapon} key={weapon.id + 'w'}>
                         {weapon.item_name}
                     </option>
@@ -70,7 +70,6 @@ const CharacterEquipment = ({ weapon, armor, equipment }) => {
             {armor_container}
             {weapon_container}
             <form onSubmit={(e) => onSubmit(e)} id="change-eq">
-                <p>Zmień swój ekwipunek</p>
                 {armor_select}
                 {weapon_select}
                 <button className="common-button" type="submit">

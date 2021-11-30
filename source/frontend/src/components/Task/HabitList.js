@@ -5,7 +5,7 @@ const HabitList = ({ habit_list }) => {
     return (
         <div>
             {habit_list.map((habit) => (
-                <HabitListItem habit={habit} />
+                <HabitListItem habit={habit} key={habit.id} />
             ))}
         </div>
     )
