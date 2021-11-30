@@ -45,7 +45,9 @@ const CharacterEquipment = ({ weapon, armor, equipment }) => {
         <div className="half-column">
             <select name="armor-list" form="change-eq" className="select-eq">
                 {armors.map((armor, id) => (
-                    <option value={armor}>{armor.item_name}</option>
+                    <option value={armor} key={armor.id + 'a'}>
+                        {armor.item_name}
+                    </option>
                 ))}
             </select>
         </div>
@@ -55,7 +57,9 @@ const CharacterEquipment = ({ weapon, armor, equipment }) => {
         <div className="half-column">
             <select name="weapon-list" form="change-eq" className="select-eq">
                 {weapons.map((weapon, id) => (
-                    <option value={weapon}>{weapon.item_name}</option>
+                    <option value={weapon} key={weapon.id + 'w'}>
+                        {weapon.item_name}
+                    </option>
                 ))}
             </select>
         </div>
