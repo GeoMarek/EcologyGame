@@ -245,3 +245,43 @@ input[type='checkbox'] {
     transform: translateY(20px);
     transform: translateY(-15px);
 }
+
+.div-monster {
+    border-style: solid;
+    border-color: rgb(6, 24, 24);
+    border-radius: 10px;
+    background-color: #0b4558;
+    width: 74%;
+    margin: 1%;
+    margin-left: 25%;
+}
+
+.div-monster:hover {
+    background-color: #1a596e;
+}
+
+.monster-icon {
+    width: 10%;
+    display: inline-block;
+    margin-inline-end: 2%;
+    margin-inline-end: 2%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.monster-data {
+    width: 55%;
+    display: inline-block;
+    text-align: left;
+    margin-inline-start: 5%;
+}
+
+.monster-data > p {
+    font-size: 16px;
+    color: aquamarine;
+}
+
+.monster-button {
+    width: 15%;
+    display: inline-block;
+}

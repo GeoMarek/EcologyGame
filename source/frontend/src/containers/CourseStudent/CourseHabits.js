@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { get_course_by_id } from '../../actions/course'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import StudentSideBar from '../../components/SideBar/StudentSideBar'
 import HabitList from '../../components/Task/HabitList'
 
-const CourseHabits = ({ course_global, match }) => {
+const CourseHabits = ({ course_global, match, isAuthenticated }) => {
     // przykładowe pytania, żeby zobaczyć jak wygląda komponent
     const example_positiv_habit = {
         id: 1,
@@ -48,6 +49,10 @@ const CourseHabits = ({ course_global, match }) => {
         }, // eslint-disable-next-line
         []
     )
+
+    if (!isAuthenticated) {
+        return <Redirect to="/" />
+    }
 
     return (
         <div className="home-container">
