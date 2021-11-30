@@ -21,7 +21,7 @@ const HabitListItem = ({ habit }) => {
     const show_minus =
         habit.habit_type !== 'positiv' ? (
             <button className="red-minus habit-button" onClick={sendNegativ}>
-                ✗
+                ✓
             </button>
         ) : (
             <></>
