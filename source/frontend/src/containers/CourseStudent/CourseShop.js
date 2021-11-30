@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react'
 import { get_course_by_id } from '../../actions/course'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import StudentSideBar from '../../components/SideBar/StudentSideBar'
 
-const CourseShop = ({ course_global, match }) => {
+const CourseShop = ({ course_global, match, isAuthenticated }) => {
     useEffect(
         () => {
             get_course_by_id(match.params.id)
         }, // eslint-disable-next-line
         []
     )
+
+    if (!isAuthenticated) {
+        return <Redirect to="/" />
+    }
 
     return (
         <div className="home-container">

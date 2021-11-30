@@ -41,6 +41,8 @@ label {
     width: 74%;
     margin: 1%;
     margin-left: 25%;
+    overflow: hidden;
+    position: relative;
 }
 
 .div-task:hover {

@@ -1,4 +1,6 @@
 .sidebar {
+    border-style: solid;
+    border-color: rgb(6, 24, 24);
     float: left;
     width: 23%;
     padding: 5px;
