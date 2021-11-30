@@ -285,3 +285,23 @@ input[type='checkbox'] {
     width: 15%;
     display: inline-block;
 }
+
+.half-column {
+    width: 45%;
+    display: inline-block;
+    margin-left: 5%;
+}
+
+.item-equipment {
+    max-height: 40px;
+    width: auto;
+}
+
+.half-column > p {
+    font-size: 14px;
+    margin: 0px;
+}
+
+.select-eq {
+    font-size: 14px;
+}

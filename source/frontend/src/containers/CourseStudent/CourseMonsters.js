@@ -49,9 +49,7 @@ const CourseMonsters = ({ course_global, match, isAuthenticated }) => {
         <div className="home-container">
             <div className="course-content">
                 <StudentSideBar course_id={course_global.id} />
-                <h3 className="home-title">
-                    Witaj na stronie z listą potworów do pokonania
-                </h3>
+                <h3 className="home-title">Potwory do pokonania</h3>
                 <MonsterList monsters={example_monster_list} />
             </div>
         </div>

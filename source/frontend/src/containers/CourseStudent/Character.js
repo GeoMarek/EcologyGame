@@ -13,6 +13,9 @@ const Character = ({
     character_global,
     load_character,
     course_global,
+    weapon,
+    armor,
+    equipment,
 }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -42,10 +45,50 @@ const Character = ({
         []
     )
 
-    useEffect(
-        () => {}, // eslint-disable-next-line
-        []
-    )
+    // TODO: przykładowe przedmioty, które może mieć postać
+    const wood_weapon = {
+        id: 1,
+        item_name: 'Miecz treningowy',
+        sell_price: '10',
+        buy_price: '20',
+        eq_type: 'weapon',
+        item_image: 'wood_sword.png',
+        stat: 5,
+    }
+
+    const wood_armor = {
+        id: 2,
+        item_name: 'Skórzany płaszcz',
+        sell_price: '10',
+        buy_price: '20',
+        eq_type: 'armor',
+        item_image: 'wood_armor.png',
+        stat: 5,
+    }
+
+    const iron_weapon = {
+        id: 3,
+        item_name: 'Żelazny miecz',
+        sell_price: '20',
+        buy_price: '40',
+        eq_type: 'weapon',
+        item_image: 'iron_sword.png',
+        stat: 10,
+    }
+
+    const iron_armor = {
+        id: 4,
+        item_name: 'Żelazna zbroja',
+        sell_price: '20',
+        buy_price: '40',
+        eq_type: 'armor',
+        item_image: 'iron_armor.png',
+        stat: 10,
+    }
+
+    var example_weapon = wood_weapon
+    var example_armor = wood_armor
+    var example_equipment = [iron_armor, iron_weapon]
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
@@ -87,6 +130,9 @@ const Character = ({
                     <CharacterPresent
                         character={character_global}
                         edit_mode={turnOnEditProfileMode}
+                        weapon={example_weapon}
+                        armor={example_armor}
+                        equipment={example_equipment}
                     />
                 )}
             </div>
@@ -98,6 +144,9 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
     character_global: state.character.characters[0],
     course_global: state.course.course.course,
+    weapon: state.character.weapon,
+    armor: state.character.armor,
+    equipment: state.character.equipment,
 })
 
 export default connect(mapStateToProps, { load_character })(Character)

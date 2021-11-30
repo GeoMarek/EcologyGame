@@ -58,7 +58,7 @@ const CourseHabits = ({ course_global, match, isAuthenticated }) => {
         <div className="home-container">
             <div className="course-content">
                 <StudentSideBar course_id={course_global.id} />
-                <h3 className="home-title">Nawyki do wyrobienia</h3>
+                <h3 className="home-title">Nawyki do opanowania</h3>
                 <HabitList habit_list={habit_list} />
             </div>
         </div>
