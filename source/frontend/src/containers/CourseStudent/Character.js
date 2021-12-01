@@ -126,14 +126,16 @@ const Character = ({
                 <StudentSideBar course_id={course_global.id} />
                 {editData.edit ? (
                     editProfileMode()
-                ) : (
+                ) : equipment ? (
                     <CharacterPresent
                         character={character_global}
                         edit_mode={turnOnEditProfileMode}
                         weapon={example_weapon}
                         armor={example_armor}
-                        equipment={example_equipment}
+                        equipment={equipment}
                     />
+                ) : (
+                    <></>
                 )}
             </div>
         </div>
