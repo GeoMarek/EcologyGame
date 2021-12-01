@@ -70,7 +70,9 @@ class Quiz(models.Model):
         OPEN = "o", _("Open")
         TEST = "t", _("Test")
         EVENT = "e", _("Event")
-        HABIT = "h", _("Habit")
+        HABIT_P = "hp", _("Habit_P")
+        HABIT_N = "hn", _("Habit_N")
+        HABIT_M = "hm", _("Habit_M")
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
     name = models.CharField(max_length=64, default="nazwa quizu")
@@ -88,7 +90,7 @@ class Quiz(models.Model):
         max_length=1, choices=SelectMarkType.choices, default=SelectMarkType.BEST
     )
     quiz_type = models.CharField(
-        max_length=1, choices=SelectTypeType.choices, default=SelectTypeType.TEST
+        max_length=2, choices=SelectTypeType.choices, default=SelectTypeType.TEST
     )
 
 

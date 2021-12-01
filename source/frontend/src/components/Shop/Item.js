@@ -4,9 +4,11 @@ const Item = ({ item, onChange, in_course }) => {
     var item_symbol = ''
     switch (item.eq_type) {
         case 'weapon':
+        case 'w':
             item_symbol = '⚔'
             break
         case 'armor':
+        case 'a':
             item_symbol = '🛡'
             break
         default:
@@ -18,7 +20,7 @@ const Item = ({ item, onChange, in_course }) => {
             <div className="item-info-column">
                 <p className="item-info">
                     {item_symbol}
-                    {item.item_name}
+                    {item.name}
                     <br />
                     Premia: {item.stat}
                     <br />
@@ -28,7 +30,7 @@ const Item = ({ item, onChange, in_course }) => {
                 </p>
             </div>
             <div className="item-img-column">
-                <ItemIcon item_image={item.item_image} />
+                <ItemIcon item_image={item.image} />
                 <input
                     type="checkbox"
                     name="in_course"
