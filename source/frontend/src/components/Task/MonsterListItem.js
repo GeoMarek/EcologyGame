@@ -7,7 +7,8 @@ import { Redirect } from 'react-router-dom'
 const MonsterListItem = ({ monster, get_quiz, isAuthenticated, course_id }) => {
     var image_dir = `${process.env.PUBLIC_URL}/MonsterIcons/`
     var seed = monster.reward_gold % 4
-    var monster_image = image_dir + 'monster_' + seed + '.png'
+    var monster_image = image_dir + 'monster_' + (seed + 1) + '.png'
+    console.log(monster_image)
 
     const [redirectData, setRedirectData] = useState({
         redirect: 0,
