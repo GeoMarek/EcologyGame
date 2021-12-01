@@ -351,13 +351,12 @@ input[type='checkbox'] {
 }
 
 footer {
-    display: block;
-    background-color: #1a596e;
+    display: flex;
     height: auto;
-    width: 50%;
-    border-radius: 15px;
-    border-style: solid;
-    border-color: rgb(6, 24, 24);
-    margin: 10px;
-    margin-inline-start: 25%;
+    width: 60%;
+    background-color: #0b4558;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 10px;
 }
