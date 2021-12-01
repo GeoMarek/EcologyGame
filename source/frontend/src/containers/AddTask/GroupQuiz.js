@@ -4,21 +4,15 @@ import { connect } from 'react-redux'
 import CommonButton from '../../components/Common/CommonButton'
 
 const GroupQuiz = ({ isAuthenticated }) => {
-
     // zmienne formularza dla samego quizu
     const [mainFormData, setMainFormData] = useState({
         name: '',
         description: '',
         number_of_questions: 0,
-        questions: []
+        questions: [],
     })
 
-    const {
-        name,
-        description,
-        number_of_questions,
-        questions
-    } = mainFormData
+    const { name, description, number_of_questions, questions } = mainFormData
 
     // zmienne formularza dla pojedynczego pytania w quizie
     const [questionFormData, setQuestionFormData] = useState({
@@ -54,7 +48,10 @@ const GroupQuiz = ({ isAuthenticated }) => {
     }
 
     const onChangeQuestionFormData = (e) => {
-        setQuestionFormData({ ...questionFormData, [e.target.name]: e.target.value })
+        setQuestionFormData({
+            ...questionFormData,
+            [e.target.name]: e.target.value,
+        })
     }
 
     const onSubmitQuestionFormData = (e) => {
@@ -63,7 +60,7 @@ const GroupQuiz = ({ isAuthenticated }) => {
     }
 
     const addNewQuestion = (e) => {
-        console.log("Add new question")
+        console.log('Add new question')
     }
 
     // formularz dla nazwy i opisu quizu
@@ -80,20 +77,19 @@ const GroupQuiz = ({ isAuthenticated }) => {
                 />
             </div>
             <div className="form-group">
-            <input
-                className="form-control"
-                type="text"
-                name="description"
-                placeholder="Wpisz treść zadania"
-                onChange={(e) => onChangeMainForm(e)}
-                defaultValue={content}
-            />
-        </div>
+                <input
+                    className="form-control"
+                    type="text"
+                    name="description"
+                    placeholder="Wpisz treść zadania"
+                    onChange={(e) => onChangeMainForm(e)}
+                    defaultValue={content}
+                />
+            </div>
         </div>
     )
 
     // formularz dla jednego pytania zamkniętego
-
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
@@ -103,10 +99,8 @@ const GroupQuiz = ({ isAuthenticated }) => {
             <h3 className="question-title">Dodawanie grupowego zadania</h3>
             <form onSubmit={(e) => onSubmitMainForm(e)}>
                 {mainForm}
-                <div key="questions-container">
-                
-                </div>
-                <CommonButton text="Dodaj pytanie" on_click={addNewQuestion}/>
+                <div key="questions-container"></div>
+                <CommonButton text="Dodaj pytanie" on_click={addNewQuestion} />
                 <button className="common-button" type="submit">
                     Utwórz wyzwanie
                 </button>

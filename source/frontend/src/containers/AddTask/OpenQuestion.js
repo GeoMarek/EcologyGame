@@ -3,8 +3,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-
-const OpenQuestion = ({ match , isAuthenticated}) => {
+const OpenQuestion = ({ match, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         question_name: '',
         content: '',
@@ -161,6 +160,5 @@ const OpenQuestion = ({ match , isAuthenticated}) => {
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
 })
-
 
 export default connect(mapStateToProps)(OpenQuestion)

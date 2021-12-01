@@ -3,8 +3,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-
-const HabitQuestion = ({ match, isAuthenticated}) => {
+const HabitQuestion = ({ match, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         habit_name: '',
         habit_type: 'hp',

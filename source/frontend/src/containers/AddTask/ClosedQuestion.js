@@ -3,7 +3,6 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-
 const ClosedQuestion = ({ match, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         question_name: '',

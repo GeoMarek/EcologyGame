@@ -50,7 +50,10 @@ const CourseMonsters = ({ course_global, match, isAuthenticated }) => {
                 <StudentSideBar course_id={course_global.id} />
                 <h3 className="home-title">Potwory do pokonania</h3>
                 {courseItemsData.quizzes ? (
-                    <MonsterList monsters={courseItemsData.quizzes} course_id={course_global.id}/>
+                    <MonsterList
+                        monsters={courseItemsData.quizzes}
+                        course_id={course_global.id}
+                    />
                 ) : (
                     <></>
                 )}

@@ -1,20 +1,26 @@
-import React, { useState, useEffect }from 'react'
+import React, { useState } from 'react'
+import { get_quiz } from '../../actions/quiz'
+import { connect } from 'react-redux'
 import CommonButton from '../Common/CommonButton'
 import { Redirect } from 'react-router-dom'
+import course from '../../reducers/course'
 
-const MonsterListItem = ({ monster, course_id }) => {
+const MonsterListItem = ({ monster, get_quiz, isAuthenticated, course_id }) => {
     var image_dir = `${process.env.PUBLIC_URL}/MonsterIcons/`
     var seed = monster.reward_gold % 4
     var monster_image = image_dir + 'monster_' + seed + '.png'
-
 
     const [redirectData, setRedirectData] = useState({
         redirect: 0,
     })
     const renderRedirect = () => (
-        <Redirect to={'/course/' + course_id + '/monsters/' + redirectData.redirect} />
+        <Redirect
+            to={'/course/' + course_id + '/monsters/' + redirectData.redirect}
+        />
     )
     const openTaskSubmitPage = (e) => {
+        console.log('Próba rozwiązania zadania od id ' + monster.id)
+        get_quiz(course_id, monster.id)
         setRedirectData({ ...redirectData, redirect: monster.id })
     }
 
@@ -50,4 +56,9 @@ const MonsterListItem = ({ monster, course_id }) => {
         </div>
     )
 }
-export default MonsterListItem
+
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps, { get_quiz })(MonsterListItem)
