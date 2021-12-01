@@ -6,7 +6,7 @@ import OptionalLoginLinks from '../components/OptionalLinks/OptionalLoginLinks'
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        email: '',
+        email: 'marek.grudkowski@wp.pl',
         password: 'slonko10', // default password value
     })
 

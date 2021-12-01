@@ -29,6 +29,7 @@ import ClosedQuestion from './containers/AddTask/ClosedQuestion'
 import GroupQuiz from './containers/AddTask/GroupQuiz'
 import HabitQuestion from './containers/AddTask/HabitQuestion'
 import OpenQuestion from './containers/AddTask/OpenQuestion'
+import MonsterPage from './containers/MonsterPage'
 
 const App = () => (
     <Provider store={store}>
@@ -121,6 +122,11 @@ const App = () => (
                         component={CreateCourse}
                     />
                     <Route exact path="/course/:id" component={Course} />
+                    <Route
+                        exact
+                        path="/course/:course_id/monsters/:monster_id"
+                        component={MonsterPage}
+                    />
                 </Switch>
             </Layout>
         </Router>
