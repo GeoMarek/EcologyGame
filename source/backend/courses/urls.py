@@ -9,6 +9,7 @@ from .views import (
     CharcterEqView,
     CourseItems,
     CourseView,
+    DoQuizView,
     GetCourseView,
     GetItemView,
     GetTheCoursesView,
@@ -37,5 +38,6 @@ urlpatterns = [
     path("approaches/", ApproachView.as_view()),
     path("answers/", AnswerView.as_view()),
     path("<int:course_id>/quiz/", QuizView.as_view()),
+    path("<int:course_id>/doquiz/<int:quiz_id>/", DoQuizView.as_view()),
     path("admin/admin/eq/", InitEqView.as_view()),
 ]
