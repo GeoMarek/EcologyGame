@@ -34,8 +34,9 @@
 }
 
 .character-attribute {
-    margin: 0px;
     font-size: 16px;
+    width: 100%;
+    margin: 0px;
 }
 
 progress {

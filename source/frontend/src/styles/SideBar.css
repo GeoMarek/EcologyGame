@@ -20,9 +20,6 @@
 }
 
 .sidebar-link {
-    float: center;
-    margin-right: 15%;
-    margin-left: -15%;
     font-size: 16px;
     color: #002a38;
     font-weight: bold;
@@ -36,10 +33,7 @@
 }
 
 .sidebar-li {
-    text-align: center;
     list-style-type: none;
-}
-
-ul {
-    overflow: hidden;
+    margin-left: -35px;
+    margin-bottom: 10px;
 }

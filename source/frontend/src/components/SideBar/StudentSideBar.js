@@ -7,7 +7,7 @@ const StudentSideBar = ({ course_id }) => {
     return (
         <div className="sidebar">
             <p id="sidebar-header">Menu kursu</p>
-            <ul>
+            <ul className="sidebar-list">
                 <SideBarLink
                     destination={course_link_path}
                     text="Strona kursu"

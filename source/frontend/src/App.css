@@ -285,3 +285,78 @@ input[type='checkbox'] {
     width: 15%;
     display: inline-block;
 }
+
+.half-column {
+    width: 45%;
+    display: inline-block;
+    margin-left: 5%;
+}
+
+.item-equipment {
+    max-height: 40px;
+    width: auto;
+}
+
+.half-column > p {
+    font-size: 14px;
+    margin: 0px;
+}
+
+.select-eq {
+    font-size: 14px;
+}
+
+.student-shop-column {
+    width: 45%;
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.student-shop-div {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 4%;
+    border-style: solid;
+    border-color: rgb(6, 24, 24);
+}
+
+.student-shop-div:hover {
+    background-color: #1a596e;
+}
+
+.student-shop-image {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+}
+
+.student-shop-icon {
+    display: inline-block;
+    max-height: 50px;
+    margin-bottom: 40%;
+    margin-left: 50%;
+}
+
+.student-shop-info {
+    width: 75%;
+    display: inline-block;
+}
+
+.student-shop-button {
+    font-size: 14px;
+    border-radius: 30%;
+    font-weight: 700;
+    background-color: beige;
+}
+
+footer {
+    display: flex;
+    height: auto;
+    width: 60%;
+    background-color: #0b4558;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 10px;
+}
