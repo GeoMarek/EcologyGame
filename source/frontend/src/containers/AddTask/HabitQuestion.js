@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 const HabitQuestion = ({ match, isAuthenticated}) => {
     const [formData, setFormData] = useState({
         habit_name: '',
-        habit_type: 'positiv',
+        habit_type: 'hp',
         content: '',
         points: 0,
         damage: 0,

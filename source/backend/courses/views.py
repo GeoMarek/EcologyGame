@@ -143,10 +143,32 @@ class CourseItems(APIView):
     def get(self, request, course_id):
         try:
             if course_id != None:
+                t = request.query_params["t"]
                 course = Course.objects.get(id=course_id)
                 items = course.store_items.all()
                 items = [ItemSerializer(model).data for model in items]
-                return Response({"items": items})
+                if t == "user":
+                    user = self.request.user
+                    character = Character.objects.filter(course=course)
+                    char = character.get(user=user)
+                    equipment = char.equipment.all()
+                    equipment = [ItemSerializer(model).data for model in equipment]
+                    i = []
+                    for it in items:
+                        if it not in equipment:
+                            i.append(it)
+                    return Response({"items": i})
+                all_items = Item.objects.all()
+                all_items = [ItemSerializer(model).data for model in all_items]
+                if t == "all":
+                    return Response({"items": all_items})
+                i = []
+                for it in all_items:
+                    if it not in items:
+                        i.append(it)
+                if t == "admin":
+                    return Response({"items": i})
+                return Response({"error": "Wrong type!"})
         except:
             return Response(
                 {"error": "Something went wrong when geting course's items"}
@@ -175,11 +197,15 @@ class CourseItems(APIView):
                 item_id = data["item_id"]
 
                 item = Item.objects.get(id=item_id)
-                course.store_items.add(item)
-
                 items = course.store_items.all()
                 items = [ItemSerializer(model).data for model in items]
+                if item not in items:
+                    course.store_items.add(item)
+                    items = course.store_items.all()
+                    items = [ItemSerializer(model).data for model in items]
+                    return Response({"items": items})
                 return Response({"items": items})
+
         except:
             return Response({"error": "Something went wrong when adding item to shop"})
 
@@ -305,9 +331,9 @@ class CharcterEqView(APIView):
                     or item_id in s_character.data["equipment"]
                 ):
                     return Response({"error": "Już posiadasz ten przedmiot!"})
-                # if s_character.data["gold"] < s_item.data["buy_price"]:
-                #    return Response({"error": "Nie masz wystarczająco złota!"})
-                # character.gold = s_character.data["gold"] - s_item.data["buy_price"]
+                if s_character.data["gold"] < s_item.data["buy_price"]:
+                    return Response({"error": "Nie masz wystarczająco złota!"})
+                character.gold = s_character.data["gold"] - s_item.data["buy_price"]
                 character.equipment.add(item)
                 character.save()
             elif fun_type == "sell_eq":
@@ -384,7 +410,15 @@ class QuizView(APIView):
                 course = Course.objects.get(id=course_id)
                 quizzes = Quiz.objects.filter(course=course)
                 q_type = request.query_params["t"]
-                if q_type != None and q_type != "all":
+                if q_type != None and q_type == "h":
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.OPEN)
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.TEST)
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.EVENT)
+                elif q_type != None and q_type == "e_h":
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.HABIT_P)
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.HABIT_N)
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.HABIT_M)
+                elif q_type != None and q_type != "all":
                     quizzes = quizzes.filter(quiz_type=q_type)
                 data = [QuizSerializer(model).data for model in quizzes]
                 return Response({"quizzes": data})
@@ -409,6 +443,7 @@ class QuizView(APIView):
             reward = data["reward"]
             reward_exp = reward
             reward_gold = reward
+            print(data)
             if quiz_type == Quiz.SelectTypeType.TEST:
                 number_of_questions = 1
                 max_points = 1

@@ -5,6 +5,7 @@ import { get_course_by_id, delete_course_by_id } from '../actions/course'
 import CommonButton from '../components/Common/CommonButton'
 import StudentSideBar from '../components/SideBar/StudentSideBar'
 import AdminSideBar from '../components/SideBar/AdminSideBar'
+import { load_character } from '../actions/character'
 
 const Course = ({
     get_course_by_id,
@@ -14,6 +15,7 @@ const Course = ({
     courses_global,
     match,
     user_global,
+    load_character,
 }) => {
     const [redirectData, setRedirectData] = useState({
         redirect: 0,
@@ -23,6 +25,7 @@ const Course = ({
     useEffect(
         () => {
             get_course_by_id(match.params.id)
+            load_character(match.params.id)
         }, // eslint-disable-next-line
         []
     )
@@ -87,4 +90,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
     get_course_by_id,
     delete_course_by_id,
+    load_character,
 })(Course)

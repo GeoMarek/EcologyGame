@@ -2,6 +2,7 @@
 
 **Przydatne komendy**
 ```
+http://localhost:8000/course/admin/admin/eq/
 .\code_format_fix.bat   # wykonuje automatyczne formatowanie kodu
 .\code_format_check.bat # sprawdza formatowanie kodu
 .\run_application.bat   #  uruchamia całą aplikację
