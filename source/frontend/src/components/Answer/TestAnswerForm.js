@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { compose } from 'redux'
-import CommonButton from '../Common/CommonButton'
 
 function shuffle(array) {
     let currentIndex = array.length,
         randomIndex
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex)
         currentIndex--
         ;[array[currentIndex], array[randomIndex]] = [

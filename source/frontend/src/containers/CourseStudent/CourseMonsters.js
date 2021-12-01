@@ -5,7 +5,6 @@ import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import StudentSideBar from '../../components/SideBar/StudentSideBar'
 import MonsterList from '../../components/Task/MonsterList'
-import course from '../../reducers/course'
 
 const CourseMonsters = ({ course_global, match, isAuthenticated }) => {
     const [courseItemsData, setCourseItemsData] = useState([])

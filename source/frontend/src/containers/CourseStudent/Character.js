@@ -66,29 +66,8 @@ const Character = ({
         stat: 5,
     }
 
-    const iron_weapon = {
-        id: 3,
-        item_name: 'Żelazny miecz',
-        sell_price: '20',
-        buy_price: '40',
-        eq_type: 'weapon',
-        item_image: 'iron_sword.png',
-        stat: 10,
-    }
-
-    const iron_armor = {
-        id: 4,
-        item_name: 'Żelazna zbroja',
-        sell_price: '20',
-        buy_price: '40',
-        eq_type: 'armor',
-        item_image: 'iron_armor.png',
-        stat: 10,
-    }
-
     var example_weapon = wood_weapon
     var example_armor = wood_armor
-    var example_equipment = [iron_armor, iron_weapon]
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
