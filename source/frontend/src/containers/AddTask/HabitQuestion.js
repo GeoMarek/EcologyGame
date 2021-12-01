@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
-const HabitQuestion = () => {
+const HabitQuestion = ({ match }) => {
     const [formData, setFormData] = useState({
         habit_name: '',
         habit_type: 'positiv',
@@ -11,13 +12,42 @@ const HabitQuestion = () => {
 
     const { habit_name, habit_type, content, points, damage } = formData
 
+    const create_habit = (type, name, description, dmg, reward) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('access')}`,
+                Accept: 'application/json',
+            },
+        }
+
+        const body = JSON.stringify({
+            type,
+            name,
+            description,
+            dmg,
+            reward,
+        })
+
+        try {
+            axios.post(
+                `${process.env.REACT_APP_API_URL}/course/${match.params.course_id}/quiz/`,
+                body,
+                config
+            )
+            console.log('nie error :D')
+        } catch (err) {
+            console.log('error ech')
+        }
+    }
+
     const onChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
+        create_habit(habit_type, habit_name, content, damage, points)
     }
 
     const habit_name_form = (
@@ -56,9 +86,9 @@ const HabitQuestion = () => {
                 Rodzaj nawyku:
             </label>
             <select name="habit_type" onChange={(e) => onChange(e)}>
-                <option value="positiv">Pozytywny</option>
-                <option value="negativ">Negatywny</option>
-                <option value="mixed">Mieszany</option>
+                <option value="hp">Pozytywny</option>
+                <option value="hn">Negatywny</option>
+                <option value="hm">Mieszany</option>
             </select>
         </div>
     )

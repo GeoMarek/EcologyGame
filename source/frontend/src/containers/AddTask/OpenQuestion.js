@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
-const OpenQuestion = () => {
+const OpenQuestion = ({ match }) => {
     const [formData, setFormData] = useState({
         question_name: '',
         content: '',
@@ -11,13 +12,42 @@ const OpenQuestion = () => {
 
     const { question_name, content, correct_answer, points, damage } = formData
 
+    const create_open = (type, name, description, good_answer, dmg, reward) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('access')}`,
+                Accept: 'application/json',
+            },
+        }
+
+        const body = JSON.stringify({
+            type,
+            name,
+            description,
+            good_answer,
+            dmg,
+            reward,
+        })
+
+        try {
+            axios.post(
+                `${process.env.REACT_APP_API_URL}/course/${match.params.course_id}/quiz/`,
+                body,
+                config
+            )
+            console.log('nie error :D')
+        } catch (err) {
+            console.log('error ech')
+        }
+    }
     const onChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
+        create_open('o', question_name, content, correct_answer, damage, points)
     }
 
     const question_name_form = (
