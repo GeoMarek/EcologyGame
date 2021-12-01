@@ -135,9 +135,9 @@ class CharacterView(APIView):
 
 # Klasa odpowiedzialna za sklep
 class CourseItems(APIView):
-    #permission_classes = (
+    # permission_classes = (
     #    permissions.AllowAny,
-    #)  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    # )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
 
     # get all course itmes
     def get(self, request, course_id):
@@ -176,7 +176,7 @@ class CourseItems(APIView):
 
                 item = Item.objects.get(id=item_id)
                 course.store_items.add(item)
-                
+
                 items = course.store_items.all()
                 items = [ItemSerializer(model).data for model in items]
                 return Response({"items": items})
@@ -401,10 +401,10 @@ class QuizView(APIView):
             quiz_type = data["type"]
             name = data["name"]
             description = data["description"]
-            q_g_anw = data["good_answer"]
-            q_b_anw1 = data["bad_answer1"]
-            q_b_anw2 = data["bad_answer2"]
-            q_b_anw3 = data["bad_answer3"]
+            q_g_anw = ""
+            q_b_anw1 = ""
+            q_b_anw2 = ""
+            q_b_anw3 = ""
             dmg = data["dmg"]
             reward = data["reward"]
             reward_exp = reward
@@ -414,17 +414,26 @@ class QuizView(APIView):
                 max_points = 1
                 number_of_approaches = 1
                 selecting_result = Quiz.SelectMarkType.BEST
+                q_g_anw = data["good_answer"]
+                q_b_anw1 = data["bad_answer1"]
+                q_b_anw2 = data["bad_answer2"]
+                q_b_anw3 = data["bad_answer3"]
             elif quiz_type == Quiz.SelectTypeType.OPEN:
                 number_of_questions = 1
                 max_points = 1
                 number_of_approaches = 1
+                q_g_anw = data["good_answer"]
                 selecting_result = Quiz.SelectMarkType.BEST
-            elif quiz_type == Quiz.SelectTypeType.OPEN:
+            elif (
+                quiz_type == Quiz.SelectTypeType.HABIT_P
+                or quiz_type == Quiz.SelectTypeType.HABIT_N
+                or quiz_type == Quiz.SelectTypeType.HABIT_M
+            ):
                 number_of_questions = 1
                 max_points = 1
                 number_of_approaches = 1
                 selecting_result = Quiz.SelectMarkType.BEST
-            elif quiz_type == Quiz.SelectTypeType.OPEN:
+            elif quiz_type == Quiz.SelectTypeType.EVENT:
                 number_of_questions = 1
                 max_points = 1
                 number_of_approaches = 1
@@ -467,6 +476,8 @@ class InitEqView(APIView):
         permissions.AllowAny,
     )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
 
+    # żeby dodać przedmioty
+    # http://localhost:8000/course/admin/admin/eq/
     def get(self, request):
         module_dir = os.path.dirname(__file__)
         file_path = os.path.join(module_dir, "_manifest.json")

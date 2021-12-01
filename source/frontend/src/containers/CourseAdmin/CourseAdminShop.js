@@ -12,13 +12,16 @@ const CourseAdminShop = ({ course_global, match }) => {
     useEffect(
         () => {
             get_course_by_id(match.params.id)
-            get_course_items().then(({data}) => {setCourseItemsData(data)})
-            get_all_items().then(({data}) => {setAllItemsData(data)})
+            get_course_items().then(({ data }) => {
+                setCourseItemsData(data)
+            })
+            get_all_items().then(({ data }) => {
+                setAllItemsData(data)
+            })
         }, // eslint-disable-next-line
         []
     )
 
-    
     const get_course_items = () => {
         const config = {
             headers: {
@@ -96,9 +99,9 @@ const CourseAdminShop = ({ course_global, match }) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        add_items([9])
+        //add_items([9])
         console.log(e)
-        this.setState(this.state)
+        //this.setState(this.state)
         //this.forceUpdate()
     }
 
@@ -116,25 +119,31 @@ const CourseAdminShop = ({ course_global, match }) => {
                                 <h3 className="course-content-title">
                                     Dodane do kursu
                                 </h3>
-                                {courseItemsData.items ? 
-                                courseItemsData.items.map((user, index) => (
-                                    <Item
-                                    item={user}
-                                    onChange={onChangeOld}
-                                />
-                                )):  <></>}
+                                {courseItemsData.items ? (
+                                    courseItemsData.items.map((user, index) => (
+                                        <Item
+                                            item={user}
+                                            onChange={onChangeOld}
+                                        />
+                                    ))
+                                ) : (
+                                    <></>
+                                )}
                             </div>
                             <div className="admin-shop-column">
                                 <h3 className="course-content-title">
                                     Poza kursem
                                 </h3>
-                                {allItemsData ? 
-                                allItemsData.map((user, index) => (
-                                    <Item
-                                    item={user}
-                                    onChange={onChangeNew}
-                                />
-                                )):  <></>}
+                                {allItemsData ? (
+                                    allItemsData.map((user, index) => (
+                                        <Item
+                                            item={user}
+                                            onChange={onChangeNew}
+                                        />
+                                    ))
+                                ) : (
+                                    <></>
+                                )}
                             </div>
                             <button className="common-button" type="submit">
                                 Zaktualizuj przedmioty w kursie

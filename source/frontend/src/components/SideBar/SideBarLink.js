@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom'
 
 const SideBarLink = ({ destination, text }) => {
     return (
-        <li className="sidebar-li">
-            <Link className="sidebar-link" to={destination} role="button">
-                {text}
-            </Link>
-        </li>
+        <Link className="sidebar-link" to={destination} role="button">
+            <li className="sidebar-li">{text}</li>
+        </Link>
     )
 }
 
