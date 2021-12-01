@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import CommonButton from '../Common/CommonButton'
 
 function shuffle(array) {
     let currentIndex = array.length,
         randomIndex
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex)
         currentIndex--
         ;[array[currentIndex], array[randomIndex]] = [
@@ -34,15 +33,22 @@ const TestAnswerForm = ({ question }) => {
     }
 
     const onSubmit = (e) => {
-        console.log(users_answer)
+        console.clear()
+        console.log(
+            'Czy udzielono dobrej odpowiedzi: ' +
+                (users_answer === question.correct_answer)
+        )
     }
 
     return (
         <div>
-            <p>{question.name}</p>
-            <p>{question.content}</p>
+            <p style={{ fontSize: '14px', color: 'aquamarine' }}>
+                {question.content}
+            </p>
             <form onSubmit={(e) => onSubmit(e)}>
+                <label styhtmlFor="users_answer">Twoja odpowiedź: </label>
                 <select
+                    style={{ fontSize: '14px', margin: '0' }}
                     name="users_answer"
                     onChange={(e) => onChange(e)}
                     defaultValue={answers_list[0]}
@@ -54,7 +60,9 @@ const TestAnswerForm = ({ question }) => {
                     ))}
                 </select>
             </form>
-            <CommonButton text="Wyślij odpowiedź" on_click={onSubmit} />
+            <button className="student-shop-button" onClick={onSubmit}>
+                Wyślij odpowiedź
+            </button>
         </div>
     )
 }

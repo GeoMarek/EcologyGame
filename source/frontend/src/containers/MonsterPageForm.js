@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_quiz } from '../actions/quiz'
 import StudentSideBar from '../components/SideBar/StudentSideBar'
 import TestAnswerForm from '../components/Answer/TestAnswerForm'
+import OpenAnswerForm from '../components/Answer/OpenAnswerForm'
 
 const MonsterPageForm = ({ isAuthenticated, quiz, match, get_quiz }) => {
     useEffect(
@@ -19,6 +20,14 @@ const MonsterPageForm = ({ isAuthenticated, quiz, match, get_quiz }) => {
             student_answer_form = (
                 <TestAnswerForm question={quiz.questions[0]} />
             )
+            break
+        case 'o':
+            student_answer_form = (
+                <OpenAnswerForm question={quiz.questions[0]} />
+            )
+            break
+        default:
+            break
     }
 
     if (!isAuthenticated) {
@@ -28,7 +37,7 @@ const MonsterPageForm = ({ isAuthenticated, quiz, match, get_quiz }) => {
         <div className="home-container">
             <div className="course-content">
                 <StudentSideBar course_id={match.params.course_id} />
-                <h3 className="home-title">Rozwiązuj zadanko ziom</h3>
+                <h3 className="home-title">Rozwiązywanie zadania</h3>
                 <div>{student_answer_form}</div>
             </div>
         </div>

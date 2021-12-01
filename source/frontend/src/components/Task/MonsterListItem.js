@@ -3,7 +3,6 @@ import { get_quiz } from '../../actions/quiz'
 import { connect } from 'react-redux'
 import CommonButton from '../Common/CommonButton'
 import { Redirect } from 'react-router-dom'
-import course from '../../reducers/course'
 
 const MonsterListItem = ({ monster, get_quiz, isAuthenticated, course_id }) => {
     var image_dir = `${process.env.PUBLIC_URL}/MonsterIcons/`
