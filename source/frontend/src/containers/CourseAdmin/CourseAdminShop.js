@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
-import Item from '../../components/Shop/Item'
 import axios from 'axios'
+import AdminShopList from '../../components/Shop/AdminShopList'
 
 const CourseAdminShop = ({ course_global, match }) => {
     const [courseItemsData, setCourseItemsData] = useState([])
@@ -21,6 +21,37 @@ const CourseAdminShop = ({ course_global, match }) => {
         }, // eslint-disable-next-line
         []
     )
+
+    // przykładowe itemki, można usunąć potem
+    var example_items = [
+        {
+            id: 1,
+            item_name: 'Miecz treningowy',
+            sell_price: '10',
+            buy_price: '20',
+            eq_type: 'weapon',
+            item_image: 'wooden_sword.png',
+            stat: 5,
+        },
+        {
+            id: 3,
+            item_name: 'Żelazny miecz',
+            sell_price: '20',
+            buy_price: '40',
+            eq_type: 'weapon',
+            item_image: 'iron_sword.png',
+            stat: 10,
+        },
+        {
+            id: 4,
+            item_name: 'Żelazna zbroja',
+            sell_price: '20',
+            buy_price: '40',
+            eq_type: 'armor',
+            item_image: 'iron_armor.png',
+            stat: 10,
+        },
+    ]
 
     const get_course_items = () => {
         const config = {
@@ -89,14 +120,6 @@ const CourseAdminShop = ({ course_global, match }) => {
         }
     }
 
-    const onChangeOld = (e) => {
-        console.log('Remove old equipment')
-    }
-
-    const onChangeNew = (e) => {
-        console.log('Add new equipment')
-    }
-
     const onSubmit = (e) => {
         e.preventDefault()
         //add_items([9])
@@ -111,44 +134,10 @@ const CourseAdminShop = ({ course_global, match }) => {
                 <AdminSideBar course_id={course_global.id} />
                 <div className="course-content-container">
                     <h3 className="course-content-title">
-                        Zarządzaj przedmiotami na kursie
+                        Dodaj przedmioty do sklepu
                     </h3>
                     <div className="core-course-content-container">
-                        <form onSubmit={(e) => onSubmit(e)}>
-                            <div className="admin-shop-column">
-                                <h3 className="course-content-title">
-                                    Dodane do kursu
-                                </h3>
-                                {courseItemsData.items ? (
-                                    courseItemsData.items.map((user, index) => (
-                                        <Item
-                                            item={user}
-                                            onChange={onChangeOld}
-                                        />
-                                    ))
-                                ) : (
-                                    <></>
-                                )}
-                            </div>
-                            <div className="admin-shop-column">
-                                <h3 className="course-content-title">
-                                    Poza kursem
-                                </h3>
-                                {allItemsData ? (
-                                    allItemsData.map((user, index) => (
-                                        <Item
-                                            item={user}
-                                            onChange={onChangeNew}
-                                        />
-                                    ))
-                                ) : (
-                                    <></>
-                                )}
-                            </div>
-                            <button className="common-button" type="submit">
-                                Zaktualizuj przedmioty w kursie
-                            </button>
-                        </form>
+                        <AdminShopList available_items={example_items} />
                     </div>
                 </div>
             </div>
