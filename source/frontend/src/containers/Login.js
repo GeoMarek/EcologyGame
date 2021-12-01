@@ -6,8 +6,8 @@ import OptionalLoginLinks from '../components/OptionalLinks/OptionalLoginLinks'
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        email: '',
-        password: 'slonko10', // default password value
+        email: 'mar.grudkowski@gmail.com',
+        password: 'marekmarek', // default password value
     })
 
     const { email, password } = formData
