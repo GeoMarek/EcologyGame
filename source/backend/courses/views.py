@@ -410,7 +410,15 @@ class QuizView(APIView):
                 course = Course.objects.get(id=course_id)
                 quizzes = Quiz.objects.filter(course=course)
                 q_type = request.query_params["t"]
-                if q_type != None and q_type != "all":
+                if q_type != None and q_type == "h":
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.OPEN)
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.TEST)
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.EVENT)
+                elif q_type != None and q_type == "e_h":
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.HABIT_P)
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.HABIT_N)
+                    quizzes = quizzes.exclude(quiz_type=Quiz.SelectTypeType.HABIT_M)
+                elif q_type != None and q_type != "all":
                     quizzes = quizzes.filter(quiz_type=q_type)
                 data = [QuizSerializer(model).data for model in quizzes]
                 return Response({"quizzes": data})

@@ -10,7 +10,7 @@ const HabitListItem = ({ habit }) => {
     }
 
     const show_plus =
-        habit.habit_type !== 'negativ' ? (
+        habit.quiz_type !== 'hn' ? (
             <button
                 className="green-plus habit-button"
                 onClick={sendPositiv}
@@ -23,7 +23,7 @@ const HabitListItem = ({ habit }) => {
         )
 
     const show_minus =
-        habit.habit_type !== 'positiv' ? (
+        habit.quiz_type !== 'hp' ? (
             <button
                 className="red-minus habit-button"
                 onClick={sendNegativ}
@@ -39,7 +39,7 @@ const HabitListItem = ({ habit }) => {
         <div className="div-task div-habit" key={habit.id}>
             <div className="left-habit">{show_plus}</div>
             <div className="habit-content">
-                <p>{habit.content}</p>
+                <p>{habit.description}</p>
             </div>
             <div className="right-habit">{show_minus}</div>
         </div>

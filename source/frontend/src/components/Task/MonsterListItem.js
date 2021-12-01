@@ -3,7 +3,7 @@ import CommonButton from '../Common/CommonButton'
 
 const MonsterListItem = ({ monster }) => {
     var image_dir = `${process.env.PUBLIC_URL}/MonsterIcons/`
-    var seed = monster.points % 4
+    var seed = monster.reward_gold % 4
     var monster_image = image_dir + 'monster_' + seed + '.png'
 
     const openTaskSubmitPage = (e) => {
@@ -26,13 +26,13 @@ const MonsterListItem = ({ monster }) => {
                     <span style={{ color: 'bisque', fontWeight: 650 }}>
                         Zadanie:{' '}
                     </span>
-                    {monster.question_name}
+                    {monster.name}
                 </p>
                 <p>
                     <span style={{ color: 'bisque', fontWeight: 650 }}>
                         Nagroda:{' '}
                     </span>
-                    {monster.points} szt. złota
+                    {monster.reward_gold} szt. złota
                 </p>
             </div>
             <div className="monster-button">
