@@ -52,7 +52,7 @@ const Character = ({
         sell_price: '10',
         buy_price: '20',
         eq_type: 'weapon',
-        item_image: 'wood_sword.png',
+        item_image: 'wooden_sword.png',
         stat: 5,
     }
 
@@ -62,7 +62,7 @@ const Character = ({
         sell_price: '10',
         buy_price: '20',
         eq_type: 'armor',
-        item_image: 'wood_armor.png',
+        item_image: 'wooden_armor.png',
         stat: 5,
     }
 
