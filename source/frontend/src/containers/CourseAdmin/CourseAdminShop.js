@@ -1,89 +1,64 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
 import Item from '../../components/Shop/Item'
 import axios from 'axios'
 
-const wood_weapon = {
-    item_name: 'Miecz treningowy',
-    sell_price: '10',
-    buy_price: '20',
-    eq_type: 'weapon',
-    item_image: 'wood_sword.png',
-    stat: 5,
-}
-
-const iron_weapon = {
-    item_name: 'Żelazny miecz',
-    sell_price: '20',
-    buy_price: '40',
-    eq_type: 'weapon',
-    item_image: 'iron_sword.png',
-    stat: 10,
-}
-
-const gold_weapon = {
-    item_name: 'Pozłacany rapier',
-    sell_price: '30',
-    buy_price: '60',
-    eq_type: 'weapon',
-    item_image: 'gold_sword.png',
-    stat: 20,
-}
-
-const diamond_weapon = {
-    item_name: 'Diamentowe ostrze',
-    sell_price: '40',
-    buy_price: '80',
-    eq_type: 'weapon',
-    item_image: 'diamond_sword.png',
-    stat: 35,
-}
-
-const wood_armor = {
-    item_name: 'Skórzany płaszcz',
-    sell_price: '10',
-    buy_price: '20',
-    eq_type: 'armor',
-    item_image: 'wood_armor.png',
-    stat: 5,
-}
-
-const iron_armor = {
-    item_name: 'Żelazna zbroja',
-    sell_price: '20',
-    buy_price: '40',
-    eq_type: 'armor',
-    item_image: 'iron_armor.png',
-    stat: 10,
-}
-
-const gold_armor = {
-    item_name: 'Pozłacana kolczuga',
-    sell_price: '30',
-    buy_price: '60',
-    eq_type: 'armor',
-    item_image: 'gold_armor.png',
-    stat: 20,
-}
-
-const diamond_armor = {
-    item_name: 'Kryształowy pancerz',
-    sell_price: '40',
-    buy_price: '80',
-    eq_type: 'armor',
-    item_image: 'diamond_armor.png',
-    stat: 35,
-}
-
 const CourseAdminShop = ({ course_global, match }) => {
+    const [courseItemsData, setCourseItemsData] = useState([])
+    const [allItemsData, setAllItemsData] = useState([])
+
     useEffect(
         () => {
             get_course_by_id(match.params.id)
+            get_course_items().then(({data}) => {setCourseItemsData(data)})
+            get_all_items().then(({data}) => {setAllItemsData(data)})
         }, // eslint-disable-next-line
         []
     )
+
+    
+    const get_course_items = () => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('access')}`,
+                Accept: 'application/json',
+            },
+        }
+
+        try {
+            var ret = axios.get(
+                `${process.env.REACT_APP_API_URL}/course/${match.params.course_id}/shop/`,
+                config
+            )
+            console.log('nie error :D')
+            return ret
+        } catch (err) {
+            console.log('error ech')
+        }
+    }
+    const get_all_items = () => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                //Authorization: `JWT ${localStorage.getItem('access')}`,
+                //Accept: 'application/json',
+            },
+        }
+
+        try {
+            var ret = axios.get(
+                `${process.env.REACT_APP_API_URL}/course/items/`,
+                config
+            )
+            console.log('nie error :D')
+            return ret
+        } catch (err) {
+            console.log('error ech')
+        }
+    }
 
     const add_items = (items_id) => {
         const config = {
@@ -99,12 +74,13 @@ const CourseAdminShop = ({ course_global, match }) => {
         })
 
         try {
-            axios.put(
+            var ret = axios.put(
                 `${process.env.REACT_APP_API_URL}/course/${match.params.course_id}/addItems/`,
                 body,
                 config
             )
-            console.log('nie error :D')
+            console.log(ret)
+            return ret
         } catch (err) {
             console.log('error ech')
         }
@@ -120,8 +96,10 @@ const CourseAdminShop = ({ course_global, match }) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        add_items([1, 2])
+        add_items([9])
         console.log(e)
+        this.setState(this.state)
+        //this.forceUpdate()
     }
 
     return (
@@ -138,43 +116,25 @@ const CourseAdminShop = ({ course_global, match }) => {
                                 <h3 className="course-content-title">
                                     Dodane do kursu
                                 </h3>
-                                <Item
-                                    item={wood_weapon}
+                                {courseItemsData.items ? 
+                                courseItemsData.items.map((user, index) => (
+                                    <Item
+                                    item={user}
                                     onChange={onChangeOld}
                                 />
-                                <Item
-                                    item={iron_weapon}
-                                    onChange={onChangeOld}
-                                />
-                                <Item
-                                    item={gold_weapon}
-                                    onChange={onChangeOld}
-                                />
-                                <Item
-                                    item={diamond_weapon}
-                                    onChange={onChangeOld}
-                                />
+                                )):  <></>}
                             </div>
                             <div className="admin-shop-column">
                                 <h3 className="course-content-title">
                                     Poza kursem
                                 </h3>
-                                <Item
-                                    item={wood_armor}
+                                {allItemsData ? 
+                                allItemsData.map((user, index) => (
+                                    <Item
+                                    item={user}
                                     onChange={onChangeNew}
                                 />
-                                <Item
-                                    item={iron_armor}
-                                    onChange={onChangeNew}
-                                />
-                                <Item
-                                    item={gold_armor}
-                                    onChange={onChangeNew}
-                                />
-                                <Item
-                                    item={diamond_armor}
-                                    onChange={onChangeNew}
-                                />
+                                )):  <></>}
                             </div>
                             <button className="common-button" type="submit">
                                 Zaktualizuj przedmioty w kursie

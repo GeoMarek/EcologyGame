@@ -135,9 +135,9 @@ class CharacterView(APIView):
 
 # Klasa odpowiedzialna za sklep
 class CourseItems(APIView):
-    permission_classes = (
-        permissions.AllowAny,
-    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    #permission_classes = (
+    #    permissions.AllowAny,
+    #)  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
 
     # get all course itmes
     def get(self, request, course_id):
@@ -176,10 +176,10 @@ class CourseItems(APIView):
 
                 item = Item.objects.get(id=item_id)
                 course.store_items.add(item)
-
-                return Response(
-                    {"info": "wszystko okej przy dodaniu przedmiotu do sklepu"}
-                )
+                
+                items = course.store_items.all()
+                items = [ItemSerializer(model).data for model in items]
+                return Response({"items": items})
         except:
             return Response({"error": "Something went wrong when adding item to shop"})
 
