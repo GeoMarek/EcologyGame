@@ -2,16 +2,9 @@ import React from 'react'
 import CharacterImage from './CharacterImage'
 import CharacterInfo from './CharacterInfo'
 import CommonButton from '../Common/CommonButton'
-import CharacterEquipment from './CharacterEquipment'
 import '../../styles/Character.css'
 
-const CharacterPresent = ({
-    character,
-    edit_mode,
-    weapon,
-    armor,
-    equipment,
-}) => {
+const CharacterPresent = ({ character, edit_mode }) => {
     return (
         <div>
             <h3 className="home-title">Oto twój bohater, {character.name}</h3>
@@ -24,11 +17,6 @@ const CharacterPresent = ({
             </div>
             <div className="profile-info">
                 <CharacterInfo character={character} />
-                <CharacterEquipment
-                    weapon={weapon}
-                    armor={armor}
-                    equipment={equipment}
-                />
             </div>
         </div>
     )

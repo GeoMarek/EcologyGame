@@ -36,7 +36,9 @@ const TestAnswerForm = ({ question }) => {
         console.clear()
         console.log(
             'Czy udzielono dobrej odpowiedzi: ' +
-                (users_answer === question.correct_answer)
+                +users_answer +
+                ' x ' +
+                question.correct_answer
         )
     }
 
@@ -46,12 +48,12 @@ const TestAnswerForm = ({ question }) => {
                 {question.content}
             </p>
             <form onSubmit={(e) => onSubmit(e)}>
-                <label styhtmlFor="users_answer">Twoja odpowiedź: </label>
+                <label htmlFor="users_answer">Twoja odpowiedź: </label>
                 <select
                     style={{ fontSize: '14px', margin: '0' }}
                     name="users_answer"
                     onChange={(e) => onChange(e)}
-                    defaultValue={answers_list[0]}
+                    defaultValue={question.a1}
                 >
                     {answers_list.map((answer) => (
                         <option value={answer} key={answer}>

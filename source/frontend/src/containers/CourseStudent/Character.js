@@ -6,6 +6,8 @@ import CommonButton from '../../components/Common/CommonButton'
 import { get_course_by_id } from '../../actions/course'
 import StudentSideBar from '../../components/SideBar/StudentSideBar'
 import CharacterPresent from '../../components/Character/CharacterPresent'
+import ChangeEquipment from '../../components/Character/ChangeEquipment'
+import { put_on_item, put_off } from '../../actions/character'
 
 const Character = ({
     match,
@@ -45,30 +47,6 @@ const Character = ({
         []
     )
 
-    // TODO: przykładowe przedmioty, które może mieć postać
-    const wood_weapon = {
-        id: 1,
-        item_name: 'Miecz treningowy',
-        sell_price: '10',
-        buy_price: '20',
-        eq_type: 'weapon',
-        item_image: 'wooden_sword.png',
-        stat: 5,
-    }
-
-    const wood_armor = {
-        id: 2,
-        item_name: 'Skórzany płaszcz',
-        sell_price: '10',
-        buy_price: '20',
-        eq_type: 'armor',
-        item_image: 'wooden_armor.png',
-        stat: 5,
-    }
-
-    var example_weapon = wood_weapon
-    var example_armor = wood_armor
-
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
@@ -96,7 +74,17 @@ const Character = ({
     }
 
     const editProfileMode = () => (
-        <CommonButton text="Anuluj zmiany" on_click={turnOffEditProfileMode} />
+        <>
+            <ChangeEquipment
+                armor={armor}
+                weapon={weapon}
+                equipment={equipment}
+                course_id={course_global.id}
+                put_off_item={put_off}
+                put_on_item={put_on_item}
+            />
+            <CommonButton text="Cofnij" on_click={turnOffEditProfileMode} />
+        </>
     )
 
     return (
@@ -109,9 +97,6 @@ const Character = ({
                     <CharacterPresent
                         character={character_global}
                         edit_mode={turnOnEditProfileMode}
-                        weapon={example_weapon}
-                        armor={example_armor}
-                        equipment={equipment}
                     />
                 ) : (
                     <></>
@@ -130,4 +115,8 @@ const mapStateToProps = (state) => ({
     equipment: state.character.equipment,
 })
 
-export default connect(mapStateToProps, { load_character })(Character)
+export default connect(mapStateToProps, {
+    load_character,
+    put_on_item,
+    put_off,
+})(Character)
