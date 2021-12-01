@@ -533,3 +533,105 @@ class InitEqView(APIView):
                     setattr(eq, k, v)
                 eq.save()
         return Response({"response": "chyba okej dodanie eq"})
+
+
+# zarzadzanie quizem
+class DoQuizView(APIView):
+    # get all course quizzes
+    permission_classes = (
+        permissions.AllowAny,
+    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+
+    def get(self, request, course_id, quiz_id):
+        try:
+            if course_id != None and quiz_id != None:
+                quiz = Quiz.objects.get(id=quiz_id)
+                quiz = QuizSerializer(quiz).data
+                question = Question.objects.filter(quiz=quiz_id)
+                print(69)
+                print(question)
+                question = [QuestionSerializer(model).data for model in question]
+                print(question)
+                return Response({"quiz": quiz, "questions": question})
+        except:
+            return Response(
+                {"error": "Something went wrong when geting course's quizzes"}
+            )
+
+    def post(self, request, course_id, format=None):
+        try:
+            data = self.request.data
+            course_id = course_id
+            course = Course.objects.get(id=course_id)
+            quiz_type = data["type"]
+            name = data["name"]
+            description = data["description"]
+            q_g_anw = ""
+            q_b_anw1 = ""
+            q_b_anw2 = ""
+            q_b_anw3 = ""
+            dmg = data["dmg"]
+            reward = data["reward"]
+            reward_exp = reward
+            reward_gold = reward
+            print(data)
+            if quiz_type == Quiz.SelectTypeType.TEST:
+                number_of_questions = 1
+                max_points = 1
+                number_of_approaches = 1
+                selecting_result = Quiz.SelectMarkType.BEST
+                q_g_anw = data["good_answer"]
+                q_b_anw1 = data["bad_answer1"]
+                q_b_anw2 = data["bad_answer2"]
+                q_b_anw3 = data["bad_answer3"]
+            elif quiz_type == Quiz.SelectTypeType.OPEN:
+                number_of_questions = 1
+                max_points = 1
+                number_of_approaches = 1
+                q_g_anw = data["good_answer"]
+                selecting_result = Quiz.SelectMarkType.BEST
+            elif (
+                quiz_type == Quiz.SelectTypeType.HABIT_P
+                or quiz_type == Quiz.SelectTypeType.HABIT_N
+                or quiz_type == Quiz.SelectTypeType.HABIT_M
+            ):
+                number_of_questions = 1
+                max_points = 1
+                number_of_approaches = 1
+                selecting_result = Quiz.SelectMarkType.BEST
+            elif quiz_type == Quiz.SelectTypeType.EVENT:
+                number_of_questions = 1
+                max_points = 1
+                number_of_approaches = 1
+                selecting_result = Quiz.SelectMarkType.BEST
+            else:
+                return Response({"error": f"Wrong quiz_type: {quiz_type}"})
+            quiz = Quiz(
+                course=course,
+                name=name,
+                description=description,
+                number_of_questions=number_of_questions,
+                max_points=max_points,
+                reward_exp=reward_exp,
+                reward_gold=reward_gold,
+                number_of_approaches=number_of_approaches,
+                selecting_result=selecting_result,
+                quiz_type=quiz_type,
+            )
+            quiz.save()
+            question = Question(
+                quiz=quiz,
+                name=name,
+                content=description,
+                a1=q_g_anw,
+                a2=q_b_anw1,
+                a3=q_b_anw2,
+                a4=q_b_anw3,
+                correct_answer=q_g_anw,
+                points=reward,
+                dmg=dmg,
+            )
+            question.save()
+            return Response({"info": f"Quiz utworzono poprawnie"})
+        except:
+            return Response({"error": f"Something went wrong when creating quiz"})

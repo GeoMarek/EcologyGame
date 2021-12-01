@@ -48,3 +48,7 @@ export const PUT_ON_ITEM_SUCCESS = 'PUT_ON_ITEM_SUCCESS'
 export const PUT_ON_ITEM_FAIL = 'PUT_ON_ITEM_FAIL'
 export const PUT_OFF_ITEM_SUCCESS = 'PUT_OFF_ITEM_SUCCESS'
 export const PUT_OFF_ITEM_FAIL = 'PUT_OFF_ITEM_FAIL'
+
+//Quiz Dispatch States
+export const GET_QUIZ_SUCCESS = 'GET_QUIZ_SUCCESS'
+export const GET_QUIZ_FAIL = 'GET_QUIZ_FAIL'

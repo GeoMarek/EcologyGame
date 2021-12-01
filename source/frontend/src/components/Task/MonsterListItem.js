@@ -1,13 +1,16 @@
 import React from 'react'
+import { get_quiz } from '../../actions/quiz'
+import { connect } from 'react-redux'
 import CommonButton from '../Common/CommonButton'
 
-const MonsterListItem = ({ monster }) => {
+const MonsterListItem = ({ monster, get_quiz, isAuthenticated }) => {
     var image_dir = `${process.env.PUBLIC_URL}/MonsterIcons/`
     var seed = monster.reward_gold % 4
     var monster_image = image_dir + 'monster_' + seed + '.png'
 
     const openTaskSubmitPage = (e) => {
         console.log('Próba rozwiązania zadania od id ' + monster.id)
+        get_quiz(1, monster.id)
     }
 
     const image_component = (
@@ -41,4 +44,9 @@ const MonsterListItem = ({ monster }) => {
         </div>
     )
 }
-export default MonsterListItem
+
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps, { get_quiz })(MonsterListItem)
