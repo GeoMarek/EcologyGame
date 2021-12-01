@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-const ClosedQuestion = ({ match }) => {
+
+const ClosedQuestion = ({ match, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         question_name: '',
         content: '',
@@ -202,6 +205,9 @@ const ClosedQuestion = ({ match }) => {
         </>
     )
 
+    if (!isAuthenticated) {
+        return <Redirect to="/" />
+    }
     return (
         <div className="home-container">
             <h3 className="question-title">Dodawanie zadania zamkniętego</h3>
@@ -227,4 +233,8 @@ const ClosedQuestion = ({ match }) => {
     )
 }
 
-export default ClosedQuestion
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps)(ClosedQuestion)

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-const HabitQuestion = ({ match }) => {
+
+const HabitQuestion = ({ match, isAuthenticated}) => {
     const [formData, setFormData] = useState({
         habit_name: '',
         habit_type: 'positiv',
@@ -128,6 +131,9 @@ const HabitQuestion = ({ match }) => {
         </div>
     )
 
+    if (!isAuthenticated) {
+        return <Redirect to="/" />
+    }
     return (
         <div className="home-container">
             <h3 className="question-title">Dodawanie nawyku</h3>
@@ -152,4 +158,8 @@ const HabitQuestion = ({ match }) => {
     )
 }
 
-export default HabitQuestion
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps)(HabitQuestion)
