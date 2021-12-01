@@ -349,3 +349,15 @@ input[type='checkbox'] {
     font-weight: 700;
     background-color: beige;
 }
+
+footer {
+    display: block;
+    background-color: #1a596e;
+    height: auto;
+    width: 50%;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: rgb(6, 24, 24);
+    margin: 10px;
+    margin-inline-start: 25%;
+}
