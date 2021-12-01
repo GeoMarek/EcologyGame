@@ -95,7 +95,7 @@ const App = () => (
                     />
                     <Route
                         exact
-                        path="/course/:course_id/shop"
+                        path="/course/:id/shop"
                         component={CourseShop}
                     />
                     <Route exact path="/signup" component={Signup} />

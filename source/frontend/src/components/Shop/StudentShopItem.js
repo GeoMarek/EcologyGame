@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const StudentShopItem = ({ item, sell }) => {
-    var image_dir = `${process.env.PUBLIC_URL}/ItemIcons/` + item.item_image
+const StudentShopItem = ({ item, sell, buy_item, sell_item, course_id }) => {
+    const [defData, setDelData] = useState(false)
+    var image_dir = `${process.env.PUBLIC_URL}/ItemIcons/` + item.image
     const image_component = (
         <img
             className="student-shop-icon"
@@ -18,12 +19,15 @@ const StudentShopItem = ({ item, sell }) => {
                 item.sell_price +
                 ' gold'
         )
+        sell_item(course_id, item.id)
     }
 
     const onBuy = (e) => {
         console.log(
             'Buy item with id: ' + item.id + ' for ' + item.buy_price + ' gold'
         )
+        buy_item(course_id, item.id)
+        setDelData(true)
     }
 
     const shopButton = (
@@ -38,6 +42,9 @@ const StudentShopItem = ({ item, sell }) => {
         </button>
     )
 
+    if (defData) {
+        return <></>
+    }
     return (
         <div className="student-shop-div" key={'student-sell' + item.id}>
             <div className="student-shop-image">{image_component}</div>
@@ -49,7 +56,7 @@ const StudentShopItem = ({ item, sell }) => {
                         marginTop: '10px',
                     }}
                 >
-                    {item.item_name}
+                    {item.name}
                 </p>
                 <p style={{ fontSize: '14px', margin: '0px' }}>
                     Premia: {item.stat}
