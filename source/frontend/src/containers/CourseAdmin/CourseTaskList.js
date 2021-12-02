@@ -4,8 +4,9 @@ import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
 import QuestionItem from '../../components/Task/QuestionItem'
+import { Redirect } from 'react-router-dom'
 
-const CourseTaskList = ({ course_global, match }) => {
+const CourseTaskList = ({ course_global, match, isAuthenticated }) => {
     const [courseItemsData, setCourseItemsData] = useState([])
     useEffect(
         () => {
@@ -38,6 +39,9 @@ const CourseTaskList = ({ course_global, match }) => {
         }
     }
     // <QuestionItem question={example_open_question} />
+    if (!isAuthenticated) {
+        return <Redirect to="/" />
+    }
 
     return (
         <div className="home-container">

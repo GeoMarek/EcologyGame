@@ -76,7 +76,7 @@ const TestAnswerForm = ({
                     name="users_answer"
                     onChange={(e) => onChange(e)}
                 >
-                    <option value="" disabled selected hidden>
+                    <option selected="" disabled selected hidden>
                         X
                     </option>
                     {answers_list.map((answer, id) => (
