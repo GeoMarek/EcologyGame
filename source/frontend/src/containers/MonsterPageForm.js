@@ -36,7 +36,8 @@ const MonsterPageForm = ({ isAuthenticated, quiz, match, get_quiz }) => {
         case 't':
             student_answer_form = (
                 <TestAnswerForm
-                    question={answers_list}
+                    question={quiz.questions[0]}
+                    questions={answers_list}
                     quiz_type={quiz.quiz.quiz_type}
                     quiz_id={quiz.quiz.id}
                     course_id={quiz.quiz.course}
@@ -47,6 +48,7 @@ const MonsterPageForm = ({ isAuthenticated, quiz, match, get_quiz }) => {
             student_answer_form = (
                 <OpenAnswerForm
                     question={quiz.questions[0]}
+                    questions={quiz.questions[0]}
                     quiz_type={quiz.quiz.quiz_type}
                     quiz_id={quiz.quiz.id}
                     course_id={quiz.quiz.course}
