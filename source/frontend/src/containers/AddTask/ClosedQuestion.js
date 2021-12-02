@@ -86,6 +86,7 @@ const ClosedQuestion = ({ match, isAuthenticated }) => {
             damage,
             points
         )
+        setRedirectData({ ...redirectData, redirect: match.params.course_id })
     }
 
     const question_name_form = (
@@ -204,11 +205,19 @@ const ClosedQuestion = ({ match, isAuthenticated }) => {
         </>
     )
 
+    const [redirectData, setRedirectData] = useState({
+        redirect: 0,
+    })
+    const renderRedirect = () => (
+        <Redirect to={'/course/' + redirectData.redirect} />
+    )
+
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
     return (
         <div className="home-container">
+            {redirectData.redirect !== 0 ? renderRedirect() : <div />}
             <h3 className="question-title">Dodawanie zadania zamkniętego</h3>
             <form
                 onSubmit={(e) => onSubmit(e)}

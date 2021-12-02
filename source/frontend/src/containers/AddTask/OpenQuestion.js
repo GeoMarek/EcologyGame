@@ -50,6 +50,7 @@ const OpenQuestion = ({ match, isAuthenticated }) => {
     const onSubmit = (e) => {
         e.preventDefault()
         create_open('o', question_name, content, correct_answer, damage, points)
+        setRedirectData({ ...redirectData, redirect: match.params.course_id })
     }
 
     const question_name_form = (
@@ -130,11 +131,19 @@ const OpenQuestion = ({ match, isAuthenticated }) => {
         </div>
     )
 
+    const [redirectData, setRedirectData] = useState({
+        redirect: 0,
+    })
+    const renderRedirect = () => (
+        <Redirect to={'/course/' + redirectData.redirect} />
+    )
+
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
     return (
         <div className="home-container">
+            {redirectData.redirect !== 0 ? renderRedirect() : <div />}
             <h3 className="question-title">Formularz zadania otwartego</h3>
             <form
                 onSubmit={(e) => onSubmit(e)}
