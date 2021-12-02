@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 const TestAnswerForm = ({
@@ -14,6 +15,12 @@ const TestAnswerForm = ({
         users_answer: '',
     })
     const { users_answer } = formData
+    const [redirectData, setRedirectData] = useState({
+        redirect: 0,
+    })
+    const renderRedirect = () => (
+        <Redirect to={'/course/' + quiz_id + '/monsters/'} />
+    )
 
     const onChange = (e) => {
         e.preventDefault()
@@ -53,6 +60,7 @@ const TestAnswerForm = ({
             console.log([{ answer: users_answer }])
             var answers = [{ answer: users_answer, q_id: question.id }]
             send_answer(quiz_id, course_id, quiz_type, answers)
+            setRedirectData({ ...redirectData, redirect: 1 })
         } else {
             console.clear()
             console.log('Wybierz jakąś odpowiedź')
@@ -61,6 +69,7 @@ const TestAnswerForm = ({
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     return (
         <div>
+            {redirectData.redirect !== 0 ? renderRedirect() : <div />}
             <p style={{ fontSize: '14px', color: 'aquamarine' }}>
                 {question.content}
             </p>
