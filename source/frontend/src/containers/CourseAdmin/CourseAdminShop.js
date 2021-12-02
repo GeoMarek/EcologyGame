@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { get_course_by_id } from '../../actions/course'
 import { connect } from 'react-redux'
 import AdminSideBar from '../../components/SideBar/AdminSideBar'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import AdminShopList from '../../components/Shop/AdminShopList'
 
-const CourseAdminShop = ({ course_global, match }) => {
+const CourseAdminShop = ({ course_global, match, isAuthenticated }) => {
     const [courseItemsData, setCourseItemsData] = useState([])
 
     useEffect(
@@ -37,6 +38,9 @@ const CourseAdminShop = ({ course_global, match }) => {
         } catch (err) {
             console.log('error ech')
         }
+    }
+    if (!isAuthenticated) {
+        return <Redirect to="/" />
     }
 
     return (

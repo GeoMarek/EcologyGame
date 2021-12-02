@@ -50,6 +50,7 @@ const HabitQuestion = ({ match, isAuthenticated }) => {
     const onSubmit = (e) => {
         e.preventDefault()
         create_habit(habit_type, habit_name, content, damage, points)
+        setRedirectData({ ...redirectData, redirect: match.params.course_id })
     }
 
     const habit_name_form = (
@@ -130,11 +131,19 @@ const HabitQuestion = ({ match, isAuthenticated }) => {
         </div>
     )
 
+    const [redirectData, setRedirectData] = useState({
+        redirect: 0,
+    })
+    const renderRedirect = () => (
+        <Redirect to={'/course/' + redirectData.redirect} />
+    )
+
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
     return (
         <div className="home-container">
+            {redirectData.redirect !== 0 ? renderRedirect() : <div />}
             <h3 className="question-title">Dodawanie nawyku</h3>
             <form
                 onSubmit={(e) => onSubmit(e)}
