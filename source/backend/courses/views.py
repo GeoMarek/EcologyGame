@@ -358,7 +358,6 @@ class CharcterEqView(APIView):
                     if s_character.data["armor"]:
                         character.equipment.add(character.armor)
                     character.armor = item
-                    print(item)
                 character.save()
             elif fun_type == "put_off":
                 if s_item.data["eq_type"] == "w":
@@ -443,7 +442,6 @@ class QuizView(APIView):
             reward = data["reward"]
             reward_exp = reward
             reward_gold = reward
-            print(data)
             if quiz_type == Quiz.SelectTypeType.TEST:
                 number_of_questions = 1
                 max_points = 1
@@ -535,9 +533,8 @@ class InitEqView(APIView):
         return Response({"response": "chyba okej dodanie eq"})
 
 
-# zarzadzanie quizem
+# zarzadzanie konkretnym quizem
 class DoQuizView(APIView):
-    # get all course quizzes
     permission_classes = (
         permissions.AllowAny,
     )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
@@ -547,63 +544,75 @@ class DoQuizView(APIView):
             if course_id != None and quiz_id != None:
                 quiz = Quiz.objects.get(id=quiz_id)
                 quiz = QuizSerializer(quiz).data
-                question = Question.objects.filter(quiz=quiz_id)
-                print(69)
-                print(question)
-                question = [QuestionSerializer(model).data for model in question]
-                print(question)
-                return Response({"quiz": quiz, "questions": question})
+                questions = Question.objects.filter(quiz=quiz_id)
+                questions = [QuestionSerializer(model).data for model in questions]
+                return Response({"quiz": quiz, "questions": questions})
         except:
             return Response(
                 {"error": "Something went wrong when geting course's quizzes"}
             )
 
-    def post(self, request, course_id, format=None):
+    def post(self, request, course_id, quiz_id, format=None):
         try:
+            user = self.request.user
+            quiz = Quiz.objects.get(id=quiz_id)
+            approach = Approach(
+                user=user,
+                quiz=quiz,
+                result_in_percent=1,
+            )
+            approach.save()
+            return Response({"info": f"Approach utworzono poprawnie"})
+        except:
+            return Response({"error": f"Something went wrong when creating Approach"})
+
+    def put(self, request, course_id, quiz_id, format=None):
+        try:
+            user = self.request.user
             data = self.request.data
-            course_id = course_id
+            quiz = Quiz.objects.get(id=quiz_id)
+            # quiz = QuizSerializer(quiz).data
+            questions = Question.objects.filter(quiz=quiz_id)
+            # questions = [QuestionSerializer(model).data for model in questions]
+
+            # do zminay w approach
+            # "end_time": "2021-12-01T19:27:10.168833Z",
+            # "duration_time": "2021-12-01T19:27:10.168833Z",
+            # "obtained_points": 0,
+            # "result_in_percent": "1.00",
+
+            # utworzyc              Answer(models.Model):
+            #    approach = models.ForeignKey(Approach, on_delete=models.CASCADE, blank=True)
+            #    question = models.ForeignKey(Question, on_delete=models.CASCADE, blank=True)
+            #    user_answer =   models.TextField(blank=True)
+
             course = Course.objects.get(id=course_id)
-            quiz_type = data["type"]
-            name = data["name"]
-            description = data["description"]
-            q_g_anw = ""
-            q_b_anw1 = ""
-            q_b_anw2 = ""
-            q_b_anw3 = ""
-            dmg = data["dmg"]
-            reward = data["reward"]
-            reward_exp = reward
-            reward_gold = reward
-            print(data)
+            character = Character.objects.filter(course=course)
+            character = character.get(user=user)
+
+            quiz_type = data["quiz_type"]
+            answers = data["answers"]
+
+            approach = Approach.objects.filter(user=user).filter(quiz=quiz)
+
+            print(approach)
+
+            for answer in answers:
+                print(answer)
+
+            return Response({"info": f"Odpowiedziano na quiz"})
             if quiz_type == Quiz.SelectTypeType.TEST:
-                number_of_questions = 1
-                max_points = 1
-                number_of_approaches = 1
-                selecting_result = Quiz.SelectMarkType.BEST
-                q_g_anw = data["good_answer"]
-                q_b_anw1 = data["bad_answer1"]
-                q_b_anw2 = data["bad_answer2"]
-                q_b_anw3 = data["bad_answer3"]
+                pass
             elif quiz_type == Quiz.SelectTypeType.OPEN:
-                number_of_questions = 1
-                max_points = 1
-                number_of_approaches = 1
-                q_g_anw = data["good_answer"]
-                selecting_result = Quiz.SelectMarkType.BEST
+                pass
             elif (
                 quiz_type == Quiz.SelectTypeType.HABIT_P
                 or quiz_type == Quiz.SelectTypeType.HABIT_N
                 or quiz_type == Quiz.SelectTypeType.HABIT_M
             ):
-                number_of_questions = 1
-                max_points = 1
-                number_of_approaches = 1
-                selecting_result = Quiz.SelectMarkType.BEST
+                pass
             elif quiz_type == Quiz.SelectTypeType.EVENT:
-                number_of_questions = 1
-                max_points = 1
-                number_of_approaches = 1
-                selecting_result = Quiz.SelectMarkType.BEST
+                pass
             else:
                 return Response({"error": f"Wrong quiz_type: {quiz_type}"})
             quiz = Quiz(
