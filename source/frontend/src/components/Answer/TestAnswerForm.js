@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-const TestAnswerForm = ({ question, quiz_type, quiz_id, course_id }) => {
-    var answers_list = question
+const TestAnswerForm = ({
+    question,
+    questions,
+    quiz_type,
+    quiz_id,
+    course_id,
+}) => {
+    var answers_list = questions
 
     const [formData, setFormData] = useState({
         users_answer: '',
@@ -55,7 +61,6 @@ const TestAnswerForm = ({ question, quiz_type, quiz_id, course_id }) => {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     return (
         <div>
-            <p>{question.content}</p>
             <p style={{ fontSize: '14px', color: 'aquamarine' }}>
                 {question.content}
             </p>
