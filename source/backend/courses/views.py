@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 from os import name
 
 from django.db.models.fields import Field
@@ -444,7 +445,7 @@ class QuizView(APIView):
             reward_gold = reward
             if quiz_type == Quiz.SelectTypeType.TEST:
                 number_of_questions = 1
-                max_points = 1
+                max_points = reward
                 number_of_approaches = 1
                 selecting_result = Quiz.SelectMarkType.BEST
                 q_g_anw = data["good_answer"]
@@ -453,7 +454,7 @@ class QuizView(APIView):
                 q_b_anw3 = data["bad_answer3"]
             elif quiz_type == Quiz.SelectTypeType.OPEN:
                 number_of_questions = 1
-                max_points = 1
+                max_points = reward
                 number_of_approaches = 1
                 q_g_anw = data["good_answer"]
                 selecting_result = Quiz.SelectMarkType.BEST
@@ -463,12 +464,12 @@ class QuizView(APIView):
                 or quiz_type == Quiz.SelectTypeType.HABIT_M
             ):
                 number_of_questions = 1
-                max_points = 1
+                max_points = reward
                 number_of_approaches = 1
                 selecting_result = Quiz.SelectMarkType.BEST
             elif quiz_type == Quiz.SelectTypeType.EVENT:
                 number_of_questions = 1
-                max_points = 1
+                max_points = reward
                 number_of_approaches = 1
                 selecting_result = Quiz.SelectMarkType.BEST
             else:
@@ -533,6 +534,32 @@ class InitEqView(APIView):
         return Response({"response": "chyba okej dodanie eq"})
 
 
+def addExpToCharacter(character, exp):
+    character.current_exp = character.current_exp + exp
+    while character.current_exp >= character.max_exp:
+        excess = character.current_exp - character.max_exp
+        character.current_exp = excess
+        character.max_hp = character.max_hp + character.level * 2
+        character.curent_hp = character.max_hp
+        character.max_exp = character.max_exp + character.level * 5
+        character.level = character.level + 1
+    character.save()
+
+
+def dealDmgToCharacter(character, dmg):
+    dmg1 = dmg
+    if character.armor:
+        dmg1 -= ItemSerializer(character.armor).data["stat"]
+        if dmg1 < 1:
+            dmg1 = 1
+    if character.curent_hp <= dmg1:
+        character.curent_hp = 0
+        character.isAlive = False
+    else:
+        character.curent_hp = character.curent_hp - dmg1
+    character.save()
+
+
 # zarzadzanie konkretnym quizem
 class DoQuizView(APIView):
     permission_classes = (
@@ -562,6 +589,7 @@ class DoQuizView(APIView):
                 result_in_percent=1,
             )
             approach.save()
+            print("created approach!")
             return Response({"info": f"Approach utworzono poprawnie"})
         except:
             return Response({"error": f"Something went wrong when creating Approach"})
@@ -575,17 +603,6 @@ class DoQuizView(APIView):
             questions = Question.objects.filter(quiz=quiz_id)
             # questions = [QuestionSerializer(model).data for model in questions]
 
-            # do zminay w approach
-            # "end_time": "2021-12-01T19:27:10.168833Z",
-            # "duration_time": "2021-12-01T19:27:10.168833Z",
-            # "obtained_points": 0,
-            # "result_in_percent": "1.00",
-
-            # utworzyc              Answer(models.Model):
-            #    approach = models.ForeignKey(Approach, on_delete=models.CASCADE, blank=True)
-            #    question = models.ForeignKey(Question, on_delete=models.CASCADE, blank=True)
-            #    user_answer =   models.TextField(blank=True)
-
             course = Course.objects.get(id=course_id)
             character = Character.objects.filter(course=course)
             character = character.get(user=user)
@@ -593,12 +610,50 @@ class DoQuizView(APIView):
             quiz_type = data["quiz_type"]
             answers = data["answers"]
 
-            approach = Approach.objects.filter(user=user).filter(quiz=quiz)
+            approach = (
+                Approach.objects.filter(user=user).filter(quiz=quiz).get(done=False)
+            )
 
-            print(approach)
+            points = 0
 
             for answer in answers:
-                print(answer)
+                question = questions.get(id=answer["q_id"])
+                if (
+                    answer["answer"]
+                    == QuestionSerializer(question).data["correct_answer"]
+                ):
+                    ans = Answer(
+                        approach=approach,
+                        question=question,
+                        user_answer=answer["answer"],
+                        is_correct=True,
+                    )
+                    ans.save()
+                    addExpToCharacter(character, quiz.reward_exp)
+                    character.gold = character.gold + quiz.reward_gold
+                    character.save()
+                    points += question.points
+                    print("poprawnie")
+                else:
+                    ans = Answer(
+                        approach=approach,
+                        question=question,
+                        user_answer=answer["answer"],
+                        is_correct=False,
+                    )
+                    ans.save()
+                    dealDmgToCharacter(character, question.dmg)
+                    print("zla odpowiedz")
+
+            approach.end_time = datetime.now()
+            # approach.duration_time = approach.end_time - approach.start_time
+            approach.obtained_points = points
+            if points == 0:
+                approach.result_in_percent = 0
+            else:
+                approach.result_in_percent = 100 * quiz.max_points / points
+            approach.done = True
+            approach.save()
 
             return Response({"info": f"Odpowiedziano na quiz"})
             if quiz_type == Quiz.SelectTypeType.TEST:
@@ -615,32 +670,6 @@ class DoQuizView(APIView):
                 pass
             else:
                 return Response({"error": f"Wrong quiz_type: {quiz_type}"})
-            quiz = Quiz(
-                course=course,
-                name=name,
-                description=description,
-                number_of_questions=number_of_questions,
-                max_points=max_points,
-                reward_exp=reward_exp,
-                reward_gold=reward_gold,
-                number_of_approaches=number_of_approaches,
-                selecting_result=selecting_result,
-                quiz_type=quiz_type,
-            )
-            quiz.save()
-            question = Question(
-                quiz=quiz,
-                name=name,
-                content=description,
-                a1=q_g_anw,
-                a2=q_b_anw1,
-                a3=q_b_anw2,
-                a4=q_b_anw3,
-                correct_answer=q_g_anw,
-                points=reward,
-                dmg=dmg,
-            )
-            question.save()
             return Response({"info": f"Quiz utworzono poprawnie"})
         except:
             return Response({"error": f"Something went wrong when creating quiz"})

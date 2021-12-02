@@ -12,6 +12,7 @@ const CourseStats = ({
     match,
     user_global,
     course_participants,
+    get_course_by_id,
 }) => {
     const [redirectData] = useState({
         redirect: 0,
@@ -21,7 +22,7 @@ const CourseStats = ({
 
     useEffect(
         () => {
-            get_course_by_id(match.params.id)
+            get_course_by_id(match.params.course_id)
         }, // eslint-disable-next-line
         []
     )

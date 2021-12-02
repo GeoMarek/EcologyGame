@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import StudentSideBar from '../../components/SideBar/StudentSideBar'
 import StudentShopList from '../../components/Shop/StudentShopList'
 import axios from 'axios'
-import { buy_item, sell_item } from '../../actions/character'
+import { buy_item, sell_item, load_character } from '../../actions/character'
 
 const CourseShop = ({
     course_global,
@@ -15,6 +15,7 @@ const CourseShop = ({
     sell_item,
     eq,
     gold,
+    load_character,
 }) => {
     const [courseItemsData, setCourseItemsData] = useState([])
     useEffect(
@@ -23,6 +24,7 @@ const CourseShop = ({
             get_course_items().then(({ data }) => {
                 setCourseItemsData(data)
             })
+            load_character(match.params.id)
         }, // eslint-disable-next-line
         []
     )
@@ -101,4 +103,5 @@ export default connect(mapStateToProps, {
     get_course_by_id,
     buy_item,
     sell_item,
+    load_character,
 })(CourseShop)

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_quiz } from '../actions/quiz'
 import CommonButton from '../components/Common/CommonButton'
+import axios from 'axios'
 
 const MonsterPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
     useEffect(
@@ -27,8 +28,34 @@ const MonsterPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
     )
     const openSubmitForm = (e) => {
         e.preventDefault()
+        start_approach(quiz.quiz.id)
         setRedirectData({ ...redirectData, redirect: '/submit' })
     }
+
+    const start_approach = (quiz_id) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('access')}`,
+                Accept: 'application/json',
+            },
+        }
+
+        const body = JSON.stringify({})
+
+        try {
+            var ret = axios.post(
+                `${process.env.REACT_APP_API_URL}/course/${match.params.course_id}/doquiz/${quiz_id}/`,
+                body,
+                config
+            )
+            console.log(ret)
+            return ret
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }

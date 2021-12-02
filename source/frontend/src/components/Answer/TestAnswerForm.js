@@ -51,7 +51,7 @@ const TestAnswerForm = ({
         if (users_answer) {
             console.clear()
             console.log([{ answer: users_answer }])
-            var answers = [{ answer: users_answer }]
+            var answers = [{ answer: users_answer, q_id: question.id }]
             send_answer(quiz_id, course_id, quiz_type, answers)
         } else {
             console.clear()
