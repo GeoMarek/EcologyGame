@@ -110,11 +110,11 @@ class CharacterView(APIView):
                 if armor != None:
                     armor = ItemSerializer(armor).data
                 else:
-                    aromr = {}
+                    armor = None
                 if weapon != None:
                     weapon = ItemSerializer(weapon).data
                 else:
-                    weapon = {}
+                    weapon = None
                 equipment = char.equipment.all()
                 equipment = [ItemSerializer(model).data for model in equipment]
                 character = character.filter(user=user)
@@ -376,11 +376,11 @@ class CharcterEqView(APIView):
             if armor != None:
                 armor = ItemSerializer(armor).data
             else:
-                aromr = {}
+                armor = None
             if weapon != None:
                 weapon = ItemSerializer(weapon).data
             else:
-                weapon = {}
+                weapon = None
             equipment = char.equipment.all()
             equipment = [ItemSerializer(model).data for model in equipment]
             character = character.filter(user=user)

@@ -75,6 +75,7 @@ body {
     float: left;
     width: 45%;
     margin: 10px;
+    vertical-align: top;
 }
 
 p {
@@ -310,6 +311,7 @@ input[type='checkbox'] {
     width: 45%;
     display: inline-block;
     margin-left: 2%;
+    vertical-align: top;
 }
 
 .student-shop-div {

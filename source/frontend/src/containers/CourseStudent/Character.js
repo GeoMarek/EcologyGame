@@ -7,7 +7,7 @@ import { get_course_by_id } from '../../actions/course'
 import StudentSideBar from '../../components/SideBar/StudentSideBar'
 import CharacterPresent from '../../components/Character/CharacterPresent'
 import ChangeEquipment from '../../components/Character/ChangeEquipment'
-import { put_on_item, put_off } from '../../actions/character'
+import { put_on_item, put_off_item } from '../../actions/character'
 
 const Character = ({
     match,
@@ -18,6 +18,8 @@ const Character = ({
     weapon,
     armor,
     equipment,
+    put_off_item,
+    put_on_item,
 }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -80,7 +82,7 @@ const Character = ({
                 weapon={weapon}
                 equipment={equipment}
                 course_id={course_global.id}
-                put_off_item={put_off}
+                put_off_item={put_off_item}
                 put_on_item={put_on_item}
             />
             <CommonButton text="Cofnij" on_click={turnOffEditProfileMode} />
@@ -118,5 +120,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
     load_character,
     put_on_item,
-    put_off,
+    put_off_item,
 })(Character)

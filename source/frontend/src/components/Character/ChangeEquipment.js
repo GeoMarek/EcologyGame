@@ -7,8 +7,8 @@ const ChangeEquipment = ({
     weapon,
     equipment,
     course_id,
-    put_on_item,
     put_off_item,
+    put_on_item,
 }) => {
     return (
         <div className="course-content-container">
@@ -17,8 +17,8 @@ const ChangeEquipment = ({
                 <ArmorWeapon
                     weapon={weapon}
                     armor={armor}
-                    put_off_item={put_off_item}
                     course_id={course_id}
+                    put_off_item={put_off_item}
                 />
             </div>
             <div className="student-shop-column">

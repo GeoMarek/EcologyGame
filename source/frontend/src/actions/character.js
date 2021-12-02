@@ -140,7 +140,7 @@ export const put_on_item = (course_id, item_id) => async (dispatch) => {
     }
 }
 
-export const put_off = (course_id, item_id) => async (dispatch) => {
+export const put_off_item = (course_id, item_id) => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
