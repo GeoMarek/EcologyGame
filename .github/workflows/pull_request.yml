@@ -30,7 +30,17 @@ jobs:
             - 'source/frontend/**'
           backend:
             - 'source/backend/**'
-  
+  require_reviewers:
+    # Job to require review defined in label.reviews.yml
+    runs-on: ubuntu-18.04
+    needs: changes
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Require-reviewers
+        uses: travelperk/label-requires-reviews-action@v0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN}}
   build_latex:
     # Job to compile latex document and upload pdf as artifact
     runs-on: ubuntu-latest
