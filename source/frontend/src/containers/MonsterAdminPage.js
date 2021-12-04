@@ -4,22 +4,28 @@ import { connect } from 'react-redux'
 import AdminSideBar from '../components/SideBar/AdminSideBar'
 import { get_course_by_id } from '../actions/course'
 import { get_quiz } from '../actions/quiz'
+import TaskAnswerList from '../components/Answer/TaskAnswerList'
 
-const MonsterAdminPage = ({
-    isAuthenticated,
-    course_global,
-    quiz,
-    match,
-    get_quiz,
-}) => {
+const MonsterAdminPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
     useEffect(
         () => {
-            get_course_by_id(match.params.id)
             get_quiz(match.params.course_id, match.params.monster_id)
         }, // eslint-disable-next-line
         []
     )
-    const question = quiz.questions[0]
+
+    var example_answers = [
+        {
+            id: 1,
+            user_answer: 'Według mnie wynik działania sqrt(4) to 2',
+            user: 'Marek',
+        },
+        {
+            id: 2,
+            user_answer: 'Według mnie wynik działania sqrt(4) to -2',
+            user: 'Kamil',
+        },
+    ]
 
     if (!isAuthenticated) {
         return <Redirect to="/" />
@@ -27,10 +33,27 @@ const MonsterAdminPage = ({
     return (
         <div className="home-container">
             <div className="course-content">
-                <AdminSideBar course_id={course_global.id} />
-                <h3 className="home-title">{question.name}</h3>
-                <p style={{ fontSize: '16px' }}>{question.content}</p>
-                <h3 className="home-title">Nadesłane odpowiedzi:</h3>
+                <AdminSideBar course_id={match.params.course_id} />
+                {quiz.questions.length > 0 ? (
+                    <>
+                        <h3 className="home-title">{quiz.questions[0].name}</h3>
+                        <p style={{ fontSize: '16px' }}>
+                            {quiz.questions[0].content}
+                        </p>
+                        <h3 className="home-title">Nadesłane odpowiedzi:</h3>
+                        <TaskAnswerList
+                            answers_list={example_answers}
+                            max={quiz.questions[0].points}
+                            dmg={quiz.questions[0].dmg}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <h3 className="home-title">
+                            Brak prób rozwiązania zadania
+                        </h3>
+                    </>
+                )}
             </div>
         </div>
     )
@@ -38,7 +61,6 @@ const MonsterAdminPage = ({
 
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
-    course_global: state.course.course.course,
     quiz: state.quiz,
 })
 

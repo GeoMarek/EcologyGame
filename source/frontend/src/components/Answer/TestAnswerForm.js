@@ -85,6 +85,7 @@ const TestAnswerForm = ({
                     name="users_answer"
                     onChange={(e) => onChange(e)}
                 >
+                    {/* eslint-disable-next-line */}
                     <option selected="" disabled selected hidden>
                         X
                     </option>
