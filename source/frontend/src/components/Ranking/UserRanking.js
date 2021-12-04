@@ -1,7 +1,7 @@
 import React from 'react'
 import UserRankingItem from './UserRankingItem'
 
-const UserRanking = ({ users }) => {
+const UserRanking = ({ users, ifAdmin }) => {
     const header = (
         <thead>
             <tr>
@@ -10,6 +10,7 @@ const UserRanking = ({ users }) => {
                 <td className="header-td">Punkty życia</td>
                 <td className="header-td">Doświadczenie</td>
                 <td className="header-td">Złoto</td>
+                {ifAdmin ? <td className="header-td">Status</td> : <></>}
             </tr>
         </thead>
     )
@@ -19,7 +20,11 @@ const UserRanking = ({ users }) => {
             {header}
             <tbody>
                 {users.map((user, index) => (
-                    <UserRankingItem user={user} key={index} />
+                    <UserRankingItem
+                        user={user}
+                        key={index}
+                        ifAdmin={ifAdmin}
+                    />
                 ))}
             </tbody>
         </table>

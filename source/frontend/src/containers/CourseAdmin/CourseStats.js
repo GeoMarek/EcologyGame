@@ -52,7 +52,10 @@ const CourseStats = ({
                 {course_participants.length === 0 ? (
                     <p>Brak uczestników</p>
                 ) : (
-                    <UserRanking users={course_participants} />
+                    <UserRanking
+                        users={course_participants}
+                        ifAdmin={ifAdmin}
+                    />
                 )}
             </div>
         </div>
