@@ -32,6 +32,7 @@ import OpenQuestion from './containers/AddTask/OpenQuestion'
 import MonsterPage from './containers/MonsterPage'
 import MonsterPageForm from './containers/MonsterPageForm'
 import MonsterAdminPage from './containers/MonsterAdminPage'
+import CheckAnswer from './containers/CheckAnswer'
 
 const App = () => (
     <Provider store={store}>
@@ -134,10 +135,17 @@ const App = () => (
                         path="/course/:course_id/monsters/:monster_id/submit"
                         component={MonsterPageForm}
                     />
+                    {/*Stronka, która powinna wyświetlić podstawowe informacje o zadaniu i listę wszystkich nadesłanych odpowiedzi*/}
                     <Route
                         exact
                         path="/course/:course_id/monsters/:monster_id/admin"
                         component={MonsterAdminPage}
+                    />
+                    {/* Wyświetla jedną odpowiedź na zadanie i formularz do przyznawania punktów */}
+                    <Route
+                        exact
+                        path="/course/:course_id/monsters/:monster_id/admin/:answer_id"
+                        component={CheckAnswer}
                     />
                 </Switch>
             </Layout>
