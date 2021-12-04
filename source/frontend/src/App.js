@@ -31,6 +31,7 @@ import HabitQuestion from './containers/AddTask/HabitQuestion'
 import OpenQuestion from './containers/AddTask/OpenQuestion'
 import MonsterPage from './containers/MonsterPage'
 import MonsterPageForm from './containers/MonsterPageForm'
+import MonsterAdminPage from './containers/MonsterAdminPage'
 
 const App = () => (
     <Provider store={store}>
@@ -132,6 +133,11 @@ const App = () => (
                         exact
                         path="/course/:course_id/monsters/:monster_id/submit"
                         component={MonsterPageForm}
+                    />
+                    <Route
+                        exact
+                        path="/course/:course_id/monsters/:monster_id/admin"
+                        component={MonsterAdminPage}
                     />
                 </Switch>
             </Layout>

@@ -362,3 +362,16 @@ footer {
     border-radius: 10px;
     margin-top: 10px;
 }
+
+.link-to-monster-admin-page {
+    color: burlywood;
+    text-decoration: none;
+    padding-left: 10px;
+    margin-top: -15px;
+    transition: all 500ms;
+}
+
+.link-to-monster-admin-page:hover {
+    text-decoration: none;
+    transform: rotate(0.5deg);
+}
