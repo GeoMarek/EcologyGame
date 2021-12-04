@@ -2,10 +2,14 @@
 
 **Przydatne komendy**
 ```
-http://localhost:8000/course/admin/admin/eq/
 .\code_format_fix.bat   # wykonuje automatyczne formatowanie kodu
-.\code_format_check.bat # sprawdza formatowanie kodu
 .\run_application.bat   #  uruchamia całą aplikację
+```
+
+**Inicjacja bazy danych**
+Po wykonaniu zapytania, serwer tworzy w bazie podstawowe tabele i dodaje pulę przedmiotów w kursie
+```
+http://localhost:8000/course/admin/admin/eq/
 ```
 
 **Serwer odpowiedzialny za backend**

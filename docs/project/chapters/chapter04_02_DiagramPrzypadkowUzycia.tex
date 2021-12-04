@@ -1,16 +1,16 @@
 \section{Model przypadków u¿ycia}
 
-\subsection{Diagram pakietów przypadków u¿ycia}
+\subsection{Diagram pakietów dla modelu przypadków u¿ycia}
 
 Jednym z g³ównych elementów prac projektowych by³o wykonanie diagramu przypadków u¿ycia. Zgodnie z definicj¹ diagram taki sk³ada siê z przypadków u¿ycia, czyli jednostek funkcjonalnoœci dostarczanych przez system, które s¹ realizowane jako ci¹g interakcji pomiêdzy aktorem a systemem \cite{usecase}. Z tego wzglêdu, ¿e w wyniku prac projektowych powsta³ diagram o bardzo du¿ej liczbie przypadków u¿ycia, zdecydowano podzieliæ siê go na sk³adowe i utworzyæ na podstawie tych sk³adowych diagram pakietów przypadków u¿ycia. 
 
-Wed³ug materia³ów opisuj¹cych metodykê RUP \cite{caseuse} - pakiet przypadków u¿ycia jest zbiorem przypadków u¿ycia, aktorów, relacji, diagramów i innych pakietów. Najczêstsze jego zastosowanie to próba restrukturyzacji diagramu przypadków u¿ycia poprzez podzielenie go na sk³adowe. W projektowanym systemie równie¿ zosta³ do tego wykorzystany. Skutkiem tego by³o utworzenie kilku, przedstawionych poni¿ej pakietów przypadków u¿ycia(Rys. \ref{chapter4_package}):
+Wed³ug materia³ów opisuj¹cych metodykê RUP \cite{caseuse} - pakiet przypadków u¿ycia jest zbiorem przypadków u¿ycia, aktorów, relacji, diagramów i innych pakietów. Najczêstsze jego zastosowanie to próba restrukturyzacji diagramu przypadków u¿ycia poprzez podzielenie go na sk³adowe. W projektowanym systemie równie¿ zosta³ do tego wykorzystany. Skutkiem tego by³o utworzenie kilku, przedstawionych poni¿ej pakietów dla modelu przypadków u¿ycia(Rys. \ref{chapter4_package}):
 
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.9]{img/chapter4/package_diagram.png}
-	\caption{Diagram pakietów przypadków u¿ycia}
+	\caption{Diagram pakietów dla modelu przypadków u¿ycia}
 	\label{chapter4_package}
 \end{figure}
 
@@ -66,13 +66,6 @@ A02 & Do³¹czanie do kursu & \vspace{-\baselineskip}
 		\item u¿ytkownik potwierdza chêæ do³¹czenia do kursu
 		\item system przekierowuje u¿ytkownika na stronê kursu
 	\end{enumerate}
-\item Alternatywny przebieg (kurs prywatny)
-	\begin{enumerate}
-		\item u¿ytkownik wpisuje has³o w polu "do³¹cz poprzez has³o"
-		\item system wyœwietla informacje o kursie i pytanie z potwierdzeniem 
-		\item u¿ytkownik potwierdza chêæ do³¹czenia do kursu
-		\item system przekierowuje u¿ytkownika na stronê kursu
-	\end{enumerate}
 \end{itemize} \\\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
@@ -113,12 +106,6 @@ A05 & Usuwanie kursu & \vspace{-\baselineskip}
 		\item u¿ytkownik wpisuje has³o i zatwierdza
 		\item system usuwa kurs z listy widocznych kursów
 	\end{enumerate}
-\item Przebieg alternatywny: (u¿ytkownik nie jest autorem)
-	\begin{enumerate}
-		\item system wyœwietla pytanie o potwierdzenie opuszczenia kursu
-		\item u¿ytkownik potwierdza decyzjê
-		\item system usuwa kurs z listy widocznych kursów 
-	\end{enumerate}
 \end{itemize} \\\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{longtable}
@@ -127,7 +114,7 @@ A05 & Usuwanie kursu & \vspace{-\baselineskip}
 % KOLEJNY PAKIET 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Kolejnym zbiorem przypadków u¿ycia jest pakiet administrowania kursem, który jak nazwa wskazuje ³¹czy w sobie wszystkie przypadki u¿ycia, które tego w³aœnie dotycz¹ (Rys. \ref{chapter4_admin_kurs}, Tab. \ref{chapter4_tab_usecaseB}). S¹ to na przyk³ad zmiana ustawieñ kursu, generowanie raportu, czy wys³anie zaproszenie dla nowego uczestnika. Istotnym elementem jest tutaj równie¿ inny pakiet, do którego pakiet \textit{Administrowanie kursu} ma prywatny dostêp. Chodzi o pakiet przypadków u¿ycia nazwany \textit{Administrowanie aktywnoœci}.
+Kolejnym zbiorem przypadków u¿ycia jest pakiet administrowania kursem, który jak nazwa wskazuje ³¹czy w sobie wszystkie przypadki u¿ycia, które tego w³aœnie dotycz¹ (Rys. \ref{chapter4_admin_kurs}, Tab. \ref{chapter4_tab_usecaseB}). S¹ to na przyk³ad przegl¹danie statystyk uczestników, czy wys³anie zaproszenie dla nowego uczestnika. Istotnym elementem jest tutaj równie¿ inny pakiet, do którego pakiet \textit{Administrowanie kursu} ma prywatny dostêp. Chodzi o pakiet przypadków u¿ycia nazwany \textit{Administrowanie aktywnoœci}.
 
 \begin{figure}[H]
 	\centering
@@ -145,79 +132,62 @@ Kolejnym zbiorem przypadków u¿ycia jest pakiet administrowania kursem, który jak
 \textbf{ID} &\textbf{Nazwa} & \textbf{Dokumentacja}\\
 \midrule
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-B01 & Wys³anie zaproszenia & \vspace{-\baselineskip}
+B01 & Przegl¹danie statystyk & \vspace{-\baselineskip}
+\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
+\item Aktor: Autor kursu
+\item Inicjacja: Klikniêcie w przycisk statystyki
+\item Przebieg:
+	\begin{enumerate}
+		\item system wyœwietla kilka informacji na temat uczestników (nazwa u¿ytkownika, doœwiadczenie, iloœæ z³ota oraz punkty ¿ycia lub przycisk odradzania u¿ytkownika)
+	\end{enumerate}
+\end{itemize} \\\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B02 & Zmiana ustawieñ kursu & \vspace{-\baselineskip}
+\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
+\item Aktor: Autor kursu
+\item Inicjacja: Wybranie przycisku "Odrodzenie uczestnika"
+\item Przebieg:
+	\begin{enumerate}
+		\item system aktualizuje statystyki wybranego u¿ytkownika do wartoœci pocz¹tkowych
+	\end{enumerate}
+\end{itemize} \\\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B03 & Dodanie przedmiotu & \vspace{-\baselineskip}
+\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
+\item Aktor: Autor kursu
+\item Inicjacja: Wybranie przycisku "Dodaj przedmioty"
+\item Przebieg:
+	\begin{enumerate}
+		\item system wyœwietla listê przedmiotów które mo¿na dodaæ do kursu
+		\item u¿ytkownik wybiera przedmiot, który chce dodaæ i potwierdza przyciskiem "dodaj"
+		\item system aktualizuje listê przedmiotów mo¿liwych do dodania
+		\item u¿ytkownik mo¿e powtarzaæ kroki 2 i 3 do momentu, a¿ doda do kursu wszystkie mo¿liwe przedmioty
+	\end{enumerate}
+\end{itemize} \\\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+B04 & Wys³anie zaproszenia & \vspace{-\baselineskip}
 \begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
 \item Aktor: Autor kursu
 \item Inicjacja: Wybranie przycisku "wyœlij zaproszenie"
 \item Przebieg:
 	\begin{enumerate}
-		\item system wyœwietla okno z formularzem do wype³nienia (email, wiadomoœæ, okreœ wa¿noœci)
+		\item system wyœwietla okno z formularzem do wype³nienia (email, wiadomoœæ, okres wa¿noœci)
 		\item u¿ytkownik wype³nia formularz i potwierdza wys³anie zaproszenia
 		\item system wysy³a email z zaproszeniem na podany adres email i aktualizuje listê uczestników (zaproszony bêdzie mia³ status niezapisany)
 	\end{enumerate}
 \end{itemize} \\\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-B02 & Wybranie uczestnika & \vspace{-\baselineskip}
-\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
-\item Aktor: Autor kursu
-\item Inicjacja: Klikniêcie w danego uczestnika kursu
-\item Przebieg:
-	\begin{enumerate}
-		\item system wyœwietla kilka informacji na temat uczestnika (login, email, punkty ¿ycia, data ostatniej aktywnoœci) oraz 2 przyciski (usuwanie uczestnika i odnowienie punktów ¿ycia)
-	\end{enumerate}
-\end{itemize} \\\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-B03 & Zmiana ustawieñ kursu & \vspace{-\baselineskip}
-\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
-\item Aktor: Autor kursu
-\item Inicjacja: Wybranie przycisku "Ustawienia"
-\item Przebieg:
-	\begin{enumerate}
-		\item system wyœwietla taki sam formularz jak przy tworzeniu kursu, formularz jest wype³niony wartoœciami jakie kurs aktualnie posiada
-		\item u¿ytkownik wprowadza po¿¹dane przez siebie zmiany i je zatwierdza
-		\item system przekierowuje u¿ytkownika na stronê kursu
-	\end{enumerate}
-\end{itemize} \\\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-B04 & Generowanie raportu & \vspace{-\baselineskip}
-\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
-\item Aktor: Autor kursu
-\item Inicjacja: Wybranie przycisku "generuj raport"
-\item Przebieg:
-	\begin{enumerate}
-		\item system wyœwietla formularz, który zawiera wszystkie atrybuty raportu
-		\item u¿ytkownik wype³nia wszystkie pola wedle uznania i wybiera przycisk "generuj raport"
-		\item system wyœwietla okno z pytaniem o rozszerzenie pliku
-		\item u¿ytkownik wybiera format i zatwierdza
-		\item system wysy³a plik do u¿ytkownika
-	\end{enumerate}
-\end{itemize} \\\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-B06 &  Usuniêcie uczestnika & \vspace{-\baselineskip}
-\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
-\item Aktor: Autor kursu
-\item Inicjacja: Wybranie przycisku "usuwanie uczestnika"
-\item Przebieg:
-	\begin{enumerate}
-		\item system wyœwietla okno z pytaniem o potwierdzenie usuniêcie uczestnika
-		\item u¿ytkownik potwierdza usuniêcie
-		\item system aktualizuje listê uczestników (znika usuniêty)
-	\end{enumerate}
-\end{itemize} \\\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{longtable}
 
 
@@ -335,66 +305,13 @@ C07 & Sprawdzanie odpowiedzi & \vspace{-\baselineskip}
 \item Inicjacja: Klikniêcie przycisku "sprawdŸ"
 \item Przebieg:
 	\begin{enumerate}
-		\item system wyœwietla treœæ odpowiedzi oraz przyciski "komentuj", "podsumowanie", "ocena"
-		\item u¿ytkownik zaznacza fragment odpowiedzi i wciska "komentuj"
-		\item system wyœwietla okno z polem tekstowym
-		\item u¿ytkownik wprowadza komentarz i zatwierdza
-		\item system podœwietla skomentowany fragment
-		\item w zale¿noœci od potrzeb powtarzane s¹ kroki 2-5
-		\item u¿ytkownik wybiera przyciski "podsumowanie" i "ocena"|
-		\item system wyœwietla odpowiednie okna 
-		\item u¿ytkownik wprowadza dane i zatwierdza
-		\item system wyœwietla przycisk "zakoñcz sprawdzanie"
-		\item u¿ytkownik wybiera przycisk "zakoñcz sprawdzanie"
+		\item system wyœwietla treœæ pytania, odpowiedŸ uczestnika, pole na komentarz zwrotny i formularz przyznanych punktów
+		\item u¿ytkownik wprowadza komentarz oraz punkty i zatwierdza
 		\item system przekierowuje u¿ytkownika na stronê z nades³anymi odpowiedziami
 	\end{enumerate}
 \end{itemize} \vspace{-\baselineskip} \\\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-C08 & Przegl¹danie wydarzenia & \vspace{-\baselineskip}
-\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
-\item Aktor: Autor kursu
-\item Inicjacja: u¿ytkownik wybra³ "wydarzenie" jako tryb aktywnoœci
-\item Przebieg:
-	\begin{enumerate}
-		\item system wyœwietla statystyki wydarzenia, okno powiadomieñ oraz przycisk "pytania"
-		\item u¿ytkownik wybiera przycisk "pytania"
-		\item system wyœwietla statystyki dotycz¹ce danego pytania (próby, pora¿ki, sukcesy)
-	\end{enumerate}
-\item Przebieg alternatywny:
-	\begin{enumerate}
-		\item u¿ytkownik klika w okno powiadomieñ
-		\item system wyœwietla historiê wys³anych wiadomoœci oraz formularz do przes³ania kolejnej
-		\item u¿ytkownik wprowadza treœæ wiadomoœci i potwierdza 
-		\item system aktualizuje historiê wys³anych wiadomoœci
-	\end{enumerate}
-\end{itemize} \\\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-C09 & Dodanie wydarzenia & \vspace{-\baselineskip}
-\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
-\item Aktor: Autor kursu
-\item Inicjacja: u¿ytkownik wybra³ "wydarzenie" jako tryb aktywnoœci
-\item Przebieg:
-	\begin{enumerate}
-		\item system wyœwietla formularz do wype³nienia
-		\item u¿ytkownik wype³nia wszystkie atrybuty i zatwierdza
-		\item system wyœwietla stronê z mo¿liwoœci¹ dodawania pytañ
-		\item u¿ytkownik wciska przycisk "dodaj pytanie"
-		\item system wyœwietla formularz dla danego pytania
-		\item u¿ytkownik wprowadza treœæ, odpowiedzi i zatwierdza
-		\item system uaktualnia listê pytañ
-		\item jeœli liczba pytañ nie spe³nia minimum to u¿ytkownik powtarza czynnoœci 4-7
-		\item jeœli liczba pytañ spe³nia minimum, to system wyœwietla przycisk "zapisz"
-		\item u¿ytkownika wybiera przycisk "zapisz"
-		\item system dodaje wydarzenie do listy aktywnoœci i przekierowuje u¿ytkownika na stronê aktywnoœci
-	\end{enumerate}
-\end{itemize} \\\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{longtable}
 
@@ -403,7 +320,7 @@ Ostatnim zbiorem przypadków u¿ycia utworzonym podczas prac projektowych jest pak
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6]{img/chapter4/uczestnik.png}
+	\includegraphics[scale=0.8]{img/chapter4/uczestnik.png}
 	\caption{Diagram przypadków u¿ycia, pakiet uczestnictwa w kursie}
 	\label{chapter4_uczestnik}
 \end{figure}
@@ -417,14 +334,16 @@ Ostatnim zbiorem przypadków u¿ycia utworzonym podczas prac projektowych jest pak
 \midrule
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-D01 & Tworzenie postaci & \vspace{-\baselineskip}
+D01 & Wykonanie nawyku & \vspace{-\baselineskip}
 \begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
 \item Aktor: Uczestnik
-\item Inicjacja: u¿ytkownik po raz pierwszy otworzy³ stronê kursu
+\item Inicjacja: u¿ytkownik otworzy³ listê nawyków
 \item Przebieg:
 	\begin{enumerate}
-		\item system wyœwietla formularz z wyborem parametrów postaci (p³eæ, imiê, klasa)						\item u¿ytkownik wype³nia formularz i go zatwierdza
-		\item system wyœwietla stronê kursu
+		\item system wyœwietla listê nawyków w kursie 
+		\item u¿ytkownik wybiera przycisk "wykona³em" w danym nawyku
+		\item system przyznaje nagrodê oraz ukrywa dany nawyk do nastêpnego dnia
+		\item mo¿liwe powtarzania kroków 2 i 3 do momentu wykonania wszystkich nawyków
 	\end{enumerate}
 \end{itemize} \\\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -505,34 +424,6 @@ D08 &  Wykonanie zadania & \vspace{-\baselineskip}
 		\item system wyœwietla opis fabularny oraz prawdziw¹ treœæ zadania wraz z formularzem
 		\item u¿ytkownik udziela odpowiedzi wype³niaj¹c formularz i zatwierdza
 		\item system wyœwietla komunikat fabularny i przekierowuje na stronê kursu
-	\end{enumerate}
-\end{itemize} \\\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-D09 & Przejœcie do wydarzenia & \vspace{-\baselineskip}
-\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
-\item Aktor: Uczestnik
-\item Inicjacja: u¿ytkownik klikn¹³ w ikonê wydarzenia 
-\item Przebieg:
-	\begin{enumerate}
-		\item system wyœwietla informacje o wydarzeniu (opis fabularny, nagrody, punkty ¿ycia wroga) oraz licznik odpowiedzi i przycisk do jej udzielania "zaatakuj wroga"
-	\end{enumerate}
-\end{itemize} \\\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-D10 & Walka w wydarzeniu & \vspace{-\baselineskip}
-\begin{itemize}[label={-},noitemsep,leftmargin=*,topsep=0pt,partopsep=0pt]
-\item Aktor: Uczestnik
-\item Inicjacja: u¿ytkownik klikn¹³ przycisk "zaatakuj wroga"
-\item Przebieg:
-	\begin{enumerate}
-		\item system wyœwietla opis fabularny i pytanie zamkniête
-		\item u¿ytkownik udziela odpowiedzi
-		\item system wyœwietla inny komunikat w zale¿noœci od tego, czy odpowiedŸ by³a poprawna, czy nie
-		\item u¿ytkownik zatwierdza zapoznanie siê z komunikatem
-		\item system przekierowuje u¿ytkownika na stronê wydarzenia i zeruje licznik odpowiedzi
 	\end{enumerate}
 \end{itemize} \\\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
