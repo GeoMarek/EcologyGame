@@ -7,7 +7,7 @@ import '../../styles/Character.css'
 const CharacterPresent = ({ character, edit_mode }) => {
     return (
         <div>
-            <h3 className="home-title">Oto twój bohater, {character.name}</h3>
+            <h3 className="home-title">Oto twój bohater</h3>
             <div className="profile-image">
                 <CharacterImage
                     is_alive={character.isAlive}
