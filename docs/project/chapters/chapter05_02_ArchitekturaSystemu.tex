@@ -1,1 +1,28 @@
 \section{Architektura systemu (Kamil Kaczmarkiewicz)}
+
+Projektowany system zosta³ wykonany w oparciu o dwie technologie, z których pierwsza z nich odpowiada za logikê biznesow¹, a druga za wygl¹d aplikacji po stronie u¿ytkownika. Pomiêdzy odpowiednimi komponentami ustanowiono sposób komunikacji przedstawiony na rysunku nr \ref{chapter5_arch1}.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{img/chapter5/architektura_1.png}
+	\caption{Architektura systemu}
+	\label{chapter5_arch1}
+\end{figure}
+
+Docelowo poszczególne komponenty mia³y zostaæ umieszczone w kontenerach z wykorzystaniem technologii Docker, aby ³atwo mo¿na by³o umieœciæ je na serwerze. Wówczas model systemu zosta³by dodatkowo rozszerzony o dodatkowy komponent (serwer Nginx) odpowiedzialny za komunikacjê pomiêdzy komponentami na serwerze oraz obs³ugê  certyfikatów (Rys. \ref{chapter5_arch2}). 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{img/chapter5/architektura_2.png}
+	\caption{Architektura systemu z wykorzystaniem technologii Docker}
+	\label{chapter5_arch2}
+\end{figure}
+
+Interfejs u¿ytkownika powsta³ w oparciu o bibliotekê typu open source napisan¹ w jêzyku Javascript - React. Jest to technologia, która  ³¹czy w sobie Javascript oraz znaczniki HTML w jêzyk nazywany JSX. 
+
+G³ówn¹ zalet¹ tej technologii jest mo¿liwoœæ definiowania komponentów, które reprezentuj¹ powtarzalne fragmenty stron internetowych takich jak stopka, czy nag³ówek. Zasad¹ dzia³ania s¹ one zbli¿one do klas w paradygmacie programowania obiektowego. Inn¹ kluczow¹ zalet¹ tego narzêdzia jest dynamiczne zarz¹dzanie stanem strony i obiektowym modelem strony (ang. \textit{DOM}). Oznacza to ¿e w pamiêci powstaje struktura strony internetowej i w momencie zmianu stanu React podmienia tylko te czêœci strony, które tego wymagaj¹.
+
+Logika biznesowa zosta³a zaimplementowana w jêzyku skryptowym Python z wykorzystaniem narzêdzia Django. Django jest wysokopoziomowym web frameworkiem umo¿liwiaj¹cym tworzenie stron internetowych. Django zapewnia bardzo du¿o wsparcie zwi¹zane z tematem bezpieczeñstwa serwisu oraz pozwala na ³atwe skalowanie projektu.
+
+Django pozwala równie¿ utworzyæ instancjê relacyjnej bazy danych - SQLite - z któr¹ w bardzo prosty sposób mo¿e siê po³¹czyæ, a nastêpnie na podstawie kodu napisanego z wykorzystaniem klas i obiektów jest w stanie je mapowaæ na tabele w bazie danych. Umo¿liwia równie¿ wystawianie dla innych aplikacji punktów koñcowych (ang. \textit{endpoint}), przez które inne aplikacje wysy³aj¹ ¿¹dania. Django obs³uguje dane ¿¹dania przy wykorzystaniu informacji z bazy danych i zwraca odpowiedni¹ odpowiedŸ. 
