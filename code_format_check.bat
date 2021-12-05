@@ -1,1 +1,0 @@
-npx prettier --check --config "source\frontend\.prettierrc.yaml" "source\frontend\src" & black --check "./source/backend"
