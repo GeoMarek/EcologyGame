@@ -362,3 +362,37 @@ footer {
     border-radius: 10px;
     margin-top: 10px;
 }
+
+.link-to-monster-admin-page {
+    color: burlywood;
+    text-decoration: none;
+    padding-left: 10px;
+    margin-top: -15px;
+    transition: all 500ms;
+}
+
+.link-to-monster-admin-page:hover {
+    text-decoration: none;
+    transform: rotate(0.5deg);
+}
+
+.answer-head {
+    color: bisque;
+    font-weight: 600;
+    float: left;
+    margin-left: 2%;
+    font-size: 18px;
+}
+
+.answer-data {
+    color: aquamarine;
+    float: left;
+    margin-left: 2%;
+    font-size: 18px;
+}
+
+.answer-points {
+    font-size: 16px;
+    float: left;
+    margin-left: 2%;
+}

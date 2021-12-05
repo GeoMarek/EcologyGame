@@ -1,7 +1,8 @@
 import '../../styles/Task.css'
 import '../../styles/Course.css'
+import CommonLink from '../Common/CommonLink'
 
-const QuestionItem = ({ question }) => {
+const QuestionItem = ({ question, course_id }) => {
     var task_type = ''
     switch (question.quiz_type) {
         case 'habit_question':
@@ -26,12 +27,22 @@ const QuestionItem = ({ question }) => {
             task_type += 'Nietypowe zadanie'
             break
     }
+    const dest = '/course/' + course_id + '/monsters/' + question.id + '/admin'
 
     return (
         <div className="div-task">
-            <h4 className="course-title task-title">{question.name} </h4>
-            <p className="task-content">Typ: {task_type}</p>
-            <p className="task-content">{question.description}</p>
+            <div className="column">
+                <h4 className="course-title task-title">{question.name} </h4>
+                <p className="task-content">Typ: {task_type}</p>
+                <p className="task-content">{question.description}</p>
+            </div>
+            <div className="column">
+                {question.quiz_type === 'o' ? (
+                    <CommonLink text="Odpowiedzi" destination={dest} />
+                ) : (
+                    <></>
+                )}
+            </div>
         </div>
     )
 }

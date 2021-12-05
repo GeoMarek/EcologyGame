@@ -50,7 +50,11 @@ const CourseTaskList = ({ course_global, match, isAuthenticated }) => {
                 <h3 className="home-title">Lista zadań w kursie</h3>
                 {courseItemsData.quizzes ? (
                     courseItemsData.quizzes.map((user, index) => (
-                        <QuestionItem question={user} key={index} />
+                        <QuestionItem
+                            question={user}
+                            key={index}
+                            course_id={course_global.id}
+                        />
                     ))
                 ) : (
                     <></>
