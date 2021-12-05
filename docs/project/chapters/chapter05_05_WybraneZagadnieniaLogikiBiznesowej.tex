@@ -1,1 +1,41 @@
+\newpage
+
 \section{Wybrane zagadnienia logiki biznesowej (Kamil Kaczmarkiewicz)}
+
+Wsród narzêdzi wykorzystywanych podczas implementacji zasad logiki biznesowej na uwagê zas³uguje biblioteka DJOSER. Pozwala ona na szybki i prosty proces konfigurowania metod uwierzytelniania oraz autoryzacji zasobów u¿ytkownikom. 
+
+G³ówn¹ zalet¹ tego rozwi¹zania jest fakt, ¿e wszystkie kluczowe wartoœci okreœla siê w jednej zmiennej typu s³ownikowego, co mo¿na zauwa¿yæ na listingu nr \ref{djosercode}. 
+\\
+\lstset{style=python}
+\begin{lstlisting}[caption={S³ownik okreœlaj¹cy parametry uwierzytelniania}, label=djosercode]
+DJOSER = {
+	# pole wykorzystywane jako login u¿ytkownika
+	"LOGIN_FIELD": "email",
+	# czy trzeba powtórzyæ has³o podczas zak³adania konta
+	"USER_CREATE_PASSWORD_RETYPE": True,
+	# czy ma byæ wys³any e-mail z proœb¹ o potwierdzenia zmiany adresu e-mail
+	"USERNAME_CHANGED_EMAIL_CONFIRMATION": True,
+	# czy ma byæ wys³any e-mail z proœb¹ o potwierdzenia zmiany has³a
+	"PASSWORD_CHANGED_EMAIL_CONFIRMATION": True, 
+	# czy ma byæ wys³any e-mail z potwierdzeniem za³o¿enia konta
+	"SEND_CONFIRMATION_EMAIL": True,
+	# czy trzeba powtórzyæ nazwê u¿ytkownika podczas zmiany nazwy u¿ytkownika    
+	"SET_USERNAME_RETYPE": True,
+	# czy trzeba powtórzyæ has³o podczas zmiany has³a
+	"SET_PASSWORD_RETYPE": True,
+	# czy ma byæ wys³any e-mail z linkiem aktywacyjnym podczas rejestracji
+	"SEND_ACTIVATION_EMAIL": True,
+	# szablony URL dla zapytañ zwi¹zanych z uwierzytelnianiem
+	"PASSWORD_RESET_CONFIRM_URL": "password/reset/confirm/{uid}/{token}",
+	"USERNAME_RESET_CONFIRM_URL": "email/reset/confirm/{uid}/{token}", 
+	"ACTIVATION_URL": "activate/{uid}/{token}",
+}
+\end{lstlisting}
+Oprócz tego zdefiniowano kilka podstawowych zasad logiki biznesowej:
+\begin{itemize}
+\item w przypadku œmierci postaci, dany u¿ytkownik nie mo¿e wykonywaæ ¿adnej czynnoœci w kursie dopóki nie zostanie wskrzeszony prze administratora
+\item do danego zadania mo¿na przyst¹piæ okreœlon¹ liczbê razy, a liczbê tê ustawia administrator kursu
+\item nawyki s¹ powtarzalne i czas na ich ponowne wykonanie jest ustalany przez administratora kursu
+\item je¿eli zbroja daje wiêcej obrony ni¿ obra¿enia spowodowane udzieleniem z³ej odpowiedzi to u¿ytkownik nadal otrzymuje przynajmniej 1 punkt obra¿eñ
+\item osoby które nie wezm¹ udzia³u w grupowym wydarzeniu otrzymuj¹ karê nawet jeœli wydarzenie zakoñczy³o siê sukcesem
+\end{itemize}
