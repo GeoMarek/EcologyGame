@@ -123,6 +123,7 @@ class Approach(models.Model):
     obtained_points = models.IntegerField(default=0)
     result_in_percent = models.DecimalField(max_digits=5, decimal_places=2)
     done = models.BooleanField(default=False)
+    checked = models.BooleanField(default=False)
 
 
 class Answer(models.Model):

@@ -615,26 +615,40 @@ class DoQuizView(APIView):
             )
 
             points = 0
-
-            for answer in answers:
-                question = questions.get(id=answer["q_id"])
-                if (
-                    answer["answer"]
-                    == QuestionSerializer(question).data["correct_answer"]
-                ):
-                    ans = Answer(
-                        approach=approach,
-                        question=question,
-                        user_answer=answer["answer"],
-                        is_correct=True,
-                    )
-                    ans.save()
-                    addExpToCharacter(character, quiz.reward_exp)
-                    character.gold = character.gold + quiz.reward_gold
-                    character.save()
-                    points += question.points
-                    print("poprawnie")
-                else:
+            
+            if quiz_type == Quiz.SelectTypeType.TEST:
+                for answer in answers:
+                    question = questions.get(id=answer["q_id"])
+                    if (
+                        answer["answer"]
+                        == QuestionSerializer(question).data["correct_answer"]
+                    ):
+                        ans = Answer(
+                            approach=approach,
+                            question=question,
+                            user_answer=answer["answer"],
+                            is_correct=True,
+                        )
+                        ans.save()
+                        addExpToCharacter(character, quiz.reward_exp)
+                        character.gold = character.gold + quiz.reward_gold
+                        character.save()
+                        points += question.points
+                        print("poprawnie")
+                    else:
+                        ans = Answer(
+                            approach=approach,
+                            question=question,
+                            user_answer=answer["answer"],
+                            is_correct=False,
+                        )
+                        ans.save()
+                        dealDmgToCharacter(character, question.dmg)
+                        print("zla odpowiedz")
+                    print("test zapisane")
+            elif quiz_type == Quiz.SelectTypeType.OPEN:
+                for answer in answers:
+                    question = questions.get(id=answer["q_id"])
                     ans = Answer(
                         approach=approach,
                         question=question,
@@ -642,8 +656,7 @@ class DoQuizView(APIView):
                         is_correct=False,
                     )
                     ans.save()
-                    dealDmgToCharacter(character, question.dmg)
-                    print("zla odpowiedz")
+                    print("otwarte zapisane")
 
             approach.end_time = datetime.now()
             # approach.duration_time = approach.end_time - approach.start_time
@@ -653,6 +666,10 @@ class DoQuizView(APIView):
             else:
                 approach.result_in_percent = 100 * quiz.max_points / points
             approach.done = True
+            if quiz_type == Quiz.SelectTypeType.TEST:
+                approach.checked = True
+            else:
+                approach.checked = False                
             approach.save()
 
             return Response({"info": f"Odpowiedziano na quiz"})
