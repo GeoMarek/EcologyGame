@@ -65,7 +65,7 @@ const HabitListItem = ({ habit, course_id }) => {
         ) : (
             <></>
         )
-
+    console.log(habit)
     return (
         <div className="div-task div-habit" key={habit.id}>
             <div className="left-habit">{show_plus}</div>

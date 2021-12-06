@@ -1,6 +1,6 @@
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from os import name
 
 from django.db.models.fields import Field
@@ -396,7 +396,7 @@ class CharcterEqView(APIView):
         except:
             return Response({"error": f"Something went wrong with {fun_type}"})
 
-
+from django.utils.dateparse import parse_datetime
 # zarzadzanie quizem
 class QuizView(APIView):
     # get all course quizzes
@@ -421,6 +421,31 @@ class QuizView(APIView):
                 elif q_type != None and q_type != "all":
                     quizzes = quizzes.filter(quiz_type=q_type)
                 data = [QuizSerializer(model).data for model in quizzes]
+                user = self.request.user.id
+                cos = CourseSerializer(course).data
+                if user in cos['participants']:
+                    print('uczestnik')
+                    approaches = Approach.objects.filter(user=user)
+                    approaches = [ApproachSerializer(model).data for model in approaches]
+                    for i in data:
+                        #print(i)
+                        max_id = -1
+                        max_datetime = -1
+                        for a in approaches:
+                            if i['id'] == a['quiz']:
+                                #print(f'mamy dla id {i["id"]}')
+                                max_id = a['id']
+                                max_datetime = a['end_time']
+                        print(f'max_id = {max_id}')
+                        print(f'max_datetime = {max_datetime}')
+                        if max_datetime == -1:
+                            continue
+                        r = datetime.now() -parse_datetime(max_datetime[:-1])
+                        #pamietaj że r jest o 1 godzine wieksze
+                        print(f'różnica = {r}')
+                        print(r > timedelta(hours=1, minutes=10))
+                        #dla prawdy cd minał dla false jeszcze nie można robić ponownie
+                        i['can_do'] = max_datetime
                 return Response({"quizzes": data})
         except:
             return Response(

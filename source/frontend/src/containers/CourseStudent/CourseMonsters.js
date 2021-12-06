@@ -22,8 +22,8 @@ const CourseMonsters = ({ course_global, match, isAuthenticated }) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                //Authorization: `JWT ${localStorage.getItem('access')}`,
-                //Accept: 'application/json',
+                Authorization: `JWT ${localStorage.getItem('access')}`,
+                Accept: 'application/json',
             },
         }
 
