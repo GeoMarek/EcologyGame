@@ -438,14 +438,17 @@ class QuizView(APIView):
                                 max_datetime = a['end_time']
                         print(f'max_id = {max_id}')
                         print(f'max_datetime = {max_datetime}')
-                        if max_datetime == -1:
-                            continue
-                        r = datetime.now() -parse_datetime(max_datetime[:-1])
+                        if max_datetime == -1 or ((datetime.now() -parse_datetime(max_datetime[:-1])) < timedelta(hours=1, minutes=1)):
+                            i['can_do'] = False
+                        else:
+                            i['can_do'] = True
+                        #r = datetime.now() -parse_datetime(max_datetime[:-1])
                         #pamietaj że r jest o 1 godzine wieksze
-                        print(f'różnica = {r}')
-                        print(r > timedelta(hours=1, minutes=10))
+                        #print(f'różnica = {r}')
+                        #print(r > timedelta(hours=1, minutes=10))
                         #dla prawdy cd minał dla false jeszcze nie można robić ponownie
-                        i['can_do'] = max_datetime
+                        #i['can_do'] = max_datetime
+                        print(i['can_do'])
                 return Response({"quizzes": data})
         except:
             return Response(

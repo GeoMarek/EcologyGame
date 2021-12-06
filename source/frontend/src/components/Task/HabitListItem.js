@@ -70,7 +70,7 @@ const HabitListItem = ({ habit, course_id }) => {
         <div className="div-task div-habit" key={habit.id}>
             <div className="left-habit">{show_plus}</div>
             <div className="habit-content">
-                <p>{habit.description}</p>
+                <p>{habit.description} {habit.can_do?'tak':'nie'}</p>
             </div>
             <div className="right-habit">{show_minus}</div>
         </div>
