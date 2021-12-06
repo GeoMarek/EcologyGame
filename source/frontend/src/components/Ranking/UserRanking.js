@@ -1,7 +1,7 @@
 import React from 'react'
 import UserRankingItem from './UserRankingItem'
 
-const UserRanking = ({ users, ifAdmin }) => {
+const UserRanking = ({ users, ifAdmin, course_id }) => {
     const header = (
         <thead>
             <tr>
@@ -24,6 +24,7 @@ const UserRanking = ({ users, ifAdmin }) => {
                         user={user}
                         key={index}
                         ifAdmin={ifAdmin}
+                        course_id={course_id}
                     />
                 ))}
             </tbody>

@@ -16,7 +16,7 @@ const OpenAnswerForm = ({
         redirect: 0,
     })
     const renderRedirect = () => (
-        <Redirect to={'/course/' + quiz_id + '/monsters/'} />
+        <Redirect to={'/course/' + quiz_id} />
     )
 
     const onChange = (e) => {

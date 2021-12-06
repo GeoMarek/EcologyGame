@@ -673,20 +673,32 @@ class DoQuizView(APIView):
             approach.save()
 
             return Response({"info": f"Odpowiedziano na quiz"})
-            if quiz_type == Quiz.SelectTypeType.TEST:
-                pass
-            elif quiz_type == Quiz.SelectTypeType.OPEN:
-                pass
-            elif (
-                quiz_type == Quiz.SelectTypeType.HABIT_P
-                or quiz_type == Quiz.SelectTypeType.HABIT_N
-                or quiz_type == Quiz.SelectTypeType.HABIT_M
-            ):
-                pass
-            elif quiz_type == Quiz.SelectTypeType.EVENT:
-                pass
-            else:
-                return Response({"error": f"Wrong quiz_type: {quiz_type}"})
-            return Response({"info": f"Quiz utworzono poprawnie"})
         except:
             return Response({"error": f"Something went wrong when creating quiz"})
+
+# zarzadzanie konkretnym quizem
+class ResurrectView(APIView):
+    #permission_classes = (
+    #    permissions.AllowAny,
+    #)  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+
+    def put(self, request, course_id, char_id, format=None):      
+            # data = self.request.data  
+            character = Character.objects.get(id = char_id)
+            #return Response({"characters": 'XD'})
+            character.max_hp = Character.DefaultValues.max_hp
+            character.curent_hp = Character.DefaultValues.curent_hp
+            character.max_exp = Character.DefaultValues.max_exp
+            character.current_exp = Character.DefaultValues.current_exp
+            character.gold = Character.DefaultValues.gold
+            character.level = Character.DefaultValues.level
+            character.isAlive = Character.DefaultValues.isAlive
+            character.weapon = Character.DefaultValues.weapon
+            character.armor = Character.DefaultValues.armor
+            character.equipment.clear()
+            character.save()
+
+            course = Course.objects.get(id=course_id)
+            character = Character.objects.filter(course=course)
+            data = [CharacterSerializer(model).data for model in character]
+            return Response({"characters": data})

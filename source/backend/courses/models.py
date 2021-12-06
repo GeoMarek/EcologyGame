@@ -39,16 +39,27 @@ class Course(models.Model):
 
 
 class Character(models.Model):
+    class DefaultValues():
+        max_hp =10
+        curent_hp = 10
+        max_exp = 10
+        current_exp = 0
+        gold = 100
+        level = 1
+        isAlive = True
+        weapon = None
+        armor = None
+        equipment = []
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     name = models.CharField(max_length=24)
-    max_hp = models.IntegerField(default=10)
-    curent_hp = models.IntegerField(default=10)
-    max_exp = models.IntegerField(default=10)
-    current_exp = models.IntegerField(default=0)
-    gold = models.IntegerField(default=100)
-    level = models.IntegerField(default=1)
-    isAlive = models.BooleanField(default=True)
+    max_hp = models.IntegerField(default=DefaultValues.max_hp)
+    curent_hp = models.IntegerField(default=DefaultValues.curent_hp)
+    max_exp = models.IntegerField(default=DefaultValues.max_exp)
+    current_exp = models.IntegerField(default=DefaultValues.current_exp)
+    gold = models.IntegerField(default=DefaultValues.gold)
+    level = models.IntegerField(default=DefaultValues.level)
+    isAlive = models.BooleanField(default=DefaultValues.isAlive)
     weapon = models.ForeignKey(
         Item, blank=True, on_delete=models.SET_NULL, related_name="weapon", null=True
     )

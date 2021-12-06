@@ -55,6 +55,7 @@ const CourseStats = ({
                     <UserRanking
                         users={course_participants}
                         ifAdmin={ifAdmin}
+                        course_id={match.params.course_id}
                     />
                 )}
             </div>

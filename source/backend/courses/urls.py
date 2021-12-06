@@ -19,6 +19,7 @@ from .views import (
     QuestionView,
     QuizView,
     QuizzesView,
+    ResurrectView,
 )
 
 urlpatterns = [
@@ -40,4 +41,5 @@ urlpatterns = [
     path("<int:course_id>/quiz/", QuizView.as_view()),
     path("<int:course_id>/doquiz/<int:quiz_id>/", DoQuizView.as_view()),
     path("admin/admin/eq/", InitEqView.as_view()),
+    path("<int:course_id>/res/<int:char_id>/", ResurrectView.as_view()),
 ]
