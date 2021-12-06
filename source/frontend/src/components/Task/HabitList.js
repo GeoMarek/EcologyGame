@@ -1,11 +1,11 @@
 import '../../styles/Course.css'
 import HabitListItem from './HabitListItem'
 
-const HabitList = ({ habit_list }) => {
+const HabitList = ({ habit_list, course_id }) => {
     return (
         <div>
             {habit_list.map((habit) => (
-                <HabitListItem habit={habit} key={habit.id} />
+                <HabitListItem habit={habit} course_id={course_id} key={habit.id} />
             ))}
         </div>
     )

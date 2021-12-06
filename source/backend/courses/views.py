@@ -583,6 +583,31 @@ class DoQuizView(APIView):
         try:
             user = self.request.user
             quiz = Quiz.objects.get(id=quiz_id)
+            data = self.request.data
+            q_type = data["quiz_type"]
+            if q_type != None and q_type == "h":
+                course = Course.objects.get(id=course_id)
+                character = Character.objects.filter(course=course)
+                character = character.get(user=user)
+                obtained_points = 0
+                result_in_percent = 0
+                if data['is_p'] == '1':
+                    obtained_points = quiz.max_points
+                    result_in_percent = 100
+                approach = Approach(
+                    user=user,
+                    quiz=quiz,
+                    obtained_points=obtained_points,
+                    result_in_percent=result_in_percent,
+                    done =True,
+                )
+                if data['is_p'] == '1':
+                    addExpToCharacter(character, quiz.reward_exp)
+                    character.gold = character.gold + quiz.reward_gold
+                    character.save()
+                else :
+                    question = Question.objects.get(quiz=quiz)
+                    dealDmgToCharacter(character, question.dmg)
             approach = Approach(
                 user=user,
                 quiz=quiz,
