@@ -2,12 +2,7 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
-const OpenAnswerForm = ({ 
-    question,
-    quiz_type,
-    quiz_id,
-    course_id, 
-}) => {
+const OpenAnswerForm = ({ question, quiz_type, quiz_id, course_id }) => {
     const [formData, setFormData] = useState({
         users_answer: '',
     })
@@ -15,9 +10,7 @@ const OpenAnswerForm = ({
     const [redirectData, setRedirectData] = useState({
         redirect: 0,
     })
-    const renderRedirect = () => (
-        <Redirect to={'/course/' + quiz_id} />
-    )
+    const renderRedirect = () => <Redirect to={'/course/' + quiz_id} />
 
     const onChange = (e) => {
         e.preventDefault()

@@ -49,7 +49,10 @@ const CourseHabits = ({ course_global, match, isAuthenticated }) => {
                 <StudentSideBar course_id={course_global.id} />
                 <h3 className="home-title">Nawyki do opanowania</h3>
                 {courseItemsData.quizzes ? (
-                    <HabitList habit_list={courseItemsData.quizzes} course_id={match.params.course_id} />
+                    <HabitList
+                        habit_list={courseItemsData.quizzes}
+                        course_id={match.params.course_id}
+                    />
                 ) : (
                     <></>
                 )}

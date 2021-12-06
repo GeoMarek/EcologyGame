@@ -39,8 +39,8 @@ class Course(models.Model):
 
 
 class Character(models.Model):
-    class DefaultValues():
-        max_hp =10
+    class DefaultValues:
+        max_hp = 10
         curent_hp = 10
         max_exp = 10
         current_exp = 0
@@ -50,6 +50,7 @@ class Character(models.Model):
         weapon = None
         armor = None
         equipment = []
+
     course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     name = models.CharField(max_length=24)

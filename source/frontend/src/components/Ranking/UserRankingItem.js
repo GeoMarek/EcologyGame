@@ -20,9 +20,7 @@ const UserRankingItem = ({ user, index, ifAdmin, course_id }) => {
             },
         }
 
-        const body = JSON.stringify({
-            
-        })
+        const body = JSON.stringify({})
 
         try {
             var ret = axios.put(

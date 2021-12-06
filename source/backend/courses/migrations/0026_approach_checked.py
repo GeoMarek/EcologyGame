@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('courses', '0025_alter_approach_duration_time'),
+        ("courses", "0025_alter_approach_duration_time"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='approach',
-            name='checked',
+            model_name="approach",
+            name="checked",
             field=models.BooleanField(default=False),
         ),
     ]

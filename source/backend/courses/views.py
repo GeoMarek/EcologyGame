@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from os import name
 
 from django.db.models.fields import Field
+from django.utils.dateparse import parse_datetime
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -396,7 +397,7 @@ class CharcterEqView(APIView):
         except:
             return Response({"error": f"Something went wrong with {fun_type}"})
 
-from django.utils.dateparse import parse_datetime
+
 # zarzadzanie quizem
 class QuizView(APIView):
     # get all course quizzes
@@ -423,32 +424,37 @@ class QuizView(APIView):
                 data = [QuizSerializer(model).data for model in quizzes]
                 user = self.request.user.id
                 cos = CourseSerializer(course).data
-                if user in cos['participants']:
-                    print('uczestnik')
+                if user in cos["participants"]:
+                    print("uczestnik")
                     approaches = Approach.objects.filter(user=user)
-                    approaches = [ApproachSerializer(model).data for model in approaches]
+                    approaches = [
+                        ApproachSerializer(model).data for model in approaches
+                    ]
                     for i in data:
-                        #print(i)
+                        # print(i)
                         max_id = -1
                         max_datetime = -1
                         for a in approaches:
-                            if i['id'] == a['quiz']:
-                                #print(f'mamy dla id {i["id"]}')
-                                max_id = a['id']
-                                max_datetime = a['end_time']
-                        print(f'max_id = {max_id}')
-                        print(f'max_datetime = {max_datetime}')
-                        if max_datetime == -1 or ((datetime.now() -parse_datetime(max_datetime[:-1])) < timedelta(hours=1, minutes=1)):
-                            i['can_do'] = False
+                            if i["id"] == a["quiz"]:
+                                # print(f'mamy dla id {i["id"]}')
+                                max_id = a["id"]
+                                max_datetime = a["end_time"]
+                        print(f"max_id = {max_id}")
+                        print(f"max_datetime = {max_datetime}")
+                        if max_datetime == -1 or (
+                            (datetime.now() - parse_datetime(max_datetime[:-1]))
+                            < timedelta(hours=1, minutes=1)
+                        ):
+                            i["can_do"] = False
                         else:
-                            i['can_do'] = True
-                        #r = datetime.now() -parse_datetime(max_datetime[:-1])
-                        #pamietaj że r jest o 1 godzine wieksze
-                        #print(f'różnica = {r}')
-                        #print(r > timedelta(hours=1, minutes=10))
-                        #dla prawdy cd minał dla false jeszcze nie można robić ponownie
-                        #i['can_do'] = max_datetime
-                        print(i['can_do'])
+                            i["can_do"] = True
+                        # r = datetime.now() -parse_datetime(max_datetime[:-1])
+                        # pamietaj że r jest o 1 godzine wieksze
+                        # print(f'różnica = {r}')
+                        # print(r > timedelta(hours=1, minutes=10))
+                        # dla prawdy cd minał dla false jeszcze nie można robić ponownie
+                        # i['can_do'] = max_datetime
+                        print(i["can_do"])
                 return Response({"quizzes": data})
         except:
             return Response(
@@ -619,7 +625,7 @@ class DoQuizView(APIView):
                 character = character.get(user=user)
                 obtained_points = 0
                 result_in_percent = 0
-                if data['is_p'] == '1':
+                if data["is_p"] == "1":
                     obtained_points = quiz.max_points
                     result_in_percent = 100
                 approach = Approach(
@@ -627,13 +633,13 @@ class DoQuizView(APIView):
                     quiz=quiz,
                     obtained_points=obtained_points,
                     result_in_percent=result_in_percent,
-                    done =True,
+                    done=True,
                 )
-                if data['is_p'] == '1':
+                if data["is_p"] == "1":
                     addExpToCharacter(character, quiz.reward_exp)
                     character.gold = character.gold + quiz.reward_gold
                     character.save()
-                else :
+                else:
                     question = Question.objects.get(quiz=quiz)
                     dealDmgToCharacter(character, question.dmg)
             approach = Approach(
@@ -668,7 +674,7 @@ class DoQuizView(APIView):
             )
 
             points = 0
-            
+
             if quiz_type == Quiz.SelectTypeType.TEST:
                 for answer in answers:
                     question = questions.get(id=answer["q_id"])
@@ -722,36 +728,37 @@ class DoQuizView(APIView):
             if quiz_type == Quiz.SelectTypeType.TEST:
                 approach.checked = True
             else:
-                approach.checked = False                
+                approach.checked = False
             approach.save()
 
             return Response({"info": f"Odpowiedziano na quiz"})
         except:
             return Response({"error": f"Something went wrong when creating quiz"})
 
+
 # zarzadzanie konkretnym quizem
 class ResurrectView(APIView):
-    #permission_classes = (
+    # permission_classes = (
     #    permissions.AllowAny,
-    #)  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    # )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
 
-    def put(self, request, course_id, char_id, format=None):      
-            # data = self.request.data  
-            character = Character.objects.get(id = char_id)
-            #return Response({"characters": 'XD'})
-            character.max_hp = Character.DefaultValues.max_hp
-            character.curent_hp = Character.DefaultValues.curent_hp
-            character.max_exp = Character.DefaultValues.max_exp
-            character.current_exp = Character.DefaultValues.current_exp
-            character.gold = Character.DefaultValues.gold
-            character.level = Character.DefaultValues.level
-            character.isAlive = Character.DefaultValues.isAlive
-            character.weapon = Character.DefaultValues.weapon
-            character.armor = Character.DefaultValues.armor
-            character.equipment.clear()
-            character.save()
+    def put(self, request, course_id, char_id, format=None):
+        # data = self.request.data
+        character = Character.objects.get(id=char_id)
+        # return Response({"characters": 'XD'})
+        character.max_hp = Character.DefaultValues.max_hp
+        character.curent_hp = Character.DefaultValues.curent_hp
+        character.max_exp = Character.DefaultValues.max_exp
+        character.current_exp = Character.DefaultValues.current_exp
+        character.gold = Character.DefaultValues.gold
+        character.level = Character.DefaultValues.level
+        character.isAlive = Character.DefaultValues.isAlive
+        character.weapon = Character.DefaultValues.weapon
+        character.armor = Character.DefaultValues.armor
+        character.equipment.clear()
+        character.save()
 
-            course = Course.objects.get(id=course_id)
-            character = Character.objects.filter(course=course)
-            data = [CharacterSerializer(model).data for model in character]
-            return Response({"characters": data})
+        course = Course.objects.get(id=course_id)
+        character = Character.objects.filter(course=course)
+        data = [CharacterSerializer(model).data for model in character]
+        return Response({"characters": data})

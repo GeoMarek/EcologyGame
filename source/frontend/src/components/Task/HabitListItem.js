@@ -11,7 +11,7 @@ const HabitListItem = ({ habit, course_id }) => {
         console.log('Wykonano negatywnie w nawyku o id ' + habit.id)
         do_habit(habit.id, 'h', '0', course_id)
     }
-    //is_p ma być ='1' dla pozytywnych ='0' dla negatywnych 
+    //is_p ma być ='1' dla pozytywnych ='0' dla negatywnych
     //quiz_type = 'h'
     const do_habit = (quiz_id, quiz_type, is_p, course_id) => {
         const config = {
@@ -70,7 +70,9 @@ const HabitListItem = ({ habit, course_id }) => {
         <div className="div-task div-habit" key={habit.id}>
             <div className="left-habit">{show_plus}</div>
             <div className="habit-content">
-                <p>{habit.description} {habit.can_do?'tak':'nie'}</p>
+                <p>
+                    {habit.description} {habit.can_do ? 'tak' : 'nie'}
+                </p>
             </div>
             <div className="right-habit">{show_minus}</div>
         </div>
