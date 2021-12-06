@@ -1,1 +1,32 @@
 \section{Projekt bazy danych (Krzysztof Sajko)}
+W projekcie wykorzystano bazê danych SQLite. Dziêki u¿yciu frameworka Django nie by³o konieczne rêczne stworzenie bazy danych, zamiast tego baza jest generowana przez framework na podstawie zdefiniowanych w kodzie modeli. W celu zobrazowania bazy, stworzono diagram (rys. \ref{chapter_5_erd}) przedstawiaj¹cy schemat bazy danych tak jak jest ona zdefiniowana w kodzie. W tabeli (tab. \ref{chapter5_tab_db_description}) przedstawiono opis wszystkich tabel.
+
+
+\begin{longtable}{|p{3cm}|p{11cm}|}
+    
+\caption{Opis tabel w diagramie bazy danych}\\ \toprule
+\label{chapter5_tab_db_description}
+\textbf{Nazwa} & \textbf{Opis}\\
+\midrule
+
+Item & Zawiera przdmioty dostêpne w grze \\\hline
+Course & Zawiera  kursy stworzone w serwisie\\\hline
+Character & Zawiera postacie, które s¹ tworzone dla ka¿dego u¿ytkownika do³¹czaj¹cego do kursu \\\hline
+Quiz & Zawiera quizy, które reprezentuj¹ walkê z potworem \\\hline
+Question & Zawiera pytania, które przechowuj¹ zarówno treœæ jak i zestaw odpowiedzi\\\hline
+Approach & Zawiera podejœcia u¿ytkowników do rozwi¹zania zadañ zawartych w quizach \\\hline
+Answer & Zawiera odpowiedzi u¿ytkowników na konkretne pytania\\\hline
+User & Reprezentuje u¿ytkownika aplikacji \\\hline
+Profile & Zawiera profile, które przechowuj¹ dane u¿ytkownika \\\hline
+
+\end{longtable}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.6\textwidth, angle =90 ]{img/chapter5/erd_diagram.png}
+	\caption{Diagram bazy danych}
+	\label{chapter_5_erd}
+\end{figure}
+
+\clearpage
