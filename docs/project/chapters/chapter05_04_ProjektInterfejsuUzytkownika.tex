@@ -1,1 +1,443 @@
 \section{Projekt interfejsu u¿ytkownika (Krzysztof Sajko)}
+Aby móc zrealizowaæ wymagania zdefiniowane w tabeli (tab. \ref{chapter4_tab_funkcjonalne}) przygotowano projekt interfejsu u¿ytkownika. W sekcji \ref{chapter5_schemas} przedstawiono schematy i zrzuty ekranu dla wybranych stron, natomiast w sekcji \ref{chapter5_pages_components} przedstawiono wykaz wszystkich stron i komponentów znajduj¹cych siê w serwisie.
+\subsection{Przegl¹d wybranych stron} \label{chapter5_schemas}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=.7\textwidth]{img/chapter5/strona_domowa.png}
+	\hfill
+	\includegraphics[width=.7\textwidth]{img/chapter5/home.png}
+	\caption{Schemat i zrzut ekrany strony domowej}
+	\label{chapter5_home_page}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=.7\textwidth]{img/chapter5/strona_listy_kursow.png}
+	\hfill
+	\includegraphics[width=.7\textwidth]{img/chapter5/courses.png}
+	\caption{Schemat i zrzut ekranu strony listy kursów}
+	\label{chapter5_courses}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=.7\textwidth]{img/chapter5/strona_kursu.png}
+	\hfill
+	\includegraphics[width=.7\textwidth]{img/chapter5/user_course.png}
+	\caption{Schemat i zrzut ekranu strony kursu uczestnika}
+	\label{chapter5_user_course}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=.7\textwidth]{img/chapter5/strona_kursu.png}
+	\hfill
+	\includegraphics[width=.7\textwidth]{img/chapter5/admin_course.png}
+	\caption{Schemat i zrzut ekranu strony kursu administratora}
+	\label{chapter5_admin_course}
+\end{figure}
+
+\clearpage
+
+\subsection{Wykaz stron i komponentów} \label{chapter5_pages_components}
+
+\begin{longtable}{|p{2cm}|p{2cm}|p{8cm}|p{2cm}|}
+    
+\caption{Wykaz stron serwisu} \\\toprule
+\label{chapter5_tab_pages}
+%%%%%%%%%%%%%% Header %%%%%%%%%%%%%%
+\textbf{Id}
+&
+\textbf{Nazwa}
+&
+\textbf{Opis}
+&
+\textbf{Komponenty}
+\\\midrule
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S01 
+& %%%% Name %%%%
+Strona domowa
+& %%%% Description %%%%
+Strona domowa (wejœciowa) serwisu
+& %%%% Components %%%%
+K01, K02
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S02
+& %%%% Name %%%%
+Strona logowania
+& %%%% Description %%%%
+Strona na której u¿ytkownik mo¿e siê zalogowaæ na swoje konto. U¿ytkownicy zalogowani s¹ przekierowani do S01. Formularz logowania (K05), przycisk "Nie masz konta?" odsy³aj¹cy do S03, przycisk "Nie pamiêtasz has³a?" umo¿liwiaj¹cy zresetowanie has³a po podaniu adresu email.
+& %%%% Components %%%%
+K01, K02, K05
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S03
+& %%%% Name %%%%
+Strona rejestracji
+& %%%% Description %%%%
+Strona na której u¿ytkownik mo¿e za³o¿yæ nowe konto. U¿ytkownicy zalogowani s¹ przekierowani do S01. Formularz rejestracji (K06), przycisk "Masz ju¿ konto?" odsy³aj¹cy do S02
+& %%%% Components %%%%
+K01, K02, K06
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S04
+& %%%% Name %%%%
+Strona listy kursów
+& %%%% Description %%%%
+Navbar (K04). Lista dostêpnych po filtracji kursów, dla ka¿dego kursu widaæ: nazwê, opis, przycisk do³¹czenia je¿eli u¿ytkownik nie jest jeszcze cz³onkiem.
+& %%%% Components %%%%
+K01, K02, K04
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05
+& %%%% Name %%%%
+Strona kursu
+& %%%% Description %%%%
+Strona zawieraj¹ca funkcjonalnoœæ kursu. U¿ytkownicy niezalogowani s¹ przekierowani do S01. U¿ytkownicy którzy nie s¹ uczestnikami kursu s¹ przekierowani od S04. Administratorzy kursu widz¹ S05A, uczestnicy widz¹ S05B.
+& %%%% Components %%%%
+K01, K02
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_A
+& %%%% Name %%%%
+Strona kursu - Dashboard
+& %%%% Description %%%%
+Strona kursu widziana z perpektywy administratora. Zawiera navbar (K07) z odnoœnikami do poszczególnych podstron dashboardu oraz zawartoœæ odpowiedni¹ dla podstrony opisan¹ dalej w S05\_A\_X
+& %%%% Components %%%%
+K01, K02, K07
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_A\_1
+& %%%% Name %%%%
+Dashboard - strona kursu
+& %%%% Description %%%%
+Navbar kursu (K07). Opis kursu, informacja o tym czy kurs jest publiczny czy prywatny, przycisk umo¿liwiaj¹cy usuniêcie kursu.
+& %%%% Components %%%%
+K01, K02, K07
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_A\_2
+& %%%% Name %%%%
+Dashboard - lista zadañ
+& %%%% Description %%%%
+Navbar kursu (K07). Lista dodanych do kursu zadañ, dla ka¿dego zadania widaæ: nazwê, typ oraz treœæ pytania.
+& %%%% Components %%%%
+K01, K02, K07
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_A\_3
+& %%%% Name %%%%
+Dashboard - dodawanie zadania
+& %%%% Description %%%%
+Navbar kursu (K07). Wybór typu zadania (otwarte, zamkniête, nawyk, quiz grupowy) oraz przycisk otwieraj¹cy formularz dla odpowiedniego zadania (K09, K10, K11, K12).
+& %%%% Components %%%%
+K01, K02, K07, K09, K10, K11, K12
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_A\_4
+& %%%% Name %%%%
+Dashboard - statystyki
+& %%%% Description %%%%
+Navbar kursu (K07). Lista wszystkich uczestników kursu, dla ka¿dego uczestnika widaæ: nazwê, poziom, punkty ¿ycia, doœwiadczenie, z³oto, status, je¿eli postaæ nie ¿yje, dodatkowo widaæ przycisk przywracaj¹cy postaæ do ¿ycia.
+& %%%% Components %%%%
+K01, K02, K07
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_A\_5
+& %%%% Name %%%%
+Dashboard - sklep
+& %%%% Description %%%%
+Navbar kursu (K07). Lista dostêpnych przedmiotów, które mo¿na dodaæ do kursu. Przycisk dodaj¹cy wybrane przedmioty.
+& %%%% Components %%%%
+K01, K02, K07
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_B
+& %%%% Name %%%%
+Strona kursu - Gra
+& %%%% Description %%%%
+Strona kursu widziana z perspektywy uczestnika. Zawiera navbar (K08) z odnoœnikami do poszczególnych podstron oraz zawartoœæ odpowiedni¹ dla podstrony opisan¹ dalej w S05\_B\_X
+& %%%% Components %%%%
+K01, K02, K08
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_B\_1
+& %%%% Name %%%%
+Gra - strona kursu
+& %%%% Description %%%%
+Navbar (K08). Opis kursu i informacja o tym czy jest publiczny czy prywatny.
+& %%%% Components %%%%
+K01, K02, K08
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_B\_2
+& %%%% Name %%%%
+Gra - lista potworów
+& %%%% Description %%%%
+Navbar (K08). Lista dostêpnych potworów, dla ka¿dego potwora widaæ: obrazek przedstawiaj¹cy potwora, nazwê zadania, nagrodê za wykonanie. Przycisk przenosz¹cy do strony ze szczegó³ami.
+& %%%% Components %%%%
+K01, K02, K08
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_B\_3
+& %%%% Name %%%%
+Gra - lista nawyków
+& %%%% Description %%%%
+Navbar (K08). Lista nawyków zdefiniowanych w kursie, dla ka¿dego nawyku widaæ nazwê oraz to czy jest to pozytywny lub neagtywny nawyk.
+& %%%% Components %%%%
+K01, K02, K08
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_B\_4
+& %%%% Name %%%%
+Gra - mój bohater
+& %%%% Description %%%%
+Navbar (K08). Obrazek przedstawiaj¹cy postaæ, Progress bary przedstawiaj¹ce ¿ycie oraz doœwiadczenie bohatera, obecne z³oto, poziom oraz za³o¿na broñ i zbroja. Przycisk do edycji postaci, który prowadzi do strony, gdzie mo¿na zmieniæ obecny ekwipunek postaci.
+& %%%% Components %%%%
+K01, K02, K08
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_B\_5
+& %%%% Name %%%%
+Gra - statystyki
+& %%%% Description %%%%
+Navbar (K08). Lista wszystkich postaci w kursie, dla ka¿dej postaci widaæ: nazwê, poziom, punkty ¿ycia, doœwiadczenie, z³oto.
+& %%%% Components %%%%
+K01, K02, K08
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_B\_6
+& %%%% Name %%%%
+Gra - sklep
+& %%%% Description %%%%
+Navbar (K08). Iloœæ posiadanego z³ota, lista przedmiotów do sprzedania oraz kupienia, dla ka¿dego przemiotu: obrazek przedstawiaj¹cy przedmiot, cena kupna/sprzeda¿y, przycisk "Kup"/"Sprzedaj".
+& %%%% Components %%%%
+K01, K02, K08
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S05\_B\_7
+& %%%% Name %%%%
+Gra - szegu³y walki z potworem
+& %%%% Description %%%%
+Nazwa zadania, opis zadania, przycisk "Otwórz formularz", który otwiera dla zadañ testowych podgl¹d odpowiedzi, z której mo¿na wybraæ jedn¹, a dla otwartych pole tekstowe, w którym mo¿na udzieliæ odpowiedzi, przycisk wys³ania odpowiedzi.
+& %%%% Components %%%%
+K01, K02
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S06
+& %%%% Name %%%%
+Strona profilu u¿ytkownika
+& %%%% Description %%%%
+Szczegó³y dotycz¹ce profilu: imiê, nazwisko, email. Przycisk umo¿liwiaj¹cy edycjê tych pól.
+& %%%% Components %%%%
+K01, K02
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%%
+S07
+& %%%% Name %%%%
+Strona tworzenia kursu
+& %%%% Description %%%%
+Pola do wprowadzenia nazwy oraz opisu kursu, checkbox do zaznaczenia czy kurs ma byæ publiczny czy prywatny. Informacja zachêcaj¹ca do dodania opisu oraz wyjaœniaj¹ca ró¿nicê miêdzy publicznym a prywatnym kursem. Przycisk tworz¹cy kurs z podanymi danymi.
+& %%%% Components %%%%
+K01, K02
+\\\hline
+
+
+
+%%%%%%%%%%%%%% End table %%%%%%%%%%%%%%
+\end{longtable}
+
+\begin{longtable}{|p{2cm}|p{2cm}|p{8cm}|p{2cm}|}
+    
+\caption{Wykaz komponentów} \\\toprule
+\label{chapter5_tab_components}
+%%%%%%%%%%%%%% Header %%%%%%%%%%%%%%
+\textbf{Id}
+&
+\textbf{Nazwa}
+&
+\textbf{Opis}
+&
+\textbf{Komponenty}
+\\\midrule
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K01 
+& %%%% Name %%%%
+Nag³ówek
+& %%%% Description %%%%
+Zawiera odnoœniki prowadz¹ce do stron dostêpnych w aplikacji.
+& %%%% Components %%%%
+K03
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K02 
+& %%%% Name %%%%
+Stopka
+& %%%% Description %%%%
+Informacja o tym, ¿e aplikacja powsta³a jako projekt in¿ynierski wraz z informacj¹ o autorach.
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K03 
+& %%%% Name %%%%
+Odnoœniki logowania
+& %%%% Description %%%%
+U¿ytkownik zalogowany widzi odnoœnik do S06 oraz przycisk "Wyloguj". U¿ytkownik niezalogowany widzi odnoœniki do S02 i S03.
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K04 
+& %%%% Name %%%%
+Navbar listy kursów
+& %%%% Description %%%%
+Odnoœnik do strony S07: “Utwórz nowy kurs”. Przyciski filtruj¹ce listê kursów: “Wszystkie kursy” - wszystkie kursy, “Partycypowane kursy” - kursy, w których u¿ytkownik uczestniczy, “Zarz¹dzane kursy” - kursy, których u¿ytkownik jest autorem lub administratorem.
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K05 
+& %%%% Name %%%%
+Formularz logowania
+& %%%% Description %%%%
+Pola: email, has³o. Przycisk “Zaloguj”.
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K06
+& %%%% Name %%%%
+Formularz rejestracji
+& %%%% Description %%%%
+Pola: email, nazwa u¿ytkownika, has³o, powtórzone has³o. Przycisk “Za³ó¿ konto”.
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K07
+& %%%% Name %%%%
+Navbar kursu (dashboard)
+& %%%% Description %%%%
+Zawiera odnoœniki do wszystkich elementów dashboardu: strona kursu (S05\_A\_1), lista zadañ (S05\_A\_2), dodawanie zadania(S05\_A\_3), statystyki(S05\_A\_4), sklep(S05\_A\_5)
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K08
+& %%%% Name %%%%
+Navbar kursu (gra)
+& %%%% Description %%%%
+Zawiera odnoœniki do wszystkich elementów gry: strona kursu (S05\_B\_1), lista potworów (S05\_B\_2), lista nawyków (S05\_B\_3), mój bohater (S05\_B\_4), statystyki (S05\_B\_5), sklep (S05\_B\_6)
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K09
+& %%%% Name %%%%
+Formularz dodania zadania zamkniêtego
+& %%%% Description %%%%
+Pola: nazwa zadania, treœæ zadania, poprawna odpowiedŸ, 3x z³a odpowiedŸ, nagroda za wykonanie (z³oto), kara za niewykonanie (obra¿enia)
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K10
+& %%%% Name %%%%
+Formularz dodania zadania otwartego
+& %%%% Description %%%%
+Pola: nazwa zadania, treœæ zadania, poprawna odpowiedŸ (dla u³atwienia sprawdzania), nagroda za wykonanie (z³oto), kara za niewykonanie (obra¿enia)
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K11
+& %%%% Name %%%%
+Formularz dodania nawyku
+& %%%% Description %%%%
+Pola: nazwa nawyku, treœæ nawyku, rodzaj (pozytywny, negatywny, mieszany), nagroda za wykonanie (z³oto), kara za niewykonanie (obra¿enia)
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% Row %%%%%%%%%%%%%%
+%%%% Id %%%%
+K12
+& %%%% Name %%%%
+Formularz dodania quizu grupowego
+& %%%% Description %%%%
+Pola: nazwa zadania, treœæ zadania, poprawna odpowiedŸ, 3x z³a odpowiedŸ, nagroda za wykonanie (z³oto), kara za niewykonanie (obra¿enia)
+& %%%% Components %%%%
+---
+\\\hline
+
+%%%%%%%%%%%%%% End table %%%%%%%%%%%%%%
+
+
+\end{longtable}
