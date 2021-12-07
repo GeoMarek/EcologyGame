@@ -593,6 +593,32 @@ def dealDmgToCharacter(character, dmg):
         character.curent_hp = character.curent_hp - dmg1
     character.save()
 
+class CheckQuizView(APIView):
+    def put(self, request, format=None):
+        print('hehe')
+        data = self.request.data
+        print(data)
+        appr = Approach.objects.get(id=data['appr_id'])
+        char = Character.objects.get(id=data['char_id'])
+        points = int(data['points'])
+        dmg = int(data['dmg'])
+        addExpToCharacter(char, dmg)
+        dealDmgToCharacter(char, dmg)
+        char.gold = char.gold + points
+        char.save()
+        appr.end_time = datetime.now()
+        # approach.duration_time = approach.end_time - approach.start_time
+        appr.obtained_points = points
+        if points == 0:
+            appr.result_in_percent = 0
+        else:
+            appr.result_in_percent = 100 * points / int(data['max_points'])
+        appr.done = True
+        appr.checked = True
+        appr.save()
+        print('wszystko okej przy sprawdzaniu')
+        return Response({"info": 'wszystko okej przy sprawdzaniu' })
+
 
 # zarzadzanie konkretnym quizem
 class DoQuizView(APIView):
@@ -622,6 +648,22 @@ class DoQuizView(APIView):
                     approaches = [
                         ApproachSerializer(model).data for model in approaches
                     ]
+                    characters = Character.objects.filter(course=course_id)
+                    characters = [
+                        CharacterSerializer(model).data for model in characters
+                    ]
+                    #for a in characters:
+                    #    print(a)
+                    ans = Answer.objects.all()
+                    for a in approaches:
+                        for c in characters:
+                            if a['user'] == c['user']:
+                                a['user_name'] = c['name']
+                                a['char_id'] = c['id']
+                                break
+                        odp = ans.get(approach=a['id'])
+                        a['odp'] = odp.user_answer
+                    #    print(a)
 
                 return Response({"quiz": quiz, "questions": questions, "approaches": approaches })
         except:

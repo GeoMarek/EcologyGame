@@ -14,19 +14,6 @@ const MonsterAdminPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
         []
     )
 
-    var example_answers = [
-        {
-            id: 1,
-            user_answer: 'Według mnie wynik działania sqrt(4) to 2',
-            user: 'Marek',
-        },
-        {
-            id: 2,
-            user_answer: 'Według mnie wynik działania sqrt(4) to -2',
-            user: 'Kamil',
-        },
-    ]
-
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
@@ -42,7 +29,7 @@ const MonsterAdminPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
                         </p>
                         <h3 className="home-title">Nadesłane odpowiedzi:</h3>
                         <TaskAnswerList
-                            answers_list={example_answers}
+                            approaches={quiz.approaches}
                             max={quiz.questions[0].points}
                             dmg={quiz.questions[0].dmg}
                         />

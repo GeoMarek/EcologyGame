@@ -1,10 +1,10 @@
 import React from 'react'
 import TaskAnswerItem from './TaskAnswerItem'
 
-const TaskAnswerList = ({ answers_list, max, dmg }) => {
+const TaskAnswerList = ({ approaches, max, dmg }) => {
     return (
         <div>
-            {answers_list.map((answer) => (
+            {approaches.map((answer) => (
                 <TaskAnswerItem
                     answer={answer}
                     key={answer.id}

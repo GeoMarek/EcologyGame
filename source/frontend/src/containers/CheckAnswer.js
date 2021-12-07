@@ -4,6 +4,7 @@ import { get_course_by_id } from '../actions/course'
 import { connect } from 'react-redux'
 import { get_quiz } from '../actions/quiz'
 import AdminSideBar from '../components/SideBar/AdminSideBar'
+import axios from 'axios'
 
 const CheckAnswer = ({
     course_global,
@@ -15,10 +16,40 @@ const CheckAnswer = ({
     useEffect(
         () => {
             get_quiz(match.params.course_id, match.params.monster_id)
-            get_course_by_id(match.params.id)
+            get_course_by_id(match.params.course_id)
         }, // eslint-disable-next-line
         []
     )
+
+    const send_check = (char_id,appr_id,points,dmg,max_points) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('access')}`,
+                Accept: 'application/json',
+            },
+        }
+
+        const body = JSON.stringify({
+            char_id,
+            appr_id,
+            points,
+            dmg,
+            max_points,
+        })
+
+        try {
+            var ret = axios.put(
+                `${process.env.REACT_APP_API_URL}/course/check/`,
+                body,
+                config
+            )
+            console.log(ret)
+            return ret
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     const [formData, setFormData] = useState({
         reward: 0,
@@ -28,11 +59,19 @@ const CheckAnswer = ({
     const onChange = (e) => {
         e.preventDefault()
         setFormData({ ...formData, [e.target.name]: e.target.value })
+        console.log(formData)
     }
+
+    //
+    const cos = quiz.approaches.filter(
+        (x) => x.id === parseInt(match.params.answer_id)
+    )[0]
+    //
     const onSubmit = (e) => {
         console.log(
             'Przyznana nagroda: ' + reward + '\nPrzyznana kara: ' + damage
         )
+        send_check(cos['char_id'],cos['id'],reward,damage, quiz.questions[0].points)
     }
 
     const question_content = (
@@ -52,11 +91,10 @@ const CheckAnswer = ({
             <br />
         </div>
     )
-
     const user_answer = (
         <div>
             <span className="answer-head">Odpowiedź uczestnika:</span>
-            <span className="answer-data">Zaciągnięta odpowiedź</span>
+            <span className="answer-data">{cos['odp']}</span>
             <br />
         </div>
     )
@@ -72,7 +110,6 @@ const CheckAnswer = ({
                 {question_content}
                 {correct_answer}
                 {user_answer}
-                <form onSubmit={(e) => onSubmit(e)}>
                     <span className="answer-head">
                         {'Przyznaj punkty (0-' +
                             quiz.questions[0].points +
@@ -85,6 +122,7 @@ const CheckAnswer = ({
                         name="reward"
                         min="0"
                         max={quiz.questions[0].points}
+                        value={formData.reward}
                     />
                     <br />
                     <span className="answer-head">
@@ -98,12 +136,12 @@ const CheckAnswer = ({
                         name="damage"
                         min="0"
                         max={quiz.questions[0].dmg}
+                        value={formData.damage}
                     />
                     <br />
                     <button className="common-button" onClick={onSubmit}>
                         Zapisz przyznane punkty
                     </button>
-                </form>
             </div>
         </div>
     )

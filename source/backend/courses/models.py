@@ -141,5 +141,5 @@ class Approach(models.Model):
 class Answer(models.Model):
     approach = models.ForeignKey(Approach, on_delete=models.CASCADE, blank=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, blank=True)
-    user_answer = models.CharField(max_length=1)
+    user_answer = models.TextField()
     is_correct = models.BooleanField(default=False)
