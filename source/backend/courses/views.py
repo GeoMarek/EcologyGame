@@ -593,15 +593,16 @@ def dealDmgToCharacter(character, dmg):
         character.curent_hp = character.curent_hp - dmg1
     character.save()
 
+
 class CheckQuizView(APIView):
     def put(self, request, format=None):
-        print('hehe')
+        print("hehe")
         data = self.request.data
         print(data)
-        appr = Approach.objects.get(id=data['appr_id'])
-        char = Character.objects.get(id=data['char_id'])
-        points = int(data['points'])
-        dmg = int(data['dmg'])
+        appr = Approach.objects.get(id=data["appr_id"])
+        char = Character.objects.get(id=data["char_id"])
+        points = int(data["points"])
+        dmg = int(data["dmg"])
         addExpToCharacter(char, dmg)
         dealDmgToCharacter(char, dmg)
         char.gold = char.gold + points
@@ -612,19 +613,19 @@ class CheckQuizView(APIView):
         if points == 0:
             appr.result_in_percent = 0
         else:
-            appr.result_in_percent = 100 * points / int(data['max_points'])
+            appr.result_in_percent = 100 * points / int(data["max_points"])
         appr.done = True
         appr.checked = True
         appr.save()
-        print('wszystko okej przy sprawdzaniu')
-        return Response({"info": 'wszystko okej przy sprawdzaniu' })
+        print("wszystko okej przy sprawdzaniu")
+        return Response({"info": "wszystko okej przy sprawdzaniu"})
 
 
 # zarzadzanie konkretnym quizem
 class DoQuizView(APIView):
-    #permission_classes = (
+    # permission_classes = (
     #    permissions.AllowAny,
-    #)  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    # )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
 
     def get(self, request, course_id, quiz_id):
         try:
@@ -652,20 +653,22 @@ class DoQuizView(APIView):
                     characters = [
                         CharacterSerializer(model).data for model in characters
                     ]
-                    #for a in characters:
+                    # for a in characters:
                     #    print(a)
                     ans = Answer.objects.all()
                     for a in approaches:
                         for c in characters:
-                            if a['user'] == c['user']:
-                                a['user_name'] = c['name']
-                                a['char_id'] = c['id']
+                            if a["user"] == c["user"]:
+                                a["user_name"] = c["name"]
+                                a["char_id"] = c["id"]
                                 break
-                        odp = ans.get(approach=a['id'])
-                        a['odp'] = odp.user_answer
+                        odp = ans.get(approach=a["id"])
+                        a["odp"] = odp.user_answer
                     #    print(a)
 
-                return Response({"quiz": quiz, "questions": questions, "approaches": approaches })
+                return Response(
+                    {"quiz": quiz, "questions": questions, "approaches": approaches}
+                )
         except:
             return Response(
                 {"error": "Something went wrong when geting course's quizzes"}

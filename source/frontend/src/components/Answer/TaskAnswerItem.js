@@ -6,11 +6,14 @@ const TaskAnswerItem = ({ answer, max, dmg }) => {
         <div className="div-monster">
             <div className="monster-content">
                 <p>Odpowiedź od użytkownika: {answer.user_name}</p>
-                {answer.checked?<p>już sprawdzone na {answer.result_in_percent}%</p>:<CommonLink
-                    text="Przejdź do oceny"
-                    destination={'admin/' + answer.id}
-                />}
-                
+                {answer.checked ? (
+                    <p>już sprawdzone na {answer.result_in_percent}%</p>
+                ) : (
+                    <CommonLink
+                        text="Przejdź do oceny"
+                        destination={'admin/' + answer.id}
+                    />
+                )}
             </div>
         </div>
     )

@@ -7,6 +7,7 @@ from .views import (
     CharactersView,
     CharacterView,
     CharcterEqView,
+    CheckQuizView,
     CourseItems,
     CourseView,
     DoQuizView,
@@ -20,7 +21,6 @@ from .views import (
     QuizView,
     QuizzesView,
     ResurrectView,
-    CheckQuizView,
 )
 
 urlpatterns = [

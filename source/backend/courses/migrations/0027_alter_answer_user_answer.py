@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('courses', '0026_approach_checked'),
+        ("courses", "0026_approach_checked"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='answer',
-            name='user_answer',
+            model_name="answer",
+            name="user_answer",
             field=models.TextField(),
         ),
     ]

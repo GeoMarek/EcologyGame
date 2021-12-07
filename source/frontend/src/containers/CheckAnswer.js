@@ -21,7 +21,7 @@ const CheckAnswer = ({
         []
     )
 
-    const send_check = (char_id,appr_id,points,dmg,max_points) => {
+    const send_check = (char_id, appr_id, points, dmg, max_points) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -71,7 +71,13 @@ const CheckAnswer = ({
         console.log(
             'Przyznana nagroda: ' + reward + '\nPrzyznana kara: ' + damage
         )
-        send_check(cos['char_id'],cos['id'],reward,damage, quiz.questions[0].points)
+        send_check(
+            cos['char_id'],
+            cos['id'],
+            reward,
+            damage,
+            quiz.questions[0].points
+        )
     }
 
     const question_content = (
@@ -110,38 +116,36 @@ const CheckAnswer = ({
                 {question_content}
                 {correct_answer}
                 {user_answer}
-                    <span className="answer-head">
-                        {'Przyznaj punkty (0-' +
-                            quiz.questions[0].points +
-                            '): '}
-                    </span>
-                    <input
-                        className="answer-points"
-                        onChange={(e) => onChange(e)}
-                        type="number"
-                        name="reward"
-                        min="0"
-                        max={quiz.questions[0].points}
-                        value={formData.reward}
-                    />
-                    <br />
-                    <span className="answer-head">
-                        {'Przyznaj karę (0-' + quiz.questions[0].dmg + '): '}
-                    </span>
+                <span className="answer-head">
+                    {'Przyznaj punkty (0-' + quiz.questions[0].points + '): '}
+                </span>
+                <input
+                    className="answer-points"
+                    onChange={(e) => onChange(e)}
+                    type="number"
+                    name="reward"
+                    min="0"
+                    max={quiz.questions[0].points}
+                    value={formData.reward}
+                />
+                <br />
+                <span className="answer-head">
+                    {'Przyznaj karę (0-' + quiz.questions[0].dmg + '): '}
+                </span>
 
-                    <input
-                        className="answer-points"
-                        onChange={(e) => onChange(e)}
-                        type="number"
-                        name="damage"
-                        min="0"
-                        max={quiz.questions[0].dmg}
-                        value={formData.damage}
-                    />
-                    <br />
-                    <button className="common-button" onClick={onSubmit}>
-                        Zapisz przyznane punkty
-                    </button>
+                <input
+                    className="answer-points"
+                    onChange={(e) => onChange(e)}
+                    type="number"
+                    name="damage"
+                    min="0"
+                    max={quiz.questions[0].dmg}
+                    value={formData.damage}
+                />
+                <br />
+                <button className="common-button" onClick={onSubmit}>
+                    Zapisz przyznane punkty
+                </button>
             </div>
         </div>
     )

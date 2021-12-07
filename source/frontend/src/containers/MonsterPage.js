@@ -59,18 +59,27 @@ const MonsterPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
     }
 
     const quiz_done = () => {
-        return(
+        return (
             <>
-            <p>Walka z potworem już się odbyła!</p>
-            <p>{quiz.approaches.at(-1)['checked']?'Wynik walki to: '+quiz.approaches.at(-1)['result_in_percent']+'%':'Walka jeszcze nie zostła rozstrzygnięta!'}</p>
+                <p>Walka z potworem już się odbyła!</p>
+                <p>
+                    {quiz.approaches.at(-1)['checked']
+                        ? 'Wynik walki to: ' +
+                          quiz.approaches.at(-1)['result_in_percent'] +
+                          '%'
+                        : 'Walka jeszcze nie zostła rozstrzygnięta!'}
+                </p>
             </>
         )
     }
 
     const quiz_not_done = () => {
-        return(
+        return (
             <>
-            <CommonButton text="Pokonaj potwora" on_click={openSubmitForm} />
+                <CommonButton
+                    text="Pokonaj potwora"
+                    on_click={openSubmitForm}
+                />
             </>
         )
     }
@@ -84,7 +93,7 @@ const MonsterPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
             <p className="home-title">Informacje szczegółowe o zadaniu</p>
             <p>Nazwa zadania: {quiz.quiz.name}</p>
             <p>Opis zadania: {quiz.quiz.description}</p>
-            {quiz.approaches.length > 0?quiz_done():quiz_not_done()}
+            {quiz.approaches.length > 0 ? quiz_done() : quiz_not_done()}
         </div>
     )
 }
