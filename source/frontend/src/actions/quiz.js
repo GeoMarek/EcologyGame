@@ -5,8 +5,8 @@ export const get_quiz = (course_id, quiz_id) => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
-            //Authorization: `JWT ${localStorage.getItem('access')}`,
-            //Accept: 'application/json',
+            Authorization: `JWT ${localStorage.getItem('access')}`,
+            Accept: 'application/json',
         },
     }
 

@@ -28,11 +28,11 @@ const MonsterPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
     )
     const openSubmitForm = (e) => {
         e.preventDefault()
-        start_approach(quiz.quiz.id)
+        start_approach(quiz.quiz.id, quiz.quiz.quiz_type)
         setRedirectData({ ...redirectData, redirect: '/submit' })
     }
 
-    const start_approach = (quiz_id) => {
+    const start_approach = (quiz_id, quiz_type) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +41,9 @@ const MonsterPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
             },
         }
 
-        const body = JSON.stringify({})
+        const body = JSON.stringify({
+            quiz_type,
+        })
 
         try {
             var ret = axios.post(
@@ -56,6 +58,23 @@ const MonsterPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
         }
     }
 
+    const quiz_done = () => {
+        return(
+            <>
+            <p>Walka z potworem już się odbyła!</p>
+            <p>{quiz.approaches.at(-1)['checked']?'Wynik walki to: '+quiz.approaches.at(-1)['result_in_percent']+'%':'Walka jeszcze nie zostła rozstrzygnięta!'}</p>
+            </>
+        )
+    }
+
+    const quiz_not_done = () => {
+        return(
+            <>
+            <CommonButton text="Pokonaj potwora" on_click={openSubmitForm} />
+            </>
+        )
+    }
+
     if (!isAuthenticated) {
         return <Redirect to="/" />
     }
@@ -65,7 +84,7 @@ const MonsterPage = ({ isAuthenticated, quiz, match, get_quiz }) => {
             <p className="home-title">Informacje szczegółowe o zadaniu</p>
             <p>Nazwa zadania: {quiz.quiz.name}</p>
             <p>Opis zadania: {quiz.quiz.description}</p>
-            <CommonButton text="Otwórz formularz" on_click={openSubmitForm} />
+            {quiz.approaches.length > 0?quiz_done():quiz_not_done()}
         </div>
     )
 }

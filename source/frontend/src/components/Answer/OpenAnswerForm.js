@@ -10,7 +10,7 @@ const OpenAnswerForm = ({ question, quiz_type, quiz_id, course_id }) => {
     const [redirectData, setRedirectData] = useState({
         redirect: 0,
     })
-    const renderRedirect = () => <Redirect to={'/course/' + quiz_id} />
+    const renderRedirect = () => <Redirect to={'/course/' + course_id} />
 
     const onChange = (e) => {
         e.preventDefault()

@@ -443,18 +443,18 @@ class QuizView(APIView):
                         print(f"max_datetime = {max_datetime}")
                         if max_datetime == -1 or (
                             (datetime.now() - parse_datetime(max_datetime[:-1]))
-                            < timedelta(hours=1, minutes=1)
+                            > timedelta(hours=1, minutes=1)
                         ):
-                            i["can_do"] = False
-                        else:
                             i["can_do"] = True
+                        else:
+                            i["can_do"] = False
                         # r = datetime.now() -parse_datetime(max_datetime[:-1])
                         # pamietaj że r jest o 1 godzine wieksze
                         # print(f'różnica = {r}')
                         # print(r > timedelta(hours=1, minutes=10))
                         # dla prawdy cd minał dla false jeszcze nie można robić ponownie
                         # i['can_do'] = max_datetime
-                        print(i["can_do"])
+                        print(f'can do: {i["can_do"]}')
                 return Response({"quizzes": data})
         except:
             return Response(
@@ -596,9 +596,9 @@ def dealDmgToCharacter(character, dmg):
 
 # zarzadzanie konkretnym quizem
 class DoQuizView(APIView):
-    permission_classes = (
-        permissions.AllowAny,
-    )  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
+    #permission_classes = (
+    #    permissions.AllowAny,
+    #)  # dzięki tej linijce nie jest wymagany tokken podczas zapytania do bazy danych
 
     def get(self, request, course_id, quiz_id):
         try:
@@ -607,7 +607,23 @@ class DoQuizView(APIView):
                 quiz = QuizSerializer(quiz).data
                 questions = Question.objects.filter(quiz=quiz_id)
                 questions = [QuestionSerializer(model).data for model in questions]
-                return Response({"quiz": quiz, "questions": questions})
+                user = self.request.user.id
+                course = Course.objects.get(id=course_id)
+                cos = CourseSerializer(course).data
+                if user in cos["participants"]:
+                    print("uczestnik")
+                    approaches = Approach.objects.filter(user=user).filter(quiz=quiz_id)
+                    approaches = [
+                        ApproachSerializer(model).data for model in approaches
+                    ]
+                else:
+                    print("admin")
+                    approaches = Approach.objects.filter(quiz=quiz_id)
+                    approaches = [
+                        ApproachSerializer(model).data for model in approaches
+                    ]
+
+                return Response({"quiz": quiz, "questions": questions, "approaches": approaches })
         except:
             return Response(
                 {"error": "Something went wrong when geting course's quizzes"}

@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 const HabitListItem = ({ habit, course_id }) => {
+    const [defData, setDelData] = useState(false)
     const sendPositiv = (e) => {
         console.log('Wykonano pozytywnie w nawyku o id ' + habit.id)
         do_habit(habit.id, 'h', '1', course_id)
+        setDelData(true)
     }
 
     const sendNegativ = (e) => {
         console.log('Wykonano negatywnie w nawyku o id ' + habit.id)
         do_habit(habit.id, 'h', '0', course_id)
+        setDelData(true)
     }
     //is_p ma być ='1' dla pozytywnych ='0' dla negatywnych
     //quiz_type = 'h'
@@ -65,17 +68,26 @@ const HabitListItem = ({ habit, course_id }) => {
         ) : (
             <></>
         )
-    console.log(habit)
-    return (
-        <div className="div-task div-habit" key={habit.id}>
-            <div className="left-habit">{show_plus}</div>
-            <div className="habit-content">
-                <p>
-                    {habit.description} {habit.can_do ? 'tak' : 'nie'}
-                </p>
+    
+    if (defData) {
+        return <></>
+    }
+
+    if (habit.can_do){
+        return (
+            <div className="div-task div-habit" key={habit.id}>
+                <div className="left-habit">{show_plus}</div>
+                <div className="habit-content">
+                    <p>
+                        {habit.description}
+                    </p>
+                </div>
+                <div className="right-habit">{show_minus}</div>
             </div>
-            <div className="right-habit">{show_minus}</div>
-        </div>
-    )
+        )
+    }
+    else{
+        return (<></>)
+    }
 }
 export default HabitListItem
